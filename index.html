@@ -361,7 +361,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    /* REDESIGNED Equipment Panel - WITH TABS */
+    /* REDESIGNED Equipment Panel - NOW CITY OVERVIEW */
     .equipment-panel {
       position: fixed;
       top: 0;
@@ -433,7 +433,7 @@
       position: relative;
     }
 
-    /* Stats Summary Cards */
+    /* Stats Summary Cards - REVERSED ORDER */
     .stats-summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -455,12 +455,12 @@
       min-height: 70px;
     }
 
-    .summary-card.total-equipment {
+    .summary-card.total-sites {
       border-top: 4px solid var(--primary-blue);
     }
 
-    .summary-card.critical-equipment {
-      border-top: 4px solid var(--danger-red);
+    .summary-card.site-types {
+      border-top: 4px solid var(--success-green);
     }
 
     .summary-card h4 {
@@ -565,7 +565,7 @@
       z-index: 2;
     }
 
-    /* Critical Equipment Container at Bottom */
+    /* Site Type Distribution Container (at bottom) */
     .critical-equipment-container {
       margin-top: auto;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
@@ -592,15 +592,15 @@
       color: var(--danger-red);
     }
 
-    /* Grid layout for critical equipment */
-    .critical-equipment-grid {
+    /* Grid layout for site types */
+    .site-type-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    /* Enhanced critical equipment item */
-    .critical-equipment-item {
+    /* Enhanced site type item */
+    .site-type-item {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -613,97 +613,9 @@
       min-height: 60px;
     }
 
-    .critical-equipment-item:hover {
+    .site-type-item:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .critical-equipment-item.pump { 
-      border-left-color: #FF6384;
-      background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
-    }
-    .critical-equipment-item.motor { 
-      border-left-color: #36A2EB;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
-    }
-    .critical-equipment-item.tank { 
-      border-left-color: #FFCE56;
-      background: linear-gradient(135deg, #ffffff 0%, #fffcf0 100%);
-    }
-    .critical-equipment-item.valves { 
-      border-left-color: #4BC0C0;
-      background: linear-gradient(135deg, #ffffff 0%, #f0fffd 100%);
-    }
-    .critical-equipment-item.flow-measurement { 
-      border-left-color: #9966FF;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
-    }
-    .critical-equipment-item.generator { 
-      border-left-color: #FF9F40;
-      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
-    }
-
-    .equipment-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .critical-equipment-item.pump .equipment-icon { 
-      background: linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%); 
-      color: white; 
-    }
-    .critical-equipment-item.motor .equipment-icon { 
-      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%); 
-      color: white; 
-    }
-    .critical-equipment-item.tank .equipment-icon { 
-      background: linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%); 
-      color: #2c3e50; 
-    }
-    .critical-equipment-item.valves .equipment-icon { 
-      background: linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%); 
-      color: white; 
-    }
-    .critical-equipment-item.flow-measurement .equipment-icon { 
-      background: linear-gradient(135deg, #9966FF 0%, #b894ff 100%); 
-      color: white; 
-    }
-    .critical-equipment-item.generator .equipment-icon { 
-      background: linear-gradient(135deg, #FF9F40 0%, #ffb870 100%); 
-      color: white; 
-    }
-
-    .equipment-info {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      flex: 1;
-    }
-
-    .equipment-name {
-      font-weight: 600;
-      color: var(--dark-gray);
-      font-size: 0.85em;
-    }
-
-    .equipment-count {
-      font-size: 1.3em;
-      font-weight: 800;
-      color: var(--dark-gray);
-      line-height: 1;
-    }
-
-    .equipment-subtext {
-      font-size: 0.75em;
-      color: var(--neutral-gray);
-      opacity: 0.8;
     }
 
     /* Equipment Toggle Button - Position Adjusted */
@@ -1035,9 +947,8 @@
       min-width: 160px;
     }
 
-    /* Custom Cluster Markers - SMALLER */
+    /* Custom Cluster Markers - SITE TYPE BASED */
     .custom-cluster {
-      background: linear-gradient(135deg, #FFD166 0%, #FF9E6D 100%);
       border: 2px solid white;
       border-radius: 50%;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.3);
@@ -1067,48 +978,6 @@
     .custom-cluster:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    .cluster-excellent {
-      background: linear-gradient(135deg, #00FF9D 0%, #00C896 100%);
-    }
-
-    .cluster-good {
-      background: linear-gradient(135deg, #00A8FF 0%, #0088FF 100%);
-    }
-
-    .cluster-fair {
-      background: linear-gradient(135deg, #FFD166 0%, #FFB347 100%);
-    }
-
-    .cluster-poor {
-      background: linear-gradient(135deg, #FF9E6D 0%, #FF7A45 100%);
-    }
-
-    .cluster-critical {
-      background: linear-gradient(135deg, #FF5252 0%, #FF2B2B 100%);
-      animation: pulse 1.5s infinite;
-    }
-
-    .cluster-new {
-      background: linear-gradient(135deg, #9D4EDD 0%, #7B2CBF 100%);
-    }
-
-    .cluster-mixed {
-      background: linear-gradient(135deg, #FF9E6D 0%, #00A8FF 50%, #FF5252 100%);
-      background-size: 200% 200%;
-      animation: gradientShift 3s infinite alternate;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
     }
 
     /* Scrollbar styling */
@@ -1168,7 +1037,7 @@
         padding: 6px 12px;
         font-size: 0.8em;
       }
-      .critical-equipment-grid {
+      .site-type-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .chart-container-wrapper {
@@ -1252,7 +1121,7 @@
         width: 250px !important;
         height: 250px !important;
       }
-      .critical-equipment-grid {
+      .site-type-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .quick-actions {
@@ -1272,7 +1141,7 @@
     }
 
     @media (max-width: 480px) {
-      .critical-equipment-grid {
+      .site-type-grid {
         grid-template-columns: 1fr;
       }
       .equipment-panel {
@@ -1410,18 +1279,18 @@
     <!-- City/Site Info -->
     <div class="site-name-highlight" id="citySiteName">All Cities</div>
     
-    <!-- Stats Summary -->
+    <!-- Stats Summary - REVERSED ORDER -->
     <div class="stats-summary" id="cityStatsSummary">
-      <div class="summary-card total-equipment">
-        <h4><i class="fas fa-building"></i> Site Types</h4>
-        <div class="summary-value" id="siteTypesCount">0</div>
-        <div class="summary-label">Total Site Types</div>
-      </div>
-      
-      <div class="summary-card critical-equipment">
+      <div class="summary-card total-sites">
         <h4><i class="fas fa-map-marker-alt"></i> Total Sites</h4>
         <div class="summary-value" id="totalSitesCount">0</div>
         <div class="summary-label">All Locations</div>
+      </div>
+      
+      <div class="summary-card site-types">
+        <h4><i class="fas fa-building"></i> Site Types</h4>
+        <div class="summary-value" id="siteTypesCount">0</div>
+        <div class="summary-label">Total Site Types</div>
       </div>
     </div>
     
@@ -1436,7 +1305,7 @@
     <!-- Site Type Distribution Container (at bottom) -->
     <div class="critical-equipment-container">
       <h4><i class="fas fa-layer-group"></i> Site Types in <span id="currentCityName">All Cities</span></h4>
-      <div class="legend-items" id="siteTypeGrid">
+      <div class="site-type-grid" id="siteTypeGrid">
         <!-- Dynamic site type items will be added here -->
       </div>
     </div>
@@ -1511,6 +1380,19 @@
   let mapLayers = {};
   let siteTypeColorMap = {};
   
+  // Site Type abbreviations and symbols
+  const siteTypeSymbols = {
+    'Treatment Plant': 'TP',
+    'Distribution Center': 'DC',
+    'Storage Facility': 'SF',
+    'Pumping Station': 'PS',
+    'Water Tower': 'WT',
+    'Reservoir': 'RS',
+    'Wastewater Plant': 'WW',
+    'Desalination Plant': 'DP',
+    'Other': 'OT'
+  };
+  
   // Enhanced color scheme for professional appearance
   const conditionColors = {
     'EXCELLENT': '#00FF9D',      // Bright Emerald Green
@@ -1523,7 +1405,7 @@
     'UNKNOWN': '#6D6A75'         // Slate Gray
   };
   
-  // Site Type colors for pie chart - UPDATED to match legend items
+  // Site Type colors for pie chart - UPDATED to match markers
   const siteTypeColors = [
     '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', 
     '#9966FF', '#FF9F40', '#C9CBCF', '#00B894',
@@ -1557,7 +1439,7 @@
     // Add default layer
     mapLayers.street.addTo(map);
     
-    // Initialize marker cluster with custom styling - SMALLER CLUSTERS
+    // Initialize marker cluster with custom styling - SITE TYPE BASED
     markerCluster = L.markerClusterGroup({
       maxClusterRadius: function(zoom) {
         if (zoom >= 15) return 8;
@@ -1571,52 +1453,26 @@
       iconCreateFunction: function(cluster) {
         const count = cluster.getChildCount();
         
-        // Analyze cluster health
-        const conditions = {
-          'EXCELLENT': 0, 'VERY GOOD': 0, 'GOOD': 0, 'NEW': 0,
-          'FAIR': 0, 'POOR': 0, 'CRITICAL': 0, 'UNKNOWN': 0
-        };
-        
-        let hasCritical = false;
-        let hasPoor = false;
-        let hasFair = false;
-        let hasGood = false;
-        let hasExcellent = false;
+        // Get the most common site type in this cluster
+        const siteTypeCounts = {};
+        let mostCommonSiteType = 'Other';
+        let maxCount = 0;
         
         cluster.getAllChildMarkers().forEach(marker => {
           if (marker.options.asset) {
-            const condition = marker.options.asset.condition;
-            if (condition) {
-              conditions[condition]++;
-              
-              if (condition === 'CRITICAL') hasCritical = true;
-              if (condition === 'POOR') hasPoor = true;
-              if (condition === 'FAIR') hasFair = true;
-              if (condition === 'GOOD') hasGood = true;
-              if (condition === 'EXCELLENT') hasExcellent = true;
+            const siteType = marker.options.asset.siteTypeL2 || 'Other';
+            siteTypeCounts[siteType] = (siteTypeCounts[siteType] || 0) + 1;
+            if (siteTypeCounts[siteType] > maxCount) {
+              maxCount = siteTypeCounts[siteType];
+              mostCommonSiteType = siteType;
             }
           }
         });
         
-        // Determine cluster class based on worst condition
-        let clusterClass = 'custom-cluster';
-        if (hasCritical) {
-          clusterClass += ' cluster-critical';
-        } else if (hasPoor) {
-          clusterClass += ' cluster-poor';
-        } else if (hasFair) {
-          clusterClass += ' cluster-fair';
-        } else if (hasGood) {
-          clusterClass += ' cluster-good';
-        } else if (hasExcellent) {
-          clusterClass += ' cluster-excellent';
-        } else if (conditions['NEW'] > 0) {
-          clusterClass += ' cluster-new';
-        } else {
-          clusterClass += ' cluster-mixed';
-        }
+        // Get color for the most common site type
+        const siteTypeColor = getColorForSiteType(mostCommonSiteType);
         
-        // Calculate size based on count - SMALLER SIZES
+        // Calculate size based on count
         let size = 20;
         let fontSize = 8;
         
@@ -1634,8 +1490,11 @@
           fontSize = 14;
         }
         
+        // Get symbol for the site type
+        const symbol = siteTypeSymbols[mostCommonSiteType] || mostCommonSiteType.substring(0, 2).toUpperCase();
+        
         return L.divIcon({
-          html: `<div class="${clusterClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px;">${count}</div>`,
+          html: `<div class="custom-cluster" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${siteTypeColor};">${symbol}</div>`,
           className: 'custom-cluster-icon',
           iconSize: L.point(size, size),
           iconAnchor: L.point(size/2, size/2)
@@ -1662,8 +1521,6 @@
     const zoom = map.getZoom();
     
     // Calculate approximate scale
-    // At zoom 0, the whole world is 256x256 pixels
-    // Each zoom level doubles the scale
     const worldCircumference = 40075016.686; // meters at equator
     const metersPerPixel = worldCircumference * Math.cos(center.lat * Math.PI / 180) / (256 * Math.pow(2, zoom));
     
@@ -1901,32 +1758,26 @@
     
     // Calculate site type statistics
     let siteTypeStats = {};
-    let totalSites = 0;
+    let totalSites = new Set();
+    let uniqueSiteTypes = new Set();
     
     cityAssets.forEach(asset => {
-      if (asset.siteTypeL2) {
-        if (!siteTypeStats[asset.siteTypeL2]) {
-          siteTypeStats[asset.siteTypeL2] = {
-            count: 0,
-            uniqueSites: new Set()
-          };
-        }
-        siteTypeStats[asset.siteTypeL2].count++;
-        siteTypeStats[asset.siteTypeL2].uniqueSites.add(asset.siteNameL3);
-        totalSites++;
+      const siteType = asset.siteTypeL2 || 'Other';
+      if (!siteTypeStats[siteType]) {
+        siteTypeStats[siteType] = {
+          count: 0,
+          uniqueSites: new Set()
+        };
       }
+      siteTypeStats[siteType].count++;
+      siteTypeStats[siteType].uniqueSites.add(asset.siteNameL3);
+      totalSites.add(asset.siteNameL3);
+      uniqueSiteTypes.add(siteType);
     });
     
-    // Calculate unique site types and unique sites
-    const uniqueSiteTypes = Object.keys(siteTypeStats).length;
-    let uniqueSites = new Set();
-    Object.values(siteTypeStats).forEach(stat => {
-      stat.uniqueSites.forEach(site => uniqueSites.add(site));
-    });
-    
-    // Update stats summary
-    document.getElementById('siteTypesCount').textContent = uniqueSiteTypes;
-    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+    // Update stats summary - REVERSED ORDER
+    document.getElementById('totalSitesCount').textContent = totalSites.size;
+    document.getElementById('siteTypesCount').textContent = uniqueSiteTypes.size;
     
     // Update site type list
     updateSiteTypeList(siteTypeStats);
@@ -1935,7 +1786,7 @@
     updateSiteTypeChart(siteTypeStats);
   }
   
-  // Get color for site type - ensures consistency between chart and legend
+  // Get color for site type - ensures consistency between chart and markers
   function getColorForSiteType(siteType) {
     // If we already assigned a color for this site type, return it
     if (siteTypeColorMap[siteType]) {
@@ -1962,15 +1813,19 @@
       const count = stats[siteType].count;
       const uniqueSites = stats[siteType].uniqueSites.size;
       const color = getColorForSiteType(siteType);
+      const symbol = siteTypeSymbols[siteType] || siteType.substring(0, 2).toUpperCase();
       
       const item = document.createElement('div');
-      item.className = 'legend-item';
+      item.className = 'site-type-item';
+      item.style.borderLeftColor = color;
       item.innerHTML = `
-        <span class="legend-color" style="background:${color}"></span>
-        <span style="flex:1;font-size:0.8em">${siteType.length > 20 ? siteType.substring(0, 20) + '...' : siteType}</span>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;">
-          <span style="font-weight:700;font-size:0.9em">${count}</span>
-          <span style="font-size:0.7em;color:var(--neutral-gray)">${uniqueSites} sites</span>
+        <div class="equipment-icon" style="background: ${color}; color: white;">
+          ${symbol}
+        </div>
+        <div class="equipment-info">
+          <div class="equipment-name">${siteType.length > 20 ? siteType.substring(0, 20) + '...' : siteType}</div>
+          <div class="equipment-count">${count}</div>
+          <div class="equipment-subtext">${uniqueSites} sites</div>
         </div>
       `;
       gridContainer.appendChild(item);
@@ -2774,19 +2629,18 @@
     console.log('Site filter updated with options:', sites.length, 'sites');
   }
   
-  // Get icon for asset based on site type - REDUCED SIZE BY 30%
+  // Get icon for asset based on site type - USING SYMBOLS NOT NUMBERS
   function getAssetIcon(asset) {
-    const color = conditionColors[asset.condition] || '#636e72';
     const siteType = asset.siteTypeL2 || 'Other';
-    const label = siteType.length >= 6 ? siteType.substring(siteType.length - 6) : siteType;
+    const color = getColorForSiteType(siteType);
+    const symbol = siteTypeSymbols[siteType] || siteType.substring(0, 2).toUpperCase();
     
-    // Reduced size by 30% (from 22px to ~15px)
     return L.divIcon({
       html: `
         <div style="
           background: ${color};
-          width: 16px;
-          height: 16px;
+          width: 24px;
+          height: 24px;
           border-radius: 50%;
           border: 2px solid white;
           box-shadow: 0 3px 8px rgba(0,0,0,0.2), 0 0 10px ${color}80;
@@ -2795,7 +2649,7 @@
           justify-content: center;
           color: white;
           font-weight: bold;
-          font-size: 8px;
+          font-size: 10px;
           cursor: pointer;
           transition: all 0.3s;
           position: relative;
@@ -2809,14 +2663,14 @@
             bottom: 0;
             background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 70%);
           "></div>
-          <span style="z-index: 1; font-size: 7px;">${label.substring(0, 2)}</span>
-          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
-          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 6px; height: 6px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+          <span style="z-index: 1;">${symbol}</span>
+          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 8px; height: 8px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
         </div>
       `,
       className: 'individual-marker',
-      iconSize: [16, 16],
-      iconAnchor: [8, 8]
+      iconSize: [24, 24],
+      iconAnchor: [12, 12]
     });
   }
   
@@ -2842,6 +2696,7 @@
   // Build popup content for asset
   function buildAssetPopup(asset) {
     const conditionColor = getConditionColor(asset.condition);
+    const siteTypeColor = getColorForSiteType(asset.siteTypeL2 || 'Other');
     
     return `
       <div class="popup-header">
@@ -2852,7 +2707,7 @@
       </div>
       <div class="popup-content">
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,0.03); border-radius: 8px;">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${conditionColor}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${siteTypeColor}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
             <i class="fas fa-${getAssetTypeIcon(asset.type)}"></i>
           </div>
           <div>
