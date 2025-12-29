@@ -2127,7 +2127,7 @@
   
   // Load CSV data with SPECIFIC COLUMN NAMES
   function loadCSVData() {
-    Papa.parse('data/water_assets.csv', {
+    Papa.parse('water_assets.csv', {
       download: true,
       header: true,
       dynamicTyping: false,
@@ -2382,7 +2382,7 @@
       },
       error: function(error) {
         console.error('Error loading CSV:', error);
-        showNotification('Error loading CSV file. Please check if the file exists at data/water_assets.csv', 'error');
+        showNotification('Error loading CSV file. Please check if the file exists at water_assets.csv', 'error');
         
         createSampleData();
       }
