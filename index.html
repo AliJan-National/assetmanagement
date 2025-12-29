@@ -361,7 +361,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    /* REDESIGNED Equipment Panel - NOW CITY OVERVIEW */
+    /* REDESIGNED Equipment Panel - WITH TABS */
     .equipment-panel {
       position: fixed;
       top: 0;
@@ -565,8 +565,8 @@
       z-index: 2;
     }
 
-    /* Site Type Distribution Container at Bottom */
-    .site-type-distribution-container {
+    /* Critical Equipment Container at Bottom */
+    .critical-equipment-container {
       margin-top: auto;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
       border-radius: var(--border-radius-lg);
@@ -576,7 +576,7 @@
       backdrop-filter: blur(10px);
     }
 
-    .site-type-distribution-container h4 {
+    .critical-equipment-container h4 {
       font-size: 1em;
       color: var(--dark-gray);
       margin-bottom: 15px;
@@ -588,19 +588,19 @@
       height: 30px;
     }
 
-    .site-type-distribution-container h4 i {
-      color: var(--primary-blue);
+    .critical-equipment-container h4 i {
+      color: var(--danger-red);
     }
 
-    /* Grid layout for site type legend */
-    .site-type-grid {
+    /* Grid layout for critical equipment */
+    .critical-equipment-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    /* Enhanced site type item */
-    .site-type-item {
+    /* Enhanced critical equipment item */
+    .critical-equipment-item {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -613,12 +613,37 @@
       min-height: 60px;
     }
 
-    .site-type-item:hover {
+    .critical-equipment-item:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .site-type-icon {
+    .critical-equipment-item.pump { 
+      border-left-color: #FF6384;
+      background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+    }
+    .critical-equipment-item.motor { 
+      border-left-color: #36A2EB;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    }
+    .critical-equipment-item.tank { 
+      border-left-color: #FFCE56;
+      background: linear-gradient(135deg, #ffffff 0%, #fffcf0 100%);
+    }
+    .critical-equipment-item.valves { 
+      border-left-color: #4BC0C0;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fffd 100%);
+    }
+    .critical-equipment-item.flow-measurement { 
+      border-left-color: #9966FF;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
+    }
+    .critical-equipment-item.generator { 
+      border-left-color: #FF9F40;
+      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+    }
+
+    .equipment-icon {
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -630,27 +655,52 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    .site-type-info {
+    .critical-equipment-item.pump .equipment-icon { 
+      background: linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.motor .equipment-icon { 
+      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.tank .equipment-icon { 
+      background: linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%); 
+      color: #2c3e50; 
+    }
+    .critical-equipment-item.valves .equipment-icon { 
+      background: linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.flow-measurement .equipment-icon { 
+      background: linear-gradient(135deg, #9966FF 0%, #b894ff 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.generator .equipment-icon { 
+      background: linear-gradient(135deg, #FF9F40 0%, #ffb870 100%); 
+      color: white; 
+    }
+
+    .equipment-info {
       display: flex;
       flex-direction: column;
       gap: 4px;
       flex: 1;
     }
 
-    .site-type-name {
+    .equipment-name {
       font-weight: 600;
       color: var(--dark-gray);
       font-size: 0.85em;
     }
 
-    .site-type-count {
+    .equipment-count {
       font-size: 1.3em;
       font-weight: 800;
       color: var(--dark-gray);
       line-height: 1;
     }
 
-    .site-type-subtext {
+    .equipment-subtext {
       font-size: 0.75em;
       color: var(--neutral-gray);
       opacity: 0.8;
@@ -1118,7 +1168,7 @@
         padding: 6px 12px;
         font-size: 0.8em;
       }
-      .site-type-grid {
+      .critical-equipment-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .chart-container-wrapper {
@@ -1202,7 +1252,7 @@
         width: 250px !important;
         height: 250px !important;
       }
-      .site-type-grid {
+      .critical-equipment-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .quick-actions {
@@ -1222,7 +1272,7 @@
     }
 
     @media (max-width: 480px) {
-      .site-type-grid {
+      .critical-equipment-grid {
         grid-template-columns: 1fr;
       }
       .equipment-panel {
@@ -1384,9 +1434,9 @@
     </div>
     
     <!-- Site Type Distribution Container (at bottom) -->
-    <div class="site-type-distribution-container">
+    <div class="critical-equipment-container">
       <h4><i class="fas fa-layer-group"></i> Site Types in <span id="currentCityName">All Cities</span></h4>
-      <div class="site-type-grid" id="siteTypeGrid">
+      <div class="legend-items" id="siteTypeGrid">
         <!-- Dynamic site type items will be added here -->
       </div>
     </div>
@@ -1460,40 +1510,24 @@
   let currentMapLayer = 'street';
   let mapLayers = {};
   let siteTypeColorMap = {};
-  let siteTypeIconMap = {};
   
-  // Site Type to Icon mapping
-  const siteTypeIcons = {
-    'Treatment Plant': 'industry',
-    'Distribution Center': 'truck',
-    'Storage Facility': 'warehouse',
-    'Pumping Station': 'tint',
-    'Water Tower': 'water',
-    'Reservoir': 'water',
-    'Wastewater Plant': 'recycle',
-    'Desalination Plant': 'filter',
-    'Treatment': 'industry',
-    'Distribution': 'truck',
-    'Storage': 'warehouse',
-    'Pumping': 'tint',
-    'Tower': 'water',
-    'Wastewater': 'recycle',
-    'Desalination': 'filter',
-    'Plant': 'industry',
-    'Center': 'truck',
-    'Facility': 'warehouse',
-    'Station': 'tint',
-    'Other': 'circle',
-    'Default': 'building'
+  // Enhanced color scheme for professional appearance
+  const conditionColors = {
+    'EXCELLENT': '#00FF9D',      // Bright Emerald Green
+    'VERY GOOD': '#00C896',      // Vibrant Green
+    'GOOD': '#00A8FF',           // Electric Blue
+    'NEW': '#9D4EDD',            // Royal Purple
+    'FAIR': '#FFD166',           // Golden Yellow
+    'POOR': '#FF9E6D',           // Burnt Orange
+    'CRITICAL': '#FF5252',       // Fire Engine Red
+    'UNKNOWN': '#6D6A75'         // Slate Gray
   };
   
   // Site Type colors for pie chart - UPDATED to match legend items
   const siteTypeColors = [
     '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', 
     '#9966FF', '#FF9F40', '#C9CBCF', '#00B894',
-    '#95A5A6', '#9D4EDD', '#00FF9D', '#00C896',
-    '#FF6B6B', '#51CF66', '#FFD43B', '#339AF0',
-    '#9775FA', '#F783AC', '#69DB7C', '#FF922B'
+    '#95A5A6', '#9D4EDD', '#00FF9D', '#00C896'
   ];
   
   // Initialize map
@@ -1537,32 +1571,48 @@
       iconCreateFunction: function(cluster) {
         const count = cluster.getChildCount();
         
-        // Get site types in this cluster
-        let siteTypesInCluster = {};
+        // Analyze cluster health
+        const conditions = {
+          'EXCELLENT': 0, 'VERY GOOD': 0, 'GOOD': 0, 'NEW': 0,
+          'FAIR': 0, 'POOR': 0, 'CRITICAL': 0, 'UNKNOWN': 0
+        };
+        
+        let hasCritical = false;
+        let hasPoor = false;
+        let hasFair = false;
+        let hasGood = false;
+        let hasExcellent = false;
+        
         cluster.getAllChildMarkers().forEach(marker => {
-          if (marker.options.asset && marker.options.asset.siteTypeL2) {
-            const siteType = marker.options.asset.siteTypeL2;
-            if (!siteTypesInCluster[siteType]) {
-              siteTypesInCluster[siteType] = 0;
+          if (marker.options.asset) {
+            const condition = marker.options.asset.condition;
+            if (condition) {
+              conditions[condition]++;
+              
+              if (condition === 'CRITICAL') hasCritical = true;
+              if (condition === 'POOR') hasPoor = true;
+              if (condition === 'FAIR') hasFair = true;
+              if (condition === 'GOOD') hasGood = true;
+              if (condition === 'EXCELLENT') hasExcellent = true;
             }
-            siteTypesInCluster[siteType]++;
           }
         });
         
-        // Find the most common site type in cluster
-        let dominantSiteType = null;
-        let maxCount = 0;
-        for (const [siteType, siteCount] of Object.entries(siteTypesInCluster)) {
-          if (siteCount > maxCount) {
-            maxCount = siteCount;
-            dominantSiteType = siteType;
-          }
-        }
-        
-        // Determine cluster class based on dominant site type
+        // Determine cluster class based on worst condition
         let clusterClass = 'custom-cluster';
-        if (dominantSiteType) {
-          const color = getColorForSiteType(dominantSiteType);
+        if (hasCritical) {
+          clusterClass += ' cluster-critical';
+        } else if (hasPoor) {
+          clusterClass += ' cluster-poor';
+        } else if (hasFair) {
+          clusterClass += ' cluster-fair';
+        } else if (hasGood) {
+          clusterClass += ' cluster-good';
+        } else if (hasExcellent) {
+          clusterClass += ' cluster-excellent';
+        } else if (conditions['NEW'] > 0) {
+          clusterClass += ' cluster-new';
+        } else {
           clusterClass += ' cluster-mixed';
         }
         
@@ -1900,30 +1950,6 @@
     return color;
   }
   
-  // Get icon for site type
-  function getIconForSiteType(siteType) {
-    // If we already assigned an icon for this site type, return it
-    if (siteTypeIconMap[siteType]) {
-      return siteTypeIconMap[siteType];
-    }
-    
-    // Determine icon based on site type name
-    let icon = 'building'; // default icon
-    
-    const siteTypeLower = siteType.toLowerCase();
-    
-    // Check for keywords in site type name
-    for (const [keyword, iconName] of Object.entries(siteTypeIcons)) {
-      if (siteTypeLower.includes(keyword.toLowerCase())) {
-        icon = iconName;
-        break;
-      }
-    }
-    
-    siteTypeIconMap[siteType] = icon;
-    return icon;
-  }
-  
   // Update site type list
   function updateSiteTypeList(stats) {
     const gridContainer = document.getElementById('siteTypeGrid');
@@ -1936,18 +1962,15 @@
       const count = stats[siteType].count;
       const uniqueSites = stats[siteType].uniqueSites.size;
       const color = getColorForSiteType(siteType);
-      const icon = getIconForSiteType(siteType);
       
       const item = document.createElement('div');
-      item.className = 'site-type-item';
+      item.className = 'legend-item';
       item.innerHTML = `
-        <div class="site-type-icon" style="background: ${color};">
-          <i class="fas fa-${icon}" style="color: white;"></i>
-        </div>
-        <div class="site-type-info">
-          <span class="site-type-name">${siteType.length > 20 ? siteType.substring(0, 20) + '...' : siteType}</span>
-          <span class="site-type-count">${count}</span>
-          <span class="site-type-subtext">${uniqueSites} sites</span>
+        <span class="legend-color" style="background:${color}"></span>
+        <span style="flex:1;font-size:0.8em">${siteType.length > 20 ? siteType.substring(0, 20) + '...' : siteType}</span>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;">
+          <span style="font-weight:700;font-size:0.9em">${count}</span>
+          <span style="font-size:0.7em;color:var(--neutral-gray)">${uniqueSites} sites</span>
         </div>
       `;
       gridContainer.appendChild(item);
@@ -2160,110 +2183,6 @@
     Chart.register(centerTextPlugin);
   }
   
-  // Get icon for asset based on site type - WITH SYMBOL INSTEAD OF NUMBER
-  function getAssetIcon(asset) {
-    const siteType = asset.siteTypeL2 || 'Other';
-    const color = getColorForSiteType(siteType);
-    const icon = getIconForSiteType(siteType);
-    
-    // Create marker with icon symbol (no number/text)
-    return L.divIcon({
-      html: `
-        <div style="
-          background: ${color};
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          border: 2px solid white;
-          box-shadow: 0 3px 8px rgba(0,0,0,0.2), 0 0 10px ${color}80;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-weight: bold;
-          font-size: 12px;
-          cursor: pointer;
-          transition: all 0.3s;
-          position: relative;
-          overflow: hidden;
-        ">
-          <div style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 70%);
-          "></div>
-          <i class="fas fa-${icon}" style="z-index: 1; font-size: 10px;"></i>
-          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
-          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 6px; height: 6px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
-        </div>
-      `,
-      className: 'individual-marker',
-      iconSize: [24, 24],
-      iconAnchor: [12, 12]
-    });
-  }
-  
-  // Get asset type icon
-  function getAssetTypeIcon(type) {
-    const typeLower = type.toLowerCase();
-    if (typeLower.includes('pump')) return 'tint';
-    if (typeLower.includes('valve')) return 'faucet';
-    if (typeLower.includes('filter')) return 'filter';
-    if (typeLower.includes('tank')) return 'water';
-    if (typeLower.includes('pipe')) return 'stream';
-    if (typeLower.includes('motor')) return 'cog';
-    if (typeLower.includes('generator')) return 'bolt';
-    if (typeLower.includes('flow')) return 'tachometer-alt';
-    return 'cog';
-  }
-  
-  // Build popup content for asset
-  function buildAssetPopup(asset) {
-    const siteType = asset.siteTypeL2 || 'Other';
-    const color = getColorForSiteType(siteType);
-    const icon = getIconForSiteType(siteType);
-    
-    return `
-      <div class="popup-header">
-        <h3>${asset.siteNameL3}</h3>
-        <div style="font-size: 0.85em; opacity: 0.9;">
-          <i class="fas fa-city"></i> ${asset.city} | <i class="fas fa-layer-group"></i> ${asset.siteTypeL2}
-        </div>
-      </div>
-      <div class="popup-content">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,0.03); border-radius: 8px;">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${color}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
-            <i class="fas fa-${icon}"></i>
-          </div>
-          <div>
-            <h4 style="margin: 0; color: #343a40; font-size: 1em;">${asset.assetId}</h4>
-            <p style="margin: 4px 0 0; color: #6c757d; font-size: 0.8em;">${asset.type}</p>
-          </div>
-        </div>
-        
-        <div style="margin: 10px 0; font-size: 0.9em;">
-          <p><i class="fas fa-map-marker-alt"></i> <strong>Coordinates:</strong> ${asset.latitude.toFixed(6)}, ${asset.longitude.toFixed(6)}</p>
-          <p><i class="fas fa-building"></i> <strong>Building:</strong> ${asset.building}</p>
-          ${asset.equipmentType && asset.equipmentType !== 'Unknown' ? `<p><i class="fas fa-cogs"></i> <strong>Equipment Type:</strong> ${asset.equipmentType}</p>` : ''}
-        </div>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 15px 0;">
-          <div style="padding: 8px; background: ${asset.working === 'YES' ? '#00b894' : '#e74c3c'}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
-            <strong><i class="fas fa-power-off"></i> Status</strong><br>
-            ${asset.working === 'YES' ? '<i class="fas fa-check"></i> Working' : '<i class="fas fa-times"></i> Not Working'}
-          </div>
-          <div style="padding: 8px; background: #6c757d; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
-            <strong><i class="fas fa-tachometer-alt"></i> Condition</strong><br>
-            ${asset.condition}
-          </div>
-        </div>
-      </div>
-    `;
-  }
-  
   // Load CSV data with SPECIFIC COLUMN NAMES
   function loadCSVData() {
     Papa.parse('water_assets.csv', {
@@ -2464,7 +2383,7 @@
             city: city,
             siteTypeL2: siteTypeL2,
             building: row['Building'] || row['building'] || 'N/A',
-            description: 'Water Asset',
+            description: row['Description'] || row['description'] || 'Water Asset',
             tagNumber: row['Tag_Number'] || row['Tag Number'] || row['tag_number'] || 'N/A',
             inUse: inUse === 'YES' ? 'YES' : 'NO',
             working: working === 'YES' ? 'YES' : 'NO',
@@ -2526,6 +2445,440 @@
         createSampleData();
       }
     });
+  }
+  
+  // Calculate city statistics
+  function calculateCityStats() {
+    cityStats = {};
+    
+    allAssets.forEach(asset => {
+      const city = asset.city;
+      if (!cityStats[city]) {
+        cityStats[city] = {
+          total: 0,
+          working: 0,
+          notWorking: 0,
+          critical: 0,
+          inUse: 0,
+          siteTypes: new Set(),
+          sites: new Set()
+        };
+      }
+      
+      cityStats[city].total++;
+      if (asset.working === 'YES') cityStats[city].working++;
+      if (asset.working === 'NO') cityStats[city].notWorking++;
+      if (asset.condition === 'CRITICAL') cityStats[city].critical++;
+      if (asset.inUse === 'YES') cityStats[city].inUse++;
+      if (asset.siteTypeL2) cityStats[city].siteTypes.add(asset.siteTypeL2);
+      if (asset.siteNameL3) cityStats[city].sites.add(asset.siteNameL3);
+    });
+    
+    console.log('City statistics calculated:', cityStats);
+  }
+  
+  // Update city filter dropdown
+  function updateCityFilter() {
+    const filter = document.getElementById('cityFilter');
+    const cities = Object.keys(cityStats).sort();
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    cities.forEach(city => {
+      const count = cityStats[city].total;
+      const option = document.createElement('option');
+      option.value = city;
+      option.textContent = `${city} (${count} assets)`;
+      filter.appendChild(option);
+    });
+    
+    console.log('City filter updated with options:', cities.length, 'cities');
+  }
+  
+  // Create sample data for testing
+  function createSampleData() {
+    console.log('Creating sample data for testing...');
+    
+    // Generate sample data with cities and site types
+    allAssets = [];
+    const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
+    const siteTypes = ['Treatment Plant', 'Distribution Center', 'Storage Facility', 'Pumping Station', 
+                      'Water Tower', 'Reservoir', 'Wastewater Plant', 'Desalination Plant'];
+    const sites = ['Main Water Plant', 'North Distribution Center', 'South Treatment Plant', 'East Storage Facility',
+                  'West Pumping Station', 'Central Reservoir', 'Northwest Water Tower'];
+    
+    let id = 1;
+    
+    // Generate 200 sample assets
+    for (let i = 0; i < 200; i++) {
+      const cityIndex = Math.floor(Math.random() * cities.length);
+      const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
+      const siteIndex = Math.floor(Math.random() * sites.length);
+      
+      allAssets.push({
+        id: id++,
+        assetId: `ASSET-${String(i+1).padStart(3, '0')}`,
+        facilityId: `FAC-${Math.floor(Math.random() * 5) + 1}`,
+        siteNameL3: sites[siteIndex],
+        city: cities[cityIndex],
+        siteTypeL2: siteTypes[siteTypeIndex],
+        building: `Building ${String.fromCharCode(65 + Math.floor(Math.random() * 5))}`,
+        description: 'Water Asset',
+        tagNumber: `TAG-${i+1}`,
+        inUse: Math.random() > 0.3 ? 'YES' : 'NO',
+        working: Math.random() > 0.2 ? 'YES' : 'NO',
+        condition: ['EXCELLENT', 'VERY GOOD', 'GOOD', 'FAIR', 'POOR', 'CRITICAL'][Math.floor(Math.random() * 6)],
+        age: Math.floor(Math.random() * 15) + 1,
+        remainingLife: `${Math.floor(Math.random() * 20)} years`,
+        maxLife: '20 years',
+        latitude: 24.50 + (Math.random() - 0.5) * 0.5,
+        longitude: 39.65 + (Math.random() - 0.5) * 0.5,
+        type: 'Pump',
+        equipmentType: 'Pump Type A',
+        lastMaintenance: '2023-01-15',
+        nextMaintenance: '2024-01-15'
+      });
+    }
+    
+    calculateSiteStats();
+    calculateCityStats();
+    
+    filteredAssets = [...allAssets];
+    
+    updateDashboard();
+    
+    updateConditionFilter();
+    updateSiteFilter();
+    updateCityFilter();
+    
+    displayAssets();
+    
+    // Initialize the city panel
+    updateCityPanel();
+    
+    // Update health indicator
+    updateHealthIndicator();
+    
+    // Update site name display
+    updateSiteNameDisplay();
+    
+    // Open city panel by default
+    setTimeout(() => {
+      toggleEquipmentPanel();
+    }, 1000);
+    
+    showNotification('Loaded sample water assets for demonstration', 'info');
+  }
+  
+  // Show notification
+  function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+      <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+      <span>${message}</span>
+      <button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+    `;
+    
+    if (!document.querySelector('.notification')) {
+      const style = document.createElement('style');
+      style.textContent = `
+        .notification {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 12px 16px;
+          border-radius: var(--border-radius-md);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          z-index: 3000;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+          animation: slideInRight 0.3s ease, fadeOut 0.3s ease 4.7s forwards;
+          max-width: 350px;
+          font-weight: 500;
+          font-size: 0.9em;
+        }
+        .notification.success {
+          background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+          color: white;
+          border-left: 4px solid #00d2a0;
+        }
+        .notification.error {
+          background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+          color: white;
+          border-left: 4px solid #ff6b6b;
+        }
+        .notification.info {
+          background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+          color: white;
+          border-left: 4px solid #5dade2;
+        }
+        .notification i:first-child {
+          font-size: 18px;
+        }
+        .notification button {
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+          opacity: 0.7;
+          transition: opacity 0.2s;
+          padding: 4px;
+          margin-left: auto;
+        }
+        .notification button:hover {
+          opacity: 1;
+        }
+        @keyframes slideInRight {
+          from { transform: translateX(100%); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+          to { opacity: 0; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      if (notification.parentElement) {
+        notification.remove();
+      }
+    }, 5000);
+  }
+  
+  // Calculate site statistics
+  function calculateSiteStats() {
+    siteStats = {};
+    
+    allAssets.forEach(asset => {
+      const site = asset.siteNameL3;
+      if (!siteStats[site]) {
+        siteStats[site] = {
+          total: 0,
+          working: 0,
+          notWorking: 0,
+          critical: 0,
+          inUse: 0,
+          conditions: {}
+        };
+      }
+      
+      siteStats[site].total++;
+      if (asset.working === 'YES') siteStats[site].working++;
+      if (asset.working === 'NO') siteStats[site].notWorking++;
+      if (asset.condition === 'CRITICAL') siteStats[site].critical++;
+      if (asset.inUse === 'YES') siteStats[site].inUse++;
+      
+      if (!siteStats[site].conditions[asset.condition]) {
+        siteStats[site].conditions[asset.condition] = 0;
+      }
+      siteStats[site].conditions[asset.condition]++;
+    });
+    
+    console.log('Site statistics calculated:', siteStats);
+  }
+  
+  // Update dashboard statistics
+  function updateDashboard() {
+    const total = allAssets.length;
+    const working = allAssets.filter(a => a.working === 'YES').length;
+    const notWorking = allAssets.filter(a => a.working === 'NO').length;
+    
+    document.getElementById('totalAssets').textContent = total.toLocaleString();
+    document.getElementById('workingAssets').textContent = working.toLocaleString();
+    document.getElementById('notWorkingAssets').textContent = notWorking.toLocaleString();
+    
+    document.getElementById('workingPercent').textContent = total > 0 ? Math.round((working / total) * 100) + '%' : '0%';
+    document.getElementById('notWorkingPercent').textContent = total > 0 ? Math.round((notWorking / total) * 100) + '%' : '0%';
+    
+    // Update health indicator
+    updateHealthIndicator();
+  }
+  
+  // Update condition filter dropdown based on selected site/city
+  function updateConditionFilter() {
+    const filter = document.getElementById('conditionFilter');
+    const selectedSite = document.getElementById('siteFilter').value;
+    const selectedCity = document.getElementById('cityFilter').value;
+    
+    // Get conditions for selected site/city or all
+    let conditions = [];
+    if (selectedSite !== 'all') {
+      conditions = [...new Set(allAssets.filter(a => a.siteNameL3 === selectedSite).map(a => a.condition))].sort();
+    } else if (selectedCity !== 'all') {
+      conditions = [...new Set(allAssets.filter(a => a.city === selectedCity).map(a => a.condition))].sort();
+    } else {
+      conditions = [...new Set(allAssets.map(a => a.condition))].sort();
+    }
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    conditions.forEach(condition => {
+      let count;
+      if (selectedSite !== 'all') {
+        count = allAssets.filter(a => a.siteNameL3 === selectedSite && a.condition === condition).length;
+      } else if (selectedCity !== 'all') {
+        count = allAssets.filter(a => a.city === selectedCity && a.condition === condition).length;
+      } else {
+        count = allAssets.filter(a => a.condition === condition).length;
+      }
+      
+      const option = document.createElement('option');
+      option.value = condition;
+      option.textContent = `${condition} (${count})`;
+      filter.appendChild(option);
+    });
+    
+    console.log('Condition filter updated');
+  }
+  
+  // Update site filter dropdown
+  function updateSiteFilter() {
+    const filter = document.getElementById('siteFilter');
+    const selectedCity = document.getElementById('cityFilter').value;
+    
+    // Get sites for selected city or all
+    let sites = [];
+    if (selectedCity !== 'all') {
+      sites = [...new Set(allAssets.filter(a => a.city === selectedCity).map(a => a.siteNameL3))].sort();
+    } else {
+      sites = Object.keys(siteStats).sort();
+    }
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    sites.forEach(site => {
+      let count;
+      if (selectedCity !== 'all') {
+        count = allAssets.filter(a => a.city === selectedCity && a.siteNameL3 === site).length;
+      } else {
+        count = siteStats[site]?.total || 0;
+      }
+      
+      const option = document.createElement('option');
+      option.value = site;
+      option.textContent = `${site} (${count} assets)`;
+      filter.appendChild(option);
+    });
+    
+    console.log('Site filter updated with options:', sites.length, 'sites');
+  }
+  
+  // Get icon for asset based on site type - REDUCED SIZE BY 30%
+  function getAssetIcon(asset) {
+    const color = conditionColors[asset.condition] || '#636e72';
+    const siteType = asset.siteTypeL2 || 'Other';
+    const label = siteType.length >= 6 ? siteType.substring(siteType.length - 6) : siteType;
+    
+    // Reduced size by 30% (from 22px to ~15px)
+    return L.divIcon({
+      html: `
+        <div style="
+          background: ${color};
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          border: 2px solid white;
+          box-shadow: 0 3px 8px rgba(0,0,0,0.2), 0 0 10px ${color}80;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 8px;
+          cursor: pointer;
+          transition: all 0.3s;
+          position: relative;
+          overflow: hidden;
+        ">
+          <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 70%);
+          "></div>
+          <span style="z-index: 1; font-size: 7px;">${label.substring(0, 2)}</span>
+          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 6px; height: 6px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+        </div>
+      `,
+      className: 'individual-marker',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+  }
+  
+  // Get asset type icon
+  function getAssetTypeIcon(type) {
+    const typeLower = type.toLowerCase();
+    if (typeLower.includes('pump')) return 'tint';
+    if (typeLower.includes('valve')) return 'faucet';
+    if (typeLower.includes('filter')) return 'filter';
+    if (typeLower.includes('tank')) return 'water';
+    if (typeLower.includes('pipe')) return 'stream';
+    if (typeLower.includes('motor')) return 'cog';
+    if (typeLower.includes('generator')) return 'bolt';
+    if (typeLower.includes('flow')) return 'tachometer-alt';
+    return 'cog';
+  }
+  
+  // Get condition color
+  function getConditionColor(condition) {
+    return conditionColors[condition] || '#636e72';
+  }
+  
+  // Build popup content for asset
+  function buildAssetPopup(asset) {
+    const conditionColor = getConditionColor(asset.condition);
+    
+    return `
+      <div class="popup-header">
+        <h3>${asset.siteNameL3}</h3>
+        <div style="font-size: 0.85em; opacity: 0.9;">
+          <i class="fas fa-city"></i> ${asset.city} | <i class="fas fa-layer-group"></i> ${asset.siteTypeL2}
+        </div>
+      </div>
+      <div class="popup-content">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${conditionColor}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
+            <i class="fas fa-${getAssetTypeIcon(asset.type)}"></i>
+          </div>
+          <div>
+            <h4 style="margin: 0; color: #343a40; font-size: 1em;">${asset.assetId}</h4>
+            <p style="margin: 4px 0 0; color: #6c757d; font-size: 0.8em;">${asset.type}</p>
+          </div>
+        </div>
+        
+        <div style="margin: 10px 0; font-size: 0.9em;">
+          <p><i class="fas fa-map-marker-alt"></i> <strong>Coordinates:</strong> ${asset.latitude.toFixed(6)}, ${asset.longitude.toFixed(6)}</p>
+          <p><i class="fas fa-building"></i> <strong>Building:</strong> ${asset.building}</p>
+          ${asset.equipmentType && asset.equipmentType !== 'Unknown' ? `<p><i class="fas fa-cogs"></i> <strong>Equipment Type:</strong> ${asset.equipmentType}</p>` : ''}
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 15px 0;">
+          <div style="padding: 8px; background: ${asset.working === 'YES' ? '#00b894' : '#e74c3c'}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
+            <strong><i class="fas fa-power-off"></i> Status</strong><br>
+            ${asset.working === 'YES' ? '<i class="fas fa-check"></i> Working' : '<i class="fas fa-times"></i> Not Working'}
+          </div>
+          <div style="padding: 8px; background: ${conditionColor}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
+            <strong><i class="fas fa-tachometer-alt"></i> Condition</strong><br>
+            ${asset.condition}
+          </div>
+        </div>
+      </div>
+    `;
   }
   
   // Display assets based on current visualization mode
@@ -2738,178 +3091,6 @@
     }
   }
   
-  // Calculate city statistics
-  function calculateCityStats() {
-    cityStats = {};
-    
-    allAssets.forEach(asset => {
-      const city = asset.city;
-      if (!cityStats[city]) {
-        cityStats[city] = {
-          total: 0,
-          working: 0,
-          notWorking: 0,
-          critical: 0,
-          inUse: 0,
-          siteTypes: new Set(),
-          sites: new Set()
-        };
-      }
-      
-      cityStats[city].total++;
-      if (asset.working === 'YES') cityStats[city].working++;
-      if (asset.working === 'NO') cityStats[city].notWorking++;
-      if (asset.condition === 'CRITICAL') cityStats[city].critical++;
-      if (asset.inUse === 'YES') cityStats[city].inUse++;
-      if (asset.siteTypeL2) cityStats[city].siteTypes.add(asset.siteTypeL2);
-      if (asset.siteNameL3) cityStats[city].sites.add(asset.siteNameL3);
-    });
-    
-    console.log('City statistics calculated:', cityStats);
-  }
-  
-  // Calculate site statistics
-  function calculateSiteStats() {
-    siteStats = {};
-    
-    allAssets.forEach(asset => {
-      const site = asset.siteNameL3;
-      if (!siteStats[site]) {
-        siteStats[site] = {
-          total: 0,
-          working: 0,
-          notWorking: 0,
-          critical: 0,
-          inUse: 0,
-          conditions: {}
-        };
-      }
-      
-      siteStats[site].total++;
-      if (asset.working === 'YES') siteStats[site].working++;
-      if (asset.working === 'NO') siteStats[site].notWorking++;
-      if (asset.condition === 'CRITICAL') siteStats[site].critical++;
-      if (asset.inUse === 'YES') siteStats[site].inUse++;
-      
-      if (!siteStats[site].conditions[asset.condition]) {
-        siteStats[site].conditions[asset.condition] = 0;
-      }
-      siteStats[site].conditions[asset.condition]++;
-    });
-    
-    console.log('Site statistics calculated:', siteStats);
-  }
-  
-  // Update dashboard statistics
-  function updateDashboard() {
-    const total = allAssets.length;
-    const working = allAssets.filter(a => a.working === 'YES').length;
-    const notWorking = allAssets.filter(a => a.working === 'NO').length;
-    
-    document.getElementById('totalAssets').textContent = total.toLocaleString();
-    document.getElementById('workingAssets').textContent = working.toLocaleString();
-    document.getElementById('notWorkingAssets').textContent = notWorking.toLocaleString();
-    
-    document.getElementById('workingPercent').textContent = total > 0 ? Math.round((working / total) * 100) + '%' : '0%';
-    document.getElementById('notWorkingPercent').textContent = total > 0 ? Math.round((notWorking / total) * 100) + '%' : '0%';
-    
-    // Update health indicator
-    updateHealthIndicator();
-  }
-  
-  // Update condition filter dropdown based on selected site/city
-  function updateConditionFilter() {
-    const filter = document.getElementById('conditionFilter');
-    const selectedSite = document.getElementById('siteFilter').value;
-    const selectedCity = document.getElementById('cityFilter').value;
-    
-    // Get conditions for selected site/city or all
-    let conditions = [];
-    if (selectedSite !== 'all') {
-      conditions = [...new Set(allAssets.filter(a => a.siteNameL3 === selectedSite).map(a => a.condition))].sort();
-    } else if (selectedCity !== 'all') {
-      conditions = [...new Set(allAssets.filter(a => a.city === selectedCity).map(a => a.condition))].sort();
-    } else {
-      conditions = [...new Set(allAssets.map(a => a.condition))].sort();
-    }
-    
-    while (filter.options.length > 1) {
-      filter.remove(1);
-    }
-    
-    conditions.forEach(condition => {
-      let count;
-      if (selectedSite !== 'all') {
-        count = allAssets.filter(a => a.siteNameL3 === selectedSite && a.condition === condition).length;
-      } else if (selectedCity !== 'all') {
-        count = allAssets.filter(a => a.city === selectedCity && a.condition === condition).length;
-      } else {
-        count = allAssets.filter(a => a.condition === condition).length;
-      }
-      
-      const option = document.createElement('option');
-      option.value = condition;
-      option.textContent = `${condition} (${count})`;
-      filter.appendChild(option);
-    });
-    
-    console.log('Condition filter updated');
-  }
-  
-  // Update site filter dropdown
-  function updateSiteFilter() {
-    const filter = document.getElementById('siteFilter');
-    const selectedCity = document.getElementById('cityFilter').value;
-    
-    // Get sites for selected city or all
-    let sites = [];
-    if (selectedCity !== 'all') {
-      sites = [...new Set(allAssets.filter(a => a.city === selectedCity).map(a => a.siteNameL3))].sort();
-    } else {
-      sites = Object.keys(siteStats).sort();
-    }
-    
-    while (filter.options.length > 1) {
-      filter.remove(1);
-    }
-    
-    sites.forEach(site => {
-      let count;
-      if (selectedCity !== 'all') {
-        count = allAssets.filter(a => a.city === selectedCity && a.siteNameL3 === site).length;
-      } else {
-        count = siteStats[site]?.total || 0;
-      }
-      
-      const option = document.createElement('option');
-      option.value = site;
-      option.textContent = `${site} (${count} assets)`;
-      filter.appendChild(option);
-    });
-    
-    console.log('Site filter updated with options:', sites.length, 'sites');
-  }
-  
-  // Update city filter dropdown
-  function updateCityFilter() {
-    const filter = document.getElementById('cityFilter');
-    const cities = Object.keys(cityStats).sort();
-    
-    while (filter.options.length > 1) {
-      filter.remove(1);
-    }
-    
-    cities.forEach(city => {
-      const count = cityStats[city].total;
-      const option = document.createElement('option');
-      option.value = city;
-      option.textContent = `${city} (${count} assets)`;
-      filter.appendChild(option);
-    });
-    
-    console.log('City filter updated with options:', cities.length, 'cities');
-  }
-  
   // Filter by city - UPDATED with fly animation
   function filterByCity() {
     const cityFilter = document.getElementById('cityFilter').value;
@@ -3056,161 +3237,6 @@
   function changeVisualizationMode() {
     const mode = document.getElementById('locationGrouping').value;
     displayAssets();
-  }
-  
-  // Show notification
-  function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.innerHTML = `
-      <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-      <span>${message}</span>
-      <button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
-    `;
-    
-    if (!document.querySelector('.notification')) {
-      const style = document.createElement('style');
-      style.textContent = `
-        .notification {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          padding: 12px 16px;
-          border-radius: var(--border-radius-md);
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          z-index: 3000;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-          animation: slideInRight 0.3s ease, fadeOut 0.3s ease 4.7s forwards;
-          max-width: 350px;
-          font-weight: 500;
-          font-size: 0.9em;
-        }
-        .notification.success {
-          background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
-          color: white;
-          border-left: 4px solid #00d2a0;
-        }
-        .notification.error {
-          background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-          color: white;
-          border-left: 4px solid #ff6b6b;
-        }
-        .notification.info {
-          background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-          color: white;
-          border-left: 4px solid #5dade2;
-        }
-        .notification i:first-child {
-          font-size: 18px;
-        }
-        .notification button {
-          background: none;
-          border: none;
-          color: white;
-          cursor: pointer;
-          opacity: 0.7;
-          transition: opacity 0.2s;
-          padding: 4px;
-          margin-left: auto;
-        }
-        .notification button:hover {
-          opacity: 1;
-        }
-        @keyframes slideInRight {
-          from { transform: translateX(100%); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes fadeOut {
-          to { opacity: 0; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      if (notification.parentElement) {
-        notification.remove();
-      }
-    }, 5000);
-  }
-  
-  // Create sample data for testing
-  function createSampleData() {
-    console.log('Creating sample data for testing...');
-    
-    // Generate sample data with cities and site types
-    allAssets = [];
-    const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
-    const siteTypes = ['Treatment Plant', 'Distribution Center', 'Storage Facility', 'Pumping Station', 
-                      'Water Tower', 'Reservoir', 'Wastewater Plant', 'Desalination Plant'];
-    const sites = ['Main Water Plant', 'North Distribution Center', 'South Treatment Plant', 'East Storage Facility',
-                  'West Pumping Station', 'Central Reservoir', 'Northwest Water Tower'];
-    
-    let id = 1;
-    
-    // Generate 200 sample assets
-    for (let i = 0; i < 200; i++) {
-      const cityIndex = Math.floor(Math.random() * cities.length);
-      const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
-      const siteIndex = Math.floor(Math.random() * sites.length);
-      
-      allAssets.push({
-        id: id++,
-        assetId: `ASSET-${String(i+1).padStart(3, '0')}`,
-        facilityId: `FAC-${Math.floor(Math.random() * 5) + 1}`,
-        siteNameL3: sites[siteIndex],
-        city: cities[cityIndex],
-        siteTypeL2: siteTypes[siteTypeIndex],
-        building: `Building ${String.fromCharCode(65 + Math.floor(Math.random() * 5))}`,
-        description: 'Water Asset',
-        tagNumber: `TAG-${i+1}`,
-        inUse: Math.random() > 0.3 ? 'YES' : 'NO',
-        working: Math.random() > 0.2 ? 'YES' : 'NO',
-        condition: ['EXCELLENT', 'VERY GOOD', 'GOOD', 'FAIR', 'POOR', 'CRITICAL'][Math.floor(Math.random() * 6)],
-        age: Math.floor(Math.random() * 15) + 1,
-        remainingLife: `${Math.floor(Math.random() * 20)} years`,
-        maxLife: '20 years',
-        latitude: 24.50 + (Math.random() - 0.5) * 0.5,
-        longitude: 39.65 + (Math.random() - 0.5) * 0.5,
-        type: 'Pump',
-        equipmentType: 'Pump Type A',
-        lastMaintenance: '2023-01-15',
-        nextMaintenance: '2024-01-15'
-      });
-    }
-    
-    calculateSiteStats();
-    calculateCityStats();
-    
-    filteredAssets = [...allAssets];
-    
-    updateDashboard();
-    
-    updateConditionFilter();
-    updateSiteFilter();
-    updateCityFilter();
-    
-    displayAssets();
-    
-    // Initialize the city panel
-    updateCityPanel();
-    
-    // Update health indicator
-    updateHealthIndicator();
-    
-    // Update site name display
-    updateSiteNameDisplay();
-    
-    // Open city panel by default
-    setTimeout(() => {
-      toggleEquipmentPanel();
-    }, 1000);
-    
-    showNotification('Loaded sample water assets for demonstration', 'info');
   }
   
   // Initialize everything
