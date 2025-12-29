@@ -1,0 +1,3213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Water Assets Management System | Intelligent Asset Monitoring</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js for charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js datalabels plugin for showing percentages inside pie chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+  <style>
+    :root {
+      --primary-blue: #0066cc;
+      --primary-blue-dark: #0052a3;
+      --primary-blue-light: #3385d6;
+      --accent-teal: #00b4d8;
+      --accent-teal-light: #48cae4;
+      --success-green: #00b894;
+      --warning-orange: #f39c12;
+      --danger-red: #e74c3c;
+      --critical-dark: #c0392b;
+      --neutral-gray: #6c757d;
+      --light-gray: #f8f9fa;
+      --dark-gray: #343a40;
+      --white: #ffffff;
+      --shadow-light: rgba(0, 102, 204, 0.1);
+      --shadow-medium: rgba(0, 0, 0, 0.08);
+      --shadow-dark: rgba(0, 0, 0, 0.12);
+      --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+      --gradient-success: linear-gradient(135deg, var(--success-green) 0%, #00d2a0 100%);
+      --gradient-warning: linear-gradient(135deg, var(--warning-orange) 0%, #f5b041 100%);
+      --gradient-danger: linear-gradient(135deg, var(--danger-red) 0%, #ff6b6b 100%);
+      --border-radius-sm: 8px;
+      --border-radius-md: 12px;
+      --border-radius-lg: 16px;
+      --border-radius-xl: 20px;
+      --transition-fast: 0.2s ease;
+      --transition-medium: 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+      overflow: hidden;
+      color: var(--dark-gray);
+      height: 100vh;
+      display: flex;
+    }
+
+    #map {
+      flex: 1;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    /* Main container for side panels */
+    .panels-container {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 350px;
+      height: 100vh;
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    /* Control Panel - Left Fixed Panel */
+    .control-panel {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+      height: 100vh;
+      width: 350px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      pointer-events: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .control-panel.hidden {
+      transform: translateX(-100%);
+    }
+
+    .panel-header {
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+      background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(0, 180, 216, 0.05) 100%);
+      flex-shrink: 0;
+    }
+
+    .panel-header h2 {
+      color: var(--dark-gray);
+      font-size: 1.2em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-header h2 i {
+      color: var(--accent-teal);
+      font-size: 1.2em;
+    }
+
+    .close-panel {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: var(--neutral-gray);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--border-radius-sm);
+      transition: all var(--transition-fast);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .close-panel:hover {
+      color: var(--danger-red);
+      background: rgba(231, 76, 60, 0.1);
+      transform: rotate(90deg);
+    }
+
+    /* Dashboard Content Area - Optimized for no scrolling */
+    .dashboard-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Dashboard Toggle Button */
+    .dashboard-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      background: var(--gradient-primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+      transition: all var(--transition-medium);
+      border: 3px solid white;
+      pointer-events: auto;
+    }
+
+    .dashboard-toggle:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 12px 30px rgba(0, 102, 204, 0.4);
+    }
+
+    .dashboard-toggle.hidden {
+      left: 20px;
+    }
+
+    /* UPDATED: Stats Grid - Now 3 columns in single row */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 10px;
+      border-radius: var(--border-radius-md);
+      border-left: 4px solid;
+      transition: all var(--transition-medium);
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow-medium);
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--shadow-dark);
+    }
+
+    .stat-card.total { 
+      border-left-color: var(--primary-blue);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+    }
+    .stat-card.working { 
+      border-left-color: var(--success-green);
+      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
+    }
+    .stat-card.not-working { 
+      border-left-color: var(--danger-red);
+      background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+    }
+
+    .stat-card h3 {
+      font-size: 0.65em;
+      color: var(--neutral-gray);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-value {
+      font-size: 1.2em;
+      font-weight: 800;
+      color: var(--dark-gray);
+      margin-bottom: 2px;
+      line-height: 1;
+    }
+
+    .stat-percent {
+      font-size: 0.65em;
+      padding: 2px 6px;
+      border-radius: 10px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .stat-card.total .stat-percent { 
+      background: rgba(0, 102, 204, 0.1); 
+      color: var(--primary-blue); 
+    }
+    .stat-card.working .stat-percent { 
+      background: rgba(0, 184, 148, 0.1); 
+      color: var(--success-green); 
+    }
+    .stat-card.not-working .stat-percent { 
+      background: rgba(231, 76, 60, 0.1); 
+      color: var(--danger-red); 
+    }
+
+    /* Compact Filters */
+    .filters-section {
+      background: rgba(248, 249, 250, 0.7);
+      padding: 15px;
+      border-radius: var(--border-radius-lg);
+      margin-bottom: 15px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .filters-section h3 {
+      color: var(--dark-gray);
+      margin-bottom: 12px;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .filter-group {
+      margin-bottom: 12px;
+    }
+
+    .filter-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--dark-gray);
+      font-weight: 600;
+      font-size: 0.8em;
+    }
+
+    .filter-group select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 2px solid #e9ecef;
+      border-radius: var(--border-radius-md);
+      background: white;
+      color: var(--dark-gray);
+      font-size: 12px;
+      transition: all var(--transition-fast);
+      font-weight: 500;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%230066cc' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 10px;
+      padding-right: 30px;
+    }
+
+    /* Compact Legend */
+    .legend {
+      background: white;
+      padding: 15px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: 0 5px 15px var(--shadow-medium);
+      margin-bottom: 15px;
+    }
+
+    .legend h3 {
+      color: var(--dark-gray);
+      margin-bottom: 12px;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .legend-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 8px;
+      border-radius: var(--border-radius-sm);
+      transition: all var(--transition-fast);
+      font-size: 0.85em;
+    }
+
+    .legend-color {
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      border: 2px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* REDESIGNED Equipment Panel - WITH TABS */
+    .equipment-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 400px;
+      min-width: 280px;
+      max-width: 60%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-left: 1px solid rgba(0,0,0,0.06);
+      box-shadow: -6px 0 30px rgba(0, 0, 0, 0.12);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      pointer-events: auto;
+      transition: all var(--transition-medium);
+      box-sizing: border-box;
+      overflow: auto;
+      resize: horizontal;
+    }
+
+    .equipment-panel.hidden {
+      transform: translateX(calc(100% + 20px));
+    }
+
+    .equipment-header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .equipment-header h3 {
+      font-size: 1.3em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Site Name Display in Panel */
+    .site-name-highlight {
+      background: rgba(0, 102, 204, 0.1);
+      padding: 10px 15px;
+      border-radius: var(--border-radius-md);
+      margin: 10px 20px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      border-left: 4px solid var(--primary-blue);
+      text-align: center;
+      font-size: 1.1em;
+    }
+
+    /* FIXED Equipment Content Layout */
+    .equipment-content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+      min-height: 0;
+      position: relative;
+    }
+
+    /* Stats Summary Cards */
+    .stats-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      flex-shrink: 0;
+    }
+
+    .summary-card {
+      background: white;
+      padding: 12px;
+      border-radius: var(--border-radius-md);
+      border-left: 4px solid;
+      border: 1px solid rgba(0, 102, 204, 0.1);
+      box-shadow: 0 4px 12px var(--shadow-medium);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 70px;
+    }
+
+    .summary-card.total-equipment {
+      border-top: 4px solid var(--primary-blue);
+    }
+
+    .summary-card.critical-equipment {
+      border-top: 4px solid var(--danger-red);
+    }
+
+    .summary-card h4 {
+      font-size: 0.7em;
+      color: var(--neutral-gray);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .summary-value {
+      font-size: 1.4em;
+      font-weight: 800;
+      color: var(--dark-gray);
+      margin-bottom: 2px;
+      line-height: 1;
+    }
+
+    .summary-label {
+      color: var(--neutral-gray);
+      font-size: 0.7em;
+      font-weight: 500;
+    }
+
+    /* ========== ENHANCED CHART SECTION ========== */
+    .chart-section {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .chart-section h4 {
+      font-size: 1em;
+      color: var(--dark-gray);
+      margin-bottom: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+    }
+
+    /* PROFESSIONAL Chart Container - BIGGER */
+    .chart-container-wrapper {
+      width: 340px;
+      height: 340px;
+      position: relative;
+      background: white;
+      border-radius: var(--border-radius-lg);
+      padding: 15px;
+      box-shadow: 
+        0 10px 40px rgba(0, 102, 204, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 102, 204, 0.1);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      overflow: hidden;
+    }
+    
+    .chart-container-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, 
+        var(--primary-blue) 0%, 
+        var(--accent-teal) 33%, 
+        var(--success-green) 66%, 
+        var(--warning-orange) 100%);
+      z-index: 2;
+      border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    }
+    
+    .chart-container-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(0, 102, 204, 0.05) 0%, transparent 70%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    #equipmentChart {
+      width: 310px !important;
+      height: 310px !important;
+      z-index: 2;
+    }
+
+    /* Critical Equipment Container at Bottom */
+    .critical-equipment-container {
+      margin-top: auto;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+      border-radius: var(--border-radius-lg);
+      padding: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .critical-equipment-container h4 {
+      font-size: 1em;
+      color: var(--dark-gray);
+      margin-bottom: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      height: 30px;
+    }
+
+    .critical-equipment-container h4 i {
+      color: var(--danger-red);
+    }
+
+    /* Grid layout for critical equipment */
+    .critical-equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    /* Enhanced critical equipment item */
+    .critical-equipment-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 12px 15px;
+      border-radius: var(--border-radius-md);
+      border-left: 4px solid;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all var(--transition-fast);
+      min-height: 60px;
+    }
+
+    .critical-equipment-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .critical-equipment-item.pump { 
+      border-left-color: #FF6384;
+      background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+    }
+    .critical-equipment-item.motor { 
+      border-left-color: #36A2EB;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    }
+    .critical-equipment-item.tank { 
+      border-left-color: #FFCE56;
+      background: linear-gradient(135deg, #ffffff 0%, #fffcf0 100%);
+    }
+    .critical-equipment-item.valves { 
+      border-left-color: #4BC0C0;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fffd 100%);
+    }
+    .critical-equipment-item.flow-measurement { 
+      border-left-color: #9966FF;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
+    }
+    .critical-equipment-item.generator { 
+      border-left-color: #FF9F40;
+      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+    }
+
+    .equipment-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .critical-equipment-item.pump .equipment-icon { 
+      background: linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.motor .equipment-icon { 
+      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.tank .equipment-icon { 
+      background: linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%); 
+      color: #2c3e50; 
+    }
+    .critical-equipment-item.valves .equipment-icon { 
+      background: linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.flow-measurement .equipment-icon { 
+      background: linear-gradient(135deg, #9966FF 0%, #b894ff 100%); 
+      color: white; 
+    }
+    .critical-equipment-item.generator .equipment-icon { 
+      background: linear-gradient(135deg, #FF9F40 0%, #ffb870 100%); 
+      color: white; 
+    }
+
+    .equipment-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .equipment-name {
+      font-weight: 600;
+      color: var(--dark-gray);
+      font-size: 0.85em;
+    }
+
+    .equipment-count {
+      font-size: 1.3em;
+      font-weight: 800;
+      color: var(--dark-gray);
+      line-height: 1;
+    }
+
+    .equipment-subtext {
+      font-size: 0.75em;
+      color: var(--neutral-gray);
+      opacity: 0.8;
+    }
+
+    /* Equipment Toggle Button - Position Adjusted */
+    .equipment-toggle {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      z-index: 999;
+      background: var(--gradient-primary);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+      transition: all var(--transition-medium);
+      border: 4px solid white;
+      pointer-events: auto;
+    }
+
+    .equipment-toggle:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 15px 40px rgba(0, 102, 204, 0.5);
+    }
+
+    .equipment-toggle.hidden {
+      right: 20px;
+    }
+
+    /* Site Name Display (Replaces Search Box) */
+    .site-name-display {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      pointer-events: none;
+      max-width: 500px;
+      width: auto;
+      text-align: center;
+    }
+
+    .site-name-container {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+      color: white;
+      padding: 12px 30px;
+      border-radius: var(--border-radius-xl);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      min-width: 300px;
+      opacity: 0;
+      transition: all var(--transition-medium);
+      transform: translateY(-20px);
+      pointer-events: auto;
+    }
+
+    .site-name-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .site-name-container h2 {
+      font-size: 1.5em;
+      font-weight: 800;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .site-name-container h2 i {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.3em;
+    }
+
+    .site-name-container .site-count {
+      font-size: 0.85em;
+      opacity: 0.9;
+      margin-top: 5px;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    /* Map Layer Controls */
+    .map-layer-controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius-lg);
+      padding: 10px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      pointer-events: auto;
+    }
+
+    .map-layer-controls h4 {
+      font-size: 0.9em;
+      color: var(--dark-gray);
+      margin-right: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .layer-options {
+      display: flex;
+      gap: 5px;
+    }
+
+    .layer-option {
+      padding: 8px 16px;
+      background: var(--light-gray);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      font-size: 0.85em;
+      font-weight: 600;
+      color: var(--dark-gray);
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .layer-option:hover {
+      background: rgba(0, 102, 204, 0.05);
+      border-color: var(--primary-blue-light);
+    }
+
+    .layer-option.active {
+      background: var(--primary-blue);
+      color: white;
+      border-color: var(--primary-blue);
+      box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+    }
+
+    .layer-option i {
+      font-size: 1em;
+    }
+
+    /* Health Status Indicator at Bottom of Filter Panel */
+    .health-indicator {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+      border-radius: var(--border-radius-lg);
+      padding: 15px;
+      margin-top: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+      flex-shrink: 0;
+    }
+
+    .health-indicator h4 {
+      font-size: 0.95em;
+      color: var(--dark-gray);
+      margin-bottom: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .health-indicator h4 i {
+      color: var(--success-green);
+    }
+
+    .health-bar {
+      height: 24px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      margin-bottom: 10px;
+      position: relative;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .health-fill {
+      height: 100%;
+      border-radius: var(--border-radius-md);
+      background: linear-gradient(90deg, 
+        var(--danger-red) 0%, 
+        var(--warning-orange) 33%, 
+        var(--success-green) 66%, 
+        var(--primary-blue) 100%);
+      transition: width 0.8s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .health-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 100%);
+      animation: shine 2s infinite;
+    }
+
+    .health-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8em;
+      color: var(--neutral-gray);
+    }
+
+    .health-score {
+      font-weight: 800;
+      font-size: 1.2em;
+      color: var(--dark-gray);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .health-label {
+      font-weight: 600;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .quick-action {
+      background: white;
+      border: 1px solid rgba(0, 102, 204, 0.1);
+      border-radius: var(--border-radius-md);
+      padding: 8px;
+      font-size: 0.75em;
+      font-weight: 600;
+      color: var(--dark-gray);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .quick-action:hover {
+      background: rgba(0, 102, 204, 0.05);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 102, 204, 0.1);
+    }
+
+    .quick-action i {
+      font-size: 1em;
+    }
+
+    .quick-action.critical {
+      color: var(--danger-red);
+      border-color: rgba(231, 76, 60, 0.2);
+      background: rgba(231, 76, 60, 0.05);
+    }
+
+    .quick-action.working {
+      color: var(--success-green);
+      border-color: rgba(0, 184, 148, 0.2);
+      background: rgba(0, 184, 148, 0.05);
+    }
+
+    /* Zoom level indicator */
+    .zoom-level {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: white;
+      padding: 8px 16px;
+      border-radius: var(--border-radius-md);
+      box-shadow: 0 5px 15px var(--shadow-medium);
+      font-weight: 600;
+      color: var(--primary-blue);
+      display: none;
+      font-size: 0.9em;
+      pointer-events: auto;
+    }
+
+    /* Custom Cluster Markers - ENHANCED but SMALLER */
+    .custom-cluster {
+      background: linear-gradient(135deg, #FFD166 0%, #FF9E6D 100%);
+      border: 2px solid white;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.3);
+      color: white;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    .custom-cluster::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .custom-cluster:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .cluster-excellent {
+      background: linear-gradient(135deg, #00FF9D 0%, #00C896 100%);
+    }
+
+    .cluster-good {
+      background: linear-gradient(135deg, #00A8FF 0%, #0088FF 100%);
+    }
+
+    .cluster-fair {
+      background: linear-gradient(135deg, #FFD166 0%, #FFB347 100%);
+    }
+
+    .cluster-poor {
+      background: linear-gradient(135deg, #FF9E6D 0%, #FF7A45 100%);
+    }
+
+    .cluster-critical {
+      background: linear-gradient(135deg, #FF5252 0%, #FF2B2B 100%);
+      animation: pulse 1.5s infinite;
+    }
+
+    .cluster-new {
+      background: linear-gradient(135deg, #9D4EDD 0%, #7B2CBF 100%);
+    }
+
+    .cluster-mixed {
+      background: linear-gradient(135deg, #FF9E6D 0%, #00A8FF 50%, #FF5252 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 3s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-blue);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-blue-dark);
+    }
+
+    /* Custom Leaflet controls */
+    .leaflet-control-container .leaflet-top.leaflet-right {
+      top: 80px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .panels-container {
+        width: 320px;
+      }
+      .control-panel {
+        width: 320px;
+      }
+      .equipment-panel {
+        width: 450px;
+        height: 650px;
+      }
+      .equipment-panel:not(.hidden) ~ .equipment-toggle {
+        right: calc(450px + 30px);
+      }
+      .site-name-display {
+        max-width: 400px;
+      }
+      .site-name-container {
+        min-width: 250px;
+        padding: 10px 20px;
+      }
+      .site-name-container h2 {
+        font-size: 1.3em;
+      }
+      .map-layer-controls {
+        padding: 8px 15px;
+      }
+      .layer-option {
+        padding: 6px 12px;
+        font-size: 0.8em;
+      }
+      .critical-equipment-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .chart-container-wrapper {
+        width: 300px;
+        height: 300px;
+      }
+      #equipmentChart {
+        width: 270px !important;
+        height: 270px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .panels-container {
+        width: 280px;
+      }
+      .control-panel {
+        width: 280px;
+      }
+      .equipment-panel {
+        width: calc(100% - 40px);
+        height: 600px;
+        right: 20px;
+      }
+      .equipment-panel:not(.hidden) ~ .equipment-toggle {
+        right: 20px;
+        top: 20px;
+        transform: none;
+      }
+      .stats-summary {
+        grid-template-columns: 1fr;
+      }
+      .site-name-display {
+        width: calc(100% - 40px);
+        top: 15px;
+      }
+      .site-name-container {
+        min-width: auto;
+        width: 100%;
+        padding: 10px 15px;
+      }
+      .site-name-container h2 {
+        font-size: 1.1em;
+        gap: 8px;
+      }
+      .map-layer-controls {
+        width: calc(100% - 40px);
+        left: 20px;
+        transform: none;
+        justify-content: center;
+        padding: 8px 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .map-layer-controls h4 {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        margin: 0 0 5px 0;
+      }
+      .layer-options {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .layer-option {
+        padding: 6px 10px;
+        font-size: 0.75em;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .chart-section {
+        flex: 0 0 300px;
+      }
+      .chart-container-wrapper {
+        width: 280px;
+        height: 280px;
+        padding: 15px;
+      }
+      #equipmentChart {
+        width: 250px !important;
+        height: 250px !important;
+      }
+      .critical-equipment-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .critical-equipment-grid {
+        grid-template-columns: 1fr;
+      }
+      .equipment-panel {
+        width: calc(100% - 20px);
+        right: 10px;
+      }
+      .site-name-container h2 {
+        font-size: 1em;
+      }
+      .layer-option {
+        padding: 5px 8px;
+        font-size: 0.7em;
+      }
+      .chart-container-wrapper {
+        width: 260px;
+        height: 260px;
+      }
+      #equipmentChart {
+        width: 230px !important;
+        height: 230px !important;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<!-- Panels Container -->
+<div class="panels-container">
+  <!-- Left Control Panel -->
+  <div class="control-panel" id="controlPanel">
+    <div class="panel-header">
+      <h2><i class="fas fa-water"></i> Dashboard</h2>
+      <button class="close-panel" onclick="toggleDashboard()">×</button>
+    </div>
+
+    <div class="dashboard-content">
+      <!-- UPDATED: 3 stat cards in single row -->
+      <div class="stats-grid">
+        <div class="stat-card total" onclick="filterByType('all')">
+          <h3><i class="fas fa-boxes"></i> Total Assets</h3>
+          <div class="stat-value" id="totalAssets">0</div>
+          <div class="stat-percent" id="totalPercent">100%</div>
+        </div>
+        <div class="stat-card working" onclick="filterByStatus('working')">
+          <h3><i class="fas fa-check-circle"></i> Working</h3>
+          <div class="stat-value" id="workingAssets">0</div>
+          <div class="stat-percent" id="workingPercent">0%</div>
+        </div>
+        <div class="stat-card not-working" onclick="filterByStatus('not-working')">
+          <h3><i class="fas fa-times-circle"></i> Not Working</h3>
+          <div class="stat-value" id="notWorkingAssets">0</div>
+          <div class="stat-percent" id="notWorkingPercent">0%</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters-section">
+        <h3><i class="fas fa-filter"></i> Filters</h3>
+        
+        <!-- City Filter -->
+        <div class="filter-group">
+          <label for="cityFilter"><i class="fas fa-city"></i> City</label>
+          <select id="cityFilter" onchange="filterByCity()">
+            <option value="all">All Cities</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="siteFilter"><i class="fas fa-map-marker-alt"></i> Site Name L3</label>
+          <select id="siteFilter" onchange="filterBySite()">
+            <option value="all">All Sites</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="conditionFilter"><i class="fas fa-tachometer-alt"></i> Condition</label>
+          <select id="conditionFilter" onchange="applyFilters()">
+            <option value="all">All Conditions</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="locationGrouping"><i class="fas fa-layer-group"></i> Group By Location</label>
+          <select id="locationGrouping" onchange="changeVisualizationMode()">
+            <option value="cluster">Cluster Markers</option>
+            <option value="individual">Individual Markers</option>
+            <option value="single">Single Marker per Location</option>
+            <option value="spider">Spread Out at Same Location</option>
+            <option value="heatmap">Heatmap View</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Health Indicator -->
+      <div class="health-indicator">
+        <h4><i class="fas fa-heartbeat"></i> Site Health</h4>
+        <div class="health-bar">
+          <div class="health-fill" id="healthFill" style="width: 75%"></div>
+        </div>
+        <div class="health-stats">
+          <span class="health-label">Overall Score</span>
+          <span class="health-score" id="healthScore">75%</span>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <div class="quick-action critical" onclick="filterByStatus('not-working')">
+            <i class="fas fa-exclamation-triangle"></i> View Critical
+          </div>
+          <div class="quick-action working" onclick="filterByStatus('working')">
+            <i class="fas fa-check-circle"></i> View Working
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REDESIGNED Equipment Panel - NOW CITY OVERVIEW -->
+<div class="equipment-panel hidden" id="equipmentPanel">
+  <div class="equipment-header">
+    <div>
+      <h3><i class="fas fa-city" id="panelIcon"></i> <span id="panelTitle">City Overview</span></h3>
+    </div>
+    <button class="close-panel" onclick="toggleEquipmentPanel()">×</button>
+  </div>
+  
+  <div class="equipment-content">
+    <!-- City/Site Info -->
+    <div class="site-name-highlight" id="citySiteName">All Cities</div>
+    
+    <!-- Stats Summary -->
+    <div class="stats-summary" id="cityStatsSummary">
+      <div class="summary-card total-equipment">
+        <h4><i class="fas fa-building"></i> Site Types</h4>
+        <div class="summary-value" id="siteTypesCount">0</div>
+        <div class="summary-label">Total Site Types</div>
+      </div>
+      
+      <div class="summary-card critical-equipment">
+        <h4><i class="fas fa-map-marker-alt"></i> Total Sites</h4>
+        <div class="summary-value" id="totalSitesCount">0</div>
+        <div class="summary-label">All Locations</div>
+      </div>
+    </div>
+    
+    <!-- VISUALLY APPEALING Doughnut Chart Section - BIGGER WITHOUT LEGEND -->
+    <div class="chart-section">
+      <h4><i class="fas fa-chart-pie"></i> <span id="chartTitle">Site Type Distribution</span></h4>
+      <div class="chart-container-wrapper">
+        <canvas id="equipmentChart"></canvas>
+      </div>
+    </div>
+    
+    <!-- Site Type Distribution Container (at bottom) -->
+    <div class="critical-equipment-container">
+      <h4><i class="fas fa-layer-group"></i> Site Types in <span id="currentCityName">All Cities</span></h4>
+      <div class="legend-items" id="siteTypeGrid">
+        <!-- Dynamic site type items will be added here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard Toggle Button -->
+<div class="dashboard-toggle" id="dashboardToggle" onclick="toggleDashboard()">
+  <i class="fas fa-chart-line"></i>
+</div>
+
+<!-- Equipment Toggle Button -->
+<div class="equipment-toggle" id="equipmentToggle" onclick="toggleEquipmentPanel()">
+  <i class="fas fa-city"></i>
+</div>
+
+<!-- Site Name Display (Replaces Search Box) -->
+<div class="site-name-display" id="siteNameDisplay">
+  <div class="site-name-container" id="siteNameContainer">
+    <h2><i class="fas fa-map-marker-alt"></i> <span id="currentSiteName">All Sites</span></h2>
+    <div class="site-count" id="siteCount">0 assets</div>
+  </div>
+</div>
+
+<!-- Map Layer Controls -->
+<div class="map-layer-controls">
+  <h4><i class="fas fa-layer-group"></i> Map View</h4>
+  <div class="layer-options">
+    <div class="layer-option active" onclick="changeMapLayer('street')">
+      <i class="fas fa-road"></i> Street
+    </div>
+    <div class="layer-option" onclick="changeMapLayer('imagery')">
+      <i class="fas fa-satellite"></i> Imagery
+    </div>
+    <div class="layer-option" onclick="changeMapLayer('hybrid')">
+      <i class="fas fa-map"></i> Hybrid
+    </div>
+  </div>
+</div>
+
+<!-- Zoom Level Indicator -->
+<div class="zoom-level" id="zoomLevel">
+  Zoom Level: <span id="currentZoom">12</span>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+<script>
+  // Global variables
+  let map;
+  let markerCluster;
+  let individualMarkers = [];
+  let allAssets = [];
+  let filteredAssets = [];
+  let currentMarkers = [];
+  let currentVisualization = 'cluster';
+  let heatLayer = null;
+  let currentSite = null;
+  let currentCity = null;
+  let siteStats = {};
+  let cityStats = {};
+  let currentZoom = 12;
+  let equipmentChart = null;
+  let currentMapLayer = 'street';
+  let mapLayers = {};
+  
+  // Enhanced color scheme for professional appearance
+  const conditionColors = {
+    'EXCELLENT': '#00FF9D',      // Bright Emerald Green
+    'VERY GOOD': '#00C896',      // Vibrant Green
+    'GOOD': '#00A8FF',           // Electric Blue
+    'NEW': '#9D4EDD',            // Royal Purple
+    'FAIR': '#FFD166',           // Golden Yellow
+    'POOR': '#FF9E6D',           // Burnt Orange
+    'CRITICAL': '#FF5252',       // Fire Engine Red
+    'UNKNOWN': '#6D6A75'         // Slate Gray
+  };
+  
+  // Site Type colors for pie chart - UPDATED to match legend items
+  const siteTypeColors = {
+    'Treatment Plant': '#36A2EB',
+    'Distribution Center': '#FF6384',
+    'Storage Facility': '#FFCE56',
+    'Pumping Station': '#4BC0C0',
+    'Water Tower': '#9966FF',
+    'Reservoir': '#FF9F40',
+    'Wastewater Plant': '#C9CBCF',
+    'Desalination Plant': '#00B894',
+    'Other': '#95A5A6'
+  };
+  
+  // Initialize map
+  function initMap() {
+    map = L.map('map').setView([24.50, 39.65], 12);
+    
+    // Define map layers
+    mapLayers = {
+      street: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors',
+        name: 'Street View'
+      }),
+      imagery: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 19,
+        attribution: '© Esri, Earthstar Geographics',
+        name: 'Satellite Imagery'
+      }),
+      hybrid: L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: '© Google Maps',
+        name: 'Hybrid View'
+      })
+    };
+    
+    // Add default layer
+    mapLayers.street.addTo(map);
+    
+    // Initialize marker cluster with custom styling - SMALLER CLUSTERS
+    markerCluster = L.markerClusterGroup({
+      maxClusterRadius: function(zoom) {
+        if (zoom >= 15) return 8;
+        if (zoom >= 12) return 15;
+        return 30;
+      },
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: true,
+      zoomToBoundsOnClick: true,
+      disableClusteringAtZoom: 17,
+      iconCreateFunction: function(cluster) {
+        const count = cluster.getChildCount();
+        
+        // Analyze cluster health
+        const conditions = {
+          'EXCELLENT': 0, 'VERY GOOD': 0, 'GOOD': 0, 'NEW': 0,
+          'FAIR': 0, 'POOR': 0, 'CRITICAL': 0, 'UNKNOWN': 0
+        };
+        
+        let hasCritical = false;
+        let hasPoor = false;
+        let hasFair = false;
+        let hasGood = false;
+        let hasExcellent = false;
+        
+        cluster.getAllChildMarkers().forEach(marker => {
+          if (marker.options.asset) {
+            const condition = marker.options.asset.condition;
+            if (condition) {
+              conditions[condition]++;
+              
+              if (condition === 'CRITICAL') hasCritical = true;
+              if (condition === 'POOR') hasPoor = true;
+              if (condition === 'FAIR') hasFair = true;
+              if (condition === 'GOOD') hasGood = true;
+              if (condition === 'EXCELLENT') hasExcellent = true;
+            }
+          }
+        });
+        
+        // Determine cluster class based on worst condition
+        let clusterClass = 'custom-cluster';
+        if (hasCritical) {
+          clusterClass += ' cluster-critical';
+        } else if (hasPoor) {
+          clusterClass += ' cluster-poor';
+        } else if (hasFair) {
+          clusterClass += ' cluster-fair';
+        } else if (hasGood) {
+          clusterClass += ' cluster-good';
+        } else if (hasExcellent) {
+          clusterClass += ' cluster-excellent';
+        } else if (conditions['NEW'] > 0) {
+          clusterClass += ' cluster-new';
+        } else {
+          clusterClass += ' cluster-mixed';
+        }
+        
+        // Calculate size based on count - SMALLER SIZES
+        let size = 30;
+        let fontSize = 10;
+        
+        if (count < 10) {
+          size = 30;
+          fontSize = 10;
+        } else if (count < 50) {
+          size = 35;
+          fontSize = 12;
+        } else if (count < 100) {
+          size = 40;
+          fontSize = 14;
+        } else {
+          size = 45;
+          fontSize = 16;
+        }
+        
+        return L.divIcon({
+          html: `<div class="${clusterClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px;">${count}</div>`,
+          className: 'custom-cluster-icon',
+          iconSize: L.point(size, size),
+          iconAnchor: L.point(size/2, size/2)
+        });
+      }
+    });
+    
+    // Track zoom level
+    map.on('zoomend', function() {
+      currentZoom = map.getZoom();
+      document.getElementById('currentZoom').textContent = currentZoom;
+      document.getElementById('zoomLevel').style.display = 'block';
+      
+      setTimeout(() => {
+        document.getElementById('zoomLevel').style.display = 'none';
+      }, 3000);
+    });
+    
+    document.getElementById('currentZoom').textContent = currentZoom;
+  }
+  
+  // Change map layer
+  function changeMapLayer(layerType) {
+    // Remove current layer
+    if (mapLayers[currentMapLayer]) {
+      map.removeLayer(mapLayers[currentMapLayer]);
+    }
+    
+    // Add new layer
+    if (mapLayers[layerType]) {
+      mapLayers[layerType].addTo(map);
+      currentMapLayer = layerType;
+    }
+    
+    // Update active button
+    document.querySelectorAll('.layer-option').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector(`.layer-option[onclick*="${layerType}"]`).classList.add('active');
+    
+    // Show notification
+    showNotification(`Switched to ${layerType.charAt(0).toUpperCase() + layerType.slice(1)} view`, 'info');
+  }
+  
+  // Update site name display
+  function updateSiteNameDisplay() {
+    const siteFilter = document.getElementById('siteFilter');
+    const cityFilter = document.getElementById('cityFilter');
+    const selectedSite = siteFilter.value;
+    const selectedCity = cityFilter.value;
+    const siteNameContainer = document.getElementById('siteNameContainer');
+    const siteCountElement = document.getElementById('siteCount');
+    
+    if (selectedSite === 'all' && selectedCity === 'all') {
+      siteNameContainer.classList.remove('visible');
+      // Hide after transition
+      setTimeout(() => {
+        siteNameContainer.style.display = 'none';
+      }, 300);
+    } else {
+      let displayName = '';
+      if (selectedCity !== 'all') {
+        const cityName = cityFilter.options[cityFilter.selectedIndex].text;
+        const cityNameParts = cityName.split(' (');
+        displayName = cityNameParts[0];
+        if (selectedSite !== 'all') {
+          const siteName = siteFilter.options[siteFilter.selectedIndex].text;
+          const siteNameParts = siteName.split(' (');
+          displayName += ' - ' + siteNameParts[0];
+        }
+      } else {
+        const siteName = siteFilter.options[siteFilter.selectedIndex].text;
+        const siteNameParts = siteName.split(' (');
+        displayName = siteNameParts[0];
+      }
+      
+      const assetCount = filteredAssets.length;
+      
+      document.getElementById('currentSiteName').textContent = displayName;
+      siteCountElement.textContent = `${assetCount} asset${assetCount !== 1 ? 's' : ''}`;
+      
+      siteNameContainer.style.display = 'block';
+      setTimeout(() => {
+        siteNameContainer.classList.add('visible');
+      }, 10);
+    }
+  }
+  
+  // Update health indicator
+  function updateHealthIndicator() {
+    const selectedSite = document.getElementById('siteFilter').value;
+    const selectedCity = document.getElementById('cityFilter').value;
+    let assetsToCheck = allAssets;
+    
+    if (selectedSite !== 'all') {
+      assetsToCheck = assetsToCheck.filter(a => a.siteNameL3 === selectedSite);
+    } else if (selectedCity !== 'all') {
+      assetsToCheck = assetsToCheck.filter(a => a.city === selectedCity);
+    }
+    
+    if (assetsToCheck.length === 0) {
+      document.getElementById('healthFill').style.width = '0%';
+      document.getElementById('healthScore').textContent = '0%';
+      return;
+    }
+    
+    // Calculate health score based on conditions
+    let score = 0;
+    let totalWeight = 0;
+    
+    assetsToCheck.forEach(asset => {
+      let weight = 0;
+      switch(asset.condition) {
+        case 'EXCELLENT': weight = 100; break;
+        case 'VERY GOOD': weight = 85; break;
+        case 'GOOD': weight = 70; break;
+        case 'NEW': weight = 90; break;
+        case 'FAIR': weight = 50; break;
+        case 'POOR': weight = 30; break;
+        case 'CRITICAL': weight = 10; break;
+        default: weight = 50;
+      }
+      
+      // Additional weight for working status
+      if (asset.working === 'YES') weight += 10;
+      if (asset.inUse === 'YES') weight += 5;
+      
+      score += weight;
+      totalWeight++;
+    });
+    
+    const averageScore = Math.round(score / totalWeight);
+    const clampedScore = Math.min(100, Math.max(0, averageScore));
+    
+    document.getElementById('healthFill').style.width = `${clampedScore}%`;
+    document.getElementById('healthScore').textContent = `${clampedScore}%`;
+    
+    // Update health score color
+    const healthScoreElement = document.getElementById('healthScore');
+    if (clampedScore >= 80) {
+      healthScoreElement.style.color = 'var(--success-green)';
+    } else if (clampedScore >= 60) {
+      healthScoreElement.style.color = 'var(--warning-orange)';
+    } else {
+      healthScoreElement.style.color = 'var(--danger-red)';
+    }
+  }
+  
+  // Toggle dashboard visibility
+  function toggleDashboard() {
+    const panel = document.getElementById('controlPanel');
+    const toggleBtn = document.getElementById('dashboardToggle');
+    
+    panel.classList.toggle('hidden');
+    
+    if (panel.classList.contains('hidden')) {
+      toggleBtn.innerHTML = '<i class="fas fa-chart-line"></i>';
+      toggleBtn.title = "Show Dashboard";
+    } else {
+      toggleBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+      toggleBtn.title = "Hide Dashboard";
+    }
+  }
+  
+  // Toggle equipment panel
+  function toggleEquipmentPanel() {
+    const panel = document.getElementById('equipmentPanel');
+    const toggleBtn = document.getElementById('equipmentToggle');
+    
+    panel.classList.toggle('hidden');
+    
+    if (panel.classList.contains('hidden')) {
+      toggleBtn.innerHTML = '<i class="fas fa-city"></i>';
+      toggleBtn.title = "Show City Panel";
+    } else {
+      toggleBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+      toggleBtn.title = "Hide City Panel";
+    }
+    updateEquipmentTogglePosition();
+  }
+  
+  // Update equipment toggle (floating button) position to sit to the right of panel
+  function updateEquipmentTogglePosition() {
+    const panel = document.getElementById('equipmentPanel');
+    const toggleBtn = document.getElementById('equipmentToggle');
+    if (!panel || !toggleBtn) return;
+
+    // If panel is hidden, keep toggle at default margin
+    if (panel.classList.contains('hidden')) {
+      toggleBtn.style.right = '20px';
+      toggleBtn.style.top = '50%';
+      toggleBtn.style.transform = 'translateY(-50%)';
+      return;
+    }
+
+    const rect = panel.getBoundingClientRect();
+    const gap = 20; // spacing between panel and toggle
+    toggleBtn.style.right = (window.innerWidth - rect.right + gap) + 'px';
+    // ensure vertical center
+    toggleBtn.style.top = '50%';
+    toggleBtn.style.transform = 'translateY(-50%)';
+  }
+
+  // Observe panel resize so button updates automatically
+  (function initEquipmentResizeObserver() {
+    const panel = document.getElementById('equipmentPanel');
+    if (!panel || typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(() => {
+      updateEquipmentTogglePosition();
+    });
+    ro.observe(panel);
+    // Also adjust on window resize
+    window.addEventListener('resize', updateEquipmentTogglePosition);
+  })();
+  
+  // Function to update city panel
+  function updateCityPanel() {
+    const selectedCity = document.getElementById('cityFilter').value;
+    const cityNameElement = document.getElementById('citySiteName');
+    const currentCityNameElement = document.getElementById('currentCityName');
+    
+    // Update panel title based on whether city is selected
+    if (selectedCity === 'all') {
+      document.getElementById('panelTitle').textContent = 'City Overview';
+      document.getElementById('panelIcon').className = 'fas fa-city';
+      cityNameElement.textContent = 'All Cities';
+      currentCityNameElement.textContent = 'All Cities';
+    } else {
+      const cityName = document.getElementById('cityFilter').options[document.getElementById('cityFilter').selectedIndex].text;
+      const cityNameParts = cityName.split(' (');
+      const cleanCityName = cityNameParts[0];
+      document.getElementById('panelTitle').textContent = `${cleanCityName} Overview`;
+      document.getElementById('panelIcon').className = 'fas fa-map-marker-alt';
+      cityNameElement.textContent = cleanCityName;
+      currentCityNameElement.textContent = cleanCityName;
+    }
+    
+    // Get assets for the selected city
+    let cityAssets = selectedCity === 'all' ? allAssets : allAssets.filter(a => a.city === selectedCity);
+    
+    // Calculate site type statistics
+    let siteTypeStats = {};
+    let totalSites = 0;
+    
+    cityAssets.forEach(asset => {
+      if (asset.siteTypeL2) {
+        if (!siteTypeStats[asset.siteTypeL2]) {
+          siteTypeStats[asset.siteTypeL2] = {
+            count: 0,
+            uniqueSites: new Set()
+          };
+        }
+        siteTypeStats[asset.siteTypeL2].count++;
+        siteTypeStats[asset.siteTypeL2].uniqueSites.add(asset.siteNameL3);
+        totalSites++;
+      }
+    });
+    
+    // Calculate unique site types and unique sites
+    const uniqueSiteTypes = Object.keys(siteTypeStats).length;
+    let uniqueSites = new Set();
+    Object.values(siteTypeStats).forEach(stat => {
+      stat.uniqueSites.forEach(site => uniqueSites.add(site));
+    });
+    
+    // Update stats summary
+    document.getElementById('siteTypesCount').textContent = uniqueSiteTypes;
+    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+    
+    // Update site type list
+    updateSiteTypeList(siteTypeStats);
+    
+    // Update chart with site type distribution
+    updateSiteTypeChart(siteTypeStats);
+  }
+  
+  // Update site type list
+  function updateSiteTypeList(stats) {
+    const gridContainer = document.getElementById('siteTypeGrid');
+    gridContainer.innerHTML = '';
+    
+    // Sort site types by count (descending)
+    const sortedSiteTypes = Object.keys(stats).sort((a, b) => stats[b].count - stats[a].count);
+    
+    sortedSiteTypes.forEach(siteType => {
+      const count = stats[siteType].count;
+      const uniqueSites = stats[siteType].uniqueSites.size;
+      const color = siteTypeColors[siteType] || getRandomColor();
+      
+      const item = document.createElement('div');
+      item.className = 'legend-item';
+      item.innerHTML = `
+        <span class="legend-color" style="background:${color}"></span>
+        <span style="flex:1;font-size:0.8em">${siteType.length > 20 ? siteType.substring(0, 20) + '...' : siteType}</span>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;">
+          <span style="font-weight:700;font-size:0.9em">${count}</span>
+          <span style="font-size:0.7em;color:var(--neutral-gray)">${uniqueSites} sites</span>
+        </div>
+      `;
+      gridContainer.appendChild(item);
+    });
+  }
+  
+  // Update site type chart - WITHOUT LEGEND
+  function updateSiteTypeChart(stats) {
+    const ctx = document.getElementById('equipmentChart');
+    
+    // Destroy existing chart
+    if (equipmentChart) {
+      equipmentChart.destroy();
+    }
+    
+    // Prepare data for chart
+    const siteTypes = Object.keys(stats);
+    const labels = [];
+    const data = [];
+    const colors = [];
+    const hoverColors = [];
+    const borderColors = [];
+    
+    // Sort by count (descending) and take top 8
+    const sortedSiteTypes = siteTypes.sort((a, b) => stats[b].count - stats[a].count).slice(0, 8);
+    
+    sortedSiteTypes.forEach(siteType => {
+      const count = stats[siteType].count;
+      labels.push(siteType);
+      data.push(count);
+      const color = siteTypeColors[siteType] || getRandomColor();
+      colors.push(color);
+      hoverColors.push(lightenColor(color, 20));
+      borderColors.push('#ffffff');
+    });
+    
+    // If no data, show empty state
+    if (data.length === 0 || data.reduce((a, b) => a + b, 0) === 0) {
+      createEmptyChart(ctx);
+      return;
+    }
+    
+    // Create stunning doughnut chart WITHOUT LEGEND
+    equipmentChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: colors,
+          borderColor: borderColors,
+          borderWidth: 2,
+          hoverBackgroundColor: hoverColors,
+          hoverBorderColor: '#ffffff',
+          hoverBorderWidth: 3,
+          borderRadius: 6,
+          spacing: 1
+        }]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        cutout: '65%',
+        rotation: -90,
+        circumference: 360,
+        plugins: {
+          legend: {
+            display: false // LEGEND REMOVED
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleColor: '#ffffff',
+            bodyColor: '#ffffff',
+            borderColor: 'rgba(255, 255, 255, 0.2)',
+            borderWidth: 1,
+            cornerRadius: 6,
+            padding: 10,
+            displayColors: true,
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = context.raw || 0;
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                const percentage = Math.round((value / total) * 100);
+                return `${label}: ${value} (${percentage}%)`;
+              }
+            }
+          },
+          datalabels: {
+            display: true,
+            color: '#ffffff',
+            font: {
+              size: 12,
+              weight: 'bold'
+            },
+            formatter: (value, ctx) => {
+              const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+              const percentage = Math.round((value / total) * 100);
+              return percentage > 10 ? `${percentage}%` : '';
+            }
+          }
+        },
+        animation: {
+          animateScale: true,
+          animateRotate: true,
+          duration: 800,
+          easing: 'easeOutQuart'
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true,
+          animationDuration: 200
+        },
+        elements: {
+          arc: {
+            borderWidth: 2,
+            borderColor: '#ffffff',
+            hoverBorderWidth: 3,
+            hoverBorderColor: '#ffffff'
+          }
+        }
+      }
+    });
+  }
+  
+  // Helper function to lighten colors
+  function lightenColor(color, percent) {
+    const num = parseInt(color.replace("#", ""), 16);
+    const amt = Math.round(2.55 * percent);
+    const R = (num >> 16) + amt;
+    const G = (num >> 8 & 0x00FF) + amt;
+    const B = (num & 0x0000FF) + amt;
+    
+    const finalR = R > 255 ? 255 : R < 0 ? 0 : R;
+    const finalG = G > 255 ? 255 : G < 0 ? 0 : G;
+    const finalB = B > 255 ? 255 : B < 0 ? 0 : B;
+    
+    return "#" + 
+      (finalR.toString(16).padStart(2, '0')) +
+      (finalG.toString(16).padStart(2, '0')) +
+      (finalB.toString(16).padStart(2, '0'));
+  }
+  
+  // Helper function to get random color
+  function getRandomColor() {
+    const colors = [
+      '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', 
+      '#9966FF', '#FF9F40', '#C9CBCF', '#00B894'
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+  
+  // Create visually appealing empty chart
+  function createEmptyChart(ctx) {
+    if (equipmentChart) {
+      equipmentChart.destroy();
+    }
+    
+    equipmentChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['No Data'],
+        datasets: [{
+          data: [1],
+          backgroundColor: ['#ecf0f1'],
+          borderColor: 'white',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        cutout: '65%',
+        rotation: -90,
+        circumference: 360,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: false
+          },
+          datalabels: {
+            display: false
+          }
+        },
+        animation: {
+          animateScale: false,
+          animateRotate: false
+        }
+      }
+    });
+    
+    // Add custom plugin for centered text
+    const centerTextPlugin = {
+      id: 'centerText',
+      afterDraw(chart) {
+        const { ctx, chartArea: { left, right, top, bottom, width, height } } = chart;
+        
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Main text
+        ctx.fillStyle = '#7f8c8d';
+        ctx.font = 'bold 16px "Segoe UI", "Inter", sans-serif';
+        ctx.fillText('No Data', width / 2, height / 2 - 8);
+        
+        // Subtext
+        ctx.fillStyle = '#bdc3c7';
+        ctx.font = '12px "Segoe UI", "Inter", sans-serif';
+        ctx.fillText('Select a different city or filter', width / 2, height / 2 + 12);
+        
+        ctx.restore();
+      }
+    };
+    
+    // Register the plugin
+    Chart.register(centerTextPlugin);
+  }
+  
+  // Load CSV data with SPECIFIC COLUMN NAMES
+  function loadCSVData() {
+    Papa.parse('data/water_assets.csv', {
+      download: true,
+      header: true,
+      dynamicTyping: false,
+      skipEmptyLines: true,
+      complete: function(results) {
+        if (results.errors.length > 0) {
+          console.error('CSV parsing errors:', results.errors);
+          showNotification('Error loading CSV data. Please check console for details.', 'error');
+          return;
+        }
+        
+        console.log('CSV column names:', results.meta.fields);
+        
+        // Find columns - LOOK FOR SPECIFIC COLUMN NAMES
+        let siteNameColumn = null;
+        let cityColumn = null;
+        let siteTypeL2Column = null;
+        let conditionColumn = null;
+        let equipmentTypeColumn = null;
+        let latitudeColumn = null;
+        let longitudeColumn = null;
+        
+        // Look for exact column names first (case-insensitive)
+        for (let col of results.meta.fields) {
+          const colLower = col.toLowerCase();
+          
+          // CITY - exact match for "City" column
+          if (colLower === 'city') {
+            cityColumn = col;
+            console.log('Found City column (exact match):', cityColumn);
+          }
+          
+          // LATITUDE - exact match for "latitude" column
+          if (colLower === 'latitude') {
+            latitudeColumn = col;
+            console.log('Found Latitude column (exact match):', latitudeColumn);
+          }
+          
+          // LONGITUDE - exact match for "longitude" column
+          if (colLower === 'longitude') {
+            longitudeColumn = col;
+            console.log('Found Longitude column (exact match):', longitudeColumn);
+          }
+          
+          // Site Name L3
+          if (colLower.includes('site') && colLower.includes('name') && colLower.includes('l3')) {
+            siteNameColumn = col;
+            console.log('Found Site Name L3 column:', siteNameColumn);
+          }
+          
+          // Site Type L2
+          if (colLower.includes('site') && colLower.includes('type') && colLower.includes('l2')) {
+            siteTypeL2Column = col;
+            console.log('Found Site Type L2 column:', siteTypeL2Column);
+          }
+          
+          // Condition
+          if (colLower.includes('condition')) {
+            conditionColumn = col;
+            console.log('Found Condition column:', conditionColumn);
+          }
+          
+          // Equipment Type L6
+          if (colLower.includes('equipment') && colLower.includes('type') && colLower.includes('l6')) {
+            equipmentTypeColumn = col;
+            console.log('Found Equipment Type L6 column:', equipmentTypeColumn);
+          }
+        }
+        
+        // Fallback for columns not found
+        if (!siteNameColumn) {
+          for (let col of results.meta.fields) {
+            if (col.toLowerCase().includes('site') || col.toLowerCase().includes('facility') || col.toLowerCase().includes('location')) {
+              siteNameColumn = col;
+              console.log('Using alternative site column:', siteNameColumn);
+              break;
+            }
+          }
+        }
+        
+        if (!cityColumn) {
+          for (let col of results.meta.fields) {
+            if (col.toLowerCase().includes('city') || col.toLowerCase().includes('location')) {
+              cityColumn = col;
+              console.log('Using alternative city column:', cityColumn);
+              break;
+            }
+          }
+        }
+        
+        if (!siteTypeL2Column) {
+          for (let col of results.meta.fields) {
+            if (col.toLowerCase().includes('type') && !col.toLowerCase().includes('equipment')) {
+              siteTypeL2Column = col;
+              console.log('Using alternative site type column:', siteTypeL2Column);
+              break;
+            }
+          }
+        }
+        
+        // Fallback for latitude/longitude if exact names not found
+        if (!latitudeColumn) {
+          for (let col of results.meta.fields) {
+            if (col.toLowerCase().includes('lat') && !col.toLowerCase().includes('long')) {
+              latitudeColumn = col;
+              console.log('Using alternative latitude column:', latitudeColumn);
+              break;
+            }
+          }
+        }
+        
+        if (!longitudeColumn) {
+          for (let col of results.meta.fields) {
+            if (col.toLowerCase().includes('lon') || col.toLowerCase().includes('lng') || 
+                (col.toLowerCase().includes('long') && !col.toLowerCase().includes('lat'))) {
+              longitudeColumn = col;
+              console.log('Using alternative longitude column:', longitudeColumn);
+              break;
+            }
+          }
+        }
+        
+        allAssets = results.data.map((row, index) => {
+          let siteName = 'Unknown Site';
+          if (siteNameColumn && row[siteNameColumn]) {
+            siteName = row[siteNameColumn].toString().trim();
+            if (!siteName) siteName = 'Unknown Site';
+          }
+          
+          let city = 'Unknown City';
+          if (cityColumn && row[cityColumn]) {
+            city = row[cityColumn].toString().trim();
+            if (!city) city = 'Unknown City';
+          }
+          
+          let siteTypeL2 = 'Other';
+          if (siteTypeL2Column && row[siteTypeL2Column]) {
+            siteTypeL2 = row[siteTypeL2Column].toString().trim();
+            if (!siteTypeL2) siteTypeL2 = 'Other';
+          }
+          
+          let condition = 'UNKNOWN';
+          if (conditionColumn && row[conditionColumn]) {
+            condition = row[conditionColumn].toString().trim().toUpperCase();
+            
+            if (condition.includes('EXCELLENT') || condition === 'EXCELENT') condition = 'EXCELLENT';
+            else if (condition.includes('VERY GOOD') || condition === 'VERYGOOD') condition = 'VERY GOOD';
+            else if (condition.includes('GOOD')) condition = 'GOOD';
+            else if (condition.includes('NEW')) condition = 'NEW';
+            else if (condition.includes('FAIR')) condition = 'FAIR';
+            else if (condition.includes('POOR')) condition = 'POOR';
+            else if (condition.includes('CRITICAL')) condition = 'CRITICAL';
+          }
+          
+          let equipmentType = 'Unknown';
+          if (equipmentTypeColumn && row[equipmentTypeColumn]) {
+            equipmentType = row[equipmentTypeColumn].toString().trim();
+            if (!equipmentType) equipmentType = 'Unknown';
+          }
+          
+          const inUse = (row['In_Use'] || row['In Use'] || row['in_use'] || row['IN_USE'] || 'NO').toString().toUpperCase().trim();
+          const working = (row['Working'] || row['working'] || row['WORKING'] || 'NO').toString().toUpperCase().trim();
+          
+          let latitude = 0;
+          let longitude = 0;
+          
+          // Use the specific latitude/longitude columns found
+          if (latitudeColumn && row[latitudeColumn]) {
+            latitude = parseFloat(row[latitudeColumn]);
+            if (isNaN(latitude)) latitude = 0;
+          }
+          
+          if (longitudeColumn && row[longitudeColumn]) {
+            longitude = parseFloat(row[longitudeColumn]);
+            if (isNaN(longitude)) longitude = 0;
+          }
+          
+          // Additional fallbacks
+          if (latitude === 0 && row['Latitude']) latitude = parseFloat(row['Latitude']);
+          if (longitude === 0 && row['Longitude']) longitude = parseFloat(row['Longitude']);
+          
+          let assetType = 'Pump';
+          for (let col of results.meta.fields) {
+            if (col.toLowerCase().includes('type') && row[col] && !col.toLowerCase().includes('equipment')) {
+              assetType = row[col].toString().trim();
+              break;
+            }
+          }
+          
+          return {
+            id: index,
+            assetId: row['Asset_ID'] || row['Asset ID'] || row['asset_id'] || row['ASSET_ID'] || `ASSET-${index}`,
+            facilityId: row['Facility_ID'] || row['Facility ID'] || row['facility_id'] || 'N/A',
+            siteNameL3: siteName,
+            city: city,
+            siteTypeL2: siteTypeL2,
+            building: row['Building'] || row['building'] || 'N/A',
+            description: row['Description'] || row['description'] || 'Water Asset',
+            tagNumber: row['Tag_Number'] || row['Tag Number'] || row['tag_number'] || 'N/A',
+            inUse: inUse === 'YES' ? 'YES' : 'NO',
+            working: working === 'YES' ? 'YES' : 'NO',
+            condition: condition,
+            age: parseInt(row['AGE'] || row['age'] || 0) || 0,
+            remainingLife: row['Remaining_Life'] || row['Remaining Life'] || 'N/A',
+            maxLife: row['Max_Life_Time'] || row['Max Life Time'] || 'N/A',
+            latitude: latitude,
+            longitude: longitude,
+            type: assetType,
+            equipmentType: equipmentType,
+            lastMaintenance: row['Last_Maintenance'] || row['Last Maintenance'] || 'N/A',
+            nextMaintenance: row['Next_Maintenance'] || row['Next Maintenance'] || 'N/A'
+          };
+        }).filter(asset => {
+          return !isNaN(asset.latitude) && 
+                 !isNaN(asset.longitude) &&
+                 asset.latitude !== 0 && 
+                 asset.longitude !== 0 &&
+                 Math.abs(asset.latitude) <= 90 &&
+                 Math.abs(asset.longitude) <= 180;
+        });
+        
+        console.log(`Loaded ${allAssets.length} valid assets`);
+        
+        calculateSiteStats();
+        calculateCityStats();
+        
+        filteredAssets = [...allAssets];
+        
+        updateDashboard();
+        
+        updateConditionFilter();
+        updateSiteFilter();
+        updateCityFilter();
+        
+        displayAssets();
+        
+        // Initialize the city panel
+        updateCityPanel();
+        
+        // Update health indicator
+        updateHealthIndicator();
+        
+        // Update site name display
+        updateSiteNameDisplay();
+        
+        // Open city panel by default
+        setTimeout(() => {
+          toggleEquipmentPanel();
+        }, 1000);
+        
+        showNotification(`Successfully loaded ${allAssets.length} water assets`, 'success');
+      },
+      error: function(error) {
+        console.error('Error loading CSV:', error);
+        showNotification('Error loading CSV file. Please check if the file exists at data/water_assets.csv', 'error');
+        
+        createSampleData();
+      }
+    });
+  }
+  
+  // Calculate city statistics
+  function calculateCityStats() {
+    cityStats = {};
+    
+    allAssets.forEach(asset => {
+      const city = asset.city;
+      if (!cityStats[city]) {
+        cityStats[city] = {
+          total: 0,
+          working: 0,
+          notWorking: 0,
+          critical: 0,
+          inUse: 0,
+          siteTypes: new Set(),
+          sites: new Set()
+        };
+      }
+      
+      cityStats[city].total++;
+      if (asset.working === 'YES') cityStats[city].working++;
+      if (asset.working === 'NO') cityStats[city].notWorking++;
+      if (asset.condition === 'CRITICAL') cityStats[city].critical++;
+      if (asset.inUse === 'YES') cityStats[city].inUse++;
+      if (asset.siteTypeL2) cityStats[city].siteTypes.add(asset.siteTypeL2);
+      if (asset.siteNameL3) cityStats[city].sites.add(asset.siteNameL3);
+    });
+    
+    console.log('City statistics calculated:', cityStats);
+  }
+  
+  // Update city filter dropdown
+  function updateCityFilter() {
+    const filter = document.getElementById('cityFilter');
+    const cities = Object.keys(cityStats).sort();
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    cities.forEach(city => {
+      const count = cityStats[city].total;
+      const option = document.createElement('option');
+      option.value = city;
+      option.textContent = `${city} (${count} assets)`;
+      filter.appendChild(option);
+    });
+    
+    console.log('City filter updated with options:', cities.length, 'cities');
+  }
+  
+  // Create sample data for testing
+  function createSampleData() {
+    console.log('Creating sample data for testing...');
+    
+    // Generate sample data with cities and site types
+    allAssets = [];
+    const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
+    const siteTypes = ['Treatment Plant', 'Distribution Center', 'Storage Facility', 'Pumping Station', 
+                      'Water Tower', 'Reservoir', 'Wastewater Plant', 'Desalination Plant'];
+    const sites = ['Main Water Plant', 'North Distribution Center', 'South Treatment Plant', 'East Storage Facility',
+                  'West Pumping Station', 'Central Reservoir', 'Northwest Water Tower'];
+    
+    let id = 1;
+    
+    // Generate 200 sample assets
+    for (let i = 0; i < 200; i++) {
+      const cityIndex = Math.floor(Math.random() * cities.length);
+      const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
+      const siteIndex = Math.floor(Math.random() * sites.length);
+      
+      allAssets.push({
+        id: id++,
+        assetId: `ASSET-${String(i+1).padStart(3, '0')}`,
+        facilityId: `FAC-${Math.floor(Math.random() * 5) + 1}`,
+        siteNameL3: sites[siteIndex],
+        city: cities[cityIndex],
+        siteTypeL2: siteTypes[siteTypeIndex],
+        building: `Building ${String.fromCharCode(65 + Math.floor(Math.random() * 5))}`,
+        description: 'Water Asset',
+        tagNumber: `TAG-${i+1}`,
+        inUse: Math.random() > 0.3 ? 'YES' : 'NO',
+        working: Math.random() > 0.2 ? 'YES' : 'NO',
+        condition: ['EXCELLENT', 'VERY GOOD', 'GOOD', 'FAIR', 'POOR', 'CRITICAL'][Math.floor(Math.random() * 6)],
+        age: Math.floor(Math.random() * 15) + 1,
+        remainingLife: `${Math.floor(Math.random() * 20)} years`,
+        maxLife: '20 years',
+        latitude: 24.50 + (Math.random() - 0.5) * 0.5,
+        longitude: 39.65 + (Math.random() - 0.5) * 0.5,
+        type: 'Pump',
+        equipmentType: 'Pump Type A',
+        lastMaintenance: '2023-01-15',
+        nextMaintenance: '2024-01-15'
+      });
+    }
+    
+    calculateSiteStats();
+    calculateCityStats();
+    
+    filteredAssets = [...allAssets];
+    
+    updateDashboard();
+    
+    updateConditionFilter();
+    updateSiteFilter();
+    updateCityFilter();
+    
+    displayAssets();
+    
+    // Initialize the city panel
+    updateCityPanel();
+    
+    // Update health indicator
+    updateHealthIndicator();
+    
+    // Update site name display
+    updateSiteNameDisplay();
+    
+    // Open city panel by default
+    setTimeout(() => {
+      toggleEquipmentPanel();
+    }, 1000);
+    
+    showNotification('Loaded sample water assets for demonstration', 'info');
+  }
+  
+  // Show notification
+  function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+      <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+      <span>${message}</span>
+      <button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+    `;
+    
+    if (!document.querySelector('.notification')) {
+      const style = document.createElement('style');
+      style.textContent = `
+        .notification {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 12px 16px;
+          border-radius: var(--border-radius-md);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          z-index: 3000;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+          animation: slideInRight 0.3s ease, fadeOut 0.3s ease 4.7s forwards;
+          max-width: 350px;
+          font-weight: 500;
+          font-size: 0.9em;
+        }
+        .notification.success {
+          background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+          color: white;
+          border-left: 4px solid #00d2a0;
+        }
+        .notification.error {
+          background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+          color: white;
+          border-left: 4px solid #ff6b6b;
+        }
+        .notification.info {
+          background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+          color: white;
+          border-left: 4px solid #5dade2;
+        }
+        .notification i:first-child {
+          font-size: 18px;
+        }
+        .notification button {
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+          opacity: 0.7;
+          transition: opacity 0.2s;
+          padding: 4px;
+          margin-left: auto;
+        }
+        .notification button:hover {
+          opacity: 1;
+        }
+        @keyframes slideInRight {
+          from { transform: translateX(100%); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+          to { opacity: 0; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      if (notification.parentElement) {
+        notification.remove();
+      }
+    }, 5000);
+  }
+  
+  // Calculate site statistics
+  function calculateSiteStats() {
+    siteStats = {};
+    
+    allAssets.forEach(asset => {
+      const site = asset.siteNameL3;
+      if (!siteStats[site]) {
+        siteStats[site] = {
+          total: 0,
+          working: 0,
+          notWorking: 0,
+          critical: 0,
+          inUse: 0,
+          conditions: {}
+        };
+      }
+      
+      siteStats[site].total++;
+      if (asset.working === 'YES') siteStats[site].working++;
+      if (asset.working === 'NO') siteStats[site].notWorking++;
+      if (asset.condition === 'CRITICAL') siteStats[site].critical++;
+      if (asset.inUse === 'YES') siteStats[site].inUse++;
+      
+      if (!siteStats[site].conditions[asset.condition]) {
+        siteStats[site].conditions[asset.condition] = 0;
+      }
+      siteStats[site].conditions[asset.condition]++;
+    });
+    
+    console.log('Site statistics calculated:', siteStats);
+  }
+  
+  // Update dashboard statistics
+  function updateDashboard() {
+    const total = allAssets.length;
+    const working = allAssets.filter(a => a.working === 'YES').length;
+    const notWorking = allAssets.filter(a => a.working === 'NO').length;
+    
+    document.getElementById('totalAssets').textContent = total.toLocaleString();
+    document.getElementById('workingAssets').textContent = working.toLocaleString();
+    document.getElementById('notWorkingAssets').textContent = notWorking.toLocaleString();
+    
+    document.getElementById('workingPercent').textContent = total > 0 ? Math.round((working / total) * 100) + '%' : '0%';
+    document.getElementById('notWorkingPercent').textContent = total > 0 ? Math.round((notWorking / total) * 100) + '%' : '0%';
+    
+    // Update health indicator
+    updateHealthIndicator();
+  }
+  
+  // Update condition filter dropdown based on selected site/city
+  function updateConditionFilter() {
+    const filter = document.getElementById('conditionFilter');
+    const selectedSite = document.getElementById('siteFilter').value;
+    const selectedCity = document.getElementById('cityFilter').value;
+    
+    // Get conditions for selected site/city or all
+    let conditions = [];
+    if (selectedSite !== 'all') {
+      conditions = [...new Set(allAssets.filter(a => a.siteNameL3 === selectedSite).map(a => a.condition))].sort();
+    } else if (selectedCity !== 'all') {
+      conditions = [...new Set(allAssets.filter(a => a.city === selectedCity).map(a => a.condition))].sort();
+    } else {
+      conditions = [...new Set(allAssets.map(a => a.condition))].sort();
+    }
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    conditions.forEach(condition => {
+      let count;
+      if (selectedSite !== 'all') {
+        count = allAssets.filter(a => a.siteNameL3 === selectedSite && a.condition === condition).length;
+      } else if (selectedCity !== 'all') {
+        count = allAssets.filter(a => a.city === selectedCity && a.condition === condition).length;
+      } else {
+        count = allAssets.filter(a => a.condition === condition).length;
+      }
+      
+      const option = document.createElement('option');
+      option.value = condition;
+      option.textContent = `${condition} (${count})`;
+      filter.appendChild(option);
+    });
+    
+    console.log('Condition filter updated');
+  }
+  
+  // Update site filter dropdown
+  function updateSiteFilter() {
+    const filter = document.getElementById('siteFilter');
+    const selectedCity = document.getElementById('cityFilter').value;
+    
+    // Get sites for selected city or all
+    let sites = [];
+    if (selectedCity !== 'all') {
+      sites = [...new Set(allAssets.filter(a => a.city === selectedCity).map(a => a.siteNameL3))].sort();
+    } else {
+      sites = Object.keys(siteStats).sort();
+    }
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    sites.forEach(site => {
+      let count;
+      if (selectedCity !== 'all') {
+        count = allAssets.filter(a => a.city === selectedCity && a.siteNameL3 === site).length;
+      } else {
+        count = siteStats[site]?.total || 0;
+      }
+      
+      const option = document.createElement('option');
+      option.value = site;
+      option.textContent = `${site} (${count} assets)`;
+      filter.appendChild(option);
+    });
+    
+    console.log('Site filter updated with options:', sites.length, 'sites');
+  }
+  
+  // Get icon for asset based on site type - REDUCED SIZE BY 30%
+  function getAssetIcon(asset) {
+    const color = conditionColors[asset.condition] || '#636e72';
+    const siteType = asset.siteTypeL2 || 'Other';
+    const label = siteType.length >= 6 ? siteType.substring(siteType.length - 6) : siteType;
+    
+    // Reduced size by 30% (from 22px to ~15px)
+    return L.divIcon({
+      html: `
+        <div style="
+          background: ${color};
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          border: 2px solid white;
+          box-shadow: 0 3px 8px rgba(0,0,0,0.2), 0 0 10px ${color}80;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 8px;
+          cursor: pointer;
+          transition: all 0.3s;
+          position: relative;
+          overflow: hidden;
+        ">
+          <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 70%);
+          "></div>
+          <span style="z-index: 1; font-size: 7px;">${label.substring(0, 2)}</span>
+          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 6px; height: 6px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+        </div>
+      `,
+      className: 'individual-marker',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+  }
+  
+  // Get asset type icon
+  function getAssetTypeIcon(type) {
+    const typeLower = type.toLowerCase();
+    if (typeLower.includes('pump')) return 'tint';
+    if (typeLower.includes('valve')) return 'faucet';
+    if (typeLower.includes('filter')) return 'filter';
+    if (typeLower.includes('tank')) return 'water';
+    if (typeLower.includes('pipe')) return 'stream';
+    if (typeLower.includes('motor')) return 'cog';
+    if (typeLower.includes('generator')) return 'bolt';
+    if (typeLower.includes('flow')) return 'tachometer-alt';
+    return 'cog';
+  }
+  
+  // Get condition color
+  function getConditionColor(condition) {
+    return conditionColors[condition] || '#636e72';
+  }
+  
+  // Build popup content for asset
+  function buildAssetPopup(asset) {
+    const conditionColor = getConditionColor(asset.condition);
+    
+    return `
+      <div class="popup-header">
+        <h3>${asset.siteNameL3}</h3>
+        <div style="font-size: 0.85em; opacity: 0.9;">
+          <i class="fas fa-city"></i> ${asset.city} | <i class="fas fa-layer-group"></i> ${asset.siteTypeL2}
+        </div>
+      </div>
+      <div class="popup-content">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${conditionColor}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
+            <i class="fas fa-${getAssetTypeIcon(asset.type)}"></i>
+          </div>
+          <div>
+            <h4 style="margin: 0; color: #343a40; font-size: 1em;">${asset.assetId}</h4>
+            <p style="margin: 4px 0 0; color: #6c757d; font-size: 0.8em;">${asset.type}</p>
+          </div>
+        </div>
+        
+        <div style="margin: 10px 0; font-size: 0.9em;">
+          <p><i class="fas fa-map-marker-alt"></i> <strong>Coordinates:</strong> ${asset.latitude.toFixed(6)}, ${asset.longitude.toFixed(6)}</p>
+          <p><i class="fas fa-building"></i> <strong>Building:</strong> ${asset.building}</p>
+          ${asset.equipmentType && asset.equipmentType !== 'Unknown' ? `<p><i class="fas fa-cogs"></i> <strong>Equipment Type:</strong> ${asset.equipmentType}</p>` : ''}
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 15px 0;">
+          <div style="padding: 8px; background: ${asset.working === 'YES' ? '#00b894' : '#e74c3c'}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
+            <strong><i class="fas fa-power-off"></i> Status</strong><br>
+            ${asset.working === 'YES' ? '<i class="fas fa-check"></i> Working' : '<i class="fas fa-times"></i> Not Working'}
+          </div>
+          <div style="padding: 8px; background: ${conditionColor}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
+            <strong><i class="fas fa-tachometer-alt"></i> Condition</strong><br>
+            ${asset.condition}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Display assets based on current visualization mode
+  function displayAssets() {
+    markerCluster.clearLayers();
+    individualMarkers.forEach(marker => {
+      if (map.hasLayer(marker)) {
+        map.removeLayer(marker);
+      }
+    });
+    individualMarkers = [];
+    
+    if (heatLayer) {
+      map.removeLayer(heatLayer);
+      heatLayer = null;
+    }
+    
+    if (filteredAssets.length === 0) {
+      console.log('No assets to display after filtering');
+      showNotification('No assets found with current filters', 'info');
+      return;
+    }
+    
+    const visualization = document.getElementById('locationGrouping').value;
+    currentVisualization = visualization;
+    
+    switch(visualization) {
+      case 'cluster':
+        displayClusteredMarkers();
+        break;
+      case 'individual':
+        displayIndividualMarkers();
+        break;
+      case 'single':
+        displaySingleMarkersPerLocation();
+        break;
+      case 'spider':
+        displaySpiderfiedMarkers();
+        break;
+      case 'heatmap':
+        displayHeatmap();
+        break;
+    }
+    
+    // Update health indicator
+    updateHealthIndicator();
+  }
+  
+  // Display clustered markers
+  function displayClusteredMarkers() {
+    console.log(`Displaying ${filteredAssets.length} assets in cluster mode`);
+    
+    filteredAssets.forEach(asset => {
+      const marker = L.marker([asset.latitude, asset.longitude], {
+        icon: getAssetIcon(asset),
+        asset: asset
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      
+      markerCluster.addLayer(marker);
+    });
+    
+    map.addLayer(markerCluster);
+  }
+  
+  // Display individual markers (no clustering)
+  function displayIndividualMarkers() {
+    console.log(`Displaying ${filteredAssets.length} assets in individual marker mode`);
+    
+    filteredAssets.forEach(asset => {
+      const marker = L.marker([asset.latitude, asset.longitude], {
+        icon: getAssetIcon(asset)
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      
+      marker.addTo(map);
+      individualMarkers.push(marker);
+    });
+  }
+  
+  // Display single marker per location
+  function displaySingleMarkersPerLocation() {
+    console.log(`Displaying ${filteredAssets.length} assets in single marker per location mode`);
+    
+    // Group assets by location
+    const locationGroups = {};
+    filteredAssets.forEach(asset => {
+      const locationKey = `${asset.latitude.toFixed(4)},${asset.longitude.toFixed(4)}`;
+      if (!locationGroups[locationKey]) {
+        locationGroups[locationKey] = [];
+      }
+      locationGroups[locationKey].push(asset);
+    });
+    
+    // Create one marker per location
+    Object.values(locationGroups).forEach(assets => {
+      if (assets.length > 0) {
+        const asset = assets[0];
+        const marker = L.marker([asset.latitude, asset.longitude], {
+          icon: getAssetIcon(asset)
+        });
+        
+        let popupContent = `<div class="popup-header"><h3>${assets.length} Assets at this Location</h3></div><div class="popup-content">`;
+        assets.forEach(a => {
+          popupContent += `<p><strong>${a.assetId}</strong> - ${a.type} (${a.condition})</p>`;
+        });
+        popupContent += '</div>';
+        
+        marker.bindPopup(popupContent);
+        marker.addTo(map);
+        individualMarkers.push(marker);
+      }
+    });
+  }
+  
+  // Display spiderfied markers
+  function displaySpiderfiedMarkers() {
+    console.log(`Displaying ${filteredAssets.length} assets in spiderfied mode`);
+    
+    // For spiderfied view, we'll use individual markers with slight offset
+    filteredAssets.forEach((asset, index) => {
+      // Add small random offset to prevent exact overlap
+      const offsetLat = asset.latitude + (Math.random() * 0.0005 - 0.00025);
+      const offsetLng = asset.longitude + (Math.random() * 0.0005 - 0.00025);
+      
+      const marker = L.marker([offsetLat, offsetLng], {
+        icon: getAssetIcon(asset)
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      
+      marker.addTo(map);
+      individualMarkers.push(marker);
+    });
+  }
+  
+  // Display heatmap
+  function displayHeatmap() {
+    console.log(`Displaying ${filteredAssets.length} assets in heatmap mode`);
+    
+    const heatData = filteredAssets.map(asset => {
+      // Assign intensity based on condition
+      let intensity = 0.5;
+      if (asset.condition === 'CRITICAL') intensity = 1.0;
+      else if (asset.condition === 'POOR') intensity = 0.8;
+      else if (asset.condition === 'FAIR') intensity = 0.6;
+      else if (asset.condition === 'GOOD') intensity = 0.4;
+      else if (asset.condition === 'VERY GOOD') intensity = 0.3;
+      else if (asset.condition === 'EXCELLENT') intensity = 0.2;
+      
+      return [asset.latitude, asset.longitude, intensity];
+    });
+    
+    heatLayer = L.heatLayer(heatData, {
+      radius: 20,
+      blur: 12,
+      maxZoom: 17,
+      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
+    }).addTo(map);
+  }
+  
+  // Apply filters
+  function applyFilters() {
+    const conditionFilter = document.getElementById('conditionFilter').value;
+    const siteFilter = document.getElementById('siteFilter').value;
+    const cityFilter = document.getElementById('cityFilter').value;
+    
+    console.log('Applying filters:', {
+      conditionFilter,
+      siteFilter,
+      cityFilter
+    });
+    
+    filteredAssets = allAssets.filter(asset => {
+      let conditionMatch = true;
+      let siteMatch = true;
+      let cityMatch = true;
+      
+      if (conditionFilter !== 'all') {
+        conditionMatch = asset.condition === conditionFilter;
+      }
+      
+      if (siteFilter !== 'all') {
+        siteMatch = asset.siteNameL3 === siteFilter;
+      }
+      
+      if (cityFilter !== 'all') {
+        cityMatch = asset.city === cityFilter;
+      }
+      
+      return conditionMatch && siteMatch && cityMatch;
+    });
+    
+    console.log(`Filtered to ${filteredAssets.length} assets`);
+    displayAssets();
+    
+    // Update city panel
+    updateCityPanel();
+    
+    // Update site name display
+    updateSiteNameDisplay();
+    
+    // Update health indicator
+    updateHealthIndicator();
+    
+    if (conditionFilter !== 'all' || siteFilter !== 'all' || cityFilter !== 'all') {
+      showNotification(`Filter applied: ${filteredAssets.length} assets found`, 'info');
+    }
+  }
+  
+  // Filter by city - UPDATED with fly animation
+  function filterByCity() {
+    const cityFilter = document.getElementById('cityFilter').value;
+    const siteFilter = document.getElementById('siteFilter');
+    
+    if (cityFilter === 'all') {
+      filteredAssets = [...allAssets];
+      currentCity = null;
+      // Fly back to default view
+      map.flyTo([24.50, 39.65], 12, {
+        duration: 1.5,
+        easeLinearity: 0.25
+      });
+    } else {
+      filteredAssets = allAssets.filter(a => a.city === cityFilter);
+      currentCity = cityFilter;
+      
+      // Calculate average position for the city
+      if (filteredAssets.length > 0) {
+        const totalLat = filteredAssets.reduce((sum, asset) => sum + asset.latitude, 0);
+        const totalLng = filteredAssets.reduce((sum, asset) => sum + asset.longitude, 0);
+        const avgLat = totalLat / filteredAssets.length;
+        const avgLng = totalLng / filteredAssets.length;
+        
+        // Fly to city with smooth animation
+        map.flyTo([avgLat, avgLng], currentZoom > 12 ? currentZoom : 14, {
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      }
+    }
+    
+    // Update site filter to show only sites for this city
+    updateSiteFilter();
+    
+    // Reset site and condition filters to "all"
+    siteFilter.value = 'all';
+    document.getElementById('conditionFilter').value = 'all';
+    
+    displayAssets();
+    
+    // Update city panel
+    updateCityPanel();
+    
+    // Update site name display
+    updateSiteNameDisplay();
+    
+    // Update health indicator
+    updateHealthIndicator();
+  }
+  
+  // Filter by site - UPDATED with fly animation
+  function filterBySite() {
+    const siteFilter = document.getElementById('siteFilter').value;
+    const cityFilter = document.getElementById('cityFilter');
+    
+    if (siteFilter === 'all') {
+      filteredAssets = [...allAssets];
+      currentSite = null;
+    } else {
+      filteredAssets = allAssets.filter(a => a.siteNameL3 === siteFilter);
+      currentSite = siteFilter;
+      
+      // Calculate average position for the site
+      if (filteredAssets.length > 0) {
+        const totalLat = filteredAssets.reduce((sum, asset) => sum + asset.latitude, 0);
+        const totalLng = filteredAssets.reduce((sum, asset) => sum + asset.longitude, 0);
+        const avgLat = totalLat / filteredAssets.length;
+        const avgLng = totalLng / filteredAssets.length;
+        
+        // Fly to site with smooth animation
+        map.flyTo([avgLat, avgLng], currentZoom > 14 ? currentZoom : 16, {
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      }
+    }
+    
+    // Update condition filter to show only conditions for this site
+    updateConditionFilter();
+    
+    // Reset condition filter to "all"
+    document.getElementById('conditionFilter').value = 'all';
+    
+    displayAssets();
+    
+    // Update city panel
+    updateCityPanel();
+    
+    // Update site name display
+    updateSiteNameDisplay();
+    
+    // Update health indicator
+    updateHealthIndicator();
+  }
+  
+  // Filter by status (click on stat cards)
+  function filterByStatus(status) {
+    if (status === 'all') {
+      filteredAssets = [...allAssets];
+    } else if (status === 'working') {
+      filteredAssets = allAssets.filter(a => a.working === 'YES');
+    } else if (status === 'not-working') {
+      filteredAssets = allAssets.filter(a => a.working === 'NO');
+    }
+    
+    document.getElementById('conditionFilter').value = 'all';
+    document.getElementById('siteFilter').value = 'all';
+    document.getElementById('cityFilter').value = 'all';
+    currentSite = null;
+    currentCity = null;
+    
+    // Update condition filter for all
+    updateConditionFilter();
+    updateSiteFilter();
+    updateCityFilter();
+    
+    // Update site name display
+    updateSiteNameDisplay();
+    
+    // Update health indicator
+    updateHealthIndicator();
+    
+    displayAssets();
+    
+    // Update city panel
+    updateCityPanel();
+    
+    if (status !== 'all') {
+      showNotification(`Filtered to ${status.replace('-', ' ')} assets`, 'info');
+    }
+  }
+  
+  // Filter by type
+  function filterByType(type) {
+    if (type === 'all') {
+      filteredAssets = [...allAssets];
+    }
+    
+    displayAssets();
+  }
+  
+  // Change visualization mode
+  function changeVisualizationMode() {
+    const mode = document.getElementById('locationGrouping').value;
+    displayAssets();
+  }
+  
+  // Initialize everything
+  function init() {
+    initMap();
+    loadCSVData();
+    
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleEquipmentPanel();
+      }
+      if (e.key === 'F1') {
+        e.preventDefault();
+        toggleDashboard();
+      }
+      if (e.key === '+' || e.key === '=') {
+        e.preventDefault();
+        map.zoomIn();
+      }
+      if (e.key === '-' || e.key === '_') {
+        e.preventDefault();
+        map.zoomOut();
+      }
+    });
+  }
+  
+  window.onload = init;
+</script>
+
+</body>
+</html>
