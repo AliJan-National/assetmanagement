@@ -1004,6 +1004,23 @@
     .zoom-level {
       position: fixed;
       bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: white;
+      padding: 8px 16px;
+      border-radius: var(--border-radius-md);
+      box-shadow: 0 5px 15px var(--shadow-medium);
+      font-weight: 600;
+      color: var(--primary-blue);
+      display: block;
+      font-size: 0.9em;
+      pointer-events: auto;
+    }
+
+    /* Scale indicator */
+    .scale-indicator {
+      position: fixed;
+      bottom: 20px;
       left: 20px;
       z-index: 1000;
       background: white;
@@ -1012,12 +1029,13 @@
       box-shadow: 0 5px 15px var(--shadow-medium);
       font-weight: 600;
       color: var(--primary-blue);
-      display: none;
+      display: block;
       font-size: 0.9em;
       pointer-events: auto;
+      min-width: 160px;
     }
 
-    /* Custom Cluster Markers - ENHANCED but SMALLER */
+    /* Custom Cluster Markers - SMALLER */
     .custom-cluster {
       background: linear-gradient(135deg, #FFD166 0%, #FF9E6D 100%);
       border: 2px solid white;
@@ -1032,7 +1050,7 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      font-size: 12px;
+      font-size: 10px;
     }
 
     .custom-cluster::before {
@@ -1239,6 +1257,17 @@
       }
       .quick-actions {
         grid-template-columns: 1fr;
+      }
+      .scale-indicator {
+        bottom: 70px;
+        left: 10px;
+        font-size: 0.8em;
+        min-width: 140px;
+      }
+      .zoom-level {
+        bottom: 70px;
+        right: 10px;
+        font-size: 0.8em;
       }
     }
 
@@ -1448,6 +1477,11 @@
   </div>
 </div>
 
+<!-- Scale Indicator -->
+<div class="scale-indicator" id="scaleIndicator">
+  Scale: 1:<span id="currentScale">100,000</span>
+</div>
+
 <!-- Zoom Level Indicator -->
 <div class="zoom-level" id="zoomLevel">
   Zoom Level: <span id="currentZoom">12</span>
@@ -1475,6 +1509,7 @@
   let equipmentChart = null;
   let currentMapLayer = 'street';
   let mapLayers = {};
+  let siteTypeColorMap = {};
   
   // Enhanced color scheme for professional appearance
   const conditionColors = {
@@ -1489,17 +1524,11 @@
   };
   
   // Site Type colors for pie chart - UPDATED to match legend items
-  const siteTypeColors = {
-    'Treatment Plant': '#36A2EB',
-    'Distribution Center': '#FF6384',
-    'Storage Facility': '#FFCE56',
-    'Pumping Station': '#4BC0C0',
-    'Water Tower': '#9966FF',
-    'Reservoir': '#FF9F40',
-    'Wastewater Plant': '#C9CBCF',
-    'Desalination Plant': '#00B894',
-    'Other': '#95A5A6'
-  };
+  const siteTypeColors = [
+    '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', 
+    '#9966FF', '#FF9F40', '#C9CBCF', '#00B894',
+    '#95A5A6', '#9D4EDD', '#00FF9D', '#00C896'
+  ];
   
   // Initialize map
   function initMap() {
@@ -1588,21 +1617,21 @@
         }
         
         // Calculate size based on count - SMALLER SIZES
-        let size = 30;
-        let fontSize = 10;
+        let size = 20;
+        let fontSize = 8;
         
         if (count < 10) {
-          size = 30;
-          fontSize = 10;
+          size = 20;
+          fontSize = 8;
         } else if (count < 50) {
-          size = 35;
-          fontSize = 12;
+          size = 25;
+          fontSize = 10;
         } else if (count < 100) {
-          size = 40;
-          fontSize = 14;
+          size = 30;
+          fontSize = 12;
         } else {
-          size = 45;
-          fontSize = 16;
+          size = 35;
+          fontSize = 14;
         }
         
         return L.divIcon({
@@ -1618,14 +1647,37 @@
     map.on('zoomend', function() {
       currentZoom = map.getZoom();
       document.getElementById('currentZoom').textContent = currentZoom;
-      document.getElementById('zoomLevel').style.display = 'block';
-      
-      setTimeout(() => {
-        document.getElementById('zoomLevel').style.display = 'none';
-      }, 3000);
+      updateScaleIndicator();
     });
     
+    map.on('moveend', updateScaleIndicator);
+    
     document.getElementById('currentZoom').textContent = currentZoom;
+    updateScaleIndicator();
+  }
+  
+  // Update scale indicator
+  function updateScaleIndicator() {
+    const center = map.getCenter();
+    const zoom = map.getZoom();
+    
+    // Calculate approximate scale
+    // At zoom 0, the whole world is 256x256 pixels
+    // Each zoom level doubles the scale
+    const worldCircumference = 40075016.686; // meters at equator
+    const metersPerPixel = worldCircumference * Math.cos(center.lat * Math.PI / 180) / (256 * Math.pow(2, zoom));
+    
+    // Convert to scale (1:X)
+    let scale;
+    if (metersPerPixel < 1) {
+      scale = Math.round(1 / metersPerPixel);
+    } else {
+      scale = Math.round(metersPerPixel);
+    }
+    
+    // Format scale with commas
+    const formattedScale = scale.toLocaleString();
+    document.getElementById('currentScale').textContent = formattedScale;
   }
   
   // Change map layer
@@ -1883,6 +1935,21 @@
     updateSiteTypeChart(siteTypeStats);
   }
   
+  // Get color for site type - ensures consistency between chart and legend
+  function getColorForSiteType(siteType) {
+    // If we already assigned a color for this site type, return it
+    if (siteTypeColorMap[siteType]) {
+      return siteTypeColorMap[siteType];
+    }
+    
+    // Otherwise assign a new color from the palette
+    const colorIndex = Object.keys(siteTypeColorMap).length % siteTypeColors.length;
+    const color = siteTypeColors[colorIndex];
+    siteTypeColorMap[siteType] = color;
+    
+    return color;
+  }
+  
   // Update site type list
   function updateSiteTypeList(stats) {
     const gridContainer = document.getElementById('siteTypeGrid');
@@ -1894,7 +1961,7 @@
     sortedSiteTypes.forEach(siteType => {
       const count = stats[siteType].count;
       const uniqueSites = stats[siteType].uniqueSites.size;
-      const color = siteTypeColors[siteType] || getRandomColor();
+      const color = getColorForSiteType(siteType);
       
       const item = document.createElement('div');
       item.className = 'legend-item';
@@ -1934,7 +2001,7 @@
       const count = stats[siteType].count;
       labels.push(siteType);
       data.push(count);
-      const color = siteTypeColors[siteType] || getRandomColor();
+      const color = getColorForSiteType(siteType);
       colors.push(color);
       hoverColors.push(lightenColor(color, 20));
       borderColors.push('#ffffff');
@@ -2045,15 +2112,6 @@
       (finalR.toString(16).padStart(2, '0')) +
       (finalG.toString(16).padStart(2, '0')) +
       (finalB.toString(16).padStart(2, '0'));
-  }
-  
-  // Helper function to get random color
-  function getRandomColor() {
-    const colors = [
-      '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', 
-      '#9966FF', '#FF9F40', '#C9CBCF', '#00B894'
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
   }
   
   // Create visually appealing empty chart
