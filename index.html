@@ -367,7 +367,7 @@
       top: 0;
       right: 0;
       height: 100vh;
-      width: 400px;
+      width: 380px; /* Reduced from 400px */
       min-width: 280px;
       max-width: 60%;
       background: rgba(255, 255, 255, 0.98);
@@ -381,8 +381,7 @@
       pointer-events: auto;
       transition: all var(--transition-medium);
       box-sizing: border-box;
-      overflow: auto;
-      resize: horizontal;
+      overflow-y: auto; /* Changed from auto to auto for scroll only when needed */
     }
 
     .equipment-panel.hidden {
@@ -390,7 +389,7 @@
     }
 
     .equipment-header {
-      padding: 20px;
+      padding: 16px 20px; /* Reduced padding */
       border-bottom: 1px solid rgba(0, 102, 204, 0.1);
       background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
       color: white;
@@ -401,49 +400,49 @@
     }
 
     .equipment-header h3 {
-      font-size: 1.3em;
+      font-size: 1.2em; /* Reduced from 1.3em */
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px; /* Reduced from 12px */
     }
 
     /* Site Name Display in Panel */
     .site-name-highlight {
       background: rgba(0, 102, 204, 0.1);
-      padding: 10px 15px;
+      padding: 8px 12px; /* Reduced padding */
       border-radius: var(--border-radius-md);
-      margin: 10px 20px;
+      margin: 8px 16px; /* Reduced margin */
       font-weight: 600;
       color: var(--primary-blue);
       border-left: 4px solid var(--primary-blue);
       text-align: center;
-      font-size: 1.1em;
+      font-size: 1em; /* Reduced from 1.1em */
     }
 
     /* FIXED Equipment Content Layout */
     .equipment-content {
       flex: 1;
-      padding: 20px;
+      padding: 16px; /* Reduced from 20px */
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px; /* Reduced from 20px */
       overflow-y: auto;
       min-height: 0;
       position: relative;
     }
 
-    /* Stats Summary Cards - REVERSED ORDER */
+    /* Stats Summary Cards */
     .stats-summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      gap: 12px; /* Reduced from 15px */
       flex-shrink: 0;
     }
 
     .summary-card {
       background: white;
-      padding: 12px;
+      padding: 10px; /* Reduced from 12px */
       border-radius: var(--border-radius-md);
       border-left: 4px solid;
       border: 1px solid rgba(0, 102, 204, 0.1);
@@ -452,31 +451,31 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 70px;
+      min-height: 60px; /* Reduced from 70px */
     }
 
-    .summary-card.total-sites {
+    .summary-card.total-equipment {
       border-top: 4px solid var(--primary-blue);
     }
 
-    .summary-card.site-types {
-      border-top: 4px solid var(--success-green);
+    .summary-card.critical-equipment {
+      border-top: 4px solid var(--danger-red);
     }
 
     .summary-card h4 {
-      font-size: 0.7em;
+      font-size: 0.65em; /* Reduced from 0.7em */
       color: var(--neutral-gray);
-      margin-bottom: 6px;
+      margin-bottom: 4px; /* Reduced from 6px */
       text-transform: uppercase;
       letter-spacing: 0.8px;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px; /* Reduced from 5px */
     }
 
     .summary-value {
-      font-size: 1.4em;
+      font-size: 1.2em; /* Reduced from 1.4em */
       font-weight: 800;
       color: var(--dark-gray);
       margin-bottom: 2px;
@@ -485,7 +484,7 @@
 
     .summary-label {
       color: var(--neutral-gray);
-      font-size: 0.7em;
+      font-size: 0.65em; /* Reduced from 0.7em */
       font-weight: 500;
     }
 
@@ -495,29 +494,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px; /* Reduced from 10px */
       width: 100%;
     }
 
     .chart-section h4 {
-      font-size: 1em;
+      font-size: 0.95em; /* Reduced from 1em */
       color: var(--dark-gray);
-      margin-bottom: 15px;
+      margin-bottom: 12px; /* Reduced from 15px */
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px; /* Reduced from 8px */
       align-self: flex-start;
     }
 
-    /* PROFESSIONAL Chart Container - BIGGER */
+    /* PROFESSIONAL Chart Container - OPTIMIZED SIZE */
     .chart-container-wrapper {
-      width: 340px;
-      height: 340px;
+      width: 320px; /* Reduced from 340px */
+      height: 320px; /* Reduced from 340px */
       position: relative;
       background: white;
       border-radius: var(--border-radius-lg);
-      padding: 15px;
+      padding: 12px; /* Reduced from 15px */
       box-shadow: 
         0 10px 40px rgba(0, 102, 204, 0.15),
         inset 0 0 0 1px rgba(255, 255, 255, 0.8);
@@ -528,6 +527,7 @@
       justify-content: center;
       background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       overflow: hidden;
+      margin: 0 auto;
     }
     
     .chart-container-wrapper::before {
@@ -552,70 +552,242 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 200px;
-      height: 200px;
+      width: 180px; /* Reduced from 200px */
+      height: 180px; /* Reduced from 200px */
       background: radial-gradient(circle, rgba(0, 102, 204, 0.05) 0%, transparent 70%);
       z-index: 1;
       pointer-events: none;
     }
     
     #equipmentChart {
-      width: 310px !important;
-      height: 310px !important;
+      width: 296px !important; /* Reduced from 310px */
+      height: 296px !important; /* Reduced from 310px */
       z-index: 2;
     }
 
-    /* Site Type Distribution Container (at bottom) */
-    .critical-equipment-container {
+    /* Distribution Container at Bottom - OPTIMIZED FOR NO SCROLLING */
+    .distribution-container {
       margin-top: auto;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
       border-radius: var(--border-radius-lg);
-      padding: 20px;
+      padding: 16px; /* Reduced from 20px */
       border: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(10px);
+      max-height: 320px; /* Limit max height */
+      overflow-y: auto; /* Enable scroll only if needed */
     }
 
-    .critical-equipment-container h4 {
-      font-size: 1em;
+    .distribution-container h4 {
+      font-size: 0.95em; /* Reduced from 1em */
       color: var(--dark-gray);
-      margin-bottom: 15px;
+      margin-bottom: 12px; /* Reduced from 15px */
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px; /* Reduced from 8px */
       flex-shrink: 0;
-      height: 30px;
+      height: 24px; /* Reduced from 30px */
     }
 
-    .critical-equipment-container h4 i {
+    .distribution-container h4 i {
       color: var(--danger-red);
     }
 
-    /* Grid layout for site types */
-    .site-type-grid {
+    /* OPTIMIZED Grid layout for distribution items - NOW 4 COLUMNS */
+    .distribution-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(4, 1fr); /* Changed from 3 to 4 columns */
+      gap: 10px; /* Reduced from 12px */
     }
 
-    /* Enhanced site type item */
-    .site-type-item {
+    /* OPTIMIZED distribution item - COMPACT DESIGN */
+    .distribution-item {
+      display: flex;
+      flex-direction: column; /* Changed from row to column */
+      align-items: center;
+      text-align: center;
+      gap: 6px; /* Reduced from 12px */
+      background: white;
+      padding: 10px 6px; /* Reduced padding */
+      border-radius: var(--border-radius-md);
+      border-top: 4px solid; /* Changed from border-left to border-top */
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); /* Reduced shadow */
+      transition: all var(--transition-fast);
+      min-height: 80px; /* Reduced from taller size */
+      min-width: 0; /* Allow shrinking */
+      overflow: hidden;
+    }
+
+    .distribution-item:hover {
+      transform: translateY(-2px); /* Reduced from -3px */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+    }
+
+    .distribution-item.EXCELLENT { 
+      border-top-color: #00FF9D;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
+    }
+    .distribution-item.VERY_GOOD { 
+      border-top-color: #00C896;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
+    }
+    .distribution-item.GOOD { 
+      border-top-color: #00A8FF;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    }
+    .distribution-item.NEW { 
+      border-top-color: #9D4EDD;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
+    }
+    .distribution-item.FAIR { 
+      border-top-color: #FFD166;
+      background: linear-gradient(135deg, #ffffff 0%, #fffcf0 100%);
+    }
+    .distribution-item.POOR { 
+      border-top-color: #FF9E6D;
+      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+    }
+    .distribution-item.CRITICAL { 
+      border-top-color: #FF5252;
+      background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+    }
+    .distribution-item.UNKNOWN { 
+      border-top-color: #6D6A75;
+      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    }
+
+    .distribution-item.WTNK { 
+      border-top-color: #36A2EB;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    }
+    .distribution-item.WWPS { 
+      border-top-color: #FF6384;
+      background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+    }
+    .distribution-item.WWTP { 
+      border-top-color: #FFCE56;
+      background: linear-gradient(135deg, #ffffff 0%, #fffcf0 100%);
+    }
+    .distribution-item.WFLS { 
+      border-top-color: #4BC0C0;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fffd 100%);
+    }
+    .distribution-item.WPUS { 
+      border-top-color: #9966FF;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
+    }
+    .distribution-item.WTRP { 
+      border-top-color: #FF9F40;
+      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+    }
+    .distribution-item.WABS { 
+      border-top-color: #00B894;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
+    }
+
+    .distribution-icon {
+      width: 32px; /* Reduced from 36px */
+      height: 32px; /* Reduced from 36px */
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: white;
-      padding: 12px 15px;
-      border-radius: var(--border-radius-md);
-      border-left: 4px solid;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: all var(--transition-fast);
-      min-height: 60px;
+      justify-content: center;
+      font-size: 13px; /* Reduced from 14px */
+      flex-shrink: 0;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1); /* Reduced shadow */
     }
 
-    .site-type-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    .distribution-item.EXCELLENT .distribution-icon { 
+      background: linear-gradient(135deg, #00FF9D 0%, #00C896 100%); 
+      color: white; 
+    }
+    .distribution-item.VERY_GOOD .distribution-icon { 
+      background: linear-gradient(135deg, #00C896 0%, #00a085 100%); 
+      color: white; 
+    }
+    .distribution-item.GOOD .distribution-icon { 
+      background: linear-gradient(135deg, #00A8FF 0%, #0088FF 100%); 
+      color: white; 
+    }
+    .distribution-item.NEW .distribution-icon { 
+      background: linear-gradient(135deg, #9D4EDD 0%, #7B2CBF 100%); 
+      color: white; 
+    }
+    .distribution-item.FAIR .distribution-icon { 
+      background: linear-gradient(135deg, #FFD166 0%, #FFB347 100%); 
+      color: #2c3e50; 
+    }
+    .distribution-item.POOR .distribution-icon { 
+      background: linear-gradient(135deg, #FF9E6D 0%, #FF7A45 100%); 
+      color: white; 
+    }
+    .distribution-item.CRITICAL .distribution-icon { 
+      background: linear-gradient(135deg, #FF5252 0%, #FF2B2B 100%); 
+      color: white; 
+    }
+    .distribution-item.UNKNOWN .distribution-icon { 
+      background: linear-gradient(135deg, #6D6A75 0%, #4a4a4a 100%); 
+      color: white; 
+    }
+
+    .distribution-item.WTNK .distribution-icon { 
+      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%); 
+      color: white; 
+    }
+    .distribution-item.WWPS .distribution-icon { 
+      background: linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%); 
+      color: white; 
+    }
+    .distribution-item.WWTP .distribution-icon { 
+      background: linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%); 
+      color: #2c3e50; 
+    }
+    .distribution-item.WFLS .distribution-icon { 
+      background: linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%); 
+      color: white; 
+    }
+    .distribution-item.WPUS .distribution-icon { 
+      background: linear-gradient(135deg, #9966FF 0%, #b894ff 100%); 
+      color: white; 
+    }
+    .distribution-item.WTRP .distribution-icon { 
+      background: linear-gradient(135deg, #FF9F40 0%, #ffb870 100%); 
+      color: white; 
+    }
+    .distribution-item.WABS .distribution-icon { 
+      background: linear-gradient(135deg, #00B894 0%, #00d2a0 100%); 
+      color: white; 
+    }
+
+    .distribution-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px; /* Reduced from 4px */
+      flex: 1;
+      width: 100%;
+    }
+
+    .distribution-name {
+      font-weight: 600;
+      color: var(--dark-gray);
+      font-size: 0.75em; /* Reduced from 0.85em */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .distribution-count {
+      font-size: 1.1em; /* Reduced from 1.3em */
+      font-weight: 800;
+      color: var(--dark-gray);
+      line-height: 1;
+    }
+
+    .distribution-subtext {
+      font-size: 0.7em; /* Reduced from 0.75em */
+      color: var(--neutral-gray);
+      opacity: 0.8;
     }
 
     /* Equipment Toggle Button - Position Adjusted */
@@ -947,8 +1119,9 @@
       min-width: 160px;
     }
 
-    /* Custom Cluster Markers - SITE TYPE BASED */
+    /* Custom Cluster Markers - UPDATED: REMOVED ASSET COUNT, ONLY SHOW SITE TYPE */
     .custom-cluster {
+      background: linear-gradient(135deg, #FFD166 0%, #FF9E6D 100%);
       border: 2px solid white;
       border-radius: 50%;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.3);
@@ -962,6 +1135,10 @@
       position: relative;
       overflow: hidden;
       font-size: 10px;
+      line-height: 1.1;
+      padding: 2px;
+      text-align: center;
+      letter-spacing: -0.5px;
     }
 
     .custom-cluster::before {
@@ -978,6 +1155,107 @@
     .custom-cluster:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .cluster-excellent {
+      background: linear-gradient(135deg, #00FF9D 0%, #00C896 100%);
+    }
+
+    .cluster-good {
+      background: linear-gradient(135deg, #00A8FF 0%, #0088FF 100%);
+    }
+
+    .cluster-fair {
+      background: linear-gradient(135deg, #FFD166 0%, #FFB347 100%);
+    }
+
+    .cluster-poor {
+      background: linear-gradient(135deg, #FF9E6D 0%, #FF7A45 100%);
+    }
+
+    .cluster-critical {
+      background: linear-gradient(135deg, #FF5252 0%, #FF2B2B 100%);
+      animation: pulse 1.5s infinite;
+    }
+
+    .cluster-new {
+      background: linear-gradient(135deg, #9D4EDD 0%, #7B2CBF 100%);
+    }
+
+    .cluster-mixed {
+      background: linear-gradient(135deg, #FF9E6D 0%, #00A8FF 50%, #FF5252 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 3s infinite alternate;
+    }
+
+    /* Individual Marker Styles - UPDATED: ONLY SHOW SITE TYPE ABBREVIATION */
+    .site-type-marker {
+      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%);
+      border: 2px solid white;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      color: white;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: -0.3px;
+    }
+
+    .site-type-marker::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    }
+
+    .site-type-marker:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      z-index: 1000;
+    }
+
+    .site-type-marker.wtnk {
+      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%);
+    }
+    .site-type-marker.wwps {
+      background: linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%);
+    }
+    .site-type-marker.wwtp {
+      background: linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%);
+    }
+    .site-type-marker.wfls {
+      background: linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%);
+    }
+    .site-type-marker.wpus {
+      background: linear-gradient(135deg, #9966FF 0%, #b894ff 100%);
+    }
+    .site-type-marker.wtrp {
+      background: linear-gradient(135deg, #FF9F40 0%, #ffb870 100%);
+    }
+    .site-type-marker.wabs {
+      background: linear-gradient(135deg, #00B894 0%, #00d2a0 100%);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     /* Scrollbar styling */
@@ -1014,11 +1292,10 @@
         width: 320px;
       }
       .equipment-panel {
-        width: 450px;
-        height: 650px;
+        width: 400px; /* Adjusted */
       }
       .equipment-panel:not(.hidden) ~ .equipment-toggle {
-        right: calc(450px + 30px);
+        right: calc(400px + 30px);
       }
       .site-name-display {
         max-width: 400px;
@@ -1037,16 +1314,22 @@
         padding: 6px 12px;
         font-size: 0.8em;
       }
-      .site-type-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .distribution-grid {
+        grid-template-columns: repeat(3, 1fr); /* Adjust columns */
       }
       .chart-container-wrapper {
         width: 300px;
         height: 300px;
       }
       #equipmentChart {
-        width: 270px !important;
-        height: 270px !important;
+        width: 276px !important;
+        height: 276px !important;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .distribution-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -1115,14 +1398,14 @@
       .chart-container-wrapper {
         width: 280px;
         height: 280px;
-        padding: 15px;
+        padding: 12px;
       }
       #equipmentChart {
-        width: 250px !important;
-        height: 250px !important;
+        width: 256px !important;
+        height: 256px !important;
       }
-      .site-type-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .distribution-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
       .quick-actions {
         grid-template-columns: 1fr;
@@ -1140,9 +1423,15 @@
       }
     }
 
+    @media (max-width: 576px) {
+      .distribution-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 480px) {
-      .site-type-grid {
-        grid-template-columns: 1fr;
+      .distribution-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       .equipment-panel {
         width: calc(100% - 20px);
@@ -1160,11 +1449,34 @@
         height: 260px;
       }
       #equipmentChart {
-        width: 230px !important;
-        height: 230px !important;
+        width: 236px !important;
+        height: 236px !important;
       }
       .stats-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+      .distribution-item {
+        min-height: 75px;
+        padding: 8px 4px;
+      }
+      .distribution-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .distribution-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .chart-container-wrapper {
+        width: 240px;
+        height: 240px;
+      }
+      #equipmentChart {
+        width: 216px !important;
+        height: 216px !important;
       }
     }
   </style>
@@ -1179,7 +1491,7 @@
   <!-- Left Control Panel -->
   <div class="control-panel" id="controlPanel">
     <div class="panel-header">
-      <h2><i class="fas fa-water"></i> Dashboard</h2>
+      <h2><i class="fas fa-water"></i> Facilities Site</h2>
       <button class="close-panel" onclick="toggleDashboard()">×</button>
     </div>
 
@@ -1226,6 +1538,15 @@
           <label for="conditionFilter"><i class="fas fa-tachometer-alt"></i> Condition</label>
           <select id="conditionFilter" onchange="applyFilters()">
             <option value="all">All Conditions</option>
+          </select>
+        </div>
+
+        <!-- NEW: Chart Type Filter -->
+        <div class="filter-group">
+          <label for="chartTypeFilter"><i class="fas fa-chart-pie"></i> Chart Type</label>
+          <select id="chartTypeFilter" onchange="changeChartType()">
+            <option value="siteType">Site Type Distribution</option>
+            <option value="condition">Condition Distribution</option>
           </select>
         </div>
 
@@ -1279,34 +1600,34 @@
     <!-- City/Site Info -->
     <div class="site-name-highlight" id="citySiteName">All Cities</div>
     
-    <!-- Stats Summary - REVERSED ORDER -->
+    <!-- Stats Summary -->
     <div class="stats-summary" id="cityStatsSummary">
-      <div class="summary-card total-sites">
+      <div class="summary-card total-equipment">
+        <h4><i class="fas fa-building"></i> <span id="distributionTypeLabel">Site Types</span></h4>
+        <div class="summary-value" id="distributionTypesCount">0</div>
+        <div class="summary-label" id="distributionTypeSubLabel">Total Site Types</div>
+      </div>
+      
+      <div class="summary-card critical-equipment">
         <h4><i class="fas fa-map-marker-alt"></i> Total Sites</h4>
         <div class="summary-value" id="totalSitesCount">0</div>
         <div class="summary-label">All Locations</div>
       </div>
-      
-      <div class="summary-card site-types">
-        <h4><i class="fas fa-building"></i> Site Types</h4>
-        <div class="summary-value" id="siteTypesCount">0</div>
-        <div class="summary-label">Total Site Types</div>
-      </div>
     </div>
     
-    <!-- VISUALLY APPEALING Doughnut Chart Section - BIGGER WITHOUT LEGEND -->
+    <!-- VISUALLY APPEALING Doughnut Chart Section - OPTIMIZED SIZE -->
     <div class="chart-section">
-      <h4><i class="fas fa-chart-pie"></i> <span id="chartTitle">Site Type Distribution</span></h4>
+      <h4><i class="fas fa-chart-pie" id="chartIcon"></i> <span id="chartTitle">Site Type Distribution</span></h4>
       <div class="chart-container-wrapper">
         <canvas id="equipmentChart"></canvas>
       </div>
     </div>
     
-    <!-- Site Type Distribution Container (at bottom) -->
-    <div class="critical-equipment-container">
-      <h4><i class="fas fa-layer-group"></i> Site Types in <span id="currentCityName">All Cities</span></h4>
-      <div class="site-type-grid" id="siteTypeGrid">
-        <!-- Dynamic site type items will be added here -->
+    <!-- Distribution Container (at bottom) - Now handles both Site Types and Conditions -->
+    <div class="distribution-container">
+      <h4><i class="fas fa-layer-group" id="distributionIcon"></i> <span id="distributionTitle">Site Types</span> in <span id="currentCityName">All Cities</span></h4>
+      <div class="distribution-grid" id="distributionGrid">
+        <!-- Dynamic distribution items will be added here -->
       </div>
     </div>
   </div>
@@ -1379,18 +1700,20 @@
   let currentMapLayer = 'street';
   let mapLayers = {};
   let siteTypeColorMap = {};
+  let conditionColorMap = {};
+  let currentChartType = 'siteType'; // 'siteType' or 'condition'
   
-  // Site Type abbreviations and symbols
-  const siteTypeSymbols = {
-    'Treatment Plant': 'TP',
-    'Distribution Center': 'DC',
-    'Storage Facility': 'SF',
-    'Pumping Station': 'PS',
-    'Water Tower': 'WT',
-    'Reservoir': 'RS',
-    'Wastewater Plant': 'WW',
-    'Desalination Plant': 'DP',
-    'Other': 'OT'
+  // City coordinates mapping (from your requirements)
+  const cityCoordinates = {
+    'AL AIS': { lat: 25.06798, lng: 38.12393 },
+    'AL HENAKIYAH': { lat: 24.91679, lng: 40.52268 },
+    'AL MADINA': { lat: 24.46948, lng: 39.61090 },
+    'AL MAHD': { lat: 23.49765, lng: 40.87637 },
+    'AL ULA': { lat: 26.58120, lng: 37.95454 },
+    'BADR': { lat: 23.79030, lng: 38.78112 },
+    'KHAYBAR': { lat: 25.68919, lng: 39.29349 },
+    'WADI AL FARA': { lat: 23.80260, lng: 39.65130 },
+    'YANBU': { lat: 24.09544, lng: 38.20134 }
   };
   
   // Enhanced color scheme for professional appearance
@@ -1405,12 +1728,34 @@
     'UNKNOWN': '#6D6A75'         // Slate Gray
   };
   
-  // Site Type colors for pie chart - UPDATED to match markers
+  // Site Type colors for pie chart - UPDATED to match legend items
   const siteTypeColors = [
     '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', 
     '#9966FF', '#FF9F40', '#C9CBCF', '#00B894',
     '#95A5A6', '#9D4EDD', '#00FF9D', '#00C896'
   ];
+
+  // Site Type abbreviation mapping
+  const siteTypeAbbreviations = {
+    'POTABLE WATER STORAGE TANKS (WTNK)': 'WTNK',
+    'WASTE WATER PUMPING STATION (WWPS)': 'WWPS',
+    'WASTE WATER TREATMENT PLANT (WWTP)': 'WWTP',
+    'WATER FILLING STATION (WFLS)': 'WFLS',
+    'WATER PUMPING STATION (WPUS)': 'WPUS',
+    'WATER TREATMENT PLANT (WTRP)': 'WTRP',
+    'WELL ABSTRACTION (WABS)': 'WABS'
+  };
+
+  // Site Type to CSS class mapping
+  const siteTypeToClass = {
+    'POTABLE WATER STORAGE TANKS (WTNK)': 'wtnk',
+    'WASTE WATER PUMPING STATION (WWPS)': 'wwps',
+    'WASTE WATER TREATMENT PLANT (WWTP)': 'wwtp',
+    'WATER FILLING STATION (WFLS)': 'wfls',
+    'WATER PUMPING STATION (WPUS)': 'wpus',
+    'WATER TREATMENT PLANT (WTRP)': 'wtrp',
+    'WELL ABSTRACTION (WABS)': 'wabs'
+  };
   
   // Initialize map
   function initMap() {
@@ -1439,7 +1784,7 @@
     // Add default layer
     mapLayers.street.addTo(map);
     
-    // Initialize marker cluster with custom styling - SITE TYPE BASED
+    // Initialize marker cluster with custom styling - UPDATED: ONLY SHOW SITE TYPE
     markerCluster = L.markerClusterGroup({
       maxClusterRadius: function(zoom) {
         if (zoom >= 15) return 8;
@@ -1453,48 +1798,70 @@
       iconCreateFunction: function(cluster) {
         const count = cluster.getChildCount();
         
-        // Get the most common site type in this cluster
-        const siteTypeCounts = {};
-        let mostCommonSiteType = 'Other';
+        // Analyze cluster site types
+        const siteTypes = {};
+        let dominantSiteType = '';
         let maxCount = 0;
         
         cluster.getAllChildMarkers().forEach(marker => {
           if (marker.options.asset) {
-            const siteType = marker.options.asset.siteTypeL2 || 'Other';
-            siteTypeCounts[siteType] = (siteTypeCounts[siteType] || 0) + 1;
-            if (siteTypeCounts[siteType] > maxCount) {
-              maxCount = siteTypeCounts[siteType];
-              mostCommonSiteType = siteType;
+            const siteType = marker.options.asset.siteTypeL2;
+            const abbrev = getSiteTypeAbbreviation(siteType);
+            
+            if (!siteTypes[abbrev]) {
+              siteTypes[abbrev] = 0;
+            }
+            siteTypes[abbrev]++;
+            
+            if (siteTypes[abbrev] > maxCount) {
+              maxCount = siteTypes[abbrev];
+              dominantSiteType = abbrev;
             }
           }
         });
         
-        // Get color for the most common site type
-        const siteTypeColor = getColorForSiteType(mostCommonSiteType);
+        // Determine cluster color based on dominant site type
+        let backgroundColor = 'linear-gradient(135deg, #FFD166 0%, #FF9E6D 100%)';
+        
+        if (dominantSiteType === 'WTNK') {
+          backgroundColor = 'linear-gradient(135deg, #36A2EB 0%, #5dade2 100%)';
+        } else if (dominantSiteType === 'WWPS') {
+          backgroundColor = 'linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%)';
+        } else if (dominantSiteType === 'WWTP') {
+          backgroundColor = 'linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%)';
+        } else if (dominantSiteType === 'WFLS') {
+          backgroundColor = 'linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%)';
+        } else if (dominantSiteType === 'WPUS') {
+          backgroundColor = 'linear-gradient(135deg, #9966FF 0%, #b894ff 100%)';
+        } else if (dominantSiteType === 'WTRP') {
+          backgroundColor = 'linear-gradient(135deg, #FF9F40 0%, #ffb870 100%)';
+        } else if (dominantSiteType === 'WABS') {
+          backgroundColor = 'linear-gradient(135deg, #00B894 0%, #00d2a0 100%)';
+        }
         
         // Calculate size based on count
         let size = 20;
-        let fontSize = 8;
+        let fontSize = 8; // Reduced from 10
         
         if (count < 10) {
-          size = 20;
-          fontSize = 8;
+          size = 24;
+          fontSize = 9; // Reduced from 11
         } else if (count < 50) {
-          size = 25;
-          fontSize = 10;
+          size = 28;
+          fontSize = 10; // Reduced from 12
         } else if (count < 100) {
-          size = 30;
-          fontSize = 12;
+          size = 32;
+          fontSize = 11; // Reduced from 13
         } else {
-          size = 35;
-          fontSize = 14;
+          size = 36;
+          fontSize = 12; // Reduced from 14
         }
         
-        // Get symbol for the site type
-        const symbol = siteTypeSymbols[mostCommonSiteType] || mostCommonSiteType.substring(0, 2).toUpperCase();
-        
+        // UPDATED: Show only site type abbreviation, no count
         return L.divIcon({
-          html: `<div class="custom-cluster" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${siteTypeColor};">${symbol}</div>`,
+          html: `<div class="custom-cluster" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}">
+                  <div>${dominantSiteType || 'MIX'}</div>
+                </div>`,
           className: 'custom-cluster-icon',
           iconSize: L.point(size, size),
           iconAnchor: L.point(size/2, size/2)
@@ -1515,16 +1882,49 @@
     updateScaleIndicator();
   }
   
+  // Get site type abbreviation
+  function getSiteTypeAbbreviation(siteType) {
+    if (!siteType) return 'UNKN';
+    
+    // Check if siteType matches known patterns
+    for (const [key, value] of Object.entries(siteTypeAbbreviations)) {
+      if (siteType.toUpperCase().includes(key.split(' (')[0]) || 
+          siteType.toUpperCase() === key) {
+        return value;
+      }
+    }
+    
+    // Try to extract abbreviation from parentheses
+    const match = siteType.match(/\(([A-Z]{4})\)/);
+    if (match) {
+      return match[1];
+    }
+    
+    // Try to extract first 4 uppercase letters
+    const uppercaseMatch = siteType.match(/([A-Z]{4})/);
+    if (uppercaseMatch) {
+      return uppercaseMatch[1];
+    }
+    
+    // Return first 4 characters
+    return siteType.substring(0, 4).toUpperCase();
+  }
+  
+  // Get site type CSS class
+  function getSiteTypeClass(siteType) {
+    const abbrev = getSiteTypeAbbreviation(siteType).toLowerCase();
+    return abbrev || 'unknown';
+  }
+  
   // Update scale indicator
   function updateScaleIndicator() {
     const center = map.getCenter();
     const zoom = map.getZoom();
     
     // Calculate approximate scale
-    const worldCircumference = 40075016.686; // meters at equator
+    const worldCircumference = 40075016.686;
     const metersPerPixel = worldCircumference * Math.cos(center.lat * Math.PI / 180) / (256 * Math.pow(2, zoom));
     
-    // Convert to scale (1:X)
     let scale;
     if (metersPerPixel < 1) {
       scale = Math.round(1 / metersPerPixel);
@@ -1532,31 +1932,48 @@
       scale = Math.round(metersPerPixel);
     }
     
-    // Format scale with commas
     const formattedScale = scale.toLocaleString();
     document.getElementById('currentScale').textContent = formattedScale;
   }
   
+  // Calculate zoom level for a specific scale (1:35)
+  function getZoomForScale(targetScale) {
+    // Calculate the zoom level needed to achieve 1:35 scale
+    // This is an approximation based on standard tile sizes
+    // At zoom level 0, 1 pixel = 156543.03392 meters at equator
+    // Each zoom level halves this value
+    
+    const metersPerPixelAtZoom0 = 156543.03392;
+    const targetMetersPerPixel = targetScale; // For 1:35 scale
+    
+    // Calculate zoom level: log2(metersPerPixelAtZoom0 / targetMetersPerPixel)
+    const zoom = Math.log2(metersPerPixelAtZoom0 / targetMetersPerPixel);
+    
+    return Math.max(0, Math.min(19, Math.round(zoom))); // Clamp between 0 and 19
+  }
+  
+  // Change chart type
+  function changeChartType() {
+    currentChartType = document.getElementById('chartTypeFilter').value;
+    updateCityPanel();
+  }
+  
   // Change map layer
   function changeMapLayer(layerType) {
-    // Remove current layer
     if (mapLayers[currentMapLayer]) {
       map.removeLayer(mapLayers[currentMapLayer]);
     }
     
-    // Add new layer
     if (mapLayers[layerType]) {
       mapLayers[layerType].addTo(map);
       currentMapLayer = layerType;
     }
     
-    // Update active button
     document.querySelectorAll('.layer-option').forEach(btn => {
       btn.classList.remove('active');
     });
     document.querySelector(`.layer-option[onclick*="${layerType}"]`).classList.add('active');
     
-    // Show notification
     showNotification(`Switched to ${layerType.charAt(0).toUpperCase() + layerType.slice(1)} view`, 'info');
   }
   
@@ -1571,7 +1988,6 @@
     
     if (selectedSite === 'all' && selectedCity === 'all') {
       siteNameContainer.classList.remove('visible');
-      // Hide after transition
       setTimeout(() => {
         siteNameContainer.style.display = 'none';
       }, 300);
@@ -1622,7 +2038,6 @@
       return;
     }
     
-    // Calculate health score based on conditions
     let score = 0;
     let totalWeight = 0;
     
@@ -1639,7 +2054,6 @@
         default: weight = 50;
       }
       
-      // Additional weight for working status
       if (asset.working === 'YES') weight += 10;
       if (asset.inUse === 'YES') weight += 5;
       
@@ -1653,7 +2067,6 @@
     document.getElementById('healthFill').style.width = `${clampedScore}%`;
     document.getElementById('healthScore').textContent = `${clampedScore}%`;
     
-    // Update health score color
     const healthScoreElement = document.getElementById('healthScore');
     if (clampedScore >= 80) {
       healthScoreElement.style.color = 'var(--success-green)';
@@ -1697,13 +2110,12 @@
     updateEquipmentTogglePosition();
   }
   
-  // Update equipment toggle (floating button) position to sit to the right of panel
+  // Update equipment toggle position
   function updateEquipmentTogglePosition() {
     const panel = document.getElementById('equipmentPanel');
     const toggleBtn = document.getElementById('equipmentToggle');
     if (!panel || !toggleBtn) return;
 
-    // If panel is hidden, keep toggle at default margin
     if (panel.classList.contains('hidden')) {
       toggleBtn.style.right = '20px';
       toggleBtn.style.top = '50%';
@@ -1712,14 +2124,13 @@
     }
 
     const rect = panel.getBoundingClientRect();
-    const gap = 20; // spacing between panel and toggle
+    const gap = 20;
     toggleBtn.style.right = (window.innerWidth - rect.right + gap) + 'px';
-    // ensure vertical center
     toggleBtn.style.top = '50%';
     toggleBtn.style.transform = 'translateY(-50%)';
   }
 
-  // Observe panel resize so button updates automatically
+  // Observe panel resize
   (function initEquipmentResizeObserver() {
     const panel = document.getElementById('equipmentPanel');
     if (!panel || typeof ResizeObserver === 'undefined') return;
@@ -1727,7 +2138,6 @@
       updateEquipmentTogglePosition();
     });
     ro.observe(panel);
-    // Also adjust on window resize
     window.addEventListener('resize', updateEquipmentTogglePosition);
   })();
   
@@ -1737,7 +2147,6 @@
     const cityNameElement = document.getElementById('citySiteName');
     const currentCityNameElement = document.getElementById('currentCityName');
     
-    // Update panel title based on whether city is selected
     if (selectedCity === 'all') {
       document.getElementById('panelTitle').textContent = 'City Overview';
       document.getElementById('panelIcon').className = 'fas fa-city';
@@ -1753,122 +2162,192 @@
       currentCityNameElement.textContent = cleanCityName;
     }
     
-    // Get assets for the selected city
     let cityAssets = selectedCity === 'all' ? allAssets : allAssets.filter(a => a.city === selectedCity);
     
-    // Calculate site type statistics
-    let siteTypeStats = {};
-    let totalSites = new Set();
-    let uniqueSiteTypes = new Set();
-    
-    cityAssets.forEach(asset => {
-      const siteType = asset.siteTypeL2 || 'Other';
-      if (!siteTypeStats[siteType]) {
-        siteTypeStats[siteType] = {
-          count: 0,
-          uniqueSites: new Set()
-        };
-      }
-      siteTypeStats[siteType].count++;
-      siteTypeStats[siteType].uniqueSites.add(asset.siteNameL3);
-      totalSites.add(asset.siteNameL3);
-      uniqueSiteTypes.add(siteType);
-    });
-    
-    // Update stats summary - REVERSED ORDER
-    document.getElementById('totalSitesCount').textContent = totalSites.size;
-    document.getElementById('siteTypesCount').textContent = uniqueSiteTypes.size;
-    
-    // Update site type list
-    updateSiteTypeList(siteTypeStats);
-    
-    // Update chart with site type distribution
-    updateSiteTypeChart(siteTypeStats);
+    if (currentChartType === 'siteType') {
+      updateSiteTypeDistribution(cityAssets);
+    } else {
+      updateConditionDistribution(cityAssets);
+    }
   }
   
-  // Get color for site type - ensures consistency between chart and markers
+  // Update site type distribution
+  function updateSiteTypeDistribution(assets) {
+    let siteTypeStats = {};
+    let totalSites = 0;
+    let uniqueSites = new Set();
+    
+    assets.forEach(asset => {
+      if (asset.siteTypeL2) {
+        const siteTypeKey = asset.siteTypeL2;
+        if (!siteTypeStats[siteTypeKey]) {
+          siteTypeStats[siteTypeKey] = {
+            count: 0,
+            uniqueSites: new Set(),
+            abbreviation: getSiteTypeAbbreviation(asset.siteTypeL2)
+          };
+        }
+        siteTypeStats[siteTypeKey].count++;
+        siteTypeStats[siteTypeKey].uniqueSites.add(asset.siteNameL3);
+        uniqueSites.add(asset.siteNameL3);
+        totalSites++;
+      }
+    });
+    
+    const uniqueSiteTypes = Object.keys(siteTypeStats).length;
+    
+    document.getElementById('distributionTypeLabel').textContent = 'Site Types';
+    document.getElementById('distributionTypesCount').textContent = uniqueSiteTypes;
+    document.getElementById('distributionTypeSubLabel').textContent = 'Total Site Types';
+    document.getElementById('chartTitle').textContent = 'Site Type Distribution';
+    document.getElementById('chartIcon').className = 'fas fa-chart-pie';
+    document.getElementById('distributionTitle').textContent = 'Site Types';
+    document.getElementById('distributionIcon').className = 'fas fa-layer-group';
+    
+    updateDistributionList(siteTypeStats, 'siteType');
+    updateDistributionChart(siteTypeStats, 'siteType');
+    
+    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+  }
+  
+  // Update condition distribution
+  function updateConditionDistribution(assets) {
+    let conditionStats = {};
+    let totalSites = 0;
+    let uniqueSites = new Set();
+    
+    assets.forEach(asset => {
+      const conditionKey = asset.condition || 'UNKNOWN';
+      if (!conditionStats[conditionKey]) {
+        conditionStats[conditionKey] = {
+          count: 0,
+          uniqueSites: new Set(),
+          abbreviation: conditionKey
+        };
+      }
+      conditionStats[conditionKey].count++;
+      conditionStats[conditionKey].uniqueSites.add(asset.siteNameL3);
+      uniqueSites.add(asset.siteNameL3);
+      totalSites++;
+    });
+    
+    const uniqueConditions = Object.keys(conditionStats).length;
+    
+    document.getElementById('distributionTypeLabel').textContent = 'Conditions';
+    document.getElementById('distributionTypesCount').textContent = uniqueConditions;
+    document.getElementById('distributionTypeSubLabel').textContent = 'Different Conditions';
+    document.getElementById('chartTitle').textContent = 'Condition Distribution';
+    document.getElementById('chartIcon').className = 'fas fa-tachometer-alt';
+    document.getElementById('distributionTitle').textContent = 'Conditions';
+    document.getElementById('distributionIcon').className = 'fas fa-heartbeat';
+    
+    updateDistributionList(conditionStats, 'condition');
+    updateDistributionChart(conditionStats, 'condition');
+    
+    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+  }
+  
+  // Get color for site type
   function getColorForSiteType(siteType) {
-    // If we already assigned a color for this site type, return it
     if (siteTypeColorMap[siteType]) {
       return siteTypeColorMap[siteType];
     }
     
-    // Otherwise assign a new color from the palette
-    const colorIndex = Object.keys(siteTypeColorMap).length % siteTypeColors.length;
-    const color = siteTypeColors[colorIndex];
-    siteTypeColorMap[siteType] = color;
+    // Assign colors based on site type abbreviation
+    const abbrev = getSiteTypeAbbreviation(siteType);
+    let color;
     
+    switch(abbrev) {
+      case 'WTNK': color = '#36A2EB'; break;
+      case 'WWPS': color = '#FF6384'; break;
+      case 'WWTP': color = '#FFCE56'; break;
+      case 'WFLS': color = '#4BC0C0'; break;
+      case 'WPUS': color = '#9966FF'; break;
+      case 'WTRP': color = '#FF9F40'; break;
+      case 'WABS': color = '#00B894'; break;
+      default:
+        const colorIndex = Object.keys(siteTypeColorMap).length % siteTypeColors.length;
+        color = siteTypeColors[colorIndex];
+    }
+    
+    siteTypeColorMap[siteType] = color;
     return color;
   }
   
-  // Update site type list
-  function updateSiteTypeList(stats) {
-    const gridContainer = document.getElementById('siteTypeGrid');
+  // Get color for condition
+  function getColorForCondition(condition) {
+    if (conditionColorMap[condition]) {
+      return conditionColorMap[condition];
+    }
+    
+    // Assign colors based on condition
+    let color = conditionColors[condition] || '#6D6A75';
+    conditionColorMap[condition] = color;
+    return color;
+  }
+  
+  // Update distribution list
+  function updateDistributionList(stats, type) {
+    const gridContainer = document.getElementById('distributionGrid');
     gridContainer.innerHTML = '';
     
-    // Sort site types by count (descending)
-    const sortedSiteTypes = Object.keys(stats).sort((a, b) => stats[b].count - stats[a].count);
+    const sortedItems = Object.keys(stats).sort((a, b) => stats[b].count - stats[a].count);
     
-    sortedSiteTypes.forEach(siteType => {
-      const count = stats[siteType].count;
-      const uniqueSites = stats[siteType].uniqueSites.size;
-      const color = getColorForSiteType(siteType);
-      const symbol = siteTypeSymbols[siteType] || siteType.substring(0, 2).toUpperCase();
+    sortedItems.forEach(item => {
+      const count = stats[item].count;
+      const uniqueSites = stats[item].uniqueSites.size;
+      const abbreviation = stats[item].abbreviation || item;
+      const color = type === 'siteType' ? getColorForSiteType(item) : getColorForCondition(item);
       
-      const item = document.createElement('div');
-      item.className = 'site-type-item';
-      item.style.borderLeftColor = color;
-      item.innerHTML = `
-        <div class="equipment-icon" style="background: ${color}; color: white;">
-          ${symbol}
+      const itemDiv = document.createElement('div');
+      itemDiv.className = `distribution-item ${type === 'siteType' ? getSiteTypeAbbreviation(item) : item.replace(' ', '_')}`;
+      itemDiv.innerHTML = `
+        <div class="distribution-icon">
+          <i class="fas fa-${type === 'siteType' ? 'building' : 'tachometer-alt'}"></i>
         </div>
-        <div class="equipment-info">
-          <div class="equipment-name">${siteType.length > 20 ? siteType.substring(0, 20) + '...' : siteType}</div>
-          <div class="equipment-count">${count}</div>
-          <div class="equipment-subtext">${uniqueSites} sites</div>
+        <div class="distribution-info">
+          <div class="distribution-name">${abbreviation}</div>
+          <div class="distribution-count">${count}</div>
+          <div class="distribution-subtext">${uniqueSites} sites</div>
         </div>
       `;
-      gridContainer.appendChild(item);
+      gridContainer.appendChild(itemDiv);
     });
   }
   
-  // Update site type chart - WITHOUT LEGEND
-  function updateSiteTypeChart(stats) {
+  // Update distribution chart
+  function updateDistributionChart(stats, type) {
     const ctx = document.getElementById('equipmentChart');
     
-    // Destroy existing chart
     if (equipmentChart) {
       equipmentChart.destroy();
     }
     
-    // Prepare data for chart
-    const siteTypes = Object.keys(stats);
+    const items = Object.keys(stats);
     const labels = [];
     const data = [];
     const colors = [];
     const hoverColors = [];
     const borderColors = [];
     
-    // Sort by count (descending) and take top 8
-    const sortedSiteTypes = siteTypes.sort((a, b) => stats[b].count - stats[a].count).slice(0, 8);
+    const sortedItems = items.sort((a, b) => stats[b].count - stats[a].count).slice(0, 8);
     
-    sortedSiteTypes.forEach(siteType => {
-      const count = stats[siteType].count;
-      labels.push(siteType);
+    sortedItems.forEach(item => {
+      const count = stats[item].count;
+      const abbreviation = stats[item].abbreviation || item;
+      labels.push(abbreviation);
       data.push(count);
-      const color = getColorForSiteType(siteType);
+      const color = type === 'siteType' ? getColorForSiteType(item) : getColorForCondition(item);
       colors.push(color);
       hoverColors.push(lightenColor(color, 20));
       borderColors.push('#ffffff');
     });
     
-    // If no data, show empty state
     if (data.length === 0 || data.reduce((a, b) => a + b, 0) === 0) {
       createEmptyChart(ctx);
       return;
     }
     
-    // Create stunning doughnut chart WITHOUT LEGEND
     equipmentChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
@@ -1893,7 +2372,7 @@
         circumference: 360,
         plugins: {
           legend: {
-            display: false // LEGEND REMOVED
+            display: false
           },
           tooltip: {
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -1910,7 +2389,7 @@
                 const value = context.raw || 0;
                 const total = context.dataset.data.reduce((a, b) => a + b, 0);
                 const percentage = Math.round((value / total) * 100);
-                return `${label}: ${value} (${percentage}%)`;
+                return `${label}: ${value} assets (${percentage}%)`;
               }
             }
           },
@@ -1969,7 +2448,7 @@
       (finalB.toString(16).padStart(2, '0'));
   }
   
-  // Create visually appealing empty chart
+  // Create empty chart
   function createEmptyChart(ctx) {
     if (equipmentChart) {
       equipmentChart.destroy();
@@ -2010,7 +2489,6 @@
       }
     });
     
-    // Add custom plugin for centered text
     const centerTextPlugin = {
       id: 'centerText',
       afterDraw(chart) {
@@ -2020,12 +2498,10 @@
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
-        // Main text
         ctx.fillStyle = '#7f8c8d';
         ctx.font = 'bold 16px "Segoe UI", "Inter", sans-serif';
         ctx.fillText('No Data', width / 2, height / 2 - 8);
         
-        // Subtext
         ctx.fillStyle = '#bdc3c7';
         ctx.font = '12px "Segoe UI", "Inter", sans-serif';
         ctx.fillText('Select a different city or filter', width / 2, height / 2 + 12);
@@ -2034,11 +2510,117 @@
       }
     };
     
-    // Register the plugin
     Chart.register(centerTextPlugin);
   }
   
-  // Load CSV data with SPECIFIC COLUMN NAMES
+  // Get asset icon - UPDATED: SMALLER FONT SIZE TO FIT IN CIRCLE
+  function getAssetIcon(asset) {
+    const siteType = asset.siteTypeL2 || 'Other';
+    const abbreviation = getSiteTypeAbbreviation(siteType);
+    const siteTypeClass = getSiteTypeClass(siteType);
+    const color = getColorForSiteType(siteType);
+    
+    // Determine marker size based on zoom level
+    let size = 28;
+    let fontSize = 9; // Reduced from 11
+    
+    if (currentZoom >= 15) {
+      size = 32;
+      fontSize = 10; // Reduced from 12
+    } else if (currentZoom <= 10) {
+      size = 24;
+      fontSize = 8; // Reduced from 10
+    }
+    
+    return L.divIcon({
+      html: `
+        <div class="site-type-marker ${siteTypeClass}" style="
+          width: ${size}px;
+          height: ${size}px;
+          font-size: ${fontSize}px;
+          background: ${color};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        ">
+          ${abbreviation}
+          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 6px; height: 6px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+        </div>
+      `,
+      className: 'site-type-marker-icon',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+  }
+  
+  // Get asset type icon
+  function getAssetTypeIcon(type) {
+    const typeLower = type.toLowerCase();
+    if (typeLower.includes('pump')) return 'tint';
+    if (typeLower.includes('valve')) return 'faucet';
+    if (typeLower.includes('filter')) return 'filter';
+    if (typeLower.includes('tank')) return 'water';
+    if (typeLower.includes('pipe')) return 'stream';
+    if (typeLower.includes('motor')) return 'cog';
+    if (typeLower.includes('generator')) return 'bolt';
+    if (typeLower.includes('flow')) return 'tachometer-alt';
+    return 'cog';
+  }
+  
+  // Get condition color
+  function getConditionColor(condition) {
+    return conditionColors[condition] || '#636e72';
+  }
+  
+  // Build popup content for asset
+  function buildAssetPopup(asset) {
+    const conditionColor = getConditionColor(asset.condition);
+    const siteTypeAbbrev = getSiteTypeAbbreviation(asset.siteTypeL2);
+    const siteTypeColor = getColorForSiteType(asset.siteTypeL2);
+    
+    return `
+      <div class="popup-header">
+        <h3>${asset.siteNameL3}</h3>
+        <div style="font-size: 0.85em; opacity: 0.9;">
+          <i class="fas fa-city"></i> ${asset.city} | 
+          <span style="background:${siteTypeColor};color:white;padding:2px 6px;border-radius:4px;font-weight:bold;">
+            ${siteTypeAbbrev}
+          </span>
+        </div>
+      </div>
+      <div class="popup-content">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${siteTypeColor}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
+            ${siteTypeAbbrev}
+          </div>
+          <div>
+            <h4 style="margin: 0; color: #343a40; font-size: 1em;">${asset.assetId}</h4>
+            <p style="margin: 4px 0 0; color: #6c757d; font-size: 0.8em;">${asset.siteTypeL2}</p>
+          </div>
+        </div>
+        
+        <div style="margin: 10px 0; font-size: 0.9em;">
+          <p><i class="fas fa-map-marker-alt"></i> <strong>Coordinates:</strong> ${asset.latitude.toFixed(6)}, ${asset.longitude.toFixed(6)}</p>
+          <p><i class="fas fa-building"></i> <strong>Building:</strong> ${asset.building}</p>
+          ${asset.equipmentType && asset.equipmentType !== 'Unknown' ? `<p><i class="fas fa-cogs"></i> <strong>Equipment Type:</strong> ${asset.equipmentType}</p>` : ''}
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 15px 0;">
+          <div style="padding: 8px; background: ${asset.working === 'YES' ? '#00b894' : '#e74c3c'}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
+            <strong><i class="fas fa-power-off"></i> Status</strong><br>
+            ${asset.working === 'YES' ? '<i class="fas fa-check"></i> Working' : '<i class="fas fa-times"></i> Not Working'}
+          </div>
+          <div style="padding: 8px; background: ${conditionColor}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
+            <strong><i class="fas fa-tachometer-alt"></i> Condition</strong><br>
+            ${asset.condition}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Load CSV data
   function loadCSVData() {
     Papa.parse('water_assets.csv', {
       download: true,
@@ -2054,7 +2636,7 @@
         
         console.log('CSV column names:', results.meta.fields);
         
-        // Find columns - LOOK FOR SPECIFIC COLUMN NAMES
+        // Find columns
         let siteNameColumn = null;
         let cityColumn = null;
         let siteTypeL2Column = null;
@@ -2063,50 +2645,35 @@
         let latitudeColumn = null;
         let longitudeColumn = null;
         
-        // Look for exact column names first (case-insensitive)
         for (let col of results.meta.fields) {
           const colLower = col.toLowerCase();
           
-          // CITY - exact match for "City" column
           if (colLower === 'city') {
             cityColumn = col;
-            console.log('Found City column (exact match):', cityColumn);
           }
           
-          // LATITUDE - exact match for "latitude" column
           if (colLower === 'latitude') {
             latitudeColumn = col;
-            console.log('Found Latitude column (exact match):', latitudeColumn);
           }
           
-          // LONGITUDE - exact match for "longitude" column
           if (colLower === 'longitude') {
             longitudeColumn = col;
-            console.log('Found Longitude column (exact match):', longitudeColumn);
           }
           
-          // Site Name L3
           if (colLower.includes('site') && colLower.includes('name') && colLower.includes('l3')) {
             siteNameColumn = col;
-            console.log('Found Site Name L3 column:', siteNameColumn);
           }
           
-          // Site Type L2
           if (colLower.includes('site') && colLower.includes('type') && colLower.includes('l2')) {
             siteTypeL2Column = col;
-            console.log('Found Site Type L2 column:', siteTypeL2Column);
           }
           
-          // Condition
           if (colLower.includes('condition')) {
             conditionColumn = col;
-            console.log('Found Condition column:', conditionColumn);
           }
           
-          // Equipment Type L6
           if (colLower.includes('equipment') && colLower.includes('type') && colLower.includes('l6')) {
             equipmentTypeColumn = col;
-            console.log('Found Equipment Type L6 column:', equipmentTypeColumn);
           }
         }
         
@@ -2115,7 +2682,6 @@
           for (let col of results.meta.fields) {
             if (col.toLowerCase().includes('site') || col.toLowerCase().includes('facility') || col.toLowerCase().includes('location')) {
               siteNameColumn = col;
-              console.log('Using alternative site column:', siteNameColumn);
               break;
             }
           }
@@ -2125,7 +2691,6 @@
           for (let col of results.meta.fields) {
             if (col.toLowerCase().includes('city') || col.toLowerCase().includes('location')) {
               cityColumn = col;
-              console.log('Using alternative city column:', cityColumn);
               break;
             }
           }
@@ -2135,18 +2700,15 @@
           for (let col of results.meta.fields) {
             if (col.toLowerCase().includes('type') && !col.toLowerCase().includes('equipment')) {
               siteTypeL2Column = col;
-              console.log('Using alternative site type column:', siteTypeL2Column);
               break;
             }
           }
         }
         
-        // Fallback for latitude/longitude if exact names not found
         if (!latitudeColumn) {
           for (let col of results.meta.fields) {
             if (col.toLowerCase().includes('lat') && !col.toLowerCase().includes('long')) {
               latitudeColumn = col;
-              console.log('Using alternative latitude column:', latitudeColumn);
               break;
             }
           }
@@ -2157,7 +2719,6 @@
             if (col.toLowerCase().includes('lon') || col.toLowerCase().includes('lng') || 
                 (col.toLowerCase().includes('long') && !col.toLowerCase().includes('lat'))) {
               longitudeColumn = col;
-              console.log('Using alternative longitude column:', longitudeColumn);
               break;
             }
           }
@@ -2207,7 +2768,6 @@
           let latitude = 0;
           let longitude = 0;
           
-          // Use the specific latitude/longitude columns found
           if (latitudeColumn && row[latitudeColumn]) {
             latitude = parseFloat(row[latitudeColumn]);
             if (isNaN(latitude)) latitude = 0;
@@ -2218,7 +2778,6 @@
             if (isNaN(longitude)) longitude = 0;
           }
           
-          // Additional fallbacks
           if (latitude === 0 && row['Latitude']) latitude = parseFloat(row['Latitude']);
           if (longitude === 0 && row['Longitude']) longitude = parseFloat(row['Longitude']);
           
@@ -2238,7 +2797,7 @@
             city: city,
             siteTypeL2: siteTypeL2,
             building: row['Building'] || row['building'] || 'N/A',
-            description: row['Description'] || row['description'] || 'Water Asset',
+            description: 'Water Asset',
             tagNumber: row['Tag_Number'] || row['Tag Number'] || row['tag_number'] || 'N/A',
             inUse: inUse === 'YES' ? 'YES' : 'NO',
             working: working === 'YES' ? 'YES' : 'NO',
@@ -2248,7 +2807,7 @@
             maxLife: row['Max_Life_Time'] || row['Max Life Time'] || 'N/A',
             latitude: latitude,
             longitude: longitude,
-            type: assetType,
+            type: 'Pump',
             equipmentType: equipmentType,
             lastMaintenance: row['Last_Maintenance'] || row['Last Maintenance'] || 'N/A',
             nextMaintenance: row['Next_Maintenance'] || row['Next Maintenance'] || 'N/A'
@@ -2277,16 +2836,12 @@
         
         displayAssets();
         
-        // Initialize the city panel
         updateCityPanel();
         
-        // Update health indicator
         updateHealthIndicator();
         
-        // Update site name display
         updateSiteNameDisplay();
         
-        // Open city panel by default
         setTimeout(() => {
           toggleEquipmentPanel();
         }, 1000);
@@ -2356,11 +2911,17 @@
   function createSampleData() {
     console.log('Creating sample data for testing...');
     
-    // Generate sample data with cities and site types
     allAssets = [];
     const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
-    const siteTypes = ['Treatment Plant', 'Distribution Center', 'Storage Facility', 'Pumping Station', 
-                      'Water Tower', 'Reservoir', 'Wastewater Plant', 'Desalination Plant'];
+    const siteTypes = [
+      'POTABLE WATER STORAGE TANKS (WTNK)',
+      'WASTE WATER PUMPING STATION (WWPS)', 
+      'WASTE WATER TREATMENT PLANT (WWTP)',
+      'WATER FILLING STATION (WFLS)',
+      'WATER PUMPING STATION (WPUS)',
+      'WATER TREATMENT PLANT (WTRP)',
+      'WELL ABSTRACTION (WABS)'
+    ];
     const sites = ['Main Water Plant', 'North Distribution Center', 'South Treatment Plant', 'East Storage Facility',
                   'West Pumping Station', 'Central Reservoir', 'Northwest Water Tower'];
     
@@ -2410,16 +2971,12 @@
     
     displayAssets();
     
-    // Initialize the city panel
     updateCityPanel();
     
-    // Update health indicator
     updateHealthIndicator();
     
-    // Update site name display
     updateSiteNameDisplay();
     
-    // Open city panel by default
     setTimeout(() => {
       toggleEquipmentPanel();
     }, 1000);
@@ -2552,17 +3109,15 @@
     document.getElementById('workingPercent').textContent = total > 0 ? Math.round((working / total) * 100) + '%' : '0%';
     document.getElementById('notWorkingPercent').textContent = total > 0 ? Math.round((notWorking / total) * 100) + '%' : '0%';
     
-    // Update health indicator
     updateHealthIndicator();
   }
   
-  // Update condition filter dropdown based on selected site/city
+  // Update condition filter dropdown
   function updateConditionFilter() {
     const filter = document.getElementById('conditionFilter');
     const selectedSite = document.getElementById('siteFilter').value;
     const selectedCity = document.getElementById('cityFilter').value;
     
-    // Get conditions for selected site/city or all
     let conditions = [];
     if (selectedSite !== 'all') {
       conditions = [...new Set(allAssets.filter(a => a.siteNameL3 === selectedSite).map(a => a.condition))].sort();
@@ -2600,7 +3155,6 @@
     const filter = document.getElementById('siteFilter');
     const selectedCity = document.getElementById('cityFilter').value;
     
-    // Get sites for selected city or all
     let sites = [];
     if (selectedCity !== 'all') {
       sites = [...new Set(allAssets.filter(a => a.city === selectedCity).map(a => a.siteNameL3))].sort();
@@ -2627,113 +3181,6 @@
     });
     
     console.log('Site filter updated with options:', sites.length, 'sites');
-  }
-  
-  // Get icon for asset based on site type - USING SYMBOLS NOT NUMBERS
-  function getAssetIcon(asset) {
-    const siteType = asset.siteTypeL2 || 'Other';
-    const color = getColorForSiteType(siteType);
-    const symbol = siteTypeSymbols[siteType] || siteType.substring(0, 2).toUpperCase();
-    
-    return L.divIcon({
-      html: `
-        <div style="
-          background: ${color};
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          border: 2px solid white;
-          box-shadow: 0 3px 8px rgba(0,0,0,0.2), 0 0 10px ${color}80;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-weight: bold;
-          font-size: 10px;
-          cursor: pointer;
-          transition: all 0.3s;
-          position: relative;
-          overflow: hidden;
-        ">
-          <div style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 70%);
-          "></div>
-          <span style="z-index: 1;">${symbol}</span>
-          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
-          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 8px; height: 8px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
-        </div>
-      `,
-      className: 'individual-marker',
-      iconSize: [24, 24],
-      iconAnchor: [12, 12]
-    });
-  }
-  
-  // Get asset type icon
-  function getAssetTypeIcon(type) {
-    const typeLower = type.toLowerCase();
-    if (typeLower.includes('pump')) return 'tint';
-    if (typeLower.includes('valve')) return 'faucet';
-    if (typeLower.includes('filter')) return 'filter';
-    if (typeLower.includes('tank')) return 'water';
-    if (typeLower.includes('pipe')) return 'stream';
-    if (typeLower.includes('motor')) return 'cog';
-    if (typeLower.includes('generator')) return 'bolt';
-    if (typeLower.includes('flow')) return 'tachometer-alt';
-    return 'cog';
-  }
-  
-  // Get condition color
-  function getConditionColor(condition) {
-    return conditionColors[condition] || '#636e72';
-  }
-  
-  // Build popup content for asset
-  function buildAssetPopup(asset) {
-    const conditionColor = getConditionColor(asset.condition);
-    const siteTypeColor = getColorForSiteType(asset.siteTypeL2 || 'Other');
-    
-    return `
-      <div class="popup-header">
-        <h3>${asset.siteNameL3}</h3>
-        <div style="font-size: 0.85em; opacity: 0.9;">
-          <i class="fas fa-city"></i> ${asset.city} | <i class="fas fa-layer-group"></i> ${asset.siteTypeL2}
-        </div>
-      </div>
-      <div class="popup-content">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,0.03); border-radius: 8px;">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${siteTypeColor}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
-            <i class="fas fa-${getAssetTypeIcon(asset.type)}"></i>
-          </div>
-          <div>
-            <h4 style="margin: 0; color: #343a40; font-size: 1em;">${asset.assetId}</h4>
-            <p style="margin: 4px 0 0; color: #6c757d; font-size: 0.8em;">${asset.type}</p>
-          </div>
-        </div>
-        
-        <div style="margin: 10px 0; font-size: 0.9em;">
-          <p><i class="fas fa-map-marker-alt"></i> <strong>Coordinates:</strong> ${asset.latitude.toFixed(6)}, ${asset.longitude.toFixed(6)}</p>
-          <p><i class="fas fa-building"></i> <strong>Building:</strong> ${asset.building}</p>
-          ${asset.equipmentType && asset.equipmentType !== 'Unknown' ? `<p><i class="fas fa-cogs"></i> <strong>Equipment Type:</strong> ${asset.equipmentType}</p>` : ''}
-        </div>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 15px 0;">
-          <div style="padding: 8px; background: ${asset.working === 'YES' ? '#00b894' : '#e74c3c'}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
-            <strong><i class="fas fa-power-off"></i> Status</strong><br>
-            ${asset.working === 'YES' ? '<i class="fas fa-check"></i> Working' : '<i class="fas fa-times"></i> Not Working'}
-          </div>
-          <div style="padding: 8px; background: ${conditionColor}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
-            <strong><i class="fas fa-tachometer-alt"></i> Condition</strong><br>
-            ${asset.condition}
-          </div>
-        </div>
-      </div>
-    `;
   }
   
   // Display assets based on current visualization mode
@@ -2778,7 +3225,6 @@
         break;
     }
     
-    // Update health indicator
     updateHealthIndicator();
   }
   
@@ -2800,7 +3246,7 @@
     map.addLayer(markerCluster);
   }
   
-  // Display individual markers (no clustering)
+  // Display individual markers
   function displayIndividualMarkers() {
     console.log(`Displaying ${filteredAssets.length} assets in individual marker mode`);
     
@@ -2820,7 +3266,6 @@
   function displaySingleMarkersPerLocation() {
     console.log(`Displaying ${filteredAssets.length} assets in single marker per location mode`);
     
-    // Group assets by location
     const locationGroups = {};
     filteredAssets.forEach(asset => {
       const locationKey = `${asset.latitude.toFixed(4)},${asset.longitude.toFixed(4)}`;
@@ -2830,7 +3275,6 @@
       locationGroups[locationKey].push(asset);
     });
     
-    // Create one marker per location
     Object.values(locationGroups).forEach(assets => {
       if (assets.length > 0) {
         const asset = assets[0];
@@ -2840,7 +3284,8 @@
         
         let popupContent = `<div class="popup-header"><h3>${assets.length} Assets at this Location</h3></div><div class="popup-content">`;
         assets.forEach(a => {
-          popupContent += `<p><strong>${a.assetId}</strong> - ${a.type} (${a.condition})</p>`;
+          const abbrev = getSiteTypeAbbreviation(a.siteTypeL2);
+          popupContent += `<p><strong>${a.assetId}</strong> - ${abbrev} (${a.condition})</p>`;
         });
         popupContent += '</div>';
         
@@ -2855,9 +3300,7 @@
   function displaySpiderfiedMarkers() {
     console.log(`Displaying ${filteredAssets.length} assets in spiderfied mode`);
     
-    // For spiderfied view, we'll use individual markers with slight offset
     filteredAssets.forEach((asset, index) => {
-      // Add small random offset to prevent exact overlap
       const offsetLat = asset.latitude + (Math.random() * 0.0005 - 0.00025);
       const offsetLng = asset.longitude + (Math.random() * 0.0005 - 0.00025);
       
@@ -2877,7 +3320,6 @@
     console.log(`Displaying ${filteredAssets.length} assets in heatmap mode`);
     
     const heatData = filteredAssets.map(asset => {
-      // Assign intensity based on condition
       let intensity = 0.5;
       if (asset.condition === 'CRITICAL') intensity = 1.0;
       else if (asset.condition === 'POOR') intensity = 0.8;
@@ -2932,13 +3374,10 @@
     console.log(`Filtered to ${filteredAssets.length} assets`);
     displayAssets();
     
-    // Update city panel
     updateCityPanel();
     
-    // Update site name display
     updateSiteNameDisplay();
     
-    // Update health indicator
     updateHealthIndicator();
     
     if (conditionFilter !== 'all' || siteFilter !== 'all' || cityFilter !== 'all') {
@@ -2946,7 +3385,7 @@
     }
   }
   
-  // Filter by city - UPDATED with fly animation
+  // Filter by city - MODIFIED TO USE FIXED COORDINATES AND SCALE
   function filterByCity() {
     const cityFilter = document.getElementById('cityFilter').value;
     const siteFilter = document.getElementById('siteFilter');
@@ -2954,7 +3393,6 @@
     if (cityFilter === 'all') {
       filteredAssets = [...allAssets];
       currentCity = null;
-      // Fly back to default view
       map.flyTo([24.50, 39.65], 12, {
         duration: 1.5,
         easeLinearity: 0.25
@@ -2963,41 +3401,55 @@
       filteredAssets = allAssets.filter(a => a.city === cityFilter);
       currentCity = cityFilter;
       
-      // Calculate average position for the city
-      if (filteredAssets.length > 0) {
+      // Check if we have predefined coordinates for this city
+      const cityName = cityFilter.toUpperCase();
+      if (cityCoordinates[cityName]) {
+        // Use predefined city center coordinates
+        const coords = cityCoordinates[cityName];
+        
+        // Calculate zoom level for 1:35 scale
+        const targetScale = 35; // 1:35 scale
+        const zoomLevel = getZoomForScale(targetScale);
+        
+        console.log(`Centering on ${cityName} at coordinates: ${coords.lat}, ${coords.lng} with zoom: ${zoomLevel} for scale 1:${targetScale}`);
+        
+        map.flyTo([coords.lat, coords.lng], zoomLevel, {
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      } else if (filteredAssets.length > 0) {
+        // Fallback: calculate average coordinates if no predefined coordinates
         const totalLat = filteredAssets.reduce((sum, asset) => sum + asset.latitude, 0);
         const totalLng = filteredAssets.reduce((sum, asset) => sum + asset.longitude, 0);
         const avgLat = totalLat / filteredAssets.length;
         const avgLng = totalLng / filteredAssets.length;
         
-        // Fly to city with smooth animation
-        map.flyTo([avgLat, avgLng], currentZoom > 12 ? currentZoom : 14, {
+        // Calculate zoom level for 1:35 scale
+        const targetScale = 35; // 1:35 scale
+        const zoomLevel = getZoomForScale(targetScale);
+        
+        map.flyTo([avgLat, avgLng], zoomLevel, {
           duration: 1.5,
           easeLinearity: 0.25
         });
       }
     }
     
-    // Update site filter to show only sites for this city
     updateSiteFilter();
     
-    // Reset site and condition filters to "all"
     siteFilter.value = 'all';
     document.getElementById('conditionFilter').value = 'all';
     
     displayAssets();
     
-    // Update city panel
     updateCityPanel();
     
-    // Update site name display
     updateSiteNameDisplay();
     
-    // Update health indicator
     updateHealthIndicator();
   }
   
-  // Filter by site - UPDATED with fly animation
+  // Filter by site
   function filterBySite() {
     const siteFilter = document.getElementById('siteFilter').value;
     const cityFilter = document.getElementById('cityFilter');
@@ -3009,14 +3461,12 @@
       filteredAssets = allAssets.filter(a => a.siteNameL3 === siteFilter);
       currentSite = siteFilter;
       
-      // Calculate average position for the site
       if (filteredAssets.length > 0) {
         const totalLat = filteredAssets.reduce((sum, asset) => sum + asset.latitude, 0);
         const totalLng = filteredAssets.reduce((sum, asset) => sum + asset.longitude, 0);
         const avgLat = totalLat / filteredAssets.length;
         const avgLng = totalLng / filteredAssets.length;
         
-        // Fly to site with smooth animation
         map.flyTo([avgLat, avgLng], currentZoom > 14 ? currentZoom : 16, {
           duration: 1.5,
           easeLinearity: 0.25
@@ -3024,25 +3474,20 @@
       }
     }
     
-    // Update condition filter to show only conditions for this site
     updateConditionFilter();
     
-    // Reset condition filter to "all"
     document.getElementById('conditionFilter').value = 'all';
     
     displayAssets();
     
-    // Update city panel
     updateCityPanel();
     
-    // Update site name display
     updateSiteNameDisplay();
     
-    // Update health indicator
     updateHealthIndicator();
   }
   
-  // Filter by status (click on stat cards)
+  // Filter by status
   function filterByStatus(status) {
     if (status === 'all') {
       filteredAssets = [...allAssets];
@@ -3058,20 +3503,16 @@
     currentSite = null;
     currentCity = null;
     
-    // Update condition filter for all
     updateConditionFilter();
     updateSiteFilter();
     updateCityFilter();
     
-    // Update site name display
     updateSiteNameDisplay();
     
-    // Update health indicator
     updateHealthIndicator();
     
     displayAssets();
     
-    // Update city panel
     updateCityPanel();
     
     if (status !== 'all') {
