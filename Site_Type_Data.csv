@@ -1,0 +1,1126 @@
+EY_PV_Serial_Number,Parent Facility,Grouped / Standalone,Site Type,"Site Name 
+(English)",City,latitude,longitude,Site Status,Year of Construction
+7,7,Grouped,WATER TREATMENT PLANT (WTRP),Al-Maramiya,Al Ais,25.613953,37.882401,Working,2010
+8,8,Grouped,WATER TREATMENT PLANT (WTRP),Salila Juhayna,Al Ais,25.57705,38.345112,Working,2010
+24,24,Grouped,WATER TREATMENT PLANT (WTRP),Amtan,Al Ais,25.716622,38.364909,Working,2020
+68,1108,Grouped,WATER PUMPING STATION (WPUS),MO-PS,Al Ais,24.821183,38.335816,Working,2011
+69,124,Grouped,WATER PUMPING STATION (WPUS),MR-PS,Al Ais,25.362233,38.344641,Working,2015
+91,1016,Grouped,WATER PUMPING STATION (WPUS),WK-PS,Al Ais,24.854285,38.251482,Working,2011
+108,892,Grouped,WATER PUMPING STATION (WPUS),AIS-PS,Al Ais,25.025482,38.142511,Working,2011
+124,124,Grouped,WATER FILLING STATION (WFLS),Al-Ais Governorate/  Al-Muraba sheeb and Reservoir(Tank),Al Ais,25.362808,38.344553,Working,2015
+153,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ais Governorate / Al-Maramiya Sheeb and  Reservoir(Tank),Al Ais,25.613796,37.882246,Working,2010
+154,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ais Governorate / Salila Juhayna Sheeb and  Reservoir(Tank),Al Ais,25.577216,38.344828,Working,2011
+155,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ais Governorate / Amtan Sheeb and  Reservoir(Tank),Al Ais,25.716622,38.364909,Working,2020
+156,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ais Governorate / Al-Ais Sheeb and  Reservoir(Tank),Al Ais,25.026232,38.142666,Working,2011
+157,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ais Governorate / Al-Muthalath Sheeb and Reservoir(Tank),Al Ais,24.820479,38.334761,Working,2011
+300,Standalone,Standalone,WELL ABSTRACTION (WABS),Salila Juhayna Well 3,Al Ais,25.592757,38.342579,Working,2010
+301,Standalone,Standalone,WELL ABSTRACTION (WABS),Taraa Well 1,Al Ais,25.143384,38.443588,Out of Service,2005
+302,Standalone,Standalone,WELL ABSTRACTION (WABS),Taraa Well 2,Al Ais,25.146025,38.442222,Working,2005
+303,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Maramiya Well 2,Al Ais,25.619692,37.876057,Working,2010
+304,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Maramiya Well 3,Al Ais,25.620475,37.875087,Working,2010
+305,Standalone,Standalone,WELL ABSTRACTION (WABS),Amera Well ,Al Ais,25.593354,38.10042,Out of Service,2008
+306,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Eiss Well (Al-Sadd),Al Ais,25.052398,38.092737,Working,2008
+484,Standalone,Standalone,WELL ABSTRACTION (WABS),Salila Juhayna Well 1,Al Ais,25.590549,38.343427,Working,2010
+485,Standalone,Standalone,WELL ABSTRACTION (WABS),Salila Juhayna Well 2,Al Ais,25.591653,38.343033,Working,2010
+486,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Badia Well,Al Ais,25.317211,38.191884,Out of Service,2015
+487,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Marameya Well 1,Al Ais,25.612322,37.882353,Out of Service,2010
+559,Standalone,Standalone,WELL ABSTRACTION (WABS),Amtan  Well,Al Ais,25.716732,38.365165,Working,2018
+892,892,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aleiss Tank (2),Al Ais,25.024654,38.142607,Working,2016
+893,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK), Taraa  Reservoir,Al Ais,25.1441,38.4417,Working,2000
+905,8,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Salilat Juheinah,Al Ais,25.577106,38.344968,Working,2011
+906,8,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Salilat Juheinah,Al Ais,25.577042,38.344849,Working,2011
+914,7,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almaramiah Raw tank,Al Ais,25.613845,37.882296,Working,2010
+915,124,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almorabaa Tank ,Al Ais,25.361985,38.344466,Working,2015
+970,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alaraq,Al Ais,26.030661,37.687325,Working,2011
+992,7,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almaramiah Reservoir,Al Ais,25.613794,37.882381,Working,2010
+1016,1016,Grouped,POTABLE WATER STORAGE TANKS (WTNK), Wadi Kober Reservoir,Al Ais,24.854641,38.251918,Working,2016
+1081,892,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aleiss Tank (1),Al Ais,25.025465,38.142692,Working,2011
+1108,1108,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Muthalath Tank,Al Ais,24.821183,38.335816,Working,2011
+1115,24,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Amtan Reservoir,Al Ais,25.716622,38.364909,Working,2020
+15,15,Grouped,WATER TREATMENT PLANT (WTRP),Al-Damiriah,Al Henakiyah,23.937628,40.330751,Working,2011
+21,21,Grouped,WATER TREATMENT PLANT (WTRP),Al-Hassou,Al Henakiyah,24.600021,41.612676,Working,2010
+25,25,Grouped,WATER TREATMENT PLANT (WTRP),Al-Mahamah,Al Henakiyah,24.753883,41.605293,Working,2010
+26,26,Grouped,WATER TREATMENT PLANT (WTRP),Al-Hameej,Al Henakiyah,25.031734,41.222803,Working,2011
+27,27,Grouped,WATER TREATMENT PLANT (WTRP),Hazrah,Al Henakiyah,24.07979,40.477269,Working,2011
+32,Standalone,Standalone,WATER TREATMENT PLANT (WTRP),Talal,Al Henakiyah,24.667086,41.954205,Working,2007
+38,1099,Grouped,WATER PUMPING STATION (WPUS),Al-Hanakiah Pumping Station,Al Henakiyah,24.85368,40.483236,Working,2008
+118,1099,Grouped,WATER PUMPING STATION (WPUS),Al-Nakhil Pumping Station,Al Henakiyah,24.85431309,40.48256726,Working,2020
+174,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Al Hanakiyah (1) Sheeb and Reservoir(Tank),Al Henakiyah,24.85368,40.483236,Working,2008
+175,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Al Hanakiyah (2) Sheeb and Reservoir(Tank),Al Henakiyah,24.85368,40.483236,Working,2010
+176,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Al-Hameej Sheeb and Reservoir(Tank),Al Henakiyah,25.031788,41.223062,Working,2011
+177,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Al-Muhamah Sheeb and Reservoir(Tank),Al Henakiyah,24.753889,41.605537,Working,2010
+178,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Hozra Sheeb and Reservoir(Tank),Al Henakiyah,24.079952,40.477374,Working,2011
+179,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Addameeriya Sheeb and Reservoir(Tank),Al Henakiyah,23.937807,40.330856,Working,2011
+180,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Al-Hasso Sheeb and Reservoir(Tank),Al Henakiyah,24.600021,41.612676,Working,2010
+181,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Hanakiyah Governorate / Talal Sheeb and Reservoir(Tank),Al Henakiyah,24.667086,41.954205,Working,2007
+245,Standalone,Standalone,WELL ABSTRACTION (WABS),North Medesis M1 Water Field,Al Henakiyah,24.891861,40.411849,Out of Service,2007
+246,Standalone,Standalone,WELL ABSTRACTION (WABS),North Medesis M2+F493 Water Field,Al Henakiyah,24.911293,40.394265,Out of Service,2011
+247,Standalone,Standalone,WELL ABSTRACTION (WABS),South Medesis Well,Al Henakiyah,24.842629,40.468638,Out of Service,1999
+248,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Naemeh 1 Well,Al Henakiyah,24.468483,40.08775,Out of Service,2007
+251,Standalone,Standalone,WELL ABSTRACTION (WABS),Arja Well,Al Henakiyah,25.354224,40.997496,Out of Service,2007
+252,Standalone,Standalone,WELL ABSTRACTION (WABS),Talal Water Project (100 m3/d Plant + 1 Well),Al Henakiyah,24.66708,41.954016,Working,2007
+253,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hasso  Well 2,Al Henakiyah,24.604056,41.606778,Working,2007
+254,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Shaqran Well ,Al Henakiyah,25.015617,40.696683,Out of Service,2020
+255,Standalone,Standalone,WELL ABSTRACTION (WABS),Hadban Well 1,Al Henakiyah,24.798417,41.706933,Out of Service,2020
+256,Standalone,Standalone,WELL ABSTRACTION (WABS),Purification plant (300 m3 / day + 1 well),Al Henakiyah,24.8541033,40.4823295,Out of Service,2015
+520,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of the Aqul Water Field,Al Henakiyah,24.417111,39.799444,Out of Service,2010
+521,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Mahama water Field (plant 300 m3/d  + 3 well),Al Henakiyah,24.749381,41.604698,Working,2012
+522,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hasso  Well 1,Al Henakiyah,24.603525,41.605305,Working,2007
+523,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hasso  Well 3,Al Henakiyah,24.602583,41.61025,Out of Service,2007
+524,Standalone,Standalone,WELL ABSTRACTION (WABS), Al-Hameej 2,Al Henakiyah,25.030192,41.228997,Working,2015
+525,Standalone,Standalone,WELL ABSTRACTION (WABS),Hazra Water Station (300 m3 + 1 well),Al Henakiyah,24.080099,40.477524,Working,2015
+526,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-dameeriya Water Station (500 m3 + 1 well),Al Henakiyah,23.937336,40.330616,Working,2015
+560,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hasso Well 5,Al Henakiyah,24.598001,41.612034,Working,2018
+561,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hasso Well 6,Al Henakiyah,24.596269,41.612141,Out of Service,2018
+562,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hasso Well 7,Al Henakiyah,24.594377,41.611532,Out of Service,2018
+563,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hameej Well 3,Al Henakiyah,25.031575,41.22825,Out of Service,2020
+564,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hameej Well 1,Al Henakiyah,25.029035,41.22657,Working,2015
+565,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.2,Al Henakiyah,24.893381,40.413633,Working,2007
+566,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.3,Al Henakiyah,24.893627,40.411085,Working,2007
+567,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.4,Al Henakiyah,24.895467,40.41038,Working,2007
+568,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.5,Al Henakiyah,24.901275,40.411611,Working,2007
+569,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.6,Al Henakiyah,24.905765,40.40825,Working,2012
+570,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.7,Al Henakiyah,24.891051,40.412657,Working,2012
+571,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.8,Al Henakiyah,24.908867,40.4053,Out of Service,2012
+572,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.9,Al Henakiyah,24.905617,40.408317,Out of Service,2012
+573,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.10,Al Henakiyah,24.90215,40.405717,Out of Service,2012
+574,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.11,Al Henakiyah,24.915383,40.397967,Out of Service,2012
+575,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.12,Al Henakiyah,24.911767,40.3991,Out of Service,2012
+576,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.13,Al Henakiyah,24.913013,40.403055,Working,2012
+577,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.15,Al Henakiyah,24.90865,40.408667,Out of Service,2012
+578,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.16,Al Henakiyah,24.91525,40.39125,Out of Service,2012
+579,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.17,Al Henakiyah,24.908278,40.386778,Out of Service,2012
+580,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.18,Al Henakiyah,24.911667,40.384361,Out of Service,2012
+581,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.19,Al Henakiyah,24.914694,40.379667,Out of Service,2012
+582,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.20,Al Henakiyah,24.918639,40.37325,Out of Service,2012
+583,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.21,Al Henakiyah,24.921722,40.36725,Out of Service,2012
+584,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.22,Al Henakiyah,24.925472,40.359889,Out of Service,2012
+585,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.23,Al Henakiyah,24.931583,40.364194,Out of Service,2012
+586,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.24,Al Henakiyah,24.89545,40.407333,Out of Service,2012
+587,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.25,Al Henakiyah,24.9116,40.388983,Working,2012
+588,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.26,Al Henakiyah,24.919167,40.356083,Out of Service,2012
+589,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.27,Al Henakiyah,24.935639,40.373333,Out of Service,2012
+590,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.28,Al Henakiyah,24.919056,40.400278,Out of Service,2012
+591,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.29,Al Henakiyah,24.917056,40.405833,Out of Service,2012
+592,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.30,Al Henakiyah,24.89525,40.4135,Out of Service,2012
+593,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.31,Al Henakiyah,24.890083,40.408778,Out of Service,2012
+594,Standalone,Standalone,WELL ABSTRACTION (WABS),MEDSIS NORTH FIELD NO.32,Al Henakiyah,24.915333,40.405028,Out of Service,2012
+595,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.1,Al Henakiyah,24.214028,39.942917,CWIP,2005
+596,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.12,Al Henakiyah,24.211806,39.941194,CWIP,2005
+597,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.13,Al Henakiyah,24.207278,39.941361,CWIP,2005
+598,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.15,Al Henakiyah,24.2025,39.946861,CWIP,2005
+599,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.16,Al Henakiyah,24.200611,39.951056,CWIP,2005
+600,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.18,Al Henakiyah,24.213,39.946028,CWIP,2005
+601,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.23,Al Henakiyah,24.203528,39.951028,CWIP,2005
+602,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.24,Al Henakiyah,24.204833,39.954806,CWIP,2005
+603,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.25,Al Henakiyah,24.207917,39.956167,CWIP,2005
+604,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.26,Al Henakiyah,24.210472,39.952778,CWIP,2005
+605,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.34,Al Henakiyah,24.215222,39.93975,CWIP,2005
+606,Standalone,Standalone,WELL ABSTRACTION (WABS),AL HARJA FIELD NO.36,Al Henakiyah,24.205225,39.948331,CWIP,2005
+873,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Al-Hanakiyah,Al Henakiyah,24.80028,40.5681948,Working,2011
+887,26,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Raw Water Tank/Reservoir of Al-Hameej Plant,Al Henakiyah,25.031546,41.222852,Working,2011
+888,21,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhaso Producing Water Reservoir,Al Henakiyah,24.599874,41.612507,Working,2010
+917,27,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Raw Water Tank for Harza Station,Al Henakiyah,24.079784,40.477358,Working,2011
+995,27,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Haarza  Producting Water tank ,Al Henakiyah,24.07984,40.477249,Working,2011
+1073,15,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aldamiriyah Station Raw Water Tank ,Al Henakiyah,23.937755,40.330834,Working,2011
+1074,25,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almahamah Station Raw Water Tank ,Al Henakiyah,24.753997,41.605252,Working,2010
+1075,15,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aldamiriyah  Water Tank Producer,Al Henakiyah,23.93764,40.330658,Working,2011
+1076,25,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almahamah Water Tank Producer ,Al Henakiyah,24.753988,41.605344,Working,2010
+1077,26,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhumej  Water Tank Producer ,Al Henakiyah,25.031646,41.22295,Working,2011
+1078,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Medesis Water Field Collection Tank,Al Henakiyah,24.893074,40.411537,Standby,2009
+1088,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Old Upper Tank,Al Henakiyah,24.898242,40.512842,Out of Service,1990
+1091,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Upper Tank in the General Plan,Al Henakiyah,24.871097,40.513894,Out of Service,1990
+1099,1099,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Hanakiyah Tank 2,Al Henakiyah,24.853376,40.483496,Working,2010
+1103,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Sheeb Upper Central Tank,Al Henakiyah,24.844898,40.467213,Working,2008
+1113,21,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Hasso Raw Water Tank ,Al Henakiyah,24.599875,41.61266,Working,2010
+1118,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Hanakiyah  Purification Tank (Medesis),Al Henakiyah,24.844877,40.466956,Working,2010
+1136,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Nakheel Reservoir ,Al Henakiyah,25.044443,40.478895,CWIP,2021
+1137,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Skhebrah Reservoir ,Al Henakiyah,24.330417,41.249217,CWIP,2017
+1138,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Balghah Reservoir ,Al Henakiyah,24.941333,41.599,CWIP,2017
+1139,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Arjaa Reservoir ,Al Henakiyah,25.330283,41.025533,Working,2017
+1140,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Um Shakaah Reservoir ,Al Henakiyah,24.3505,40.850667,Standby,2017
+1141,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Sabha AL Eiaddi Reservoir ,Al Henakiyah,25.190383,41.4244,Standby,2017
+1142,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Sabha Al Jahfah Reservoir ,Al Henakiyah,25.20605,40.86615,Standby,2017
+1143,Standalone,Standalone,WATER FILLING STATION (WFLS),Bat-hi Tank,Al Henakiyah,25.0308,41.90796667,CWIP,2017
+1157,1099,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Hanakiyah Tank 1,Al Henakiyah,24.853948,40.483006,Working,2008
+1,Standalone,Standalone,WATER TREATMENT PLANT (WTRP),Al-Mashi Wells,Al Madinah,24.186903,39.680168,Transfer to other department,2020
+2,Standalone,Standalone,WATER TREATMENT PLANT (WTRP),Al-Haram (1),Al Madinah,24.46157,39.61612,Transfer to other department,2008
+3,3,Grouped,WATER TREATMENT PLANT (WTRP),Al-Sih( Jabal Silaa),Al Madinah,24.47235,39.59992,Working,2017
+4,Standalone,Standalone,WATER TREATMENT PLANT (WTRP),Al-Haram (2),Al Madinah,24.46149,39.61638,Transfer to other department,2015
+17,17,Grouped,WATER TREATMENT PLANT (WTRP),Al-Boer,Al Madinah,24.947355,38.989396,Standby,2010
+36,Standalone,Standalone,WATER TREATMENT PLANT (WTRP),Prince of Al-Madina District Palace,Al Madinah,24.29192,39.33589,Working,2012
+39,1038,Grouped,WATER PUMPING STATION (WPUS),Quba Pumping Station,Al Madinah,24.431649,39.616015,Working,1980
+40,1031,Grouped,WATER PUMPING STATION (WPUS),Al-Azizia Pumping Station,Al Madinah,24.466466,39.512363,Working,2007
+41,41,Grouped,WATER PUMPING STATION (WPUS),Airport Pumping Station (1),Al Madinah,24.507049,39.657267,Standby,1978
+42,42,Grouped,WATER PUMPING STATION (WPUS),Airport Pumping Station (2),Al Madinah,24.505501,39.659227,Standby,1993
+43,936,Grouped,WATER PUMPING STATION (WPUS),Al Jurf Pumping Station,Al Madinah,24.519803,39.546464,Working,2002
+44,Standalone,Standalone,WATER PUMPING STATION (WPUS),Wa'ira Pumping Station 3,Al Madinah,24.548245,39.685309,Working,2005
+45,Standalone,Standalone,WATER PUMPING STATION (WPUS),Wa'ira Pumping Station 2,Al Madinah,24.524327,39.672628,Out of service,1996
+46,Standalone,Standalone,WATER PUMPING STATION (WPUS),Wa'ira Pumping Station 4,Al Madinah,24.548245,39.685309,Working,2017
+47,Standalone,Standalone,WATER PUMPING STATION (WPUS),Uhud Pumping Station,Al Madinah,24.504939,39.615093,Working,1995
+48,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Haras Pumping Station,Al Madinah,24.546913,39.613042,Standby,1987
+49,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Anabis Pumping Station ,Al Madinah,24.471408,39.58291,Standby,2010
+50,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Ayoun Pumping Station,Al Madinah,24.535538,39.567393,Standby,2007
+51,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Hajra Pumping Station,Al Madinah,24.414139,39.550848,Working,2000
+52,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Jarf Pumping Substation,Al Madinah,24.512955,39.565362,Standby,1998
+53,Standalone,Standalone,WATER PUMPING STATION (WPUS),Shaib Al- Aziziya Pumping Station,Al Madinah,24.466406,39.512341,Working,2007
+54,Standalone,Standalone,WATER PUMPING STATION (WPUS),Social Affairs Pumping Station,Al Madinah,24.468306,39.596628,Working,1991
+55,Standalone,Standalone,WATER PUMPING STATION (WPUS),Abu Brega Pumping Station,Al Madinah,24.41794,39.564149,Working,2011
+77,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Badrani Pumping Station,Al Madinah,24.445485,39.676825,Working,1999
+78,Standalone,Standalone,WATER PUMPING STATION (WPUS),Sultana Pumping Station,Al Madinah,24.484423,39.573946,Standby,1995
+79,79,Grouped,WATER PUMPING STATION (WPUS),Pilgrims Pumping Station,Al Madinah,24.470476,39.542022,Working,1982
+80,Standalone,Standalone,WATER PUMPING STATION (WPUS),Baqdu Pumping Station,Al Madinah,24.471783,39.66425,Standby,2015
+81,Standalone,Standalone,WATER PUMPING STATION (WPUS),Wa'ira Pumping Station 1,Al Madinah,24.531347,39.68128,Working,1998
+82,Standalone,Standalone,WATER PUMPING STATION (WPUS),Talaa Al-Haboub Pumpimg Station,Al Madinah,24.500977,39.6465,Working,2005
+83,Standalone,Standalone,WATER PUMPING STATION (WPUS),Martyrs Pumping Station,Al Madinah,24.504982,39.608154,Working,2005
+84,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Duitha Pumping Station,Al Madinah,24.417711,39.511673,Working,2005
+85,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Rabwa Pumping Station,Al Madinah,24.519125,39.562962,Standby,1984
+86,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Faisalia Pumping Station,Al Madinah,24.469843,39.553859,Working,2004
+87,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Shebeia Pumping Station,Al Madinah,24.410882,39.588209,Working,1995
+106,994,Grouped,WATER PUMPING STATION (WPUS),Al-Melilih Pumping Station ,Al Madinah,24.81137,39.164287,Working,2013
+107,898,Grouped,WATER PUMPING STATION (WPUS),Souidra Pumping Station,Al Madinah,24.703952,40.090183,Working,2013
+120,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Qiyada Lift Station,Al Madinah,24.704167,39.266341,Working,2013
+121,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Fareesh Lifting Station,Al Madinah,24.206013,39.27377,Working,2012
+122,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Laban Lifting Station ,Al Madinah,24.4027421,39.5171089,Working,1986
+125,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Madina Governorate/  Qeba sheeb and  Reservoir(Tank),Al Madinah,24.432402,39.616543,Out of service,1982
+126,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Madina Governorate/ Airport sheeb and Reservoir(Tank),Al Madinah,24.505066,39.659296,Working,2007
+127,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Madina Governorate/  Al-Azizia sheeb Reservoir(Tank),Al Madinah,24.465002,39.51537,CWIP,2021
+128,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Madina Governorate/  Al-Jarf sheeb and Reservoir(Tank),Al Madinah,24.517688,39.547958,Working,2010
+130,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Madina Governorate/  Al-?Ashira sheeb and Reservoir(Tank),Al Madinah,24.048608,39.598319,Working,2019
+131,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Medina Governorate / Sheeb Abyar Al-Mashi,Al Madinah,24.192349,39.570439,Working,2016
+132,Standalone,Standalone,WATER FILLING STATION (WFLS),Medina Governorate /  Al Rathaya sheeb and Reservoir(Tank),Al Madinah,24.620154,39.924043,Working,2019
+133,Standalone,Standalone,WATER FILLING STATION (WFLS),Medina Governorate / Al-Suwedira  sheeb and Reservoir(Tank),Al Madinah,24.703792,40.090346,Working,2015
+134,134,Grouped,WATER FILLING STATION (WFLS),Medina Governorate / Shajwa  sheeb and Reservoir(Tank),Al Madinah,25.008395,38.950408,Working,2014
+136,Standalone,Standalone,WATER FILLING STATION (WFLS),Medina Governorate / Al-Melilih sheeb and Reservoir(Tank) ,Al Madinah,24.811862,39.164815,Working,2010
+139,Standalone,Standalone,WATER FILLING STATION (WFLS),Medina Governorate / Sheeb Al-Buweir ,Al Madinah,24.94768629,38.98939614,Out of Service,2015
+140,Standalone,Standalone,WATER FILLING STATION (WFLS),Medina Governorate / Sheeb Shuran  ,Al Madinah,24.403873,39.611842,CWIP,2021
+141,Standalone,Standalone,WATER FILLING STATION (WFLS),Medina Governorate /  East of the city Sheeb ,Al Madinah,24.4750646,39.7770092,CWIP,2021
+205,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 315,Al Madinah,24 10 40,39 41 01,Transfer to other department,1991
+206,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 316,Al Madinah,24 10 25,39 41 03,Transfer to other department,1992
+207,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 320,Al Madinah,24 10 19,39 40 39,Transfer to other department,1992
+208,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 324,Al Madinah,24 10 41,39 40 45,Transfer to other department,1992
+209,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 328,Al Madinah,24 11 11,39 40 55,Transfer to other department,1992
+210,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 412,Al Madinah,24.0936,39.4211,Out of Service,2003
+211,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 413,Al Madinah,24 10 25.4,39 41 33,Transfer to other department,2003
+212,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 414,Al Madinah,24.1328,39.70306,Out of Service,2003
+213,Standalone,Standalone,WELL ABSTRACTION (WABS),The second field  Well No. 431,Al Madinah,24 12 3,39 40 45.5,Transfer to other department,2004
+214,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 374,Al Madinah,24 07 04,39 42 51,Working,1994
+215,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 375,Al Madinah,24.063,39.4256,Out of Service,1994
+216,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 390,Al Madinah,24 06 58,39 43 16,Working,1994
+217,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 391,Al Madinah,24 07 35,39 42 24,Working,1994
+218,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 393,Al Madinah,24 07 15,39 42 26,Working,1994
+219,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 394,Al Madinah,24 07 05,39 43 33,Working,1994
+220,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 395,Al Madinah,24 07 18,39 43 26,Working,1994
+221,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 397,Al Madinah,24 07 01,39 43 47,Working,1994
+222,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 398,Al Madinah,24 07 09,39 42 07,Working,1994
+223,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 399,Al Madinah,24 07 03,39 41 44,Working,1994
+224,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 402,Al Madinah,24 07 19,39 41 39,Working,1994
+225,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 412,Al Madinah,24 07 42,39 41 47,Working,1994
+226,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 415,Al Madinah,24 08 2.4,39 42 34,Working,2003
+227,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 421,Al Madinah,24 08 11,39 41 38.5,Working,2004
+228,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 422,Al Madinah,24 08 15.5,39 41 22,Working,2004
+229,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 423,Al Madinah,24 08 19.7,39 42 5.3,Working,2004
+230,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 424,Al Madinah,24 08 26.7,39 41 47.5,Working,2004
+231,Standalone,Standalone,WELL ABSTRACTION (WABS),The third field Well No. 426,Al Madinah,24.141802,39.691742,Working,2004
+232,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 440,Al Madinah,24 09 14,39 44 32,Working,2012
+233,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 445,Al Madinah,24 09 01,39 45 13,Working,2012
+234,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 451,Al Madinah,24 09 50,39 43 33,Working,2012
+235,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 456,Al Madinah,24 09 39,39 43 46,Working,2012
+236,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 458,Al Madinah,24 08 52,39 43 59,Working,2012
+237,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 459,Al Madinah,24 08 36,39 43 48,Working,2012
+238,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 460,Al Madinah,24 10 19,39 44 22,Working,2012
+239,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 468,Al Madinah,24 10 02,39 43 45,Working,2012
+240,Standalone,Standalone,WELL ABSTRACTION (WABS),The fourth  field Well No. 470,Al Madinah,24 05 05.08,39 43 43.00,Out of Service,2012
+241,Standalone,Standalone,WELL ABSTRACTION (WABS),The fifth field Well No. 472,Al Madinah,24 05 01.2,39 44 09.8,Working,2013
+242,Standalone,Standalone,WELL ABSTRACTION (WABS),The fifth field Well No. 473,Al Madinah, 24 07 42.4, 39 45 32.9,Working,2013
+257,Standalone,Standalone,WELL ABSTRACTION (WABS),"The first field , Well number 347",Al Madinah,24 17 19,39 39 30,Working,1992
+258,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 474",Al Madinah, 24 07 50.7,39 45 50.2,Working,2013
+259,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 476",Al Madinah, 24 07 20.3, 39 45 54.0,Working,2013
+260,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 479",Al Madinah, 24 06 53.5, 39 45 06.6,Working,2013
+261,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 480",Al Madinah, 24 06 46.2, 39 45 31.1,Working,2013
+262,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 482",Al Madinah, 24 06 02.8, 39 46 11.0,Working,2013
+263,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 484",Al Madinah, 24 05 13.0, 39 45 14.6,Working,2013
+264,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 485",Al Madinah, 24 05 16.0, 39 44 56.9,Working,2013
+265,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 486",Al Madinah, 24 05 14.1, 39 44 35.0,Working,2013
+266,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 487",Al Madinah, 24 05 04.9, 39 44 25.6,Working,2013
+267,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 488",Al Madinah, 24 05 37.7, 39 43 39.4,Working,2013
+268,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 489",Al Madinah,24 06 36.5 ,39 44 57.8,Working,2013
+269,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 490",Al Madinah, 24 06 32.9, 39 44 45.6,Out of Service,2013
+270,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 492",Al Madinah,24 07 03.1 ,39 44 52.5,Out of Service,2013
+271,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 493",Al Madinah,24 07 22.0 ,39 45 36.7,Working,2013
+272,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 494",Al Madinah,24 07 22.6 ,39 45 19.3,Working,2013
+273,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 495",Al Madinah,24 07 28.1 ,39 45 01.2,Working,2013
+274,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 496",Al Madinah,24 07 25.73,39 44 46.26,Working,2013
+275,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 498",Al Madinah,24 07 13.9 ,39 44 38.1,Working,2013
+276,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 554",Al Madinah,24 25 33.5,39 47 33,Working,2008
+277,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 555",Al Madinah,24 25 22.65,39 4735.6,Working,2008
+278,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 556",Al Madinah,24 25 10.7,39 47 45.5,Working,2008
+279,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 557",Al Madinah,24 24 58.2,39 47 44,Working,2008
+280,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 558",Al Madinah,24 25 1.6,39 47 58,Working,2008
+281,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 561",Al Madinah,24 25 31.3,39 46 46.3,Working,2008
+282,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 562",Al Madinah,24 25 9.60,39 46 37.30,Working,2008
+283,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field ,Well No. 563",Al Madinah,24 24 13.2,39 46 44,Working,2008
+284,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 1",Al Madinah,24 12 15.1,39 41 21.7,Transfer to other department,2018
+285,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 2",Al Madinah,24 12 04.2,39 41 16.7,Transfer to other department,2018
+286,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 3",Al Madinah,24 12 00.0,39 41 29.4 ,Transfer to other department,2018
+287,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 9",Al Madinah,24 11 49.9,39 42 49.5,Transfer to other department,2018
+288,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 10",Al Madinah,24 11 52.8,39 42 34.4,Transfer to other department,2018
+289,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 12",Al Madinah,24.19,39.68,Transfer to other department,2018
+290,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 13",Al Madinah,24.19,39.68,Transfer to other department,2018
+291,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 14",Al Madinah,24.21,39.69,Transfer to other department,2018
+292,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 15",Al Madinah,24 12 34.4,39 41 24.3,Transfer to other department,2018
+293,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 17",Al Madinah,24 12 29.8,39 40 54.2,Transfer to other department,2018
+294,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 19",Al Madinah,24.19,39.68,Transfer to other department,2018
+295,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 26",Al Madinah,24.19,39.68,Transfer to other department,2018
+296,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 30",Al Madinah,24 12 44.3,39 40 38.4,Transfer to other department,2018
+297,Standalone,Standalone,WELL ABSTRACTION (WABS),"The seventh field , Well number 31",Al Madinah,24 11 10.5,39 40 51.1,Transfer to other department,2018
+311,Standalone,Standalone,WELL ABSTRACTION (WABS),"The first field , Well No. 354  ",Al Madinah,24 17 51,39 38 36,Working,1993
+312,Standalone,Standalone,WELL ABSTRACTION (WABS),"The first field , Well No. 359",Al Madinah,24.301387,39.647048,Working,1993
+313,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 306",Al Madinah,24 09 50,39 42 20,Transfer to other department,1988
+314,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 308",Al Madinah,24 09 46.8,39 40 58.4,Transfer to other department,1988
+315,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 314",Al Madinah,24 9 46,39 42 34,Transfer to other department,1991
+316,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 318",Al Madinah,24 10 29,39 40 31,Transfer to other department,1992
+317,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 364",Al Madinah,24 11 22,39 40 48,Transfer to other department,1993
+318,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 365",Al Madinah,24 11 20,39 40 39,Transfer to other department,1993
+319,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 366",Al Madinah,24 11 30,39 40 38,Transfer to other department,1993
+320,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 367",Al Madinah,24 11 19,39 41 05,Transfer to other department,1993
+321,Standalone,Standalone,WELL ABSTRACTION (WABS),"The second field , Well No. 416",Al Madinah,24 09 55,39 41 43,Transfer to other department,2003
+322,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 368",Al Madinah,24 06 47,39 42 33,Working,1994
+323,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 372",Al Madinah,24 06 48,39 41 47,Working,1994
+324,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 389",Al Madinah,24 06 50,39 42 55,Working,1994
+325,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 392",Al Madinah,24 07 35,39 42 05,Working,1994
+326,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 396",Al Madinah,24 07 26,39 43 42,Working,1994
+327,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 400",Al Madinah,24 07 55,39 43 57,Working,1994
+328,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 419",Al Madinah,24 08 03,39 42 16.5,Working,2004
+329,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 420",Al Madinah,24 08 09,39 41 58.5,Working,2004
+330,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 425",Al Madinah,24 08 30.4,39 41 30.3,Working,2004
+331,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 427",Al Madinah,24 08 41.5,39 41 54.5,Working,2004
+332,Standalone,Standalone,WELL ABSTRACTION (WABS),"The third field,Well No. 428",Al Madinah,24 09 26,39 43 57,Working,2004
+333,Standalone,Standalone,WELL ABSTRACTION (WABS),Fourth Field Well No. 444,Al Madinah,24 09 46,39 44 26,Working,2012
+334,Standalone,Standalone,WELL ABSTRACTION (WABS),Fourth Field Well No. 448,Al Madinah,24 08 36,39 44 10,Working,2012
+335,Standalone,Standalone,WELL ABSTRACTION (WABS),Fourth Field Well No. 457,Al Madinah,24 09 12,39 43 57,Working,2012
+345,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 301,Al Madinah,24.1115,39.4016,Working,1988
+346,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 303,Al Madinah, 24 10 55,39 40 58,Transfer to other department,1988
+347,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 304,Al Madinah,24 10 51,39 39 06,Transfer to other department,1988
+348,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 305,Al Madinah,24 10 14,39 40 57,Transfer to other department,1988
+349,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 307,Al Madinah,24 11 17,39 41 12,Transfer to other department,1988
+350,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 312,Al Madinah,24 11 00,39 40 7,Transfer to other department,1991
+351,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 313,Al Madinah,24 11 9,39 40 37,Transfer to other department,1991
+391,Standalone,Standalone,WELL ABSTRACTION (WABS), Bouat Well,Al Madinah,24.732193,39.165345,Working,2010
+392,Standalone,Standalone,WELL ABSTRACTION (WABS),Shajwa Well 2,Al Madinah,25.008256,38.951175,Working,2014
+411,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 475",Al Madinah, 24 07 37.4, 39 46 05.4,Working,2013
+412,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Naqmi Well,Al Madinah,24.706762,39.63503,Working,2010
+413,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 477",Al Madinah, 24 07 12.9, 39 45 45.5,Working,2013
+414,Standalone,Standalone,WELL ABSTRACTION (WABS),Shajwa Well 1,Al Madinah,25.008204,38.950752,Working,2014
+415,Standalone,Standalone,WELL ABSTRACTION (WABS),Shajwa Well 3,Al Madinah,25.009361,38.949889,Working,2014
+416,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 478",Al Madinah, 24 07 11.4, 39 45 15.4,Working,2013
+417,Standalone,Standalone,WELL ABSTRACTION (WABS),Shajwa Well 4,Al Madinah,25.0095,38.951611,Working,2014
+418,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 481",Al Madinah, 24 06 22.9, 39 45 54.3,Working,2013
+419,Standalone,Standalone,WELL ABSTRACTION (WABS),Shajwa Well 5,Al Madinah,25.00875,38.951778,Working,2014
+420,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 491",Al Madinah,24 06 54.0 ,39 44 54.9,Out of Service,2013
+421,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Boer Well 1,Al Madinah,24.947442,38.988658,Out of Service,2010
+422,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Boer Well 2,Al Madinah,24.947094,38.989276,Working,2010
+423,Standalone,Standalone,WELL ABSTRACTION (WABS),"Sixth Field , Well No. 559",Al Madinah,24 25 23.7,39 47 47,Working,2008
+424,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Boer Well 3,Al Madinah,24.94769,38.988984,Working,2010
+425,Standalone,Standalone,WELL ABSTRACTION (WABS),"The Seventh Field , Well No.16",Al Madinah,24 12 29.8,39 41 09.3,Transfer to other department,2018
+427,Standalone,Standalone,WELL ABSTRACTION (WABS),"The Seventh Field , Well No.18",Al Madinah,24 11 38.6,39 41 11.1,Transfer to other department,2018
+428,Standalone,Standalone,WELL ABSTRACTION (WABS),"The Seventh Field , Well No.29",Al Madinah,24 12 29.8,39 40 39.8,Transfer to other department,2018
+527,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.3",Al Madinah,24.4616972,39.6158889,Transfer to other department,2008
+528,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.4",Al Madinah,24.4616972,39.6158889,Transfer to other department,2008
+529,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.7",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+530,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.8",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+531,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.9",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+532,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.10",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+533,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.11",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+534,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.12",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+535,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.13",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+536,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.14",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+537,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.15",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+538,Standalone,Standalone,WELL ABSTRACTION (WABS),"Al-Haram Station Wells, Well No.16",Al Madinah,24.4673639,39.607785,Transfer to other department,2000
+539,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Seih Well Station well No. 6,Al Madinah,24 28 07.7,39 36 01.1,Working,2000
+540,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Seih Well Station well No. 7,Al Madinah,24 28 08.0,39 36 00.4,Working,2017
+541,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Seih Well Station well No. 8,Al Madinah,24 28 08.8,39 35 58.9,Working,2017
+542,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Seih Well Station well No. 9,Al Madinah,24 28 09.1,39 35 58.2,Working,2017
+543,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Seih Well Station well No. 10,Al Madinah,24 28 09.5,39 35 57.1,Working,2017
+544,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Seih Well Station well No. 11,Al Madinah,24 28 08.8,39 35 57.1,Working,2017
+545,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 550,Al Madinah,24 27 22.5,39 45 47.5,Working,2008
+546,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 551,Al Madinah, 24 27 17,39 46 0.3,Working,2008
+547,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 552,Al Madinah,24 26 55.5,39 46 16.5,Working,2008
+548,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 553,Al Madinah,24 26 1.8,39 47 19.5,Working,2008
+549,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 554,Al Madinah,24 25 33.5,39 47 33,Out of Service,2008
+550,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 555,Al Madinah,24 25 22.65,39 4735.6,Out of Service,2008
+551,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 556,Al Madinah,24 25 10.7,39 47 45.5,Out of Service,2008
+552,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 557,Al Madinah,24 24 58.2,39 47 44,Out of Service,2008
+553,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 558,Al Madinah,24 25 1.6,39 47 58,Out of Service,2008
+554,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 559,Al Madinah,24 25 23.7,39 47 47,Out of Service,2008
+555,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 560,Al Madinah,24 25 48,39 46 34.5,Working,2008
+556,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 561,Al Madinah,24 25 31.3,39 46 46.3,Out of Service,2008
+557,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 562,Al Madinah,24 25 9.60,39 46 37.30,Out of Service,2008
+558,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Aqul Field Well No. 563,Al Madinah,24 24 13.2,39 46 44,Out of Service,2008
+866,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Al-Khaleel,Al Madinah,24.555694,39.597346,Working,1988
+867,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Medina Khalil 2,Al Madinah,24.555694,39.597346,CWIP,2021
+875,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Industrial ,Al Madinah,24.555694,39.597346,Working,2017
+876,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),Al-Mughisila Mughisila District,Al Madinah,24.456848,39.604904,Working,1990
+877,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),"Al-Jurf scheme
+(Ground water only)",Al Madinah,24.518616,39.568104,Transfer to other department,1995
+878,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),"Aldakhil
+Tabuk road",Al Madinah,24.492645,39.571079,Working,2004
+879,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),Bir Uthman... Sherbiny scheme,Al Madinah,24.497219,39.577503,Working,2005
+880,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),Naseem …. (Al-Azhari),Al Madinah,24.501966,39.584785,Working,2002
+898,898,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsuwaydriah Operational Tank 2,Al Madinah,24.703368,40.089807,Working,2013
+916,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Almulaylih Tank 1,Al Madinah,24.811611,39.164215,Standby,2000
+933,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Abyar Al-Mashi Reservoir No. 2,Al Madinah, 24.185813°, 39.682106°,Working,2010
+934,79,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhajaj Tank 1,Al Madinah,24.470431,39.542852,Standby,1982
+935,79,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhajaj Tank 2,Al Madinah,24.470568,39.542314,Working,1992
+936,936,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aljarf Tank,Al Madinah,24.519028,39.546853,Working,2003
+938,938,Grouped,POTABLE WATER STORAGE TANKS (WTNK),East Reservoir 1,Al Madinah,24.474898,39.776988,Working,2013
+939,939,Grouped,POTABLE WATER STORAGE TANKS (WTNK),High Pressure Tank 1,Al Madinah,24.375155,39.622655,Working,1993
+940,939,Grouped,POTABLE WATER STORAGE TANKS (WTNK),High pressure tank 2,Al Madinah,24.375289,39.624683,Working,1993
+941,939,Grouped,POTABLE WATER STORAGE TANKS (WTNK),High Pressure Tank 3,Al Madinah,24.37344,39.62283,Working,1993
+942,3,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tank Mount Salaa 1,Al Madinah,24.472694,39.59977,Working,1977
+943,3,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tank Mount Salaa 2,Al Madinah,24.472739,39.601107,Working,1982
+944,3,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tank Mount Salaa 3,Al Madinah,24.472147,39.601232,Out of Service,1982
+945,945,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Low pressure tank 3,Al Madinah,24.401301,39.611981,Working,1993
+946,134,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Shajawa Reservoir,Al Madinah,25.008532,38.95089,Working,2014
+947,947,Grouped,POTABLE WATER STORAGE TANKS (WTNK),South Reservoir 1,Al Madinah,24.326716,39.637484,Working,1990
+948,947,Grouped,POTABLE WATER STORAGE TANKS (WTNK),South Reservoir 4,Al Madinah,24.32521,39.640529,Working,1993
+952,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alsidra Reservoir,Al Madinah,23.326595,40.234499,Working,2007
+960,17,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alboer Tank purification plant product,Al Madinah,24.947286,38.989193,Working,2010
+963,2134,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Wadi Hazem Reservoir,Al Madinah,23.304537,40.092142,Working,2009
+991,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alfreish Reservoir,Al Madinah,24.188842,39.2784,Working,2012
+994,994,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almousayjid Reservoir 2,Al Madinah,24.811585,39.164524,Working,2013
+1004,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Bouat Well Reservoir,Al Madinah,24.732054,39.165402,Out of Service,1995
+1023,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Abiar Almashi tank No.1,Al Madinah,24.284274,39.659808,Transfer to other department,1992
+1024,1024,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alashera Tanks 1,Al Madinah, 24.125886°, 39.717077°,Working,2010
+1025,1024,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alashera Tanks 2,Al Madinah, 24.125957°, 39.717380°,Working,2015
+1026,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alaqul Tank,Al Madinah,24.441024,39.777418,Working,2000
+1027,42,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Airport Tank 1,Al Madinah,24.506789,39.657496,Working,1978
+1028,41,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Airport Tank 2,Al Madinah,24.505802,39.659557,Working,1993
+1029,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alharam Tank,Al Madinah,24.4616,39.6157,Transfer to other department,2008
+1030,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Abiar Alharam Collection Tank,Al Madinah,24.46602,39.607637,Transfer to other department,2008
+1031,1031,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alazezieh Tank 1,Al Madinah,24.467078,39.51105,Working,2008
+1032,1031,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alazezieh Tank 1,Al Madinah,24.469066,39.510134,Working,2013
+1033,938,Grouped,POTABLE WATER STORAGE TANKS (WTNK),East Tank 2,Al Madinah,24.4727,39.77712,Working,2019
+1034,939,Grouped,POTABLE WATER STORAGE TANKS (WTNK),High Pressure Tank 4,Al Madinah,24.3734,39.624698,Working,1993
+1035,945,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Low pressure tank 1,Al Madinah,24.403214,39.612721,Working,1990
+1036,945,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Low pressure tank 2,Al Madinah,24.402611,39.61487,Working,1993
+1037,945,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Low pressure tank 4,Al Madinah,24.400541,39.61409,Working,1993
+1038,1038,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Quba Tank 1,Al Madinah,24.430897,39.616139,Working,1982
+1039,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Shuran Reservoir,Al Madinah,24.35085,39.7473,CWIP,2021
+1040,947,Grouped,POTABLE WATER STORAGE TANKS (WTNK),South Reservoir 2,Al Madinah,24.327343,39.639867,Working,2012
+1041,947,Grouped,POTABLE WATER STORAGE TANKS (WTNK),South Reservoir 3,Al Madinah,24.324551,39.638157,Working,2012
+1042,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alborj Tank,Al Madinah,24.426499,39.613364,Working,1987
+1051,898,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsuwaydriah Operational Tank 1,Al Madinah,24.70382,40.089475,Working,2013
+1069,17,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alboer  Raw Plant Tank Purification,Al Madinah,24.947535,38.989106,Working,2010
+1114,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Naqmi Reservoir,Al Madinah,24.706831,39.635126,Working,2011
+1144,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Abyar Al Haram Product Tank,Al Madinah,24.46602,39.607637,Transfer to other department,2008
+1166,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Owaina Reservoir,Al Madinah,24.57608,39.782299,CWIP,2021
+2116,Standalone,Standalone,WATER PUMPING STATION (WPUS),Abar Ali Plant,Al Madinah,24.4198926,39.5447037,Working,2002
+2257,Standalone,Standalone,WATER FILLING STATION (WFLS),Sheeb Al-Mandasa 2,Al Madinah,24.6323749,39.3217018,CWIP,2018
+2258,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al-Mandasa Tank,Al Madinah,24.6326181,39.3216153,CWIP,2018
+9,Standalone,Standalone,WATER TREATMENT PLANT (WTRP),AL-Mohd,Al Mahd,23.496484,40.8752,Standby,2012
+10,10,Grouped,WATER TREATMENT PLANT (WTRP),Suwayrqia,Al Mahd,23.285753,40.299075,Standby,2010
+13,13,Grouped,WATER TREATMENT PLANT (WTRP),Thurb,Al Mahd,24.24636,41.735675,Working,2011
+14,Standalone,Standalone,WATER TREATMENT PLANT (WTRP),Al-Raqabiyah,Al Mahd,23.14835,40.99634,Standby,2011
+19,19,Grouped,WATER TREATMENT PLANT (WTRP),Al -Salhaniya,Al Mahd,22.871802,40.49152,Working,2011
+20,20,Grouped,WATER TREATMENT PLANT (WTRP),Hathah,Al Mahd,22.719887,40.616282,Working,2011
+28,28,Grouped,WATER TREATMENT PLANT (WTRP),Al-Hamejah,Al Mahd,24.32821,41.896796,Standby,2011
+66,Standalone,Standalone,WATER PUMPING STATION (WPUS),Sefina Pumping Station,Al Mahd,23.138712,40.536788,Standby,2005
+67,Standalone,Standalone,WATER PUMPING STATION (WPUS),Pumping Station No. 2,Al Mahd,23.234082,40.65657,Standby,2018
+104,Standalone,Standalone,WATER PUMPING STATION (WPUS),Pumping Station No.3,Al Mahd,23.370702,40.788531,Standby,2018
+105,1155,Grouped,WATER PUMPING STATION (WPUS),Al-Mahd Network Pumping Station,Al Mahd,23.494574,40.873518,Working,2006
+116,1155,Grouped,WATER PUMPING STATION (WPUS),Al-Umk pumping station,Al Mahd,23.494973,40.87388,Working,2018
+117,1102,Grouped,WATER PUMPING STATION (WPUS),Al-Swirqia Pumping Station,Al Mahd,23.285357,40.299522,Working,2018
+123,123,Grouped,WATER FILLING STATION (WFLS),Al-Mahd Governorate Sheeb and Reservoir(Tank),Al Mahd,23.495801,40.874989,Working,2005
+182,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Al-Amak Sheeb and Reservoir(Tank),Al Mahd,23.94692,40.98251,Working,2018
+183,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Al-Jumaima Sheeb ,Al Mahd,23.635116,40.83594,Working,2018
+184,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Al-Suwayrqi Sheeb and Reservoir(Tank),Al Mahd,23.285756,40.298718,Working,2005
+185,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Sheeb Safina ,Al Mahd,23.138497,40.536363,Working,2005
+189,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Tharb Sheeb and Reservoir(Tank),Al Mahd,24.24644,41.735411,Working,2011
+190,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Al-Hamija Sheeb and Reservoir(Tank),Al Mahd,24.326826,41.895452,Standby,2011
+191,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Hatha Sheeb and Reservoir(Tank),Al Mahd,22.720416,40.616324,Working,2012
+192,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Governorate / Al-Salhaniya Sheeb and Reservoir(Tank),Al Mahd,22.871802,40.49152,Working,2012
+243,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Suwaqriyah Water Field (Station 1000 m3/d+2 well),Al Mahd,23.285841,40.299301,Working,2014
+244,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Abeel,Al Mahd,23.026023,40.45925,Working,2018
+309,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Nabiaia Well,Al Mahd,22.868549,40.433322,Working,2008
+336,Standalone,Standalone,WELL ABSTRACTION (WABS),The Gashieh Well,Al Mahd,22.660124,40.308584,Working,2006
+337,Standalone,Standalone,WELL ABSTRACTION (WABS),Aseehar Well 2,Al Mahd,22.604302,40.417136,Working,2006
+338,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan  water field M6,Al Mahd,22.990526,40.33048,Working,2013
+339,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan  water field M7,Al Mahd,22.97926,40.317151,Working,2010
+340,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan  water field M8,Al Mahd,22.983462,40.316132,Working,2010
+341,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan  water field M9,Al Mahd,22.978794,40.315044,Working,2010
+342,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan  water field M10,Al Mahd,22.981242,40.308507,Working,2010
+343,Standalone,Standalone,WELL ABSTRACTION (WABS),Al - Asyhar Station Well,Al Mahd,22.604965,40.412096,Working,2006
+344,Standalone,Standalone,WELL ABSTRACTION (WABS),Al Zain Experts Field,Al Mahd,23.07978,40.49694,Working,2005
+490,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan Water Field M2,Al Mahd,22.995144,40.333481,Working,2013
+491,Standalone,Standalone,WELL ABSTRACTION (WABS),Jabal Alam  Well,Al Mahd,22.994715,40.522571,Working,2014
+492,Standalone,Standalone,WELL ABSTRACTION (WABS),Tharb Water Station (500 m3/d +2 well),Al Mahd,24.246361,41.735825,Working,2014
+493,Standalone,Standalone,WELL ABSTRACTION (WABS),Al Hamija Water Station (300 m3/d +2 well),Al Mahd,24.326761,41.895422,Working,2014
+494,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan Water Field M3,Al Mahd,22.993746,40.327474,Working,2013
+495,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan Water Field M4,Al Mahd,22.990746,40.336443,Working,2013
+496,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Asseher Well 1,Al Mahd,22.604965,40.412096,Working,2006
+497,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Mahajer Well ,Al Mahd,22.670111,40.495179,Working,2006
+498,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan Water Field M5,Al Mahd,22.989759,40.338909,Working,2013
+499,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan Water Field M11,Al Mahd,22.98156,40.291348,Working,2013
+500,Standalone,Standalone,WELL ABSTRACTION (WABS),Al Ruwaydah Well1,Al Mahd,23.079341,40.317768,Working,2009
+501,Standalone,Standalone,WELL ABSTRACTION (WABS),Al Ruwaydah Well2,Al Mahd,23.081826,40.313303,Working,2019
+502,Standalone,Standalone,WELL ABSTRACTION (WABS),Hadda Well,Al Mahd,22.719684,40.616467,Working,2006
+504,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Masawek Field M1 Qty. 4 Wells,Al Mahd,23.256464,40.271091,Out of Service,2022
+505,Standalone,Standalone,WELL ABSTRACTION (WABS),Habba,Al Mahd,23.073707,40.419599,Working,2014
+506,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Wadi Baydan M1 Water Field,Al Mahd,23.000415,40.344435,Working,2010
+507,Standalone,Standalone,WELL ABSTRACTION (WABS),Wadi Hazim Well,Al Mahd,23.304451,40.091882,Working,1982
+508,Standalone,Standalone,WELL ABSTRACTION (WABS),Al -Faara Well,Al Mahd,22.889584,40.403753,Working,2015
+509,Standalone,Standalone,WELL ABSTRACTION (WABS),Mashouka Well,Al Mahd,22.874191,40.540009,Working,2015
+510,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Baraqiya Well,Al Mahd,22.829152,40.419487,Working,2015
+511,Standalone,Standalone,WELL ABSTRACTION (WABS),Um Al-Rajoum Well ,Al Mahd,22.952717,40.397505,Working,2015
+512,Standalone,Standalone,WELL ABSTRACTION (WABS),Anbeaa Well,Al Mahd,22.964969,40.438659,Working,2015
+513,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Refaye Well,Al Mahd,22.686855,40.472981,Working,2015
+514,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Sidra,Al Mahd,23.326373,40.23459,Working,2015
+515,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Nuaima,Al Mahd,22.742616,40.302933,Working,2018
+516,Standalone,Standalone,WELL ABSTRACTION (WABS),Sahla Al-Mazra,Al Mahd,23.826938,40.350091,Working,2018
+517,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Muwaihia,Al Mahd,23.050085,41.16848,Working,2018
+518,Standalone,Standalone,WELL ABSTRACTION (WABS),Salhaniya Well (feeding the plant 500 m3/d),Al Mahd,22.871451,40.491699,Working,2012
+519,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Houimlia Well,Al Mahd,22.895302,40.413934,Working,2006
+607,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Salhaniya Well No. 2,Al Mahd,22.87149,40.492027,Working,2010
+608,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.2,Al Mahd,23.257019,40.270219,Working,2008
+609,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.3,Al Mahd,23.255328,40.271064,Working,2008
+610,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.4,Al Mahd,23.256112,40.269259,Out of Service,2008
+611,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.5,Al Mahd,23.252965,40.268837,Out of Service,2008
+612,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.6,Al Mahd,23.253611,40.27011,Out of Service,2008
+613,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.7,Al Mahd,23.25475,40.26755556,Out of Service,2008
+614,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.8,Al Mahd,23.253917,40.26675,Out of Service,2008
+615,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.9,Al Mahd,23.252825,40.266138,Out of Service,2008
+616,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.10,Al Mahd,23.252181,40.267547,Out of Service,2008
+617,Standalone,Standalone,WELL ABSTRACTION (WABS),AL MASAWEQ FIELD NO.11,Al Mahd,23.254617,40.270403,Out of Service,2008
+618,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hemeja Well No.1,Al Mahd,24.325678,41.890383,Working,2010
+619,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hemeja Well No.2,Al Mahd,24.33886,41.894369,Working,2010
+620,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.14,Al Mahd,22.981441,40.312605,Working,2010
+621,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.23,Al Mahd,22.989397,40.308617,Working,2010
+622,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.24,Al Mahd,22.986202,40.312049,Working,2010
+623,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.25,Al Mahd,22.98429,40.321443,Working,2010
+624,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.12,Al Mahd,22.998999,40.338123,Working,2013
+625,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.13,Al Mahd,22.980392,40.324335,Working,2010
+626,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.15,Al Mahd,22.983539,40.300955,Working,2013
+627,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.16,Al Mahd,22.980807,40.297672,Working,2013
+628,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.17,Al Mahd,22.975948,40.30297,Working,2010
+629,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.18,Al Mahd,22.973708,40.309726,Working,2013
+630,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.19,Al Mahd,22.971189,40.308859,Working,2013
+631,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.20,Al Mahd,22.963771,40.304147,Working,2010
+632,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.21,Al Mahd,22.960569,40.307019,Working,2010
+633,Standalone,Standalone,WELL ABSTRACTION (WABS),BEDAN WELL FIELD NO.22,Al Mahd,22.988017,40.303531,Working,2010
+634,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.1,Al Mahd,23.079785,40.497057,Working,2012
+635,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.2,Al Mahd,23.079025,40.500207,Working,2012
+636,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.3,Al Mahd,23.083952,40.496606,Working,2012
+637,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.4,Al Mahd,23.083786,40.499275,Out of Service,2012
+638,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.5,Al Mahd,23.08611,40.49926,Out of Service,2012
+639,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.6,Al Mahd,23.082799,40.494681,Out of Service,2012
+640,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.7,Al Mahd,23.083211,40.497394,Out of Service,2012
+641,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.8,Al Mahd,23.084701,40.498159,Out of Service,2012
+642,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.9,Al Mahd,23.07963,40.501237,Out of Service,2012
+643,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.10,Al Mahd,23.075546,40.4956,Out of Service,2012
+644,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.11,Al Mahd,23.071579,40.501967,Out of Service,2012
+645,Standalone,Standalone,WELL ABSTRACTION (WABS),KHABRAA ALZAIN FIELD NO.12,Al Mahd,23.076604,40.504762,Out of Service,2012
+871,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Mahd Al Dhadi,Al Mahd,23.414464,40.75159,Working,2018
+918,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Nuaima Reservoir/Tank,Al Mahd,22.747717,40.303666,Working,2015
+931,19,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsalhaniya purification product tank,Al Mahd,22.871577,40.491399,Working,2012
+950,28,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhameja purification product tank,Al Mahd,24.326828,41.895339,Standby,2011
+951,Standalone,Standalone,WATER FILLING STATION (WFLS), Alasayhr Reservoir,Al Mahd,22.604906,40.412927,Working,2008
+953,Standalone,Standalone,WATER FILLING STATION (WFLS),Alabeel Reservoir,Al Mahd,23.025855,40.459229,Working,2014
+954,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Almahajer tank,Al Mahd,22.670157,40.495044,Working,2008
+955,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Beidan Collection Tank,Al Mahd,22.977733,40.309194,CWIP,2012
+957,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Mount Alam Reservoir ,Al Mahd,22.994715,40.522586,Working,2012
+958,10,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsuwaykaryah Raw Tank Purification ,Al Mahd,23.285559,40.298988,Working,2010
+959,20,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Ore Acute purification  tank ,Al Mahd,22.720078,40.61653,Working,2012
+962,10,Grouped,POTABLE WATER STORAGE TANKS (WTNK), Alsuwaykaryah purification product tank,Al Mahd,23.285753,40.299075,Working,2010
+989,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alruwaydah Reservoir 1,Al Mahd,23.079412,40.317942,Working,2005
+996,Standalone,Standalone,WATER FILLING STATION (WFLS),Alnabeiya Reservoir ,Al Mahd,22.868577,40.43321,Working,2012
+997,2256,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhwemlia Reservoir,Al Mahd,22.894911,40.413759,Working,2006
+1007,19,Grouped,POTABLE WATER STORAGE TANKS (WTNK), Alsalhaniya Crude Tank Purification ,Al Mahd,22.871635,40.491607,Working,2012
+1015,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK), Almashuqa Tank,Al Mahd,22.874258,40.540107,Out of Service,2012
+1060,2280,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alrafae Tank,Al Mahd,22.686855,40.472981,Working,2012
+1061,Standalone,Standalone,WATER FILLING STATION (WFLS),Alghashiya Reservoir,Al Mahd,22.660115,40.30843,Working,2005
+1063,123,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsheeb Feeding Tank,Al Mahd,23.495916,40.87504,Working,2005
+1065,28,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhemeja Ore Tank Purification ,Al Mahd,24.326858,41.895451,Standby,2011
+1066,13,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tharb Raw Tank Purification ,Al Mahd,24.246534,41.73574,Working,2011
+1067,Standalone,Standalone,WATER FILLING STATION (WFLS),Sahle Almuzare Tank,Al Mahd,23.826978,40.350013,Working,2015
+1070,13,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tharb purification product Tank,Al Mahd,24.24655,41.7356,Working,2012
+1071,20,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tank sharp purification product ,Al Mahd,22.720125,40.616284,Working,2018
+1082,Standalone,Standalone,WATER FILLING STATION (WFLS),Habaa Tank,Al Mahd,23.073758,40.419632,Working,2010
+1098,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Hura Tank,Al Mahd,22.663033,40.317283,Standby,2010
+1102,1102,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Swerkia Operation Tank,Al Mahd,23.285293,40.299509,Working,2014
+1106,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Omq Tank ,Al Mahd,23.945742,40.975817,Working,2018
+1111,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Mahd Ground Tank,Al Mahd,23.499896,40.878707,Working,2005
+1112,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Mahd High Tank,Al Mahd,23.499668,40.878349,Working,2005
+1119,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Khubara Al Zain Tank,Al Mahd,23.080865,40.500072,Standby,2000
+1134,2134,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Wadi Hazem Reservoir,Al Mahd,23.304537,40.092142,Standby,2009
+1135,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Baydan Reservoir,Al Mahd,22.976691,40.310388,Working,2012
+1155,1155,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Mahd Collection Tank,Al Mahd,23.496162,40.874847,Working,2010
+1156,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Mahd Strategic Tank,Al Mahd,23.494895,40.873733,Working,2018
+2127,Standalone,Standalone,WATER FILLING STATION (WFLS),Pumping Station No. 2 Sheb and Reservoir,Al Mahd,23.234082,40.65657,Working,2018
+2130,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Raqabiah,Al Mahd,23.14835,40.99634,Working,2011
+2131,Standalone,Standalone,WELL ABSTRACTION (WABS),Al Raqabiah (1) ,Al Mahd,23.14835,40.99634,Working,2011
+2132,Standalone,Standalone,WELL ABSTRACTION (WABS),Al Raqabiah (2) ,Al Mahd,23.14835,40.99634,Working,2011
+2133,Standalone,Standalone,WATER FILLING STATION (WFLS),Pumping station No.3 Sheeb and tank,Al Mahd,23.370702,40.788531,Working,2018
+2134,2134,Grouped,WATER FILLING STATION (WFLS),sheeb and tank wadi Hazim,Al Mahd,23.30438,40.092042,Working,2009
+2222,2266,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tharb Reservoir 1,Al Mahd,24.2432423,41.72464,Working,2014
+2223,2266,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tharb Reservoir 2,Al Mahd,24.2432423,41.72464,Working,2014
+2256,2256,Grouped,WATER FILLING STATION (WFLS),Alhwemlia Reservoir Filling station,Al Mahd,22.894911,40.413759,Working,2007
+2266,2266,Grouped,WATER FILLING STATION (WFLS),Tharb Reservoir  Filling Station,Al Mahd,24.2432423,41.7246423,Working,2005
+2267,2267,Grouped,WATER FILLING STATION (WFLS),Alquwahiya Reservoir Filling Station,Al Mahd,23.4128908,41.2532306,Working,2005
+2268,2268,Grouped,WATER FILLING STATION (WFLS),atwarfiya Reservoir Filling Station,Al Mahd,23.52448306,41.3443295,Working,2000
+2275,2267,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alquwahiya,Al Mahd,23.4128908,41.25323,Working,2014
+2276,2268,Grouped,POTABLE WATER STORAGE TANKS (WTNK),atwarfiya,Al Mahd,23.52448306,41.34433,Working,2014
+2280,2280,Grouped,WATER FILLING STATION (WFLS),Alrafae Filling Station,Al Mahd,22.686855,40.472981,Working,2015
+6,6,Grouped,WATER TREATMENT PLANT (WTRP),Al-Jadida,Al Ula,25.824433,38.196366,Working,2010
+22,22,Grouped,WATER TREATMENT PLANT (WTRP),Sadr,Al Ula,26.563136,37.93909,Working,2011
+33,33,Grouped,WATER TREATMENT PLANT (WTRP),Salila Anizah,Al Ula,25.56053,38.50769,Working,2010
+37,37,Grouped,WATER TREATMENT PLANT (WTRP),Qaraqer,Al Ula,26.741861,37.889731,Working,2011
+72,1120,Grouped,WATER PUMPING STATION (WPUS),Pumping Station in  Hakl Saqq ,Al Ula,26.660907,37.902171,Working,2012
+73,73,Grouped,WATER PUMPING STATION (WPUS), Khazat Al-Deira Pumping Station,Al Ula,26.63098,37.910794,Working,1976
+74,74,Grouped,WATER PUMPING STATION (WPUS),Al-Salam Reservoir/Tank Pumping Station,Al Ula,26.563861,37.944874,Working,2015
+168,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ulla Governorate / Al-Jadeda Sheeb and Reservoir(Tank),Al Ula,25.824168,38.196567,Working,2012
+169,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ulla Governorate / Sadr Sheeb and Reservoir(Tank),Al Ula,26.56295,37.939233,Working,2009
+170,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ulla Governorate / Salila Onaiza Sheeb and Reservoir(Tank),Al Ula,25.56053,38.50769,Working,2009
+171,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ulla Governorate / Al-Najeel Sheeb and Reservoir(Tank),Al Ula,26.43465,37.142944,Working,2011
+172,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ulla Governorate / Al-Bali Sheeb and Reservoir(Tank),Al Ula,26.97606033,38.09388727,Working,1998
+173,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ulla Governorate / Al-Salam Sheeb and Reservoir(Tank),Al Ula,26.563758,37.944197,CWIP,2021
+352,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 5 ,Al Ula,26.662183,37.905833,Working,2016
+353,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Salam Water Field-Well 1,Al Ula,26.563304,37.945022,Working,2015
+365,Standalone,Standalone,WELL ABSTRACTION (WABS),Qaa Al-Haj Well,Al Ula,26.663354,38.054353,Working,1993
+366,Standalone,Standalone,WELL ABSTRACTION (WABS),Nakhla Well,Al Ula,26.540762,38.19774,Working,1999
+368,Standalone,Standalone,WELL ABSTRACTION (WABS),Harimel Well 2,Al Ula,27.153657,37.245849,Working,2005
+371,Standalone,Standalone,WELL ABSTRACTION (WABS),Salela Anzah Well No.1,Al Ula,25.553141,38.507853,Working,1992
+372,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Atheeb Well No.1,Al Ula,26.738132,37.943838,Out of Service,1990
+373,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Sharaaba Well,Al Ula,26.699293,37.896046,Working,2010
+374,Standalone,Standalone,WELL ABSTRACTION (WABS),al-Kbishat Well,Al Ula,26.76106,38.401786,Working,2013
+375,Standalone,Standalone,WELL ABSTRACTION (WABS),Arar Well,Al Ula,25.943826,38.063193,Working,2015
+376,Standalone,Standalone,WELL ABSTRACTION (WABS),Katifa Well,Al Ula,26.082978,38.075023,Working,2012
+377,Standalone,Standalone,WELL ABSTRACTION (WABS),Shalal Well,Al Ula,26.787833,37.8623,Working,1990
+378,Standalone,Standalone,WELL ABSTRACTION (WABS),Thorba Well (Enbubi),Al Ula,26.873089,37.837095,Working,1998
+379,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Brika Well No.1,Al Ula,27.335126,37.786835,Working,2009
+385,Standalone,Standalone,WELL ABSTRACTION (WABS),Fadla Well No.2,Al Ula,26.378315,37.850529,Working,2009
+386,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Al-Jadeda field M1 (station 1000 m3/d +2 well) ,Al Ula,25.824529,38.196614,Working,2012
+387,Standalone,Standalone,WELL ABSTRACTION (WABS),Abu Rakah Well No.2,Al Ula,27.104615,37.189638,Working,1991
+388,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Nashifa No.1,Al Ula,27.01864,37.279919,Out of Service,2003
+389,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Nashifa No.2,Al Ula,27.018745,37.280834,Out of Service,2003
+394,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Faraa Well No. 2 (Manual),Al Ula,27.161294,37.044399,Working,2015
+398,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Balata Well No.1,Al Ula,26.685762,37.393439,Out of Service,1990
+399,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Balata Well No.2,Al Ula,26.686132,37.393659,Working,1990
+400,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Najeel Well ,Al Ula,26.717123,37.242122,Working,2011
+401,Standalone,Standalone,WELL ABSTRACTION (WABS),Fadla Well No.1,Al Ula,26.378727,37.850824,Working,1990
+402,Standalone,Standalone,WELL ABSTRACTION (WABS),Amudan Well No.1,Al Ula,26.31055,37.713122,Working,1990
+403,Standalone,Standalone,WELL ABSTRACTION (WABS),Amudan Well No.2,Al Ula,26.309267,37.703536,Out of Service,1991
+404,Standalone,Standalone,WELL ABSTRACTION (WABS),Qaseeb Abu Sial Well,Al Ula,26.325984,37.916191,Working,1992
+405,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Al-Jadeda field M1 (station 1000 m3/d +2 well) ,Al Ula,25.825135,38.197519,Out of Service,2012
+406,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Arak Well (Al-Khreba) Manual,Al Ula,25.740565,37.958659,Working,1991
+407,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Arak Well 1 ,Al Ula,26.03058,37.692756,Working,1991
+410,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Mughaira Field 1m Qty. 4 Wells,Al Ula,26.471419,38.108944,Working,2016
+429,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 1,Al Ula,26.658506,37.906428,Working,1988
+430,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 2,Al Ula,26.659919,37.904952,Working,2016
+431,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 3,Al Ula,26.661172,37.905702,Working,2016
+432,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 4,Al Ula,26.661797,37.904332,Working,2012
+433,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 6,Al Ula,26.661191,37.900813,Working,2016
+434,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 7,Al Ula,26.660424,37.897693,Out of Service,2013
+435,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 8,Al Ula,26.657197,37.895556,Out of Service,2013
+436,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 9,Al Ula,26.658333,37.898056,Out of Service,2013
+437,Standalone,Standalone,WELL ABSTRACTION (WABS),Saq Water Field- Well 10,Al Ula,26.658003,37.901111,Working,1988
+438,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Salam Water Field-Well 2,Al Ula,26.563758,37.944197,Working,2015
+462,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Salam Water Field- Well 3,Al Ula,26.564531,37.942989,Working,2015
+463,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Mahash Well No.1,Al Ula,26.601528,37.941871,Out of Service,1990
+464,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Deira Well ,Al Ula,26.631362,37.910739,Working,1976
+465,Standalone,Standalone,WELL ABSTRACTION (WABS),Share of Al-Jadeda Field M1 (station 1000 m3/d +2 well) ,Al Ula,25.824529,38.196614,Working,2012
+466,Standalone,Standalone,WELL ABSTRACTION (WABS),Abo Zeraeb Well,Al Ula,26.4225039,38.0140652,Out of Service,2010
+467,Standalone,Standalone,WELL ABSTRACTION (WABS),Blie Well,Al Ula,26.975754,38.093685,Working,1998
+468,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hajar Well,Al Ula,26.754987,38.00767,Working,2009
+470,Standalone,Standalone,WELL ABSTRACTION (WABS),Salela Anzah Well No.2 / Kaarah al-Duma,Al Ula,25.578415,38.465459,Working,2016
+471,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Abrak Well 1 (Manual),Al Ula,25.577332,38.633481,Working,1994
+472,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Abrak Well 2,Al Ula,25.575751,38.63516,Working,2015
+473,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Atheeb Well No. 2,Al Ula,26.738122,37.944124,Working,1996
+474,Standalone,Standalone,WELL ABSTRACTION (WABS),Qaraqer Well No.1,Al Ula,26.740977,37.891495,Working,1998
+475,Standalone,Standalone,WELL ABSTRACTION (WABS),Qaraqer Well No.2,Al Ula,26.742217,37.890104,Working,2014
+476,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Malsan Well No.1,Al Ula,26.773954,37.894692,Working,2019
+477,Standalone,Standalone,WELL ABSTRACTION (WABS),Abu Kharit Well,Al Ula,26.263582,37.963422,Working,2015
+478,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Maghatia Well,Al Ula,26.30037,37.968341,Working,2015
+479,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Ain Al-Jadeda Well,Al Ula,25.824529,38.196614,Out of Service,2017
+480,Standalone,Standalone,WELL ABSTRACTION (WABS),Shosa Well,Al Ula,26.673881,37.337805,Working,2015
+481,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Hassah Well,Al Ula,26.806968,38.580895,Working,2017
+482,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Barika Well No. 2,Al Ula,27.335795,37.786722,Out of Service,2017
+483,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Barika Well No. 3,Al Ula,27.335,37.78638889,Out of Service,2017
+646,Standalone,Standalone,WELL ABSTRACTION (WABS),1-H-15 ALBARIKA,Al Ula,27.411307,37.726979,Out of Service,2020
+647,Standalone,Standalone,WELL ABSTRACTION (WABS),1-H-18 ALBARIKA,Al Ula,27.417631,37.721324,Out of Service,2020
+648,Standalone,Standalone,WELL ABSTRACTION (WABS),1-H-19 ALBARIKA,Al Ula,27.424897,37.715917,Out of Service,2020
+649,Standalone,Standalone,WELL ABSTRACTION (WABS),1-H-20 ALBARIKA,Al Ula,27.40436,37.732547,Out of Service,2020
+650,Standalone,Standalone,WELL ABSTRACTION (WABS),1-H-21 ALBARIKA,Al Ula,27.39692,37.739255,Out of Service,2020
+651,Standalone,Standalone,WELL ABSTRACTION (WABS),1-H-22 ALBARIKA,Al Ula,27.389727,37.742984,Out of Service,2020
+652,Standalone,Standalone,WELL ABSTRACTION (WABS),1-H-29 ALBARIKA,Al Ula,27.366892,37.750024,Transfer to other department,2020
+654,Standalone,Standalone,WELL ABSTRACTION (WABS),WELL NO.2,Al Ula,26.668667,37.97655,Working,2007
+655,Standalone,Standalone,WELL ABSTRACTION (WABS),WELL NO.3,Al Ula,26.667726,37.94018,Out of Service,2007
+656,Standalone,Standalone,WELL ABSTRACTION (WABS), AL HAJAR WELL NO.2,Al Ula,26.768556,38.002028,Out of Service,2020
+657,Standalone,Standalone,WELL ABSTRACTION (WABS), AL HAJAR WELL NO.3,Al Ula,26.76925,37.973667,Out of Service,2020
+658,Standalone,Standalone,WELL ABSTRACTION (WABS), AL HAJAR WELL NO.4,Al Ula,26.757528,37.979083,Out of Service,2020
+659,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-5,Al Ula,26.867683,38.136733,Working,2015
+660,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-6,Al Ula,26.85217,38.12495,Working,2015
+661,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-8,Al Ula,26.84425,38.156923,Working,2015
+662,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-9,Al Ula,26.984083,38.146497,Working,2015
+663,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-10,Al Ula,26.977717,38.154,Working,2015
+664,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-11,Al Ula,26.977983,38.164183,Working,2015
+665,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-12,Al Ula,26.986038,38.137307,Working,2015
+666,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-13,Al Ula,26.975832,38.143834,Working,2015
+667,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-14,Al Ula,26.971667,38.151267,Working,2015
+668,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-23,Al Ula,26.967222,38.156444,Working,2015
+669,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-24,Al Ula,26.97275,38.159167,Working,2015
+670,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-25,Al Ula,26.975056,38.138167,Working,2015
+671,Standalone,Standalone,WELL ABSTRACTION (WABS),1-M-26,Al Ula,26.96675,38.128917,Working,2015
+869,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Ula STP,Al Ula,26.498725,38.017978,Working,2019
+891,2175,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhajr,Al Ula,26.754863,38.007472,Working,2009
+894,6,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aljadida Raw Purification Plant Reservoir,Al Ula,25.824353,38.196508,Working,2012
+895,6,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aljadida Product Purification Plant Reservoir,Al Ula,25.824353,38.196508,Working,2012
+896,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK), Qaa Alhaj,Al Ula,26.66317,38.054407,Working,1993
+927,22,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Crude Sadr Water Purification Plant Tank,Al Ula,26.563196,37.939035,Working,2012
+928,22,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Sadr Water Purification Plant Tank Product No. 1,Al Ula,26.563196,37.939035,Working,2012
+964,2214,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almughayraa Field,Al Ula,26.477902,38.100168,Standby,1994
+973,33,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsulaylah,Al Ula,25.560152,38.507552,Working,1992
+974,2182,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsharaaba,Al Ula,26.699216,37.895895,Working,2010
+976,2187,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almalsan,Al Ula,26.774063,37.894937,Working,2009
+978,2200,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Therbah,Al Ula,26.873148,37.837404,Working,1998
+986,73,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aldeira Reservoir,Al Ula,26.631117,37.910858,Working,1976
+987,73,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aldeira Upper Reservoir,Al Ula,26.631059,37.910598,Working,1976
+990,74,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsalam Reservoir,Al Ula,26.563683,37.94491,Working,2003
+1013,22,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Sadr Water Product Purification Plant Tank  No. 2,Al Ula,26.563108,37.939268,Working,2012
+1020,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Shalal,Al Ula,26.787543,37.862111,Working,2008
+1021,37,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Qaraqer,Al Ula,26.741962,37.890148,Working,1998
+1043,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Albalata,Al Ula,26.677896,37.391548,Working,1990
+1045,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alkbishat,Al Ula,26.761104,38.401506,Working,2013
+1084,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Qaseeb Abu sial,Al Ula,26.325995,37.91626,Working,2009
+1086,2215,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Albali,Al Ula,26.97579,38.093711,Working,2012
+1092,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Skhirat,Al Ula,26.607426,37.925507,Out of Service,1976
+1120,1120,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Saq Tank 1,Al Ula,26.66103,37.902675,Working,2012
+1124,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Sadr,Al Ula,26.56977,37.935356,Out of service,2008
+1129,1120,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Saq Tank 2,Al Ula,26.661027,37.903732,CWIP,2021
+1147,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al  Abraq ,Al Ula,25.578211,38.633021,Out of service,1994
+1148,2224,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al  Brika,Al Ula,27.335099,37.78694,Working,2009
+2169,Standalone,Standalone,WATER FILLING STATION (WFLS),Qaseeb Abu sial filling Station,Al Ula,26.326,37.91626,Working,2007
+2171,Standalone,Standalone,WATER FILLING STATION (WFLS),Qaa Alhaj Filling Station,Al Ula,26.66317,38.05441,Working,2001
+2175,2175,Grouped,WATER FILLING STATION (WFLS),Alhajr Filling Station,Al Ula,26.75486,38.00747,Working,2007
+2182,2182,Grouped,WATER FILLING STATION (WFLS),Alsharaaba Filling Station,Al Ula,26.69922,37.895895,Working,2007
+2183,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Atheeb Well No.1 Filling Station,Al Ula,26.738132,37.943838,Out of Service,1996
+2187,2187,Grouped,WATER FILLING STATION (WFLS),Al-Malsan Well No.1 Filling Station,Al Ula,26.773954,37.894692,Working,2001
+2194,Standalone,Standalone,WATER FILLING STATION (WFLS),Shalal Well Filling Station,Al Ula,26.78783,37.8623,Working,2001
+2200,2200,Grouped,WATER FILLING STATION (WFLS),Therbah Filling srtation,Al Ula,26.87315,37.8374,Working,2001
+2214,2214,Grouped,WATER FILLING STATION (WFLS),Mughayraa Filling station,Al Ula,26.478052,38.100274,Working,2001
+2215,2215,Grouped,WATER FILLING STATION (WFLS),Al Ulla Governorate / Al-Bali Sheeb and Reservoir(Tank) Filling Station 2,Al Ula,26.97606033,38.09388727,Working,2017
+2221,2221,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Shamil Reservoir,Al Ula,26.975249,38.145102,Working,2017
+2224,2224,Grouped,WATER FILLING STATION (WFLS),Al-Brika Well No.1 Filling Station,Al Ula,27.335126,37.786835,Working,2007
+2225,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Balata Well No.2 Filling Station,Al Ula,26.686132,37.393659,Out of service,2001
+2226,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Ulla Governorate / Al-Najeel Sheeb and Reservoir(Tank) 2,Al Ula,26.71777,37.241623,Working,2000
+2227,2221,Grouped,WATER PUMPING STATION (WPUS),Shamil Pumping Station,Al Ula,26.975044,38.145034,Working,2000
+2250,Standalone,Standalone,WELL ABSTRACTION (WABS),Shosa Well 2,Al Ula,26.67439,37.338129,Working,2015
+2254,Standalone,Standalone,WATER FILLING STATION (WFLS),Alkbishat Filling Station,Al Ula,26.774478,38.388828,Working,2013
+31,31,Grouped,WATER TREATMENT PLANT (WTRP),Qidi Well,Badr,23.612978,39.289656,Standby,2014
+56,56,Grouped,WATER PUMPING STATION (WPUS),Pumping Station and Reservoir/Tank of Al-Rais Center,Badr,23.581133,38.616758,Working,2015
+57,993,Grouped,WATER PUMPING STATION (WPUS),Pumping Station and Reservoir/Tank of Al-Meseged Center,Badr,24.077414,39.087214,Working,2015
+88,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Wasta Center Pumping Station,Badr,23.887161,38.904381,Working,2013
+89,985,Grouped,WATER PUMPING STATION (WPUS),Al Kheif Village Pumping Station,Badr,24.020733,38.973678,Working,2016
+90,Standalone,Standalone,WATER PUMPING STATION (WPUS),Adman District Pumping Station,Badr,23.760419,38.806831,Working,2013
+159,Standalone,Standalone,WATER FILLING STATION (WFLS),Bader Governorate / Bader Sheeb and Reservoir(Tank),Badr,23.745898,38.770894,Working,2014
+160,Standalone,Standalone,WATER FILLING STATION (WFLS),Bader Governorate / Al-Mesegeed Sheeb and Reservoir(Tank),Badr,24.078358,39.09037,Working,2019
+165,Standalone,Standalone,WATER FILLING STATION (WFLS),Bader Governorate / The New Al-Rais Sheeb and Reservoir(Tank),Badr,23.580634,38.61354,Working,2019
+167,Standalone,Standalone,WATER FILLING STATION (WFLS),Bader Governorate / Al-Sudeira Sheeb and Reservoir(Tank),Badr,24.295898,38.853999,Out of service,2018
+354,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Masijid Well,Badr,24.091333,39.099167,Out of service,1990
+355,Standalone,Standalone,WELL ABSTRACTION (WABS),Qaidi Well 1,Badr,23.611778,39.29075,Out of service,1990
+439,Standalone,Standalone,WELL ABSTRACTION (WABS),Ziad Al -Aniq Well,Badr,24.262417,38.942556,Out of service,1990
+440,Standalone,Standalone,WELL ABSTRACTION (WABS),Sadr Al-Aneq Well,Badr,24.240054,38.978391,Out of service,1990
+441,Standalone,Standalone,WELL ABSTRACTION (WABS),Rahkan Well,Badr,24.11925,39.070833,Out of service,1990
+442,Standalone,Standalone,WELL ABSTRACTION (WABS),Tasha Well 1,Badr,24.170417,38.8555,Out of service,1990
+443,Standalone,Standalone,WELL ABSTRACTION (WABS),Tasha Well 2,Badr,24.17,38.854667,Out of service,1990
+444,Standalone,Standalone,WELL ABSTRACTION (WABS),Qaidi Well 2,Badr,23.610667,39.290556,Out of service,1990
+445,Standalone,Standalone,WELL ABSTRACTION (WABS),Habt Well,Badr,24.013194,39.200472,Out of service,1990
+446,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Sumaida Well,Badr,23.527639,39.245556,Out of service,1990
+447,Standalone,Standalone,WELL ABSTRACTION (WABS),Wadi Al-Miyah Well,Badr,23.582672,39.253219,Out of service,1990
+448,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Sumaida Well 2,Badr,23.524444,39.248139,Out of service,1990
+449,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Rawda Well 1,Badr,23.787861,38.786611,Out of service,1990
+450,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Rawda Well 2,Badr,23.790374,38.785382,Out of service,1990
+451,Standalone,Standalone,WELL ABSTRACTION (WABS),Waset Well ,Badr,23.957611,38.717806,Out of service,1990
+452,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Sudeira Well,Badr,24.372444,38.853972,Out of service,1990
+453,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Khif Well,Badr,23.995861,38.908556,Out of service,1990
+454,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Shafia Well,Badr,23.838917,39.15975,Out of service,1990
+455,Standalone,Standalone,WELL ABSTRACTION (WABS),Rawha Well,Badr,24.074694,39.180556,Out of service,1990
+870,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Bader,Badr,23.689674,38.757343,Working,2019
+911,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alhamra Tank,Badr,23.947444,38.876756,Working,1990
+912,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Rawda Reservoir,Badr,23.786956,38.786272,Working,1990
+930,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alwasta Center Reservoir ,Badr,23.891053,38.905489,Working,2013
+985,985,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Khif  Reservoir,Badr,24.021139,38.972813,Working,2014
+988,56,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alrayes Reservoir,Badr,23.580916,38.616683,Working,2013
+993,993,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almousayjid Reservoir,Badr,24.077561,39.087033,Working,2013
+1100,31,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Crude Tank for the purification plant of Qidi well,Badr,23.613245,39.29011,Standby,2015
+1109,31,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Product Tank 1 for Qidi Well Purification Plant,Badr,23.613281,39.289182,Standby,2015
+1110,31,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Product Tank 2 for Qidi Well Purification Plant,Badr,23.615855,39.291593,Standby,2015
+1125,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Bader Strategic Reservoir,Badr,23.792807,38.793427,Working,2015
+1126,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Ghazalani Strategic Reservoir 2,Badr,23.786678,38.764586,CWIP,2021
+1127,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Sudeira Reservoir 1,Badr,24.295898,38.853999,Out of service,2015
+1128,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Sudeira Reservoir 2,Badr,24.345396,38.852775,Out of service,2015
+1146,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Bader Reservoir,Badr,23.784917,38.799546,Out of service,1990
+2283,Standalone,Standalone,WATER PUMPING STATION (WPUS),AlHajili Pump,Badr,24.0910707,39.0963018,Out of Service,2019
+2284,Standalone,Standalone,WATER PUMPING STATION (WPUS),AlKhshbi Pump,Badr,23.8052778,38.7806597,CWIP,2022
+11,11,Grouped,WATER TREATMENT PLANT (WTRP),AL-Thamad (1),Khaybar,25.491103,39.348167,Working,2010
+18,18,Grouped,WATER TREATMENT PLANT (WTRP),Al-Salsalah  (1),Khaybar,25.322397,39.386533,Working,2013
+34,34,Grouped,WATER TREATMENT PLANT (WTRP),Al-Salsalah  (2),Khaybar,25.321323,39.384747,Working,2020
+35,35,Grouped,WATER TREATMENT PLANT (WTRP),AL-Thamad (2),Khaybar,25.491072,39.349563,Working,2020
+75,922,Grouped,WATER PUMPING STATION (WPUS),Khyber Pumping Station,Khaybar,25.705801,39.298987,Working,2009
+92,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Ghazwa Tank Pumping Station,Khaybar,25.680679,39.296941,Standby,1998
+114,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Thamad Network Pumping Station,Khaybar,25.490372,39.348838,Working,2020
+115,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Salsala Network Pumping Station,Khaybar,25.321888,39.384601,Working,2020
+199,Standalone,Standalone,WATER FILLING STATION (WFLS),Khaybar Governorate / AL-Thamad Sheeb and Reservoir(Tank),Khaybar,25.491471,39.349058,Working,2010
+200,Standalone,Standalone,WATER FILLING STATION (WFLS),Khaybar Governorate / AL-Salsalah Sheeb and Reservoir(Tank),Khaybar,25.322725,39.38609,Working,2012
+201,201,Grouped,WATER FILLING STATION (WFLS),Khaybar Governorate / AL-Ashash Sheeb and Reservoir(Tank),Khaybar,25.968122,39.410478,Working,2008
+202,202,Grouped,WATER FILLING STATION (WFLS),Khaybar Governorate / Ashrah Sheeb and Reservoir(Tank),Khaybar,26.117404,38.84251,Working,2007
+203,203,Grouped,WATER FILLING STATION (WFLS),Khaybar Governorate / Aqeela Al-Salsalah Sheeb and Reservoir(Tank),Khaybar,25.152946,39.486688,Working,2011
+204,Standalone,Standalone,WATER FILLING STATION (WFLS),Khaybar Governorate / Al-Samha Sheeb and Reservoir(Tank),Khaybar,25.916417,39.367403,Working,2007
+360,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Salsala Well 2,Khaybar,25.321589,39.386297,Out of Service,2012
+361,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Salsala Field (Station 300 m3/d + 1Well),Khaybar,25.322421,39.387935,Working,2012
+362,Standalone,Standalone,WELL ABSTRACTION (WABS),Ashira Well No.1,Khaybar,26.11571,38.844416,Working,2007
+364,Standalone,Standalone,WELL ABSTRACTION (WABS),Ghamra Well,Khaybar,25.993702,39.365558,Out of Service,2014
+456,Standalone,Standalone,WELL ABSTRACTION (WABS),Zubran Well,Khaybar,25.523343,39.227268,Working,2004
+458,Standalone,Standalone,WELL ABSTRACTION (WABS),AL-Eshash Well No.2,Khaybar,26.07490913,39.38054562,Out of Service,2015
+459,Standalone,Standalone,WELL ABSTRACTION (WABS), Aqila Alsalsa Well,Khaybar,25.152746,39.4869,Working,2011
+460,Standalone,Standalone,WELL ABSTRACTION (WABS),Ashira Well No.2,Khaybar,26.114929,38.846401,Working,2009
+673,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Lahn Well,Khaybar,25.14357497,39.29490205,Out of Service,2015
+674,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Ghanaim Well 1,Khaybar,25.96402975,39.71954011,Out of Service,2011
+675,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Ghanaim Well 2,Khaybar,25.96402975,39.71954011,Out of Service,2011
+676,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Manji Well,Khaybar,25.89362114,39.4261474,Out of Service,2011
+677,Standalone,Standalone,WELL ABSTRACTION (WABS),Sweqa Well ,Khaybar,25.80214,39.33239,Out of Service,2010
+678,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Madaweh Well 1,Khaybar,25.86313078,39.30039831,Out of Service,2009
+679,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Madaweh Well 2,Khaybar,25.86286184,39.29944948,Out of Service,2011
+680,Standalone,Standalone,WELL ABSTRACTION (WABS),Ashra Well 3,Khaybar,26.07727432,38.8493042,Out of Service,2015
+681,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Joule Well,Khaybar,25.65431,39.74633,Out of Service,2016
+682,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.4 Ph.1,Khaybar,25.28543,39.20947,Transfer to other department,2012
+683,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.5 Ph.1,Khaybar,25.4737,39.350833,Out of Service,2010
+684,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.6 Ph.1,Khaybar,25.474733,39.354283,Out of Service,2010
+685,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.7 Ph.1,Khaybar,25.477167,39.353667,Working,2010
+686,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.8 Ph.1,Khaybar,25.479867,39.3532,Out of Service,2010
+687,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.9 Ph.1,Khaybar,25.4817,39.351333,Working,2010
+688,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.10 Ph.1,Khaybar,25.481533,39.347867,Working,2010
+689,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.11 Ph.1,Khaybar,25.4829,39.3537,Working,2010
+690,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.12 Ph.1,Khaybar,25.484496,39.351216,Out of Service,2010
+691,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.13 Ph.1,Khaybar,25.483883,39.347233,Working,2010
+692,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.14 Ph.2,Khaybar,25.492748,39.384009,Out of Service,2010
+693,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.15 Ph.2,Khaybar,25.491556,39.379639,Out of Service,2010
+694,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.16 Ph.2,Khaybar,25.494556,39.372917,Out of Service,2010
+695,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.17 Ph.2,Khaybar,25.495583,39.377722,Out of Service,2010
+696,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.18 Ph.2,Khaybar,25.498972,39.380861,Out of Service,2010
+697,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.19 Ph.2,Khaybar,25.501361,39.381194,Out of Service,2010
+698,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.20 Ph.2,Khaybar,25.504389,39.380083,Out of Service,2010
+699,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.21 Ph.2,Khaybar,25.506222,39.389694,Working,2010
+700,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.22 Ph.2,Khaybar,25.502028,39.387528,Working,2010
+701,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.23 Ph.2,Khaybar,25.499167,39.384833,Working,2010
+702,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.24 Ph.2,Khaybar,25.498972,39.39375,Working,2010
+703,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.25 Ph.2,Khaybar,25.496833,39.39075,Out of Service,2010
+704,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.26 Ph.2,Khaybar,25.495417,39.398333,Out of Service,2010
+705,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.27 Ph.2,Khaybar,25.492556,39.401889,Out of Service,2010
+706,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.28 Ph.2,Khaybar,25.488389,39.398417,Out of Service,2010
+707,Standalone,Standalone,WELL ABSTRACTION (WABS),Al SALSALAH OLD WEL,Khaybar,25.32142931,39.38073319,Out of Service,2007
+708,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.5 Ph.1,Khaybar,25.324083,39.385861,Out of Service,2010
+709,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.6 Ph.1,Khaybar,25.3245,39.387917,Out of Service,2010
+710,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.7 Ph.1,Khaybar,25.323433,39.383483,Out of Service,2010
+711,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.8 Ph.1,Khaybar,25.32095,39.389117,Working,2010
+712,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.9 Ph.1,Khaybar,25.318583,39.390683,Working,2010
+713,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.10 Ph.1,Khaybar,25.32225,39.394583,Working,2010
+714,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.11 Ph.1,Khaybar,25.321183,39.401883,Out of Service,2010
+715,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.12 Ph.1,Khaybar,25.316917,39.401883,Out of Service,2010
+716,Standalone,Standalone,WELL ABSTRACTION (WABS),AL SALSALAH WELL NO.13 Ph.1,Khaybar,25.705179,39.303816,Working,2010
+717,Standalone,Standalone,WELL ABSTRACTION (WABS),Douile Well - Badiya resource,Khaybar,26.058507,39.428438,Working,2012
+718,Standalone,Standalone,WELL ABSTRACTION (WABS),Rahba Al-Hussaini Well ,Khaybar,25.58275,39.417611,Out of Service,2010
+719,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.4,Khaybar,26.04296,39.22435,Out of Service,2010
+720,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.5,Khaybar,25.58055,39.23586,Out of Service,2010
+721,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.6 Ph.1,Khaybar,25.966916,39.386899,Out of Service,2010
+722,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.7 Ph.1,Khaybar,25.968462,39.39113,Out of Service,2010
+723,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.8 Ph.1,Khaybar,25.968944,39.395389,Out of Service,2010
+724,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.9 Ph.1,Khaybar,25.965357,39.384043,Out of Service,2010
+725,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.10,Khaybar,25.5892,39.24133,Out of Service,2010
+726,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.11 Ph.1,Khaybar,25.970389,39.406778,Out of Service,2010
+727,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.12 Ph.1,Khaybar,25.971944,39.410111,Out of Service,2010
+728,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.13 Ph.1,Khaybar,25.974694,39.409972,Out of Service,2010
+729,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.14 Ph.2,Khaybar,25.963389,39.407167,Out of Service,2011
+730,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.15 Ph.2,Khaybar,25.963472,39.409889,Transfer to other department,2011
+731,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.16 Ph.2,Khaybar,25.965944,39.4135,Out of Service,2011
+732,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.17 Ph.2,Khaybar,25.962889,39.414278,Out of Service,2011
+733,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.18 Ph.2,Khaybar,25.961863,39.416216,Out of Service,2011
+734,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.19 Ph.2,Khaybar,25.961222,39.417528,Out of Service,2011
+735,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.20 Ph.2,Khaybar,25.965722,39.417167,Out of Service,2011
+736,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.21 Ph.2,Khaybar,25.967611,39.416139,Out of Service,2011
+737,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.22 Ph.2,Khaybar,25.968583,39.411083,Transfer to other department,2011
+738,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.23 Ph.2,Khaybar,25.963884,39.41243,Out of Service,2011
+739,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.24 ,Khaybar,25.966315,39.400681,Out of Service,2013
+740,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.25,Khaybar,25.97075,39.417917,Out of Service,2015
+741,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.26,Khaybar,25.968222,39.423278,Out of Service,2015
+742,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.27,Khaybar,25.958283,39.408818,Out of Service,2015
+743,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.28,Khaybar,25.956667,39.426111,Out of Service,2015
+744,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.29,Khaybar,25.952778,39.427194,Out of Service,2015
+745,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.30,Khaybar,25.947222,39.421944,Out of Service,2015
+746,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.31,Khaybar,25.943583,39.421194,Out of Service,2015
+747,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.32,Khaybar,25.942111,39.416639,Out of Service,2015
+748,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.33,Khaybar,25.946944,39.416222,Out of Service,2015
+749,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.34,Khaybar,25.952667,39.415139,Out of Service,2015
+750,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.1,Khaybar,25.967588,39.407377,Working,2015
+751,Standalone,Standalone,WELL ABSTRACTION (WABS),AL ESHASH WELL NO.2,Khaybar,25.967,39.410209,Working,2015
+752,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.5 KHAYBAR Ph.2 ,Khaybar,25.705439,39.315694,Transfer to other department,2009
+753,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.6 KHAYBAR Ph.2 ,Khaybar,25.710281,39.312748,Transfer to other department,2009
+754,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.7 KHAYBAR Ph.2 ,Khaybar,25.70519,39.319063,Transfer to other department,2009
+755,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.8 KHAYBAR Ph.2 ,Khaybar,25.705875,39.321994,Transfer to other department,2009
+756,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.9 KHAYBAR Ph.2 ,Khaybar,25.70841,39.319706,Transfer to other department,2009
+757,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.10 KHAYBAR Ph.2 ,Khaybar,25.711771,39.319181,Transfer to other department,2009
+758,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.11 KHAYBAR Ph.2 ,Khaybar,25.707175,39.314756,Transfer to other department,2009
+759,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.12 KHAYBAR Ph.2 ,Khaybar,25.706572,39.29991,Transfer to other department,2011
+760,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.13 KHAYBAR Ph.2 ,Khaybar,25.705179,39.303816,Transfer to other department,2011
+761,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.14 KHAYBAR Ph.2 ,Khaybar,25.70758,39.302382,Transfer to other department,2011
+762,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.15 KHAYBAR Ph.2 ,Khaybar,25.706705,39.303277,Transfer to other department,2011
+763,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.16 KHAYBAR Ph.2 ,Khaybar,25.706686,39.305766,Transfer to other department,2011
+764,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.17 KHAYBAR Ph.2 ,Khaybar,25.707334,39.306694,Transfer to other department,2011
+765,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.18 KHAYBAR Ph.2 ,Khaybar,25.708375,39.301627,Out of Service,2011
+766,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.19 KHAYBAR Ph.2 ,Khaybar,25.705586,39.308886,Out of Service,2011
+767,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.20 KHAYBAR Ph.3 ,Khaybar,25.690348,39.354564,Out of Service,2011
+768,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.21 KHAYBAR Ph.3 ,Khaybar,25.693836,39.356338,Transfer to other department,2011
+769,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.22 KHAYBAR Ph.3 ,Khaybar,25.696904,39.350512,Out of Service,2011
+770,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.23 KHAYBAR Ph.3 ,Khaybar,25.698996,39.346518,Out of Service,2011
+771,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.24 KHAYBAR Ph.3 ,Khaybar,25.702389,39.344278,Out of Service,2011
+772,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.25 KHAYBAR Ph.3 ,Khaybar,25.702019,39.340502,Out of Service,2011
+773,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.26 KHAYBAR Ph.3 ,Khaybar,25.703917,39.332333,Out of Service,2011
+774,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.27 KHAYBAR Ph.3 ,Khaybar,25.706917,39.331111,Out of Service,2011
+775,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.28 KHAYBAR Ph.3 ,Khaybar,25.704838,39.326917,Out of Service,2013
+776,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.29 KHAYBAR Ph.3 ,Khaybar,25.689361,39.3575,Out of Service,2013
+777,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.30 KHAYBAR Ph.3 ,Khaybar,25.703611,39.329861,Transfer to other department,2013
+778,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.31 KHAYBAR Ph.3 ,Khaybar,25.705767,39.341514,Out of Service,2013
+779,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.32 KHAYBAR Ph.3 ,Khaybar,25.705248,39.346194,Out of Service,2013
+780,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.33 KHAYBAR Ph.3 ,Khaybar,25.694087,39.340226,Out of Service,2013
+781,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.34 KHAYBAR Ph.3 ,Khaybar,25.69151,39.358496,Out of Service,2013
+782,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.35 KHAYBAR Ph.3 ,Khaybar,25.695406,39.360858,Out of Service,2013
+783,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.36 KHAYBAR Ph.3 ,Khaybar,25.686258,39.353467,Out of Service,2013
+784,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.37 KHAYBAR Ph.3 ,Khaybar,25.684117,39.361889,Out of Service,2013
+785,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.38 KHAYBAR Ph.3 ,Khaybar,25.688387,39.355698,Out of Service,2013
+786,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.39 KHAYBAR Ph.3 ,Khaybar,25.691889,39.356556,Out of Service,2013
+787,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.40 KHAYBAR Ph.3 ,Khaybar,25.694471,39.358681,Out of Service,2013
+788,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.41 KHAYBAR Ph.4,Khaybar,25.719805,39.330975,Out of Service,2013
+789,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.42 KHAYBAR Ph.4,Khaybar,25.720956,39.335694,Out of Service,2013
+790,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.43 KHAYBAR Ph.4,Khaybar,25.723797,39.334091,Out of Service,2013
+791,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.44 KHAYBAR Ph.4,Khaybar,25.727359,39.335769,Out of Service,2013
+792,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.45 KHAYBAR Ph.4,Khaybar,25.73225,39.344071,Transfer to other department,2013
+793,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.46 KHAYBAR Ph.4,Khaybar,25.735642,39.341045,Out of Service,2013
+794,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.47 KHAYBAR Ph.4,Khaybar,25.735943,39.347816,Out of Service,2013
+795,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.48 KHAYBAR Ph.4,Khaybar,25.734314,39.351651,Out of Service,2013
+796,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.49 KHAYBAR Ph.4,Khaybar,25.731142,39.356996,Out of Service,2013
+797,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.50 KHAYBAR Ph.4,Khaybar,25.732781,39.361942,Out of Service,2013
+798,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.51 KHAYBAR Ph.4,Khaybar,25.734675,39.367044,Out of Service,2015
+799,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.52 KHAYBAR Ph.4,Khaybar,25.735917,39.372037,Out of Service,2015
+800,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.53 KHAYBAR Ph.4,Khaybar,25.734083,39.369667,Out of Service,2015
+801,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.54 KHAYBAR Ph.4,Khaybar,25.729778,39.358972,Out of Service,2015
+802,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.55 KHAYBAR Ph.4,Khaybar,25.73,39.349083,Out of Service,2015
+803,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.56 KHAYBAR Ph.4,Khaybar,25.718513,39.336281,Out of Service,2015
+804,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.57 KHAYBAR Ph.4,Khaybar,25.721517,39.3328,Out of Service,2015
+805,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.58 KHAYBAR Ph.4,Khaybar,25.720332,39.326991,Out of Service,2015
+806,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.59 KHAYBAR Ph.4,Khaybar,25.712165,39.328656,Out of Service,2015
+807,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.60 KHAYBAR Ph.4,Khaybar,25.4359,39.21435,Out of Service,2015
+808,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.61 KHAYBAR Ph.4,Khaybar,25.44054,39.22021,Out of Service,2015
+809,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.62 KHAYBAR Ph.4,Khaybar,25.44086,39.22193,Out of Service,2015
+810,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.63 KHAYBAR Ph.4,Khaybar,25.44027,39.22108,Out of Service,2015
+811,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.64 KHAYBAR Ph.4,Khaybar,25.43472,39.21323,Out of Service,2015
+812,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.65 KHAYBAR Ph.4,Khaybar,25.4348,39.20567,Out of Service,2015
+813,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.66 KHAYBAR Ph.4,Khaybar,25.43404,39.20227,Out of Service,2015
+814,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.67 KHAYBAR Ph.4,Khaybar,25.4306,39.20111,Out of Service,2015
+815,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.68 KHAYBAR Ph.4,Khaybar,25.43175,39.19576,Out of Service,2015
+816,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.69 KHAYBAR Ph.4,Khaybar,25.4334,39.19374,Out of Service,2015
+817,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.70 KHAYBAR Ph.4,Khaybar,25.42439,39.1943,Out of Service,2015
+818,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.71 KHAYBAR Ph.4,Khaybar,25.7061,39.2987,Transfer to other department,2015
+819,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Jarf Well 1,Khaybar,26.09211,39.28174,Out of Service,2011
+820,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Jarf Well 2,Khaybar,26.09228,39.28163,Out of Service,2011
+872,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Khyber,Khaybar,25.758886,39.219284,Working,2012
+907,18,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Raw Desalination Tank ,Khaybar,25.322312,39.386332,Working,2012
+908,18,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Product Desalination tank  1,Khaybar,25.322507,39.38631,Working,2012
+920,201,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alachach  Well Reservoir 2,Khaybar,25.968043,39.410845,Working,2009
+922,922,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Khaybar Tank 2,Khaybar,25.697547,39.289895,Working,2009
+972,11,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsumd Raw tank purification,Khaybar,25.491403,39.348634,Working,2010
+980,18,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Desalination Tank Product 2,Khaybar,25.322519,39.386446,Working,2012
+1002,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Bir al-Dahad reservoir,Khaybar,25.632738,39.712148,Working,2000
+1005,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Samha well Reservoir ,Khaybar,25.915109,39.367725,Working,2000
+1095,202,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Abar Ashra  Reservoir,Khaybar,26.117327,38.841977,Working,2007
+1096,35,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Thamad Raw Tank 2,Khaybar,25.491496,39.349379,Working,2020
+1104,18,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Salsala Operational Tank 1,Khaybar,25.321211,39.382131,Working,1990
+1105,34,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Salsala Raw Tank 2,Khaybar,25.321638,39.384681,Working,2020
+1107,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Ghazwah Operational Tank,Khaybar,25.680851,39.29712,Out of service,1998
+1116,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Douil Operational Well Reservoir,Khaybar,26.059044,39.427552,Out of Service,1990
+1117,11,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Thamad Product Tank Purification ,Khaybar,25.491438,39.348804,Working,2010
+1122,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Hafira Center Tank,Khaybar,26.444664,39.251292,Out of Service,1990
+1130,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Khaybar Reservoir 3,Khaybar,25.705701,39.300391,CWIP,2009
+1131,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Salsala Operational Tank ,Khaybar,25.321468,39.384234,CWIP,2022
+1132,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Thamad Operational Tank ,Khaybar,25.490178,39.348962,CWIP,2022
+1133,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Ashash Operational tank 1,Khaybar,26.016266,39.34205,CWIP,2022
+1149,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Zibran Well Reservoir,Khaybar,25.523378,39.227299,Working,2000
+1150,922,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Khyber Reservoir 1,Khaybar,25.705869,39.299361,Working,2009
+1154,203,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aqeela Al Salsala Well Reservoir 2,Khaybar,25.153132,39.486686,Working,2000
+2117,Standalone,Standalone,WATER FILLING STATION (WFLS),Sheb AL Thamad 2,Khaybar,25.4906148,39.3492957,CWIP,2022
+2118,Standalone,Standalone,WATER FILLING STATION (WFLS),Sheb Al Salsalah 2,Khaybar,25.3228416,39.3839824,CWIP,2022
+2119,Standalone,Standalone,WELL ABSTRACTION (WABS),Al Salsalah 1 Well,Khaybar,25.322421,39.387935,Out of Service,2011
+2120,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.1,Khaybar,25.491574,39.347866,Out of Service,2009
+2121,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.2,Khaybar,25.492844,39.348545,Out of Service,2009
+2122,Standalone,Standalone,WELL ABSTRACTION (WABS),AL THAMAD WELL NO.3,Khaybar,25.492928,39.349955,Out of Service,2009
+2123,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.1 KHAYBAR,Khaybar,25.70594,39.301304,Transfer to other department,2009
+2124,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.2 KHAYBAR,Khaybar,25.706451,39.304851,Transfer to other department,2009
+2125,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.3 KHAYBAR,Khaybar,25.706729,39.308268,Transfer to other department,2009
+2126,Standalone,Standalone,WELL ABSTRACTION (WABS),WEEL NO.4 KHAYBAR,Khaybar,25.704409,39.311308,Transfer to other department,2009
+2129,Standalone,Standalone,WATER FILLING STATION (WFLS),Al Dahhad ,Khaybar,25.633147,39.712367,Out of Service,2000
+2259,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Khaybar Old Water Tower,Khaybar,25.721841,39.275647,Working,2001
+5,5,Grouped,WATER TREATMENT PLANT (WTRP),Wadi Al-Fara,Wadi Al Fara,23.456302,39.851618,Standby,2005
+12,12,Grouped,WATER TREATMENT PLANT (WTRP),Om Al-Barak,Wadi Al Fara,23.430639,39.228556,Working,2010
+16,16,Grouped,WATER TREATMENT PLANT (WTRP),Abo Dhabaa,Wadi Al Fara,23.201164,39.553629,Standby,2010
+23,23,Grouped,WATER TREATMENT PLANT (WTRP),Al-Akhal,Wadi Al Fara,23.306748,39.877709,Working,2019
+76,76,Grouped,WATER PUMPING STATION (WPUS),Al-Yatmah Pumping Station ,Wadi Al Fara,23.71427,39.790378,Working,2009
+93,1123,Grouped,WATER PUMPING STATION (WPUS),Wadi Al-Fara Pumping Station ,Wadi Al Fara,23.456272,39.852356,Working,2018
+94,Standalone,Standalone,WATER PUMPING STATION (WPUS),Abu Dabba Pumping station,Wadi Al Fara,23.201581,39.553605,Standby,2009
+119,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al-Hindia,Wadi Al Fara,23.646428,39.741785,Working,2005
+193,193,Grouped,WATER FILLING STATION (WFLS),Wadi Farea Governorate / Al-Akhal Purification Sheeb and Reservoir(Tank),Wadi Al Fara,23.285157,39.934336,Working,2019
+194,Standalone,Standalone,WATER FILLING STATION (WFLS),Wadi Farea Governorate / Um Al Barak Sheeb and Reservoir(Tank),Wadi Al Fara,23.4305,39.228694,Working,2015
+195,Standalone,Standalone,WATER FILLING STATION (WFLS),Wadi Farea Governorate / Malah Sheeb and Reservoir(Tank),Wadi Al Fara,23.056112,39.932532,Working,2018
+196,Standalone,Standalone,WATER FILLING STATION (WFLS),Wadi Farea Governorate / Abu Dhabaa Sheeb and Reservoir(Tank),Wadi Al Fara,23.201476,39.553867,Standby,1995
+198,Standalone,Standalone,WATER FILLING STATION (WFLS),Wadi Farea Governorate / AL-Yatmah Sheeb and Reservoir(Tank),Wadi Al Fara,23.712906,39.787784,Working,2009
+384,Standalone,Standalone,WELL ABSTRACTION (WABS),Om Dhabaa Well,Wadi Al Fara,23.185518,39.534794,Out of service,1990
+821,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Faqer Well 1,Wadi Al Fara,23.438134,39.720126,Out of service,1990
+822,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Faqer Well 2,Wadi Al Fara,23.436754,39.716074,Out of service,1990
+823,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Zubira Well,Wadi Al Fara,23.454143,39.764959,Out of service,1995
+824,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Fareesh Well 1,Wadi Al Fara,23.534482,39.872364,Working,1990
+825,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Fareesh Well 2,Wadi Al Fara,23.534498,39.873127,Out of service,1990
+826,Standalone,Standalone,WELL ABSTRACTION (WABS),Um Al-Eyal Well 1,Wadi Al Fara,23.260604,39.562912,Out of service,1990
+827,Standalone,Standalone,WELL ABSTRACTION (WABS),Um Al-Eyal Well 2,Wadi Al Fara,23.263523,39.562072,Out of service,1990
+828,Standalone,Standalone,WELL ABSTRACTION (WABS),Abu Dabba Well 2,Wadi Al Fara,23.184934,39.534759,Out of service,1995
+829,Standalone,Standalone,WELL ABSTRACTION (WABS),Akhol Well 1,Wadi Al Fara,23.285161,39.934147,Out of service,2007
+830,Standalone,Standalone,WELL ABSTRACTION (WABS),Akhol Well 2,Wadi Al Fara,23.322953,40.023663,Out of Service,2007
+831,Standalone,Standalone,WELL ABSTRACTION (WABS),Akhol Well 3,Wadi Al Fara,23.30667,39.878038,Working,2007
+832,Standalone,Standalone,WELL ABSTRACTION (WABS),Meghsel Well 1,Wadi Al Fara,23.100134,39.772239,Out of Service,2007
+833,Standalone,Standalone,WELL ABSTRACTION (WABS),Jarnafa Well 1,Wadi Al Fara,23.062698,39.92785,Out of service,2011
+834,Standalone,Standalone,WELL ABSTRACTION (WABS),Jarnafa Well 2,Wadi Al Fara,23.056094,39.93246,Out of service,2011
+835,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Mawareed Well,Wadi Al Fara,22.937411,39.922652,Out of service,2011
+836,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Rehab Well,Wadi Al Fara,23.29438,39.941301,Out of service,2011
+837,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-hamna Well No.2,Wadi Al Fara,23.01725,39.902,Out of service,2011
+838,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-hamna Well No.3,Wadi Al Fara,23.020111,39.902667,Out of service,2011
+839,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-hamna Well No.1,Wadi Al Fara,22.983369,39.919287,Out of service,2011
+840,Standalone,Standalone,WELL ABSTRACTION (WABS),Um Al-Barak Well 1,Wadi Al Fara,23.428083,39.232472,Working,2011
+841,Standalone,Standalone,WELL ABSTRACTION (WABS),Um Al-Barak Well 2,Wadi Al Fara,23.428833,39.228972,Working,2011
+842,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Talghama Well No.1,Wadi Al Fara,23.662301,39.81204,Out of Service,2011
+843,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Talghama Well No.2,Wadi Al Fara,23.662103,39.812652,Out of Service,2011
+844,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Talghama Well No.3,Wadi Al Fara,23.662449,39.816029,Out of Service,2011
+845,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Atshan Well,Wadi Al Fara,23.517565,39.706618,Out of Service,1990
+846,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.1,Wadi Al Fara,23.712599,39.788938,Out of service,2007
+847,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.2,Wadi Al Fara,23.713604,39.795126,Out of service,2007
+848,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.3,Wadi Al Fara,23.715056,39.790622,Out of service,2007
+849,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.4,Wadi Al Fara,23.712519,39.796408,Out of service,2007
+850,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.5,Wadi Al Fara,23.712367,39.790646,Out of service,2007
+851,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.6,Wadi Al Fara,23.716528,39.795722,Out of service,2007
+852,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.8,Wadi Al Fara,23.715556,39.788167,Out of service,2007
+853,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.9,Wadi Al Fara,23.726389,39.803444,Out of service,2007
+854,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.10,Wadi Al Fara,23.720667,39.811306,Out of service,2007
+855,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.16,Wadi Al Fara,23.707944,39.790667,Out of service,2007
+856,Standalone,Standalone,WELL ABSTRACTION (WABS),AL YOTAMAH WELL NO.17,Wadi Al Fara,23.701944,39.794056,Out of service,2007
+857,Standalone,Standalone,WELL ABSTRACTION (WABS),WADI ALFARAA NO.1,Wadi Al Fara,23.456945,39.85156,Out of service,2011
+858,Standalone,Standalone,WELL ABSTRACTION (WABS),WADI ALFARAA NO.2,Wadi Al Fara,23.456222,39.849083,Out of service,2011
+859,Standalone,Standalone,WELL ABSTRACTION (WABS),WADI ALFARAA NO.3,Wadi Al Fara,23.454923,39.853106,Out of service,2011
+860,Standalone,Standalone,WELL ABSTRACTION (WABS),WADI ALFARAA NO.5,Wadi Al Fara,23.452917,39.8505,Out of service,2011
+861,Standalone,Standalone,WELL ABSTRACTION (WABS),WADI ALFARAA NO.7,Wadi Al Fara,23.456222,39.854806,Out of service,2011
+862,Standalone,Standalone,WELL ABSTRACTION (WABS),WADI ALFARAA NO.8,Wadi Al Fara,23.455278,39.851083,Out of service,2011
+919,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alfareesh Well Tank 1 & 2,Wadi Al Fara,23.534615,39.872871,Working,2000
+966,193,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alakhal Reservoir Well 1,Wadi Al Fara,23.285408,39.93431,Working,2000
+967,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alakhal Reservoir Well 2,Wadi Al Fara,23.322413,40.026075,Standby,2010
+968,23,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alakhal Reservoir Well 3,Wadi Al Fara,23.305471,39.878637,Out of Service,2010
+969,Standalone,Standalone,WATER FILLING STATION (WFLS),Meghsel Reservoir Well ,Wadi Al Fara,23.100135,39.771618,Working,2015
+998,12,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Umm Al Bark Raw Reservoir,Wadi Al Fara,23.430528,39.228444,Working,2015
+999,12,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Umm Al Bark Tank Product,Wadi Al Fara,23.430611,39.228611,Working,2015
+1003,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alzubaira Well Reservoir ,Wadi Al Fara,23.4537,39.765609,Standby,2007
+1008,23,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alakhal Crude Purification Plant Tank,Wadi Al Fara,23.306755,39.8778,Working,2015
+1009,23,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alakhal Tank Purification Plant Product,Wadi Al Fara,23.306852,39.877918,Working,2015
+1094,16,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Abu Dhabaa High Reservoir,Wadi Al Fara,23.201549,39.553578,Standby,1995
+1123,1123,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Malh Tank 1,Wadi Al Fara,23.455941,39.85224,Working,2018
+1158,2255,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Om Al Eyal Tank ,Wadi Al Fara,23.262379,39.567525,Standby,1995
+1159,16,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Abu Daba Crude Purification Plant Tank ,Wadi Al Fara,23.201388,39.553648,Standby,2015
+1160,16,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Abu Daba Purification Plant Tank Product ,Wadi Al Fara,23.201315,39.553783,Standby,2015
+1161,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Faqeer High Reservoir ,Wadi Al Fara,23.423927,39.709152,Standby,1995
+1162,76,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Yatmah Tank 1,Wadi Al Fara,23.714381,39.790257,Working,2009
+1163,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Yatmah Tank 2,Wadi Al Fara,23.715659,39.794407,Working,2018
+1164,5,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Malh Crude Purification Plant Tank ,Wadi Al Fara,23.4561,39.851704,Working,2015
+1165,5,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Malh Product Purification Plant Tank,Wadi Al Fara,23.456221,39.851786,Working,2015
+2255,2255,Grouped,WATER FILLING STATION (WFLS),Om Al Eyal Tank  Filling Station,Wadi Al Fara,23.262379,39.567525,Standby,2007
+2263,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Mawareed Well Filling Station,Wadi Al Fara,22.937411,39.922652,Out of service,2007
+2264,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-hamna Well No.1 Filling Station,Wadi Al Fara,22.983369,39.919287,Out of service,2007
+2265,Standalone,Standalone,WELL ABSTRACTION (WABS),Meghsel Well 1 Filling Station,Wadi Al Fara,23.100134,39.772239,Working,2007
+2278,Standalone,Standalone,WATER FILLING STATION (WFLS),Al-Talghama Well No Filling Station,Wadi Al Fara,23.662103,39.812652,Out of service,2000
+2279,Standalone,Standalone,WATER FILLING STATION (WFLS),Wadi Al-fara WTRP Filling Station,Wadi Al Fara,23.456783,39.853213,Working,2010
+29,29,Grouped,WATER TREATMENT PLANT (WTRP),Al-Nubah,Yanbu,24.368915,37.610688,Working,2011
+58,1047,Grouped,WATER PUMPING STATION (WPUS),YN-PS1,Yanbu,24.093637,38.041138,Out of service,1985
+59,59,Grouped,WATER PUMPING STATION (WPUS),MSH-PS1,Yanbu,24.240284,38.323174,Working,1990
+60,143,Grouped,WATER PUMPING STATION (WPUS),KH-PS1,Yanbu,24.429182,38.509939,Working,2009
+61,899,Grouped,WATER PUMPING STATION (WPUS),FQ-PS1,Yanbu,24.686575,38.382792,Working,2005
+63,Standalone,Standalone,WATER PUMPING STATION (WPUS),SQ- PS,Yanbu,24.373893,38.45931,Out of service,2008
+64,899,Grouped,WATER PUMPING STATION (WPUS),FQ-PS3,Yanbu,24.686575,38.382792,Working,2005
+65,152,Grouped,WATER PUMPING STATION (WPUS),RK-PS,Yanbu,24.697203,38.063853,Working,2009
+95,142,Grouped,WATER PUMPING STATION (WPUS),YB-PS1,Yanbu,24.094676,38.041171,Working,1985
+96,1047,Grouped,WATER PUMPING STATION (WPUS),YB-PS2,Yanbu,24.09449,38.040777,Working,2009
+97,1047,Grouped,WATER PUMPING STATION (WPUS),YN-PS2,Yanbu,24.094394,38.040868,Working,2009
+98,1145,Grouped,WATER PUMPING STATION (WPUS),ISYB-PS,Yanbu,24.204199,38.245726,Working,2014
+99,99,Grouped,WATER PUMPING STATION (WPUS),GA-PS,Yanbu,24.336719,38.426064,Standby,1980
+100,151,Grouped,WATER PUMPING STATION (WPUS),FQ-PS2,Yanbu,24.686575,38.382792,Working,2005
+101,1056,Grouped,WATER PUMPING STATION (WPUS),TN-PS1,Yanbu,24.310718,38.278693,Working,1985
+102,1056,Grouped,WATER PUMPING STATION (WPUS),TN-PS2,Yanbu,24.310713,38.279312,Working,2005
+103,1057,Grouped,WATER PUMPING STATION (WPUS),KH-PS2,Yanbu,24.428523,38.510149,Working,2016
+109,Standalone,Standalone,WATER PUMPING STATION (WPUS),Al Naqadi PS,Yanbu,24.101448,38.087999,Out of service,1985
+110,145,Grouped,WATER PUMPING STATION (WPUS),MSHFS-PS,Yanbu,24.240232,38.323071,Working,2008
+111,99,Grouped,WATER PUMPING STATION (WPUS),GA-PS OLD,Yanbu,24.336397,38.426273,Working,2000
+112,Standalone,Standalone,WATER PUMPING STATION (WPUS),FRA-LS,Yanbu,24.412734,38.489761,Working,2005
+113,146,Grouped,WATER PUMPING STATION (WPUS),TNFS-PS,Yanbu,24.30975,38.2796,Working,2008
+142,142,Grouped,WATER FILLING STATION (WFLS),Yanbu Governorate / Yanbu AL-Bahr Sheeb and  Reservoir(Tank),Yanbu,24.095242,38.04228,Working,2014
+143,143,Grouped,WATER FILLING STATION (WFLS),Yanbu Governorate / Kheif Hassan Sheeb and  Reservoir(Tank),Yanbu,24.42808,38.510417,Working,2016
+144,Standalone,Standalone,WATER FILLING STATION (WFLS),Yanbu Governorate / Al-Suweq Sheeb and  Reservoir(Tank),Yanbu,24.373607,38.459224,Out of service,2008
+145,145,Grouped,WATER FILLING STATION (WFLS),Yanbu Governorate / Al-Musheref Sheeb and  Reservoir(Tank),Yanbu,24.240047,38.323019,Working,2008
+146,146,Grouped,WATER FILLING STATION (WFLS),Yanbu Governorate / tala naza (1) Sheeb and  Reservoir(Tank),Yanbu,24.309535,38.279226,Working,2008
+147,147,Grouped,WATER FILLING STATION (WFLS),Yanbu Governorate / tala naza (2) Sheeb and  Reservoir(Tank),Yanbu,24.440015,38.257617,Standby,2000
+148,Standalone,Standalone,WATER FILLING STATION (WFLS),Yanbu Governorate / Al-Nubah Sheeb and  Reservoir(Tank),Yanbu,24.369023,37.610489,Working,2015
+149,Standalone,Standalone,WATER FILLING STATION (WFLS),Yanbu Governorate / Al-Heim Sheeb and  Reservoir(Tank),Yanbu,24.692379,38.583756,Out of service,2000
+150,Standalone,Standalone,WATER FILLING STATION (WFLS),Yanbu Governorate / Al-bwat Sheeb and  Reservoir(Tank),Yanbu,24.563886,38.494258,Out of service,2000
+151,151,Grouped,WATER FILLING STATION (WFLS),Yanbu Governorate / Al-Faqaali Sheeb and  Reservoir(Tank),Yanbu,24.687201,38.382784,Working,2013
+152,152,Grouped,WATER FILLING STATION (WFLS),Yanbu Governorate / Rakhu Sheeb and  Reservoir(Tank),Yanbu,24.697457,38.063585,Working,2016
+298,Standalone,Standalone,WELL ABSTRACTION (WABS),Rakhu Well 1,Yanbu,24.614333,38.155056,Out of service,2013
+299,Standalone,Standalone,WELL ABSTRACTION (WABS),Rakhu Well 2,Yanbu,24.612056,38.155639,Out of service,2013
+307,Standalone,Standalone,WELL ABSTRACTION (WABS),Adan Well (King Fahd Charity),Yanbu,24.762494,37.939973,Out of service,2020
+308,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Heem Well,Yanbu,24.692125,38.583768,Out of service,2010
+488,Standalone,Standalone,WELL ABSTRACTION (WABS),Fum Bouat Well,Yanbu,24.559621,38.496897,Out of service,2010
+489,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Nubah Well 1 ,Yanbu,24.368782,37.610764,Working,2014
+863,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Jaberia Well 1,Yanbu,24.336767,38.426437,Out of service,2010
+864,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Jaberia Well 2,Yanbu,24.337462,38.426279,Out of service,2010
+865,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Suaq Well,Yanbu,24.373881,38.459348,Out of service,2010
+868,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Yanbu,Yanbu,24.163302,38.198259,Working,2016
+874,Standalone,Standalone,WASTE WATER TREATMENT PLANT (WWTP),Al naba,Yanbu,24.3385512,37.5861812,Working,2020
+881,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),NAGADI,Yanbu,24.11477,38.114044,Working,2017
+882,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),PS1,Yanbu,24.08275,38.049425,Working,2019
+883,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),PS2,Yanbu,24.091363,38.067853,Working,2019
+884,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),PS3,Yanbu,24.0965,38.102764,Working,2019
+885,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),LS1,Yanbu,24.101131,38.088742,Working,2019
+886,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),LS2,Yanbu,24.08754,38.071834,Working,2019
+897,99,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al-Jabriya Reservoir,Yanbu,24.336463,38.426476,Standby,1990
+899,899,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alfoqaali Tank 1,Yanbu,24.686277,38.382777,Working,2010
+900,29,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Naba Product Reservoir,Yanbu,24.368897,37.6105,Working,2011
+901,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Naba Upper Reservoir,Yanbu,24.352602,37.603201,Working,2011
+902,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alheme Reservoir,Yanbu,24.692301,38.583903,Working,2000
+903,147,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Talaat Nazah Reservoir (1),Yanbu,24.43927,38.258683,Working,2000
+1046,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Bwat Tank,Yanbu,24.563908,38.494235,Out of service,1990
+1047,1047,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tank 1 Yanbu,Yanbu,24.094509,38.041829,Working,1982
+1048,1047,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tank 2 Yanbu,Yanbu,24.095775,38.041245,Working,1982
+1049,1047,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Tank 3 Yanbu,Yanbu,24.093903,38.042078,Working,2012
+1050,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alsuwaiq Tank ,Yanbu,24.374074,38.45941,Out of Service,1990
+1052,59,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Al Musheref Reservoir,Yanbu,24.240176,38.323212,Working,2000
+1053,29,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alnaba Raw Tank,Yanbu,24.368799,37.610597,Working,2011
+1055,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Adan Well Reservoir ,Yanbu,24.762494,37.939973,Out of Service,2000
+1056,1056,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Talaat Nazah Tank ( 2 ),Yanbu,24.310404,38.279399,Working,2010
+1057,1057,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Khef Hussein Reservoir ( 1 ),Yanbu,24.429248,38.5096,Working,2014
+1058,1057,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Khef Hussein Reservoir ( 2 ),Yanbu,24.429995,38.509716,Working,2018
+1059,152,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Rakhw Tank,Yanbu,24.697053,38.063744,Working,2010
+1087,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Ground Reservoir A-9,Yanbu,24.0856569,38.0584117,Out of service,1990
+1089,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Upper Tank A-9,Yanbu,24.0855437,38.0580213,Out of service,1990
+1090,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Top Tank B-1,Yanbu,24.090898,38.038599,Out of service,1990
+1097,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Al Jabriya Upper Tank,Yanbu,24.336901,38.4259,Out of service,1990
+1145,1145,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Yanbu Strategic Reservoir,Yanbu,24.203349,38.247336,Working,2014
+2135,Standalone,Standalone,WATER PUMPING STATION (WPUS),Yanbu Pumping Station,Yanbu,24.12023,38.005112,Working,2022
