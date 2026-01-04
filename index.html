@@ -2757,7 +2757,8 @@
     updateDistributionList(siteTypeStats, 'siteType');
     updateDistributionChart(siteTypeStats, 'siteType');
     
-    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+    // FIX: Use assets.length instead of uniqueSites.size to match left panel counting
+    document.getElementById('totalSitesCount').textContent = assets.length;
   }
   
   // Update site type distribution for Sites
@@ -2796,7 +2797,8 @@
     updateDistributionList(siteTypeStats, 'siteType');
     updateDistributionChart(siteTypeStats, 'siteType');
     
-    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+    // FIX: Use sites.length instead of uniqueSites.size to match left panel counting
+    document.getElementById('totalSitesCount').textContent = sites.length;
   }
   
   // Update condition distribution for Assets
@@ -2833,7 +2835,8 @@
     updateDistributionList(conditionStats, 'condition');
     updateDistributionChart(conditionStats, 'condition');
     
-    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+    // FIX: Use assets.length instead of uniqueSites.size to match left panel counting
+    document.getElementById('totalSitesCount').textContent = assets.length;
   }
   
   // Update site status distribution for Sites
@@ -2870,7 +2873,8 @@
     updateDistributionList(statusStats, 'siteStatus');
     updateDistributionChart(statusStats, 'siteStatus');
     
-    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+    // FIX: Use sites.length instead of uniqueSites.size to match left panel counting
+    document.getElementById('totalSitesCount').textContent = sites.length;
   }
   
   // Get color for site type - UPDATED: WABS changed to teal/cyan (#00D4AA)
