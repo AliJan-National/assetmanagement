@@ -45,6 +45,60 @@
       --border-radius-xl: 20px;
       --transition-fast: 0.2s ease;
       --transition-medium: 0.3s ease;
+      
+      /* Theme Variables - Light Theme (Default) */
+      --theme-bg: #f5f7fa;
+      --theme-panel-bg: #ffffff;
+      --theme-panel-border: #e0e0e0;
+      --theme-panel-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+      --theme-text: #343a40;
+      --theme-card-bg: #ffffff;
+      --theme-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --theme-input-bg: #ffffff;
+      --theme-input-border: #e9ecef;
+      --theme-input-text: #343a40;
+      --theme-section-bg: #f8f9fa;
+      --theme-section-border: #e9ecef;
+      --theme-header-bg: #ffffff;
+      --theme-header-border: #dee2e6;
+      --theme-map-controls-bg: #ffffff;
+      --theme-map-controls-border: #e0e0e0;
+      --theme-map-controls-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      --theme-zoom-bg: #ffffff;
+      --theme-zoom-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      --theme-chart-bg: #ffffff;
+      --theme-chart-border: #e9ecef;
+      --theme-chart-shadow: 0 10px 40px rgba(0, 102, 204, 0.15);
+      --theme-scrollbar-track: #f1f1f1;
+      --theme-scrollbar-thumb: #c1c1c1;
+    }
+
+    /* Dark Theme Variables - UPDATED: Flat, uniform design without gradients */
+    body.dark-theme {
+      --theme-bg: #0d1117;
+      --theme-panel-bg: #161b22;
+      --theme-panel-border: #30363d;
+      --theme-panel-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
+      --theme-text: #e6edf3;
+      --theme-card-bg: #161b22;
+      --theme-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --theme-input-bg: #0d1117;
+      --theme-input-border: #30363d;
+      --theme-input-text: #e6edf3;
+      --theme-section-bg: #161b22;
+      --theme-section-border: #30363d;
+      --theme-header-bg: #161b22;
+      --theme-header-border: #30363d;
+      --theme-map-controls-bg: #161b22;
+      --theme-map-controls-border: #30363d;
+      --theme-map-controls-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --theme-zoom-bg: #161b22;
+      --theme-zoom-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      --theme-chart-bg: #161b22;
+      --theme-chart-border: #30363d;
+      --theme-chart-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      --theme-scrollbar-track: #0d1117;
+      --theme-scrollbar-thumb: #30363d;
     }
 
     * {
@@ -55,11 +109,12 @@
 
     body {
       font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+      background: var(--theme-bg);
       overflow: hidden;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       height: 100vh;
       display: flex;
+      transition: background var(--transition-medium), color var(--transition-medium);
     }
 
     #map {
@@ -83,33 +138,72 @@
 
     /* Control Panel - Left Fixed Panel */
     .control-panel {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-right: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+      background: var(--theme-panel-bg);
+      border-right: 1px solid var(--theme-panel-border);
+      box-shadow: var(--theme-panel-shadow);
       height: 100vh;
       width: 350px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
       pointer-events: auto;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background var(--transition-medium), border-color var(--transition-medium), box-shadow var(--transition-medium);
     }
 
     .control-panel.hidden {
       transform: translateX(-100%);
     }
 
-    .panel-header {
-      padding: 15px 20px;
-      border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-      background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(0, 180, 216, 0.05) 100%);
+    /* Tab Navigation Styles */
+    .panel-tabs {
+      display: flex;
+      background: var(--theme-section-bg);
+      border-bottom: 1px solid var(--theme-section-border);
+      padding: 0;
       flex-shrink: 0;
     }
 
+    .panel-tab {
+      flex: 1;
+      padding: 15px;
+      background: none;
+      border: none;
+      color: var(--theme-text);
+      font-weight: 600;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border-bottom: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .panel-tab:hover {
+      background: var(--theme-input-bg);
+    }
+
+    .panel-tab.active {
+      color: var(--primary-blue);
+      border-bottom-color: var(--primary-blue);
+      background: var(--theme-panel-bg);
+    }
+
+    .panel-tab i {
+      font-size: 0.9em;
+    }
+
+    .panel-header {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--theme-header-border);
+      background: var(--theme-header-bg);
+      flex-shrink: 0;
+      transition: background var(--transition-medium), border-color var(--transition-medium);
+    }
+
     .panel-header h2 {
-      color: var(--dark-gray);
+      color: var(--theme-text);
       font-size: 1.2em;
       font-weight: 700;
       display: flex;
@@ -188,7 +282,7 @@
       left: 20px;
     }
 
-    /* UPDATED: Stats Grid - Now 3 columns in single row */
+    /* UPDATED: Stats Grid - Now 3 columns in single row for Asset, 6 columns for Site */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -196,14 +290,38 @@
       margin-bottom: 20px;
     }
 
+    /* UPDATED: Site Stats Grid - Now 2 rows × 3 columns */
+    .stats-grid.site-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Remove the responsive overrides that changed columns */
+    @media (min-width: 1200px) {
+      .stats-grid.site-stats {
+        grid-template-columns: repeat(3, 1fr); /* Changed from 6 to 3 */
+      }
+    }
+
+    @media (max-width: 1199px) and (min-width: 768px) {
+      .stats-grid.site-stats {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 columns */
+      }
+    }
+
+    @media (max-width: 767px) {
+      .stats-grid.site-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .stat-card {
-      background: white;
+      background: var(--theme-card-bg);
       padding: 10px;
       border-radius: var(--border-radius-md);
       border-left: 4px solid;
       transition: all var(--transition-medium);
       cursor: pointer;
-      box-shadow: 0 4px 12px var(--shadow-medium);
+      box-shadow: var(--theme-card-shadow);
       min-height: 60px;
       display: flex;
       flex-direction: column;
@@ -217,15 +335,24 @@
 
     .stat-card.total { 
       border-left-color: var(--primary-blue);
-      background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
     }
     .stat-card.working { 
       border-left-color: var(--success-green);
-      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
     }
     .stat-card.not-working { 
       border-left-color: var(--danger-red);
-      background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+    }
+    .stat-card.standby { 
+      border-left-color: #FFD166; /* Golden Yellow */
+    }
+    .stat-card.out-of-service { 
+      border-left-color: #FF9E6D; /* Burnt Orange */
+    }
+    .stat-card.cwip { 
+      border-left-color: #9D4EDD; /* Royal Purple */
+    }
+    .stat-card.transfer { 
+      border-left-color: #00A8FF; /* Electric Blue */
     }
 
     .stat-card h3 {
@@ -243,7 +370,7 @@
     .stat-value {
       font-size: 1.2em;
       font-weight: 800;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-bottom: 2px;
       line-height: 1;
     }
@@ -268,18 +395,35 @@
       background: rgba(231, 76, 60, 0.1); 
       color: var(--danger-red); 
     }
+    .stat-card.standby .stat-percent { 
+      background: rgba(255, 209, 102, 0.1); 
+      color: #FFD166; 
+    }
+    .stat-card.out-of-service .stat-percent { 
+      background: rgba(255, 158, 109, 0.1); 
+      color: #FF9E6D; 
+    }
+    .stat-card.cwip .stat-percent { 
+      background: rgba(157, 78, 221, 0.1); 
+      color: #9D4EDD; 
+    }
+    .stat-card.transfer .stat-percent { 
+      background: rgba(0, 168, 255, 0.1); 
+      color: #00A8FF; 
+    }
 
     /* Compact Filters */
     .filters-section {
-      background: rgba(248, 249, 250, 0.7);
+      background: var(--theme-section-bg);
       padding: 15px;
       border-radius: var(--border-radius-lg);
       margin-bottom: 15px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--theme-section-border);
+      transition: background var(--transition-medium), border-color var(--transition-medium);
     }
 
     .filters-section h3 {
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-bottom: 12px;
       font-size: 1em;
       display: flex;
@@ -295,7 +439,7 @@
     .filter-group label {
       display: block;
       margin-bottom: 5px;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       font-weight: 600;
       font-size: 0.8em;
     }
@@ -303,10 +447,10 @@
     .filter-group select {
       width: 100%;
       padding: 8px 12px;
-      border: 2px solid #e9ecef;
+      border: 2px solid var(--theme-input-border);
       border-radius: var(--border-radius-md);
-      background: white;
-      color: var(--dark-gray);
+      background: var(--theme-input-bg);
+      color: var(--theme-input-text);
       font-size: 12px;
       transition: all var(--transition-fast);
       font-weight: 500;
@@ -318,17 +462,22 @@
       padding-right: 30px;
     }
 
+    /* Dark theme select arrow */
+    body.dark-theme .filter-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org2000/svg' width='16' height='16' fill='%2300b4d8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    }
+
     /* Compact Legend */
     .legend {
-      background: white;
+      background: var(--theme-card-bg);
       padding: 15px;
       border-radius: var(--border-radius-lg);
-      box-shadow: 0 5px 15px var(--shadow-medium);
+      box-shadow: var(--theme-card-shadow);
       margin-bottom: 15px;
     }
 
     .legend h3 {
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-bottom: 12px;
       font-size: 1em;
       display: flex;
@@ -370,11 +519,9 @@
       width: 380px; /* Reduced from 400px */
       min-width: 280px;
       max-width: 60%;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-left: 1px solid rgba(0,0,0,0.06);
-      box-shadow: -6px 0 30px rgba(0, 0, 0, 0.12);
+      background: var(--theme-panel-bg);
+      border-left: 1px solid var(--theme-panel-border);
+      box-shadow: var(--theme-panel-shadow);
       z-index: 2000;
       display: flex;
       flex-direction: column;
@@ -390,9 +537,9 @@
 
     .equipment-header {
       padding: 16px 20px; /* Reduced padding */
-      border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
-      color: white;
+      border-bottom: 1px solid var(--theme-header-border);
+      background: var(--theme-header-bg);
+      color: var(--theme-text);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -409,7 +556,7 @@
 
     /* Site Name Display in Panel */
     .site-name-highlight {
-      background: rgba(0, 102, 204, 0.1);
+      background: var(--theme-section-bg);
       padding: 8px 12px; /* Reduced padding */
       border-radius: var(--border-radius-md);
       margin: 8px 16px; /* Reduced margin */
@@ -441,12 +588,11 @@
     }
 
     .summary-card {
-      background: white;
+      background: var(--theme-card-bg);
       padding: 10px; /* Reduced from 12px */
       border-radius: var(--border-radius-md);
-      border-left: 4px solid;
-      border: 1px solid rgba(0, 102, 204, 0.1);
-      box-shadow: 0 4px 12px var(--shadow-medium);
+      border: 1px solid var(--theme-section-border);
+      box-shadow: var(--theme-card-shadow);
       text-align: left;
       display: flex;
       flex-direction: column;
@@ -477,7 +623,7 @@
     .summary-value {
       font-size: 1.2em; /* Reduced from 1.4em */
       font-weight: 800;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-bottom: 2px;
       line-height: 1;
     }
@@ -500,7 +646,7 @@
 
     .chart-section h4 {
       font-size: 0.95em; /* Reduced from 1em */
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-bottom: 12px; /* Reduced from 15px */
       font-weight: 700;
       display: flex;
@@ -514,18 +660,15 @@
       width: 320px; /* Reduced from 340px */
       height: 320px; /* Reduced from 340px */
       position: relative;
-      background: white;
+      background: var(--theme-chart-bg);
       border-radius: var(--border-radius-lg);
       padding: 12px; /* Reduced from 15px */
-      box-shadow: 
-        0 10px 40px rgba(0, 102, 204, 0.15),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(0, 102, 204, 0.1);
+      box-shadow: var(--theme-chart-shadow);
+      border: 1px solid var(--theme-chart-border);
       z-index: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       overflow: hidden;
       margin: 0 auto;
     }
@@ -545,20 +688,7 @@
       z-index: 2;
       border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
     }
-    
-    .chart-container-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 180px; /* Reduced from 200px */
-      height: 180px; /* Reduced from 200px */
-      background: radial-gradient(circle, rgba(0, 102, 204, 0.05) 0%, transparent 70%);
-      z-index: 1;
-      pointer-events: none;
-    }
-    
+
     #equipmentChart {
       width: 296px !important; /* Reduced from 310px */
       height: 296px !important; /* Reduced from 310px */
@@ -568,11 +698,11 @@
     /* Distribution Container at Bottom - OPTIMIZED FOR NO SCROLLING */
     .distribution-container {
       margin-top: auto;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+      background: var(--theme-section-bg);
       border-radius: var(--border-radius-lg);
       padding: 16px; /* Reduced from 20px */
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--theme-section-border);
+      box-shadow: var(--theme-card-shadow);
       backdrop-filter: blur(10px);
       max-height: 320px; /* Limit max height */
       overflow-y: auto; /* Enable scroll only if needed */
@@ -580,7 +710,7 @@
 
     .distribution-container h4 {
       font-size: 0.95em; /* Reduced from 1em */
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-bottom: 12px; /* Reduced from 15px */
       font-weight: 700;
       display: flex;
@@ -608,11 +738,11 @@
       align-items: center;
       text-align: center;
       gap: 6px; /* Reduced from 12px */
-      background: white;
+      background: var(--theme-card-bg);
       padding: 10px 6px; /* Reduced padding */
       border-radius: var(--border-radius-md);
       border-top: 4px solid; /* Changed from border-left to border-top */
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); /* Reduced shadow */
+      box-shadow: var(--theme-card-shadow);
       transition: all var(--transition-fast);
       min-height: 80px; /* Reduced from taller size */
       min-width: 0; /* Allow shrinking */
@@ -621,69 +751,70 @@
 
     .distribution-item:hover {
       transform: translateY(-2px); /* Reduced from -3px */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     }
 
     .distribution-item.EXCELLENT { 
       border-top-color: #00FF9D;
-      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
     }
     .distribution-item.VERY_GOOD { 
       border-top-color: #00C896;
-      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
     }
     .distribution-item.GOOD { 
       border-top-color: #00A8FF;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
     }
     .distribution-item.NEW { 
       border-top-color: #9D4EDD;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
     }
     .distribution-item.FAIR { 
       border-top-color: #FFD166;
-      background: linear-gradient(135deg, #ffffff 0%, #fffcf0 100%);
     }
     .distribution-item.POOR { 
       border-top-color: #FF9E6D;
-      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
     }
     .distribution-item.CRITICAL { 
       border-top-color: #FF5252;
-      background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
     }
     .distribution-item.UNKNOWN { 
       border-top-color: #6D6A75;
-      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    }
+    .distribution-item.WORKING { 
+      border-top-color: #00b894;
+    }
+    .distribution-item.STANDBY { 
+      border-top-color: #FFD166;
+    }
+    .distribution-item.OUT_OF_SERVICE { 
+      border-top-color: #FF9E6D;
+    }
+    .distribution-item.CWIP { 
+      border-top-color: #9D4EDD;
+    }
+    .distribution-item.TRANSFER { 
+      border-top-color: #00A8FF;
     }
 
+    /* UPDATED: WABS and WWPS colors for better differentiation - WWPS stays pink/red, WABS changed to teal/cyan */
     .distribution-item.WTNK { 
       border-top-color: #36A2EB;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
     }
     .distribution-item.WWPS { 
-      border-top-color: #FF6384;
-      background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+      border-top-color: #FF6384; /* Pink/red - kept same */
     }
     .distribution-item.WWTP { 
       border-top-color: #FFCE56;
-      background: linear-gradient(135deg, #ffffff 0%, #fffcf0 100%);
     }
     .distribution-item.WFLS { 
       border-top-color: #4BC0C0;
-      background: linear-gradient(135deg, #ffffff 0%, #f0fffd 100%);
     }
     .distribution-item.WPUS { 
       border-top-color: #9966FF;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
     }
     .distribution-item.WTRP { 
       border-top-color: #FF9F40;
-      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
     }
     .distribution-item.WABS { 
-      border-top-color: #00B894;
-      background: linear-gradient(135deg, #ffffff 0%, #f0fff8 100%);
+      border-top-color: #00D4AA; /* Changed to teal/cyan for clear distinction */
     }
 
     .distribution-icon {
@@ -699,65 +830,86 @@
     }
 
     .distribution-item.EXCELLENT .distribution-icon { 
-      background: linear-gradient(135deg, #00FF9D 0%, #00C896 100%); 
-      color: white; 
+      background: #00FF9D; 
+      color: #0d1117; 
     }
     .distribution-item.VERY_GOOD .distribution-icon { 
-      background: linear-gradient(135deg, #00C896 0%, #00a085 100%); 
-      color: white; 
+      background: #00C896; 
+      color: #0d1117; 
     }
     .distribution-item.GOOD .distribution-icon { 
-      background: linear-gradient(135deg, #00A8FF 0%, #0088FF 100%); 
+      background: #00A8FF; 
       color: white; 
     }
     .distribution-item.NEW .distribution-icon { 
-      background: linear-gradient(135deg, #9D4EDD 0%, #7B2CBF 100%); 
+      background: #9D4EDD; 
       color: white; 
     }
     .distribution-item.FAIR .distribution-icon { 
-      background: linear-gradient(135deg, #FFD166 0%, #FFB347 100%); 
-      color: #2c3e50; 
+      background: #FFD166; 
+      color: #0d1117; 
     }
     .distribution-item.POOR .distribution-icon { 
-      background: linear-gradient(135deg, #FF9E6D 0%, #FF7A45 100%); 
+      background: #FF9E6D; 
       color: white; 
     }
     .distribution-item.CRITICAL .distribution-icon { 
-      background: linear-gradient(135deg, #FF5252 0%, #FF2B2B 100%); 
+      background: #FF5252; 
       color: white; 
     }
     .distribution-item.UNKNOWN .distribution-icon { 
-      background: linear-gradient(135deg, #6D6A75 0%, #4a4a4a 100%); 
+      background: #6D6A75; 
+      color: white; 
+    }
+    .distribution-item.WORKING .distribution-icon { 
+      background: #00b894; 
+      color: white; 
+    }
+    .distribution-item.STANDBY .distribution-icon { 
+      background: #FFD166; 
+      color: #0d1117; 
+    }
+    .distribution-item.OUT_OF_SERVICE .distribution-icon { 
+      background: #FF9E6D; 
+      color: white; 
+    }
+    .distribution-item.CWIP .distribution-icon { 
+      background: #9D4EDD; 
+      color: white; 
+    }
+    .distribution-item.TRANSFER .distribution-icon { 
+      background: #00A8FF; 
       color: white; 
     }
 
+    /* UPDATED: WABS and WWPS colors for better differentiation */
     .distribution-item.WTNK .distribution-icon { 
-      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%); 
+      background: #36A2EB; 
       color: white; 
     }
     .distribution-item.WWPS .distribution-icon { 
-      background: linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%); 
+      background: #FF6384; /* Pink/red - kept same */
       color: white; 
     }
     .distribution-item.WWTP .distribution-icon { 
-      background: linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%); 
-      color: #2c3e50; 
+      background: #FFCE56; 
+      color: #0d1117; 
     }
     .distribution-item.WFLS .distribution-icon { 
-      background: linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%); 
+      background: #4BC0C0;
       color: white; 
     }
     .distribution-item.WPUS .distribution-icon { 
-      background: linear-gradient(135deg, #9966FF 0%, #b894ff 100%); 
+      background: #9966FF; 
       color: white; 
     }
     .distribution-item.WTRP .distribution-icon { 
-      background: linear-gradient(135deg, #FF9F40 0%, #ffb870 100%); 
+      background: #FF9F40; 
       color: white; 
     }
     .distribution-item.WABS .distribution-icon { 
-      background: linear-gradient(135deg, #00B894 0%, #00d2a0 100%); 
-      color: white; 
+      background: #00D4AA; /* Changed to teal/cyan for clear distinction */
+      color: #0d1117; 
     }
 
     .distribution-info {
@@ -770,7 +922,7 @@
 
     .distribution-name {
       font-weight: 600;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       font-size: 0.75em; /* Reduced from 0.85em */
       white-space: nowrap;
       overflow: hidden;
@@ -780,7 +932,7 @@
     .distribution-count {
       font-size: 1.1em; /* Reduced from 1.3em */
       font-weight: 800;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       line-height: 1;
     }
 
@@ -836,13 +988,12 @@
     }
 
     .site-name-container {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
-      color: white;
+      background: var(--theme-card-bg);
+      color: var(--theme-text);
       padding: 12px 30px;
       border-radius: var(--border-radius-xl);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
+      box-shadow: var(--theme-card-shadow);
+      border: 1px solid var(--theme-section-border);
       min-width: 300px;
       opacity: 0;
       transition: all var(--transition-medium);
@@ -864,11 +1015,10 @@
       justify-content: center;
       gap: 12px;
       letter-spacing: 0.5px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .site-name-container h2 i {
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--primary-blue);
       font-size: 1.3em;
     }
 
@@ -877,7 +1027,7 @@
       opacity: 0.9;
       margin-top: 5px;
       font-weight: 500;
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--theme-section-bg);
       padding: 3px 10px;
       border-radius: 20px;
       display: inline-block;
@@ -890,12 +1040,11 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: var(--theme-map-controls-bg);
       border-radius: var(--border-radius-lg);
       padding: 10px 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: var(--theme-map-controls-shadow);
+      border: 1px solid var(--theme-map-controls-border);
       display: flex;
       gap: 15px;
       align-items: center;
@@ -904,7 +1053,7 @@
 
     .map-layer-controls h4 {
       font-size: 0.9em;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-right: 10px;
       font-weight: 600;
       display: flex;
@@ -919,13 +1068,13 @@
 
     .layer-option {
       padding: 8px 16px;
-      background: var(--light-gray);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: var(--theme-section-bg);
+      border: 1px solid var(--theme-input-border);
       border-radius: var(--border-radius-md);
       cursor: pointer;
       font-size: 0.85em;
       font-weight: 600;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       transition: all var(--transition-fast);
       display: flex;
       align-items: center;
@@ -933,7 +1082,7 @@
     }
 
     .layer-option:hover {
-      background: rgba(0, 102, 204, 0.05);
+      background: var(--theme-input-bg);
       border-color: var(--primary-blue-light);
     }
 
@@ -948,21 +1097,47 @@
       font-size: 1em;
     }
 
+    /* Theme Toggle Button */
+    .theme-toggle {
+      padding: 8px 16px;
+      background: var(--theme-section-bg);
+      border: 1px solid var(--theme-input-border);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      font-size: 0.85em;
+      font-weight: 600;
+      color: var(--theme-text);
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      background: var(--theme-input-bg);
+      border-color: var(--primary-blue-light);
+      transform: translateY(-1px);
+    }
+
+    body.dark-theme .theme-toggle {
+      background: var(--theme-input-bg);
+    }
+
     /* Health Status Indicator at Bottom of Filter Panel */
     .health-indicator {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+      background: var(--theme-section-bg);
       border-radius: var(--border-radius-lg);
       padding: 15px;
       margin-top: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      backdrop-filter: blur(10px);
+      border: 1px solid var(--theme-section-border);
+      box-shadow: var(--theme-card-shadow);
       flex-shrink: 0;
     }
 
     .health-indicator h4 {
       font-size: 0.95em;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       margin-bottom: 12px;
       font-weight: 700;
       display: flex;
@@ -976,12 +1151,12 @@
 
     .health-bar {
       height: 24px;
-      background: rgba(0, 0, 0, 0.05);
+      background: var(--theme-input-bg);
       border-radius: var(--border-radius-md);
       overflow: hidden;
       margin-bottom: 10px;
       position: relative;
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--theme-input-border);
     }
 
     .health-fill {
@@ -997,20 +1172,6 @@
       overflow: hidden;
     }
 
-    .health-fill::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(255, 255, 255, 0.3) 50%, 
-        transparent 100%);
-      animation: shine 2s infinite;
-    }
-
     .health-stats {
       display: flex;
       justify-content: space-between;
@@ -1022,7 +1183,7 @@
     .health-score {
       font-weight: 800;
       font-size: 1.2em;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       display: flex;
       align-items: center;
       gap: 5px;
@@ -1046,13 +1207,13 @@
     }
 
     .quick-action {
-      background: white;
-      border: 1px solid rgba(0, 102, 204, 0.1);
+      background: var(--theme-card-bg);
+      border: 1px solid var(--theme-section-border);
       border-radius: var(--border-radius-md);
       padding: 8px;
       font-size: 0.75em;
       font-weight: 600;
-      color: var(--dark-gray);
+      color: var(--theme-text);
       cursor: pointer;
       transition: all var(--transition-fast);
       display: flex;
@@ -1063,7 +1224,7 @@
     }
 
     .quick-action:hover {
-      background: rgba(0, 102, 204, 0.05);
+      background: var(--theme-input-bg);
       transform: translateY(-1px);
       box-shadow: 0 4px 8px rgba(0, 102, 204, 0.1);
     }
@@ -1074,14 +1235,12 @@
 
     .quick-action.critical {
       color: var(--danger-red);
-      border-color: rgba(231, 76, 60, 0.2);
-      background: rgba(231, 76, 60, 0.05);
+      border-color: rgba(231, 76, 60, 0.3);
     }
 
     .quick-action.working {
       color: var(--success-green);
-      border-color: rgba(0, 184, 148, 0.2);
-      background: rgba(0, 184, 148, 0.05);
+      border-color: rgba(0, 184, 148, 0.3);
     }
 
     /* Zoom level indicator */
@@ -1090,15 +1249,16 @@
       bottom: 20px;
       right: 20px;
       z-index: 1000;
-      background: white;
+      background: var(--theme-zoom-bg);
       padding: 8px 16px;
       border-radius: var(--border-radius-md);
-      box-shadow: 0 5px 15px var(--shadow-medium);
+      box-shadow: var(--theme-zoom-shadow);
       font-weight: 600;
       color: var(--primary-blue);
       display: block;
       font-size: 0.9em;
       pointer-events: auto;
+      border: 1px solid var(--theme-section-border);
     }
 
     /* Scale indicator */
@@ -1107,49 +1267,40 @@
       bottom: 20px;
       left: 20px;
       z-index: 1000;
-      background: white;
+      background: var(--theme-zoom-bg);
       padding: 8px 16px;
       border-radius: var(--border-radius-md);
-      box-shadow: 0 5px 15px var(--shadow-medium);
+      box-shadow: var(--theme-zoom-shadow);
       font-weight: 600;
       color: var(--primary-blue);
       display: block;
       font-size: 0.9em;
       pointer-events: auto;
       min-width: 160px;
+      border: 1px solid var(--theme-section-border);
     }
 
-    /* Custom Cluster Markers - UPDATED: REMOVED ASSET COUNT, ONLY SHOW SITE TYPE */
+    /* UPDATED: Custom Cluster Markers - Now match Site Types icons style */
     .custom-cluster {
-      background: linear-gradient(135deg, #FFD166 0%, #FF9E6D 100%);
+      background: #FFD166;
       border: 2px solid white;
       border-radius: 50%;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       color: white;
       font-weight: 800;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      font-size: 10px;
+      font-size: 8px;
       line-height: 1.1;
       padding: 2px;
       text-align: center;
       letter-spacing: -0.5px;
-    }
-
-    .custom-cluster::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      z-index: -1;
     }
 
     .custom-cluster:hover {
@@ -1157,29 +1308,34 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
-    .cluster-excellent {
-      background: linear-gradient(135deg, #00FF9D 0%, #00C896 100%);
+    /* UPDATED: Cluster colors to match Site Types - WABS and WWPS updated */
+    .cluster-wtnk {
+      background: #36A2EB;
     }
 
-    .cluster-good {
-      background: linear-gradient(135deg, #00A8FF 0%, #0088FF 100%);
+    .cluster-wwps {
+      background: #FF6384; /* Pink/red - kept same */
     }
 
-    .cluster-fair {
-      background: linear-gradient(135deg, #FFD166 0%, #FFB347 100%);
+    .cluster-wwtp {
+      background: #FFCE56;
+      color: #0d1117;
     }
 
-    .cluster-poor {
-      background: linear-gradient(135deg, #FF9E6D 0%, #FF7A45 100%);
+    .cluster-wfls {
+      background: #4BC0C0;
     }
 
-    .cluster-critical {
-      background: linear-gradient(135deg, #FF5252 0%, #FF2B2B 100%);
-      animation: pulse 1.5s infinite;
+    .cluster-wpus {
+      background: #9966FF;
     }
 
-    .cluster-new {
-      background: linear-gradient(135deg, #9D4EDD 0%, #7B2CBF 100%);
+    .cluster-wtrp {
+      background: #FF9F40;
+    }
+
+    .cluster-wabs {
+      background: #00D4AA; /* Changed to teal/cyan for clear distinction */
     }
 
     .cluster-mixed {
@@ -1190,7 +1346,7 @@
 
     /* Individual Marker Styles - UPDATED: ONLY SHOW SITE TYPE ABBREVIATION */
     .site-type-marker {
-      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%);
+      background: #36A2EB;
       border: 2px solid white;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -1209,42 +1365,34 @@
       letter-spacing: -0.3px;
     }
 
-    .site-type-marker::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-    }
-
     .site-type-marker:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
       z-index: 1000;
     }
 
+    /* UPDATED: WABS and WWPS colors for better differentiation */
     .site-type-marker.wtnk {
-      background: linear-gradient(135deg, #36A2EB 0%, #5dade2 100%);
+      background: #36A2EB;
     }
     .site-type-marker.wwps {
-      background: linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%);
+      background: #FF6384; /* Pink/red - kept same */
     }
     .site-type-marker.wwtp {
-      background: linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%);
+      background: #FFCE56;
+      color: #0d1117;
     }
     .site-type-marker.wfls {
-      background: linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%);
+      background: #4BC0C0;
     }
     .site-type-marker.wpus {
-      background: linear-gradient(135deg, #9966FF 0%, #b894ff 100%);
+      background: #9966FF;
     }
     .site-type-marker.wtrp {
-      background: linear-gradient(135deg, #FF9F40 0%, #ffb870 100%);
+      background: #FF9F40;
     }
     .site-type-marker.wabs {
-      background: linear-gradient(135deg, #00B894 0%, #00d2a0 100%);
+      background: #00D4AA; /* Changed to teal/cyan for clear distinction */
     }
 
     @keyframes pulse {
@@ -1265,23 +1413,26 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.05);
+      background: var(--theme-scrollbar-track);
       border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: var(--primary-blue);
+      background: var(--theme-scrollbar-thumb);
       border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-blue-dark);
+      background: var(--primary-blue);
     }
 
     /* Custom Leaflet controls */
     .leaflet-control-container .leaflet-top.leaflet-right {
       top: 80px;
     }
+
+    /* REMOVED: Dark theme specific adjustments for Leaflet map */
+    /* The map will remain exactly the same in both themes */
 
     /* Responsive adjustments */
     @media (max-width: 1200px) {
@@ -1421,6 +1572,10 @@
         right: 10px;
         font-size: 0.8em;
       }
+      .theme-toggle {
+        padding: 6px 10px;
+        font-size: 0.75em;
+      }
     }
 
     @media (max-width: 576px) {
@@ -1464,6 +1619,14 @@
         height: 28px;
         font-size: 12px;
       }
+      .theme-toggle span {
+        display: none;
+      }
+      .theme-toggle {
+        padding: 8px;
+        justify-content: center;
+        width: 40px;
+      }
     }
 
     @media (max-width: 380px) {
@@ -1490,12 +1653,133 @@
 <div class="panels-container">
   <!-- Left Control Panel -->
   <div class="control-panel" id="controlPanel">
+    <!-- Tab Navigation -->
+    <div class="panel-tabs">
+      <button class="panel-tab active" id="siteTab" onclick="switchTab('site')">
+        <i class="fas fa-building"></i> Site Information
+      </button>
+      <button class="panel-tab" id="assetTab" onclick="switchTab('asset')">
+        <i class="fas fa-water"></i> Asset Information
+      </button>
+    </div>
+
     <div class="panel-header">
       <h2><i class="fas fa-water"></i> Facilities Site</h2>
       <button class="close-panel" onclick="toggleDashboard()">×</button>
     </div>
 
-    <div class="dashboard-content">
+    <!-- Site Information Dashboard Content -->
+    <div class="dashboard-content" id="siteDashboardContent">
+      <!-- UPDATED: 6 stat cards in 2 rows × 3 columns with specified order -->
+      <div class="stats-grid site-stats">
+        <!-- Row 1: Total Sites, Working, Out of Service -->
+        <div class="stat-card total" onclick="filterSiteByStatus('all')">
+          <h3><i class="fas fa-city"></i> Total Sites</h3>
+          <div class="stat-value" id="totalSites">0</div>
+          <div class="stat-percent" id="totalSitePercent">100%</div>
+        </div>
+        <div class="stat-card working" onclick="filterSiteByStatus('WORKING')">
+          <h3><i class="fas fa-check-circle"></i> Working</h3>
+          <div class="stat-value" id="workingSites">0</div>
+          <div class="stat-percent" id="workingSitePercent">0%</div>
+        </div>
+        <div class="stat-card out-of-service" onclick="filterSiteByStatus('OUT_OF_SERVICE')">
+          <h3><i class="fas fa-times-circle"></i> Out of Service</h3>
+          <div class="stat-value" id="outOfServiceSites">0</div>
+          <div class="stat-percent" id="outOfServiceSitePercent">0%</div>
+        </div>
+        <!-- Row 2: Standby, Transfer, CWIP -->
+        <div class="stat-card standby" onclick="filterSiteByStatus('STANDBY')">
+          <h3><i class="fas fa-pause-circle"></i> Standby</h3>
+          <div class="stat-value" id="standbySites">0</div>
+          <div class="stat-percent" id="standbySitePercent">0%</div>
+        </div>
+        <div class="stat-card transfer" onclick="filterSiteByStatus('TRANSFER')">
+          <h3><i class="fas fa-exchange-alt"></i> Transfer</h3>
+          <div class="stat-value" id="transferSites">0</div>
+          <div class="stat-percent" id="transferSitePercent">0%</div>
+        </div>
+        <div class="stat-card cwip" onclick="filterSiteByStatus('CWIP')">
+          <h3><i class="fas fa-tools"></i> CWIP</h3>
+          <div class="stat-value" id="cwipSites">0</div>
+          <div class="stat-percent" id="cwipSitePercent">0%</div>
+        </div>
+      </div>
+
+      <!-- Site Information Filters -->
+      <div class="filters-section">
+        <h3><i class="fas fa-filter"></i> Filters</h3>
+        
+        <!-- City Filter -->
+        <div class="filter-group">
+          <label for="siteCityFilter"><i class="fas fa-city"></i> City</label>
+          <select id="siteCityFilter" onchange="filterSiteByCity()">
+            <option value="all">All Cities</option>
+          </select>
+        </div>
+
+        <!-- Site Type Filter (replaces Site Name L3) -->
+        <div class="filter-group">
+          <label for="siteTypeFilter"><i class="fas fa-building"></i> Site Type</label>
+          <select id="siteTypeFilter" onchange="filterSiteByType()">
+            <option value="all">All Site Types</option>
+          </select>
+        </div>
+
+        <!-- Site Status Filter (replaces Condition Filter) -->
+        <div class="filter-group">
+          <label for="siteStatusFilter"><i class="fas fa-tachometer-alt"></i> Site Status</label>
+          <select id="siteStatusFilter" onchange="applySiteFilters()">
+            <option value="all">All Statuses</option>
+          </select>
+        </div>
+
+        <!-- Chart Type Filter -->
+        <div class="filter-group">
+          <label for="siteChartTypeFilter"><i class="fas fa-chart-pie"></i> Chart Type</label>
+          <select id="siteChartTypeFilter" onchange="changeSiteChartType()">
+            <option value="siteType">Site Type Distribution</option>
+            <option value="siteStatus">Site Status Distribution</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="siteLocationGrouping"><i class="fas fa-layer-group"></i> Group By Location</label>
+          <select id="siteLocationGrouping" onchange="changeSiteVisualizationMode()">
+            <option value="cluster">Cluster Markers</option>
+            <option value="individual">Individual Markers</option>
+            <option value="single">Single Marker per Location</option>
+            <option value="spider">Spread Out at Same Location</option>
+            <option value="heatmap">Heatmap View</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Site Health Indicator -->
+      <div class="health-indicator" id="siteHealthIndicator">
+        <h4><i class="fas fa-heartbeat"></i> Site Health</h4>
+        <div class="health-bar">
+          <div class="health-fill" id="siteHealthFill" style="width: 75%"></div>
+        </div>
+        <div class="health-stats">
+          <span class="health-label">Overall Score</span>
+          <span class="health-score" id="siteHealthScore">75%</span>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <div class="quick-action critical" onclick="filterSiteByStatus('OUT_OF_SERVICE')">
+            <i class="fas fa-exclamation-triangle"></i> View Out of Service
+          </div>
+          <div class="quick-action working" onclick="filterSiteByStatus('WORKING')">
+            <i class="fas fa-check-circle"></i> View Working
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asset Information Dashboard Content (Hidden by default) -->
+    <div class="dashboard-content" id="assetDashboardContent" style="display: none;">
       <!-- UPDATED: 3 stat cards in single row -->
       <div class="stats-grid">
         <div class="stat-card total" onclick="filterByType('all')">
@@ -1515,7 +1799,7 @@
         </div>
       </div>
 
-      <!-- Filters -->
+      <!-- Asset Information Filters -->
       <div class="filters-section">
         <h3><i class="fas fa-filter"></i> Filters</h3>
         
@@ -1562,8 +1846,8 @@
         </div>
       </div>
 
-      <!-- Health Indicator -->
-      <div class="health-indicator">
+      <!-- Asset Health Indicator -->
+      <div class="health-indicator" id="assetHealthIndicator">
         <h4><i class="fas fa-heartbeat"></i> Site Health</h4>
         <div class="health-bar">
           <div class="health-fill" id="healthFill" style="width: 75%"></div>
@@ -1665,6 +1949,10 @@
       <i class="fas fa-map"></i> Hybrid
     </div>
   </div>
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i> <span>Dark Theme</span>
+  </div>
 </div>
 
 <!-- Scale Indicator -->
@@ -1687,7 +1975,9 @@
   let markerCluster;
   let individualMarkers = [];
   let allAssets = [];
+  let allSites = [];
   let filteredAssets = [];
+  let filteredSites = [];
   let currentMarkers = [];
   let currentVisualization = 'cluster';
   let heatLayer = null;
@@ -1695,13 +1985,18 @@
   let currentCity = null;
   let siteStats = {};
   let cityStats = {};
+  let siteCityStats = {};
   let currentZoom = 12;
   let equipmentChart = null;
   let currentMapLayer = 'street';
   let mapLayers = {};
   let siteTypeColorMap = {};
   let conditionColorMap = {};
+  let siteStatusColorMap = {};
   let currentChartType = 'siteType'; // 'siteType' or 'condition'
+  let currentSiteChartType = 'siteType'; // 'siteType' or 'siteStatus'
+  let isDarkTheme = false;
+  let currentTab = 'site'; // 'site' or 'asset'
   
   // City coordinates mapping (from your requirements)
   const cityCoordinates = {
@@ -1728,10 +2023,20 @@
     'UNKNOWN': '#6D6A75'         // Slate Gray
   };
   
-  // Site Type colors for pie chart - UPDATED to match legend items
+  // Site Status colors
+  const siteStatusColors = {
+    'WORKING': '#00b894',        // Success Green
+    'STANDBY': '#FFD166',        // Golden Yellow
+    'OUT_OF_SERVICE': '#FF9E6D', // Burnt Orange
+    'CWIP': '#9D4EDD',           // Royal Purple
+    'TRANSFER': '#00A8FF',       // Electric Blue
+    'UNKNOWN': '#6D6A75'         // Slate Gray
+  };
+  
+  // Site Type colors for pie chart - UPDATED: WABS changed to teal/cyan (#00D4AA) for better distinction
   const siteTypeColors = [
-    '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', 
-    '#9966FF', '#FF9F40', '#C9CBCF', '#00B894',
+    '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', // WTNK, WWPS, WWTP, WFLS
+    '#9966FF', '#FF9F40', '#00D4AA', '#00B894', // WPUS, WTRP, WABS (updated), extra
     '#95A5A6', '#9D4EDD', '#00FF9D', '#00C896'
   ];
 
@@ -1761,7 +2066,7 @@
   function initMap() {
     map = L.map('map').setView([24.50, 39.65], 12);
     
-    // Define map layers
+    // Define map layers - Using same layers for both themes
     mapLayers = {
       street: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -1784,7 +2089,7 @@
     // Add default layer
     mapLayers.street.addTo(map);
     
-    // Initialize marker cluster with custom styling - UPDATED: ONLY SHOW SITE TYPE
+    // Initialize marker cluster with custom styling - UPDATED: Now matches Site Types icons style
     markerCluster = L.markerClusterGroup({
       maxClusterRadius: function(zoom) {
         if (zoom >= 15) return 8;
@@ -1802,65 +2107,74 @@
         const siteTypes = {};
         let dominantSiteType = '';
         let maxCount = 0;
+        let siteTypeClass = '';
         
         cluster.getAllChildMarkers().forEach(marker => {
-          if (marker.options.asset) {
-            const siteType = marker.options.asset.siteTypeL2;
+          if (marker.options.site || marker.options.asset) {
+            let siteType = '';
+            if (marker.options.site) {
+              siteType = marker.options.site.siteType || '';
+            } else if (marker.options.asset) {
+              siteType = marker.options.asset.siteTypeL2 || '';
+            }
+            
             const abbrev = getSiteTypeAbbreviation(siteType);
+            const typeClass = getSiteTypeClass(siteType);
             
             if (!siteTypes[abbrev]) {
-              siteTypes[abbrev] = 0;
+              siteTypes[abbrev] = { count: 0, class: typeClass };
             }
-            siteTypes[abbrev]++;
+            siteTypes[abbrev].count++;
             
-            if (siteTypes[abbrev] > maxCount) {
-              maxCount = siteTypes[abbrev];
+            if (siteTypes[abbrev].count > maxCount) {
+              maxCount = siteTypes[abbrev].count;
               dominantSiteType = abbrev;
+              siteTypeClass = typeClass;
             }
           }
         });
         
         // Determine cluster color based on dominant site type
-        let backgroundColor = 'linear-gradient(135deg, #FFD166 0%, #FF9E6D 100%)';
+        let backgroundColor = '#FFD166';
+        let textColor = '#0d1117';
         
-        if (dominantSiteType === 'WTNK') {
-          backgroundColor = 'linear-gradient(135deg, #36A2EB 0%, #5dade2 100%)';
-        } else if (dominantSiteType === 'WWPS') {
-          backgroundColor = 'linear-gradient(135deg, #FF6384 0%, #ff8fa3 100%)';
-        } else if (dominantSiteType === 'WWTP') {
-          backgroundColor = 'linear-gradient(135deg, #FFCE56 0%, #ffdb7a 100%)';
-        } else if (dominantSiteType === 'WFLS') {
-          backgroundColor = 'linear-gradient(135deg, #4BC0C0 0%, #76d7d7 100%)';
-        } else if (dominantSiteType === 'WPUS') {
-          backgroundColor = 'linear-gradient(135deg, #9966FF 0%, #b894ff 100%)';
-        } else if (dominantSiteType === 'WTRP') {
-          backgroundColor = 'linear-gradient(135deg, #FF9F40 0%, #ffb870 100%)';
-        } else if (dominantSiteType === 'WABS') {
-          backgroundColor = 'linear-gradient(135deg, #00B894 0%, #00d2a0 100%)';
+        // UPDATED: Use same color logic as individual markers and distribution items
+        switch(siteTypeClass) {
+          case 'wtnk': backgroundColor = '#36A2EB'; textColor = 'white'; break;
+          case 'wwps': backgroundColor = '#FF6384'; textColor = 'white'; break;
+          case 'wwtp': backgroundColor = '#FFCE56'; textColor = '#0d1117'; break;
+          case 'wfls': backgroundColor = '#4BC0C0'; textColor = 'white'; break;
+          case 'wpus': backgroundColor = '#9966FF'; textColor = 'white'; break;
+          case 'wtrp': backgroundColor = '#FF9F40'; textColor = 'white'; break;
+          case 'wabs': backgroundColor = '#00D4AA'; textColor = '#0d1117'; break; // Updated to teal/cyan
+          default: backgroundColor = '#FFD166'; textColor = '#0d1117';
         }
         
         // Calculate size based on count
         let size = 20;
-        let fontSize = 8; // Reduced from 10
+        let fontSize = 8;
         
         if (count < 10) {
           size = 24;
-          fontSize = 9; // Reduced from 11
+          fontSize = 9;
         } else if (count < 50) {
           size = 28;
-          fontSize = 10; // Reduced from 12
+          fontSize = 10;
         } else if (count < 100) {
           size = 32;
-          fontSize = 11; // Reduced from 13
+          fontSize = 11;
         } else {
           size = 36;
-          fontSize = 12; // Reduced from 14
+          fontSize = 12;
         }
         
-        // UPDATED: Show only site type abbreviation, no count
+        // UPDATED: Cluster marker now matches Site Types icons style - circular with icon and abbreviation
         return L.divIcon({
-          html: `<div class="custom-cluster" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}">
-                  <div>${dominantSiteType || 'MIX'}</div>
+          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};">
+                  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-building" style="font-size: ${fontSize * 0.9}px; margin-bottom: 2px;"></i>
+                    <div style="font-weight: bold; font-size: ${fontSize * 0.7}px; line-height: 1;">${dominantSiteType || 'MIX'}</div>
+                  </div>
                 </div>`,
           className: 'custom-cluster-icon',
           iconSize: L.point(size, size),
@@ -1880,6 +2194,95 @@
     
     document.getElementById('currentZoom').textContent = currentZoom;
     updateScaleIndicator();
+  }
+  
+  // Tab Switching Function
+  function switchTab(tab) {
+    currentTab = tab;
+    
+    // Update tab buttons
+    document.querySelectorAll('.panel-tab').forEach(tabBtn => {
+      tabBtn.classList.remove('active');
+    });
+    
+    if (tab === 'site') {
+      document.getElementById('siteTab').classList.add('active');
+      document.getElementById('siteDashboardContent').style.display = 'flex';
+      document.getElementById('assetDashboardContent').style.display = 'none';
+      
+      // Update right panel for site data
+      updateCityPanel();
+      
+      // Display site markers
+      displaySiteMarkers();
+      
+      // Update site name display
+      updateSiteNameDisplay();
+      
+      // Update health indicator
+      updateSiteHealthIndicator();
+    } else {
+      document.getElementById('assetTab').classList.add('active');
+      document.getElementById('assetDashboardContent').style.display = 'flex';
+      document.getElementById('siteDashboardContent').style.display = 'none';
+      
+      // Update right panel for asset data
+      updateCityPanel();
+      
+      // Display asset markers
+      displayAssets();
+      
+      // Update site name display
+      updateSiteNameDisplay();
+      
+      // Update health indicator
+      updateHealthIndicator();
+    }
+  }
+  
+  // Theme Toggle Function - UPDATED: No map layer changes
+  function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const themeText = themeToggle.querySelector('span');
+    
+    isDarkTheme = !isDarkTheme;
+    
+    if (isDarkTheme) {
+      body.classList.add('dark-theme');
+      themeIcon.className = 'fas fa-sun';
+      themeText.textContent = 'Light Theme';
+    } else {
+      body.classList.remove('dark-theme');
+      themeIcon.className = 'fas fa-moon';
+      themeText.textContent = 'Dark Theme';
+    }
+    
+    // Save theme preference to localStorage
+    localStorage.setItem('waterAssetsTheme', isDarkTheme ? 'dark' : 'light');
+    
+    // Update chart colors if chart exists
+    if (equipmentChart) {
+      updateCityPanel();
+    }
+  }
+  
+  // Load theme preference from localStorage
+  function loadThemePreference() {
+    const savedTheme = localStorage.getItem('waterAssetsTheme');
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (savedTheme === 'dark') {
+      isDarkTheme = true;
+      document.body.classList.add('dark-theme');
+      themeToggle.querySelector('i').className = 'fas fa-sun';
+      themeToggle.querySelector('span').textContent = 'Light Theme';
+    } else {
+      isDarkTheme = false;
+      themeToggle.querySelector('i').className = 'fas fa-moon';
+      themeToggle.querySelector('span').textContent = 'Dark Theme';
+    }
   }
   
   // Get site type abbreviation
@@ -1939,32 +2342,38 @@
   // Calculate zoom level for a specific scale (1:35)
   function getZoomForScale(targetScale) {
     // Calculate the zoom level needed to achieve 1:35 scale
-    // This is an approximation based on standard tile sizes
-    // At zoom level 0, 1 pixel = 156543.03392 meters at equator
-    // Each zoom level halves this value
-    
     const metersPerPixelAtZoom0 = 156543.03392;
-    const targetMetersPerPixel = targetScale; // For 1:35 scale
+    const targetMetersPerPixel = targetScale;
     
-    // Calculate zoom level: log2(metersPerPixelAtZoom0 / targetMetersPerPixel)
     const zoom = Math.log2(metersPerPixelAtZoom0 / targetMetersPerPixel);
     
-    return Math.max(0, Math.min(19, Math.round(zoom))); // Clamp between 0 and 19
+    return Math.max(0, Math.min(19, Math.round(zoom)));
   }
   
-  // Change chart type
+  // Change chart type for Asset Information
   function changeChartType() {
     currentChartType = document.getElementById('chartTypeFilter').value;
-    updateCityPanel();
+    if (currentTab === 'asset') {
+      updateCityPanel();
+    }
   }
   
-  // Change map layer
+  // Change chart type for Site Information
+  function changeSiteChartType() {
+    currentSiteChartType = document.getElementById('siteChartTypeFilter').value;
+    if (currentTab === 'site') {
+      updateCityPanel();
+    }
+  }
+  
+  // Change map layer - UPDATED: No theme-based adjustments
   function changeMapLayer(layerType) {
     if (mapLayers[currentMapLayer]) {
       map.removeLayer(mapLayers[currentMapLayer]);
     }
     
     if (mapLayers[layerType]) {
+      // Always use the same map layers regardless of theme
       mapLayers[layerType].addTo(map);
       currentMapLayer = layerType;
     }
@@ -1979,48 +2388,90 @@
   
   // Update site name display
   function updateSiteNameDisplay() {
-    const siteFilter = document.getElementById('siteFilter');
-    const cityFilter = document.getElementById('cityFilter');
-    const selectedSite = siteFilter.value;
-    const selectedCity = cityFilter.value;
-    const siteNameContainer = document.getElementById('siteNameContainer');
-    const siteCountElement = document.getElementById('siteCount');
-    
-    if (selectedSite === 'all' && selectedCity === 'all') {
-      siteNameContainer.classList.remove('visible');
-      setTimeout(() => {
-        siteNameContainer.style.display = 'none';
-      }, 300);
+    if (currentTab === 'site') {
+      const siteCityFilter = document.getElementById('siteCityFilter');
+      const siteTypeFilter = document.getElementById('siteTypeFilter');
+      const selectedCity = siteCityFilter.value;
+      const selectedSiteType = siteTypeFilter.value;
+      const siteNameContainer = document.getElementById('siteNameContainer');
+      const siteCountElement = document.getElementById('siteCount');
+      
+      if (selectedCity === 'all' && selectedSiteType === 'all') {
+        siteNameContainer.classList.remove('visible');
+        setTimeout(() => {
+          siteNameContainer.style.display = 'none';
+        }, 300);
+      } else {
+        let displayName = '';
+        if (selectedCity !== 'all') {
+          const cityName = siteCityFilter.options[siteCityFilter.selectedIndex].text;
+          const cityNameParts = cityName.split(' (');
+          displayName = cityNameParts[0];
+          if (selectedSiteType !== 'all') {
+            const siteTypeName = siteTypeFilter.options[siteTypeFilter.selectedIndex].text;
+            const siteTypeParts = siteTypeName.split(' (');
+            displayName += ' - ' + siteTypeParts[0];
+          }
+        } else {
+          const siteTypeName = siteTypeFilter.options[siteTypeFilter.selectedIndex].text;
+          const siteTypeParts = siteTypeName.split(' (');
+          displayName = siteTypeParts[0];
+        }
+        
+        const siteCount = filteredSites.length;
+        
+        document.getElementById('currentSiteName').textContent = displayName;
+        siteCountElement.textContent = `${siteCount} site${siteCount !== 1 ? 's' : ''}`;
+        
+        siteNameContainer.style.display = 'block';
+        setTimeout(() => {
+          siteNameContainer.classList.add('visible');
+        }, 10);
+      }
     } else {
-      let displayName = '';
-      if (selectedCity !== 'all') {
-        const cityName = cityFilter.options[cityFilter.selectedIndex].text;
-        const cityNameParts = cityName.split(' (');
-        displayName = cityNameParts[0];
-        if (selectedSite !== 'all') {
+      const siteFilter = document.getElementById('siteFilter');
+      const cityFilter = document.getElementById('cityFilter');
+      const selectedSite = siteFilter.value;
+      const selectedCity = cityFilter.value;
+      const siteNameContainer = document.getElementById('siteNameContainer');
+      const siteCountElement = document.getElementById('siteCount');
+      
+      if (selectedSite === 'all' && selectedCity === 'all') {
+        siteNameContainer.classList.remove('visible');
+        setTimeout(() => {
+          siteNameContainer.style.display = 'none';
+        }, 300);
+      } else {
+        let displayName = '';
+        if (selectedCity !== 'all') {
+          const cityName = cityFilter.options[cityFilter.selectedIndex].text;
+          const cityNameParts = cityName.split(' (');
+          displayName = cityNameParts[0];
+          if (selectedSite !== 'all') {
+            const siteName = siteFilter.options[siteFilter.selectedIndex].text;
+            const siteNameParts = siteName.split(' (');
+            displayName += ' - ' + siteNameParts[0];
+          }
+        } else {
           const siteName = siteFilter.options[siteFilter.selectedIndex].text;
           const siteNameParts = siteName.split(' (');
-          displayName += ' - ' + siteNameParts[0];
+          displayName = siteNameParts[0];
         }
-      } else {
-        const siteName = siteFilter.options[siteFilter.selectedIndex].text;
-        const siteNameParts = siteName.split(' (');
-        displayName = siteNameParts[0];
+        
+        const assetCount = filteredAssets.length;
+        
+        document.getElementById('currentSiteName').textContent = displayName;
+        siteCountElement.textContent = `${assetCount} asset${assetCount !== 1 ? 's' : ''}`;
+        
+        siteNameContainer.style.display = 'block';
+        setTimeout(() => {
+          siteNameContainer.classList.add('visible');
+        }, 10);
       }
-      
-      const assetCount = filteredAssets.length;
-      
-      document.getElementById('currentSiteName').textContent = displayName;
-      siteCountElement.textContent = `${assetCount} asset${assetCount !== 1 ? 's' : ''}`;
-      
-      siteNameContainer.style.display = 'block';
-      setTimeout(() => {
-        siteNameContainer.classList.add('visible');
-      }, 10);
     }
   }
   
-  // Update health indicator
+  // Update health indicator for Asset Information
   function updateHealthIndicator() {
     const selectedSite = document.getElementById('siteFilter').value;
     const selectedCity = document.getElementById('cityFilter').value;
@@ -2068,6 +2519,66 @@
     document.getElementById('healthScore').textContent = `${clampedScore}%`;
     
     const healthScoreElement = document.getElementById('healthScore');
+    if (clampedScore >= 80) {
+      healthScoreElement.style.color = 'var(--success-green)';
+    } else if (clampedScore >= 60) {
+      healthScoreElement.style.color = 'var(--warning-orange)';
+    } else {
+      healthScoreElement.style.color = 'var(--danger-red)';
+    }
+  }
+  
+  // Update health indicator for Site Information
+  function updateSiteHealthIndicator() {
+    const selectedCity = document.getElementById('siteCityFilter').value;
+    const selectedSiteType = document.getElementById('siteTypeFilter').value;
+    const selectedStatus = document.getElementById('siteStatusFilter').value;
+    
+    let sitesToCheck = allSites;
+    
+    if (selectedCity !== 'all') {
+      sitesToCheck = sitesToCheck.filter(s => s.city === selectedCity);
+    }
+    
+    if (selectedSiteType !== 'all') {
+      sitesToCheck = sitesToCheck.filter(s => s.siteType === selectedSiteType);
+    }
+    
+    if (selectedStatus !== 'all') {
+      sitesToCheck = sitesToCheck.filter(s => s.siteStatus === selectedStatus);
+    }
+    
+    if (sitesToCheck.length === 0) {
+      document.getElementById('siteHealthFill').style.width = '0%';
+      document.getElementById('siteHealthScore').textContent = '0%';
+      return;
+    }
+    
+    let score = 0;
+    let totalWeight = 0;
+    
+    sitesToCheck.forEach(site => {
+      let weight = 0;
+      switch(site.siteStatus) {
+        case 'WORKING': weight = 100; break;
+        case 'STANDBY': weight = 70; break;
+        case 'OUT_OF_SERVICE': weight = 30; break;
+        case 'CWIP': weight = 50; break;
+        case 'TRANSFER': weight = 60; break;
+        default: weight = 50;
+      }
+      
+      score += weight;
+      totalWeight++;
+    });
+    
+    const averageScore = Math.round(score / totalWeight);
+    const clampedScore = Math.min(100, Math.max(0, averageScore));
+    
+    document.getElementById('siteHealthFill').style.width = `${clampedScore}%`;
+    document.getElementById('siteHealthScore').textContent = `${clampedScore}%`;
+    
+    const healthScoreElement = document.getElementById('siteHealthScore');
     if (clampedScore >= 80) {
       healthScoreElement.style.color = 'var(--success-green)';
     } else if (clampedScore >= 60) {
@@ -2143,6 +2654,45 @@
   
   // Function to update city panel
   function updateCityPanel() {
+    if (currentTab === 'site') {
+      updateSiteCityPanel();
+    } else {
+      updateAssetCityPanel();
+    }
+  }
+  
+  // Update city panel for Site Information
+  function updateSiteCityPanel() {
+    const selectedCity = document.getElementById('siteCityFilter').value;
+    const cityNameElement = document.getElementById('citySiteName');
+    const currentCityNameElement = document.getElementById('currentCityName');
+    
+    if (selectedCity === 'all') {
+      document.getElementById('panelTitle').textContent = 'City Overview';
+      document.getElementById('panelIcon').className = 'fas fa-city';
+      cityNameElement.textContent = 'All Cities';
+      currentCityNameElement.textContent = 'All Cities';
+    } else {
+      const cityName = document.getElementById('siteCityFilter').options[document.getElementById('siteCityFilter').selectedIndex].text;
+      const cityNameParts = cityName.split(' (');
+      const cleanCityName = cityNameParts[0];
+      document.getElementById('panelTitle').textContent = `${cleanCityName} Overview`;
+      document.getElementById('panelIcon').className = 'fas fa-map-marker-alt';
+      cityNameElement.textContent = cleanCityName;
+      currentCityNameElement.textContent = cleanCityName;
+    }
+    
+    let citySites = selectedCity === 'all' ? allSites : allSites.filter(s => s.city === selectedCity);
+    
+    if (currentSiteChartType === 'siteType') {
+      updateSiteTypeDistributionForSites(citySites);
+    } else {
+      updateSiteStatusDistribution(citySites);
+    }
+  }
+  
+  // Update city panel for Asset Information
+  function updateAssetCityPanel() {
     const selectedCity = document.getElementById('cityFilter').value;
     const cityNameElement = document.getElementById('citySiteName');
     const currentCityNameElement = document.getElementById('currentCityName');
@@ -2171,7 +2721,7 @@
     }
   }
   
-  // Update site type distribution
+  // Update site type distribution for Assets
   function updateSiteTypeDistribution(assets) {
     let siteTypeStats = {};
     let totalSites = 0;
@@ -2210,7 +2760,46 @@
     document.getElementById('totalSitesCount').textContent = uniqueSites.size;
   }
   
-  // Update condition distribution
+  // Update site type distribution for Sites
+  function updateSiteTypeDistributionForSites(sites) {
+    let siteTypeStats = {};
+    let totalSites = 0;
+    let uniqueSites = new Set();
+    
+    sites.forEach(site => {
+      if (site.siteType) {
+        const siteTypeKey = site.siteType;
+        if (!siteTypeStats[siteTypeKey]) {
+          siteTypeStats[siteTypeKey] = {
+            count: 0,
+            uniqueSites: new Set(),
+            abbreviation: getSiteTypeAbbreviation(site.siteType)
+          };
+        }
+        siteTypeStats[siteTypeKey].count++;
+        siteTypeStats[siteTypeKey].uniqueSites.add(site.siteName || site.siteId);
+        uniqueSites.add(site.siteName || site.siteId);
+        totalSites++;
+      }
+    });
+    
+    const uniqueSiteTypes = Object.keys(siteTypeStats).length;
+    
+    document.getElementById('distributionTypeLabel').textContent = 'Site Types';
+    document.getElementById('distributionTypesCount').textContent = uniqueSiteTypes;
+    document.getElementById('distributionTypeSubLabel').textContent = 'Total Site Types';
+    document.getElementById('chartTitle').textContent = 'Site Type Distribution';
+    document.getElementById('chartIcon').className = 'fas fa-chart-pie';
+    document.getElementById('distributionTitle').textContent = 'Site Types';
+    document.getElementById('distributionIcon').className = 'fas fa-layer-group';
+    
+    updateDistributionList(siteTypeStats, 'siteType');
+    updateDistributionChart(siteTypeStats, 'siteType');
+    
+    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+  }
+  
+  // Update condition distribution for Assets
   function updateConditionDistribution(assets) {
     let conditionStats = {};
     let totalSites = 0;
@@ -2247,7 +2836,44 @@
     document.getElementById('totalSitesCount').textContent = uniqueSites.size;
   }
   
-  // Get color for site type
+  // Update site status distribution for Sites
+  function updateSiteStatusDistribution(sites) {
+    let statusStats = {};
+    let totalSites = 0;
+    let uniqueSites = new Set();
+    
+    sites.forEach(site => {
+      const statusKey = site.siteStatus || 'UNKNOWN';
+      if (!statusStats[statusKey]) {
+        statusStats[statusKey] = {
+          count: 0,
+          uniqueSites: new Set(),
+          abbreviation: statusKey
+        };
+      }
+      statusStats[statusKey].count++;
+      statusStats[statusKey].uniqueSites.add(site.siteName || site.siteId);
+      uniqueSites.add(site.siteName || site.siteId);
+      totalSites++;
+    });
+    
+    const uniqueStatuses = Object.keys(statusStats).length;
+    
+    document.getElementById('distributionTypeLabel').textContent = 'Site Statuses';
+    document.getElementById('distributionTypesCount').textContent = uniqueStatuses;
+    document.getElementById('distributionTypeSubLabel').textContent = 'Different Statuses';
+    document.getElementById('chartTitle').textContent = 'Site Status Distribution';
+    document.getElementById('chartIcon').className = 'fas fa-tachometer-alt';
+    document.getElementById('distributionTitle').textContent = 'Site Statuses';
+    document.getElementById('distributionIcon').className = 'fas fa-heartbeat';
+    
+    updateDistributionList(statusStats, 'siteStatus');
+    updateDistributionChart(statusStats, 'siteStatus');
+    
+    document.getElementById('totalSitesCount').textContent = uniqueSites.size;
+  }
+  
+  // Get color for site type - UPDATED: WABS changed to teal/cyan (#00D4AA)
   function getColorForSiteType(siteType) {
     if (siteTypeColorMap[siteType]) {
       return siteTypeColorMap[siteType];
@@ -2259,12 +2885,12 @@
     
     switch(abbrev) {
       case 'WTNK': color = '#36A2EB'; break;
-      case 'WWPS': color = '#FF6384'; break;
+      case 'WWPS': color = '#FF6384'; break; // Pink/red - kept same
       case 'WWTP': color = '#FFCE56'; break;
       case 'WFLS': color = '#4BC0C0'; break;
       case 'WPUS': color = '#9966FF'; break;
       case 'WTRP': color = '#FF9F40'; break;
-      case 'WABS': color = '#00B894'; break;
+      case 'WABS': color = '#00D4AA'; break; // Changed to teal/cyan
       default:
         const colorIndex = Object.keys(siteTypeColorMap).length % siteTypeColors.length;
         color = siteTypeColors[colorIndex];
@@ -2286,7 +2912,19 @@
     return color;
   }
   
-  // Update distribution list
+  // Get color for site status
+  function getColorForSiteStatus(status) {
+    if (siteStatusColorMap[status]) {
+      return siteStatusColorMap[status];
+    }
+    
+    // Assign colors based on site status
+    let color = siteStatusColors[status] || '#6D6A75';
+    siteStatusColorMap[status] = color;
+    return color;
+  }
+  
+  // Update distribution list - UPDATED: Remove grey descriptive text
   function updateDistributionList(stats, type) {
     const gridContainer = document.getElementById('distributionGrid');
     gridContainer.innerHTML = '';
@@ -2297,18 +2935,30 @@
       const count = stats[item].count;
       const uniqueSites = stats[item].uniqueSites.size;
       const abbreviation = stats[item].abbreviation || item;
-      const color = type === 'siteType' ? getColorForSiteType(item) : getColorForCondition(item);
+      let color;
+      let iconClass;
+      
+      if (type === 'siteType') {
+        color = getColorForSiteType(item);
+        iconClass = 'fas fa-building';
+      } else if (type === 'condition') {
+        color = getColorForCondition(item);
+        iconClass = 'fas fa-tachometer-alt';
+      } else if (type === 'siteStatus') {
+        color = getColorForSiteStatus(item);
+        iconClass = 'fas fa-flag';
+      }
       
       const itemDiv = document.createElement('div');
       itemDiv.className = `distribution-item ${type === 'siteType' ? getSiteTypeAbbreviation(item) : item.replace(' ', '_')}`;
       itemDiv.innerHTML = `
         <div class="distribution-icon">
-          <i class="fas fa-${type === 'siteType' ? 'building' : 'tachometer-alt'}"></i>
+          <i class="${iconClass}"></i>
         </div>
         <div class="distribution-info">
           <div class="distribution-name">${abbreviation}</div>
           <div class="distribution-count">${count}</div>
-          <div class="distribution-subtext">${uniqueSites} sites</div>
+          <!-- REMOVED: Grey descriptive text -->
         </div>
       `;
       gridContainer.appendChild(itemDiv);
@@ -2337,10 +2987,17 @@
       const abbreviation = stats[item].abbreviation || item;
       labels.push(abbreviation);
       data.push(count);
-      const color = type === 'siteType' ? getColorForSiteType(item) : getColorForCondition(item);
+      let color;
+      if (type === 'siteType') {
+        color = getColorForSiteType(item);
+      } else if (type === 'condition') {
+        color = getColorForCondition(item);
+      } else if (type === 'siteStatus') {
+        color = getColorForSiteStatus(item);
+      }
       colors.push(color);
       hoverColors.push(lightenColor(color, 20));
-      borderColors.push('#ffffff');
+      borderColors.push(isDarkTheme ? '#0d1117' : '#ffffff');
     });
     
     if (data.length === 0 || data.reduce((a, b) => a + b, 0) === 0) {
@@ -2358,7 +3015,7 @@
           borderColor: borderColors,
           borderWidth: 2,
           hoverBackgroundColor: hoverColors,
-          hoverBorderColor: '#ffffff',
+          hoverBorderColor: isDarkTheme ? '#0d1117' : '#ffffff',
           hoverBorderWidth: 3,
           borderRadius: 6,
           spacing: 1
@@ -2375,10 +3032,10 @@
             display: false
           },
           tooltip: {
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            titleColor: '#ffffff',
-            bodyColor: '#ffffff',
-            borderColor: 'rgba(255, 255, 255, 0.2)',
+            backgroundColor: isDarkTheme ? '#161b22' : 'rgba(0, 0, 0, 0.8)',
+            titleColor: isDarkTheme ? '#e6edf3' : '#ffffff',
+            bodyColor: isDarkTheme ? '#e6edf3' : '#ffffff',
+            borderColor: isDarkTheme ? '#30363d' : 'rgba(255, 255, 255, 0.2)',
             borderWidth: 1,
             cornerRadius: 6,
             padding: 10,
@@ -2389,13 +3046,13 @@
                 const value = context.raw || 0;
                 const total = context.dataset.data.reduce((a, b) => a + b, 0);
                 const percentage = Math.round((value / total) * 100);
-                return `${label}: ${value} assets (${percentage}%)`;
+                return `${label}: ${value} ${type === 'siteType' ? 'sites' : type === 'condition' ? 'assets' : 'sites'} (${percentage}%)`;
               }
             }
           },
           datalabels: {
             display: true,
-            color: '#ffffff',
+            color: isDarkTheme ? '#e6edf3' : '#ffffff',
             font: {
               size: 12,
               weight: 'bold'
@@ -2421,9 +3078,9 @@
         elements: {
           arc: {
             borderWidth: 2,
-            borderColor: '#ffffff',
+            borderColor: isDarkTheme ? '#0d1117' : '#ffffff',
             hoverBorderWidth: 3,
-            hoverBorderColor: '#ffffff'
+            hoverBorderColor: isDarkTheme ? '#0d1117' : '#ffffff'
           }
         }
       }
@@ -2460,8 +3117,8 @@
         labels: ['No Data'],
         datasets: [{
           data: [1],
-          backgroundColor: ['#ecf0f1'],
-          borderColor: 'white',
+          backgroundColor: [isDarkTheme ? '#30363d' : '#ecf0f1'],
+          borderColor: isDarkTheme ? '#0d1117' : 'white',
           borderWidth: 2
         }]
       },
@@ -2498,11 +3155,11 @@
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
-        ctx.fillStyle = '#7f8c8d';
+        ctx.fillStyle = isDarkTheme ? '#8b949e' : '#7f8c8d';
         ctx.font = 'bold 16px "Segoe UI", "Inter", sans-serif';
         ctx.fillText('No Data', width / 2, height / 2 - 8);
         
-        ctx.fillStyle = '#bdc3c7';
+        ctx.fillStyle = isDarkTheme ? '#6e7681' : '#bdc3c7';
         ctx.font = '12px "Segoe UI", "Inter", sans-serif';
         ctx.fillText('Select a different city or filter', width / 2, height / 2 + 12);
         
@@ -2522,14 +3179,14 @@
     
     // Determine marker size based on zoom level
     let size = 28;
-    let fontSize = 9; // Reduced from 11
+    let fontSize = 9;
     
     if (currentZoom >= 15) {
       size = 32;
-      fontSize = 10; // Reduced from 12
+      fontSize = 10;
     } else if (currentZoom <= 10) {
       size = 24;
-      fontSize = 8; // Reduced from 10
+      fontSize = 8;
     }
     
     return L.divIcon({
@@ -2546,6 +3203,55 @@
           ${abbreviation}
           ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
           ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 6px; height: 6px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+        </div>
+      `,
+      className: 'site-type-marker-icon',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+  }
+  
+  // Get site icon
+  function getSiteIcon(site) {
+    const siteType = site.siteType || 'Other';
+    const abbreviation = getSiteTypeAbbreviation(siteType);
+    const siteTypeClass = getSiteTypeClass(siteType);
+    const color = getColorForSiteType(siteType);
+    
+    // Determine marker size based on zoom level
+    let size = 28;
+    let fontSize = 9;
+    
+    if (currentZoom >= 15) {
+      size = 32;
+      fontSize = 10;
+    } else if (currentZoom <= 10) {
+      size = 24;
+      fontSize = 8;
+    }
+    
+    // Get status indicator color
+    let statusColor = '#6D6A75'; // Default unknown
+    if (site.siteStatus === 'WORKING') statusColor = '#00b894';
+    else if (site.siteStatus === 'STANDBY') statusColor = '#FFD166';
+    else if (site.siteStatus === 'OUT_OF_SERVICE') statusColor = '#FF9E6D';
+    else if (site.siteStatus === 'CWIP') statusColor = '#9D4EDD';
+    else if (site.siteStatus === 'TRANSFER') statusColor = '#00A8FF';
+    
+    return L.divIcon({
+      html: `
+        <div class="site-type-marker ${siteTypeClass}" style="
+          width: ${size}px;
+          height: ${size}px;
+          font-size: ${fontSize}px;
+          background: ${color};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        ">
+          ${abbreviation}
+          <div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: ${statusColor}; border: 1px solid white; border-radius: 50%;"></div>
         </div>
       `,
       className: 'site-type-marker-icon',
@@ -2620,8 +3326,202 @@
     `;
   }
   
+  // Build popup content for site
+  function buildSitePopup(site) {
+    const siteTypeAbbrev = getSiteTypeAbbreviation(site.siteType);
+    const siteTypeColor = getColorForSiteType(site.siteType);
+    const statusColor = getColorForSiteStatus(site.siteStatus);
+    
+    return `
+      <div class="popup-header">
+        <h3>${site.siteName || site.siteId}</h3>
+        <div style="font-size: 0.85em; opacity: 0.9;">
+          <i class="fas fa-city"></i> ${site.city} | 
+          <span style="background:${siteTypeColor};color:white;padding:2px 6px;border-radius:4px;font-weight:bold;">
+            ${siteTypeAbbrev}
+          </span>
+        </div>
+      </div>
+      <div class="popup-content">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: ${siteTypeColor}; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
+            ${siteTypeAbbrev}
+          </div>
+          <div>
+            <h4 style="margin: 0; color: #343a40; font-size: 1em;">${site.siteId || 'Site'}</h4>
+            <p style="margin: 4px 0 0; color: #6c757d; font-size: 0.8em;">${site.siteType}</p>
+          </div>
+        </div>
+        
+        <div style="margin: 10px 0; font-size: 0.9em;">
+          <p><i class="fas fa-map-marker-alt"></i> <strong>Coordinates:</strong> ${site.latitude.toFixed(6)}, ${site.longitude.toFixed(6)}</p>
+          ${site.description ? `<p><i class="fas fa-info-circle"></i> <strong>Description:</strong> ${site.description}</p>` : ''}
+          ${site.capacity ? `<p><i class="fas fa-chart-bar"></i> <strong>Capacity:</strong> ${site.capacity}</p>` : ''}
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin: 15px 0;">
+          <div style="padding: 8px; background: ${statusColor}; color: white; border-radius: 6px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.1); font-size: 0.9em;">
+            <strong><i class="fas fa-flag"></i> Site Status</strong><br>
+            ${site.siteStatus}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
   // Load CSV data
   function loadCSVData() {
+    // Load Site Type Data CSV
+    Papa.parse('site_type_data.csv', {
+      download: true,
+      header: true,
+      dynamicTyping: false,
+      skipEmptyLines: true,
+      complete: function(results) {
+        if (results.errors.length > 0) {
+          console.error('Site CSV parsing errors:', results.errors);
+          showNotification('Error loading Site CSV data. Please check console for details.', 'error');
+          createSampleSiteData();
+          return;
+        }
+        
+        console.log('Site CSV column names:', results.meta.fields);
+        
+        // Parse site data
+        allSites = parseSiteData(results.data, results.meta.fields);
+        filteredSites = [...allSites];
+        
+        // Calculate site statistics
+        calculateSiteInformationStats();
+        updateSiteDashboard();
+        updateSiteCityFilter();
+        updateSiteTypeFilter();
+        updateSiteStatusFilter();
+        
+        // Load Asset Data CSV
+        loadAssetCSVData();
+      },
+      error: function(error) {
+        console.error('Error loading Site CSV:', error);
+        showNotification('Error loading Site CSV file. Creating sample site data.', 'info');
+        createSampleSiteData();
+        loadAssetCSVData();
+      }
+    });
+  }
+  
+  // Parse site data from CSV - UPDATED: Only use Site Information CSV
+  function parseSiteData(data, fields) {
+    let siteNameColumn = null;
+    let cityColumn = null;
+    let siteTypeColumn = null;
+    let siteStatusColumn = null;
+    let latitudeColumn = null;
+    let longitudeColumn = null;
+    
+    // Find columns - ONLY from Site Information CSV
+    for (let col of fields) {
+      const colLower = col.toLowerCase();
+      
+      if (colLower.includes('site') && (colLower.includes('name') || colLower.includes('id'))) {
+        siteNameColumn = col;
+      }
+      
+      if (colLower === 'city') {
+        cityColumn = col;
+      }
+      
+      if (colLower.includes('site') && colLower.includes('type')) {
+        siteTypeColumn = col;
+      }
+      
+      if (colLower.includes('status')) {
+        siteStatusColumn = col;
+      }
+      
+      if (colLower === 'latitude' || colLower === 'lat') {
+        latitudeColumn = col;
+      }
+      
+      if (colLower === 'longitude' || colLower === 'lon' || colLower === 'lng') {
+        longitudeColumn = col;
+      }
+    }
+    
+    const sites = data.map((row, index) => {
+      let siteName = 'Unknown Site';
+      if (siteNameColumn && row[siteNameColumn]) {
+        siteName = row[siteNameColumn].toString().trim();
+        if (!siteName) siteName = 'Unknown Site';
+      }
+      
+      let city = 'Unknown City';
+      if (cityColumn && row[cityColumn]) {
+        city = row[cityColumn].toString().trim();
+        if (!city) city = 'Unknown City';
+      }
+      
+      let siteType = 'Other';
+      if (siteTypeColumn && row[siteTypeColumn]) {
+        siteType = row[siteTypeColumn].toString().trim();
+        if (!siteType) siteType = 'Other';
+      }
+      
+      let siteStatus = 'UNKNOWN';
+      if (siteStatusColumn && row[siteStatusColumn]) {
+        siteStatus = row[siteStatusColumn].toString().trim().toUpperCase().replace(/ /g, '_');
+        
+        // Normalize status values
+        if (siteStatus.includes('WORKING')) siteStatus = 'WORKING';
+        else if (siteStatus.includes('STANDBY')) siteStatus = 'STANDBY';
+        else if (siteStatus.includes('OUT') && siteStatus.includes('SERVICE')) siteStatus = 'OUT_OF_SERVICE';
+        else if (siteStatus.includes('CWIP')) siteStatus = 'CWIP';
+        else if (siteStatus.includes('TRANSFER')) siteStatus = 'TRANSFER';
+      }
+      
+      let latitude = 0;
+      let longitude = 0;
+      
+      if (latitudeColumn && row[latitudeColumn]) {
+        latitude = parseFloat(row[latitudeColumn]);
+        if (isNaN(latitude)) latitude = 0;
+      }
+      
+      if (longitudeColumn && row[longitudeColumn]) {
+        longitude = parseFloat(row[longitudeColumn]);
+        if (isNaN(longitude)) longitude = 0;
+      }
+      
+      // UPDATED: Only use data from Site Information CSV, no fallback merging
+      // Remove fallback to generic columns
+      
+      return {
+        id: index,
+        siteId: row['Site_ID'] || row['Site ID'] || row['site_id'] || `SITE-${index}`,
+        siteName: siteName,
+        city: city,
+        siteType: siteType,
+        siteStatus: siteStatus,
+        description: row['Description'] || row['description'] || '',
+        capacity: row['Capacity'] || row['capacity'] || '',
+        latitude: latitude,
+        longitude: longitude
+      };
+    }).filter(site => {
+      return !isNaN(site.latitude) && 
+             !isNaN(site.longitude) &&
+             site.latitude !== 0 && 
+             site.longitude !== 0 &&
+             Math.abs(site.latitude) <= 90 &&
+             Math.abs(site.longitude) <= 180;
+    });
+    
+    console.log(`Loaded ${sites.length} valid sites from Site Information CSV`);
+    return sites;
+  }
+  
+  // Load Asset CSV data
+  function loadAssetCSVData() {
     Papa.parse('water_assets.csv', {
       download: true,
       header: true,
@@ -2629,287 +3529,391 @@
       skipEmptyLines: true,
       complete: function(results) {
         if (results.errors.length > 0) {
-          console.error('CSV parsing errors:', results.errors);
-          showNotification('Error loading CSV data. Please check console for details.', 'error');
+          console.error('Asset CSV parsing errors:', results.errors);
+          showNotification('Error loading Asset CSV data. Please check console for details.', 'error');
+          createSampleAssetData();
           return;
         }
         
-        console.log('CSV column names:', results.meta.fields);
+        console.log('Asset CSV column names:', results.meta.fields);
         
-        // Find columns
-        let siteNameColumn = null;
-        let cityColumn = null;
-        let siteTypeL2Column = null;
-        let conditionColumn = null;
-        let equipmentTypeColumn = null;
-        let latitudeColumn = null;
-        let longitudeColumn = null;
-        
-        for (let col of results.meta.fields) {
-          const colLower = col.toLowerCase();
-          
-          if (colLower === 'city') {
-            cityColumn = col;
-          }
-          
-          if (colLower === 'latitude') {
-            latitudeColumn = col;
-          }
-          
-          if (colLower === 'longitude') {
-            longitudeColumn = col;
-          }
-          
-          if (colLower.includes('site') && colLower.includes('name') && colLower.includes('l3')) {
-            siteNameColumn = col;
-          }
-          
-          if (colLower.includes('site') && colLower.includes('type') && colLower.includes('l2')) {
-            siteTypeL2Column = col;
-          }
-          
-          if (colLower.includes('condition')) {
-            conditionColumn = col;
-          }
-          
-          if (colLower.includes('equipment') && colLower.includes('type') && colLower.includes('l6')) {
-            equipmentTypeColumn = col;
-          }
-        }
-        
-        // Fallback for columns not found
-        if (!siteNameColumn) {
-          for (let col of results.meta.fields) {
-            if (col.toLowerCase().includes('site') || col.toLowerCase().includes('facility') || col.toLowerCase().includes('location')) {
-              siteNameColumn = col;
-              break;
-            }
-          }
-        }
-        
-        if (!cityColumn) {
-          for (let col of results.meta.fields) {
-            if (col.toLowerCase().includes('city') || col.toLowerCase().includes('location')) {
-              cityColumn = col;
-              break;
-            }
-          }
-        }
-        
-        if (!siteTypeL2Column) {
-          for (let col of results.meta.fields) {
-            if (col.toLowerCase().includes('type') && !col.toLowerCase().includes('equipment')) {
-              siteTypeL2Column = col;
-              break;
-            }
-          }
-        }
-        
-        if (!latitudeColumn) {
-          for (let col of results.meta.fields) {
-            if (col.toLowerCase().includes('lat') && !col.toLowerCase().includes('long')) {
-              latitudeColumn = col;
-              break;
-            }
-          }
-        }
-        
-        if (!longitudeColumn) {
-          for (let col of results.meta.fields) {
-            if (col.toLowerCase().includes('lon') || col.toLowerCase().includes('lng') || 
-                (col.toLowerCase().includes('long') && !col.toLowerCase().includes('lat'))) {
-              longitudeColumn = col;
-              break;
-            }
-          }
-        }
-        
-        allAssets = results.data.map((row, index) => {
-          let siteName = 'Unknown Site';
-          if (siteNameColumn && row[siteNameColumn]) {
-            siteName = row[siteNameColumn].toString().trim();
-            if (!siteName) siteName = 'Unknown Site';
-          }
-          
-          let city = 'Unknown City';
-          if (cityColumn && row[cityColumn]) {
-            city = row[cityColumn].toString().trim();
-            if (!city) city = 'Unknown City';
-          }
-          
-          let siteTypeL2 = 'Other';
-          if (siteTypeL2Column && row[siteTypeL2Column]) {
-            siteTypeL2 = row[siteTypeL2Column].toString().trim();
-            if (!siteTypeL2) siteTypeL2 = 'Other';
-          }
-          
-          let condition = 'UNKNOWN';
-          if (conditionColumn && row[conditionColumn]) {
-            condition = row[conditionColumn].toString().trim().toUpperCase();
-            
-            if (condition.includes('EXCELLENT') || condition === 'EXCELENT') condition = 'EXCELLENT';
-            else if (condition.includes('VERY GOOD') || condition === 'VERYGOOD') condition = 'VERY GOOD';
-            else if (condition.includes('GOOD')) condition = 'GOOD';
-            else if (condition.includes('NEW')) condition = 'NEW';
-            else if (condition.includes('FAIR')) condition = 'FAIR';
-            else if (condition.includes('POOR')) condition = 'POOR';
-            else if (condition.includes('CRITICAL')) condition = 'CRITICAL';
-          }
-          
-          let equipmentType = 'Unknown';
-          if (equipmentTypeColumn && row[equipmentTypeColumn]) {
-            equipmentType = row[equipmentTypeColumn].toString().trim();
-            if (!equipmentType) equipmentType = 'Unknown';
-          }
-          
-          const inUse = (row['In_Use'] || row['In Use'] || row['in_use'] || row['IN_USE'] || 'NO').toString().toUpperCase().trim();
-          const working = (row['Working'] || row['working'] || row['WORKING'] || 'NO').toString().toUpperCase().trim();
-          
-          let latitude = 0;
-          let longitude = 0;
-          
-          if (latitudeColumn && row[latitudeColumn]) {
-            latitude = parseFloat(row[latitudeColumn]);
-            if (isNaN(latitude)) latitude = 0;
-          }
-          
-          if (longitudeColumn && row[longitudeColumn]) {
-            longitude = parseFloat(row[longitudeColumn]);
-            if (isNaN(longitude)) longitude = 0;
-          }
-          
-          if (latitude === 0 && row['Latitude']) latitude = parseFloat(row['Latitude']);
-          if (longitude === 0 && row['Longitude']) longitude = parseFloat(row['Longitude']);
-          
-          let assetType = 'Pump';
-          for (let col of results.meta.fields) {
-            if (col.toLowerCase().includes('type') && row[col] && !col.toLowerCase().includes('equipment')) {
-              assetType = row[col].toString().trim();
-              break;
-            }
-          }
-          
-          return {
-            id: index,
-            assetId: row['Asset_ID'] || row['Asset ID'] || row['asset_id'] || row['ASSET_ID'] || `ASSET-${index}`,
-            facilityId: row['Facility_ID'] || row['Facility ID'] || row['facility_id'] || 'N/A',
-            siteNameL3: siteName,
-            city: city,
-            siteTypeL2: siteTypeL2,
-            building: row['Building'] || row['building'] || 'N/A',
-            description: 'Water Asset',
-            tagNumber: row['Tag_Number'] || row['Tag Number'] || row['tag_number'] || 'N/A',
-            inUse: inUse === 'YES' ? 'YES' : 'NO',
-            working: working === 'YES' ? 'YES' : 'NO',
-            condition: condition,
-            age: parseInt(row['AGE'] || row['age'] || 0) || 0,
-            remainingLife: row['Remaining_Life'] || row['Remaining Life'] || 'N/A',
-            maxLife: row['Max_Life_Time'] || row['Max Life Time'] || 'N/A',
-            latitude: latitude,
-            longitude: longitude,
-            type: 'Pump',
-            equipmentType: equipmentType,
-            lastMaintenance: row['Last_Maintenance'] || row['Last Maintenance'] || 'N/A',
-            nextMaintenance: row['Next_Maintenance'] || row['Next Maintenance'] || 'N/A'
-          };
-        }).filter(asset => {
-          return !isNaN(asset.latitude) && 
-                 !isNaN(asset.longitude) &&
-                 asset.latitude !== 0 && 
-                 asset.longitude !== 0 &&
-                 Math.abs(asset.latitude) <= 90 &&
-                 Math.abs(asset.longitude) <= 180;
-        });
-        
-        console.log(`Loaded ${allAssets.length} valid assets`);
-        
-        calculateSiteStats();
-        calculateCityStats();
-        
+        // Parse asset data
+        allAssets = parseAssetData(results.data, results.meta.fields);
         filteredAssets = [...allAssets];
         
+        // Calculate asset statistics
+        calculateAssetStats();
         updateDashboard();
-        
         updateConditionFilter();
         updateSiteFilter();
         updateCityFilter();
         
-        displayAssets();
+        // Display initial markers (sites by default)
+        displaySiteMarkers();
         
+        // Update panels
         updateCityPanel();
-        
-        updateHealthIndicator();
-        
+        updateSiteHealthIndicator();
         updateSiteNameDisplay();
         
+        showNotification(`Successfully loaded ${allSites.length} sites and ${allAssets.length} assets`, 'success');
+        
+        // Show equipment panel after a delay
         setTimeout(() => {
           toggleEquipmentPanel();
         }, 1000);
-        
-        showNotification(`Successfully loaded ${allAssets.length} water assets`, 'success');
       },
       error: function(error) {
-        console.error('Error loading CSV:', error);
-        showNotification('Error loading CSV file. Please check if the file exists at water_assets.csv', 'error');
-        
-        createSampleData();
+        console.error('Error loading Asset CSV:', error);
+        showNotification('Error loading Asset CSV file. Creating sample asset data.', 'info');
+        createSampleAssetData();
       }
     });
   }
   
-  // Calculate city statistics
-  function calculateCityStats() {
-    cityStats = {};
+  // Parse asset data from CSV
+  function parseAssetData(data, fields) {
+    let siteNameColumn = null;
+    let cityColumn = null;
+    let siteTypeL2Column = null;
+    let conditionColumn = null;
+    let equipmentTypeColumn = null;
+    let latitudeColumn = null;
+    let longitudeColumn = null;
     
-    allAssets.forEach(asset => {
-      const city = asset.city;
-      if (!cityStats[city]) {
-        cityStats[city] = {
+    // Find columns
+    for (let col of fields) {
+      const colLower = col.toLowerCase();
+      
+      if (colLower === 'city') {
+        cityColumn = col;
+      }
+      
+      if (colLower === 'latitude') {
+        latitudeColumn = col;
+      }
+      
+      if (colLower === 'longitude') {
+        longitudeColumn = col;
+      }
+      
+      if (colLower.includes('site') && colLower.includes('name') && colLower.includes('l3')) {
+        siteNameColumn = col;
+      }
+      
+      if (colLower.includes('site') && colLower.includes('type') && colLower.includes('l2')) {
+        siteTypeL2Column = col;
+      }
+      
+      if (colLower.includes('condition')) {
+        conditionColumn = col;
+      }
+      
+      if (colLower.includes('equipment') && colLower.includes('type') && colLower.includes('l6')) {
+        equipmentTypeColumn = col;
+      }
+    }
+    
+    const assets = data.map((row, index) => {
+      let siteName = 'Unknown Site';
+      if (siteNameColumn && row[siteNameColumn]) {
+        siteName = row[siteNameColumn].toString().trim();
+        if (!siteName) siteName = 'Unknown Site';
+      }
+      
+      let city = 'Unknown City';
+      if (cityColumn && row[cityColumn]) {
+        city = row[cityColumn].toString().trim();
+        if (!city) city = 'Unknown City';
+      }
+      
+      let siteTypeL2 = 'Other';
+      if (siteTypeL2Column && row[siteTypeL2Column]) {
+        siteTypeL2 = row[siteTypeL2Column].toString().trim();
+        if (!siteTypeL2) siteTypeL2 = 'Other';
+      }
+      
+      let condition = 'UNKNOWN';
+      if (conditionColumn && row[conditionColumn]) {
+        condition = row[conditionColumn].toString().trim().toUpperCase();
+        
+        if (condition.includes('EXCELLENT') || condition === 'EXCELENT') condition = 'EXCELLENT';
+        else if (condition.includes('VERY GOOD') || condition === 'VERYGOOD') condition = 'VERY GOOD';
+        else if (condition.includes('GOOD')) condition = 'GOOD';
+        else if (condition.includes('NEW')) condition = 'NEW';
+        else if (condition.includes('FAIR')) condition = 'FAIR';
+        else if (condition.includes('POOR')) condition = 'POOR';
+        else if (condition.includes('CRITICAL')) condition = 'CRITICAL';
+      }
+      
+      let equipmentType = 'Unknown';
+      if (equipmentTypeColumn && row[equipmentTypeColumn]) {
+        equipmentType = row[equipmentTypeColumn].toString().trim();
+        if (!equipmentType) equipmentType = 'Unknown';
+      }
+      
+      const inUse = (row['In_Use'] || row['In Use'] || row['in_use'] || row['IN_USE'] || 'NO').toString().toUpperCase().trim();
+      const working = (row['Working'] || row['working'] || row['WORKING'] || 'NO').toString().toUpperCase().trim();
+      
+      let latitude = 0;
+      let longitude = 0;
+      
+      if (latitudeColumn && row[latitudeColumn]) {
+        latitude = parseFloat(row[latitudeColumn]);
+        if (isNaN(latitude)) latitude = 0;
+      }
+      
+      if (longitudeColumn && row[longitudeColumn]) {
+        longitude = parseFloat(row[longitudeColumn]);
+        if (isNaN(longitude)) longitude = 0;
+      }
+      
+      if (latitude === 0 && row['Latitude']) latitude = parseFloat(row['Latitude']);
+      if (longitude === 0 && row['Longitude']) longitude = parseFloat(row['Longitude']);
+      
+      return {
+        id: index,
+        assetId: row['Asset_ID'] || row['Asset ID'] || row['asset_id'] || row['ASSET_ID'] || `ASSET-${index}`,
+        facilityId: row['Facility_ID'] || row['Facility ID'] || row['facility_id'] || 'N/A',
+        siteNameL3: siteName,
+        city: city,
+        siteTypeL2: siteTypeL2,
+        building: row['Building'] || row['building'] || 'N/A',
+        description: 'Water Asset',
+        tagNumber: row['Tag_Number'] || row['Tag Number'] || row['tag_number'] || 'N/A',
+        inUse: inUse === 'YES' ? 'YES' : 'NO',
+        working: working === 'YES' ? 'YES' : 'NO',
+        condition: condition,
+        age: parseInt(row['AGE'] || row['age'] || 0) || 0,
+        remainingLife: row['Remaining_Life'] || row['Remaining Life'] || 'N/A',
+        maxLife: row['Max_Life_Time'] || row['Max Life Time'] || 'N/A',
+        latitude: latitude,
+        longitude: longitude,
+        type: 'Pump',
+        equipmentType: equipmentType,
+        lastMaintenance: row['Last_Maintenance'] || row['Last Maintenance'] || 'N/A',
+        nextMaintenance: row['Next_Maintenance'] || row['Next Maintenance'] || 'N/A'
+      };
+    }).filter(asset => {
+      return !isNaN(asset.latitude) && 
+             !isNaN(asset.longitude) &&
+             asset.latitude !== 0 && 
+             asset.longitude !== 0 &&
+             Math.abs(asset.latitude) <= 90 &&
+             Math.abs(asset.longitude) <= 180;
+    });
+    
+    console.log(`Loaded ${assets.length} valid assets`);
+    return assets;
+  }
+  
+  // Calculate site information statistics
+  function calculateSiteInformationStats() {
+    siteCityStats = {};
+    
+    allSites.forEach(site => {
+      const city = site.city;
+      if (!siteCityStats[city]) {
+        siteCityStats[city] = {
           total: 0,
           working: 0,
-          notWorking: 0,
-          critical: 0,
-          inUse: 0,
+          standby: 0,
+          outOfService: 0,
+          cwip: 0,
+          transfer: 0,
           siteTypes: new Set(),
           sites: new Set()
         };
       }
       
-      cityStats[city].total++;
-      if (asset.working === 'YES') cityStats[city].working++;
-      if (asset.working === 'NO') cityStats[city].notWorking++;
-      if (asset.condition === 'CRITICAL') cityStats[city].critical++;
-      if (asset.inUse === 'YES') cityStats[city].inUse++;
-      if (asset.siteTypeL2) cityStats[city].siteTypes.add(asset.siteTypeL2);
-      if (asset.siteNameL3) cityStats[city].sites.add(asset.siteNameL3);
+      siteCityStats[city].total++;
+      
+      switch(site.siteStatus) {
+        case 'WORKING': siteCityStats[city].working++; break;
+        case 'STANDBY': siteCityStats[city].standby++; break;
+        case 'OUT_OF_SERVICE': siteCityStats[city].outOfService++; break;
+        case 'CWIP': siteCityStats[city].cwip++; break;
+        case 'TRANSFER': siteCityStats[city].transfer++; break;
+      }
+      
+      if (site.siteType) siteCityStats[city].siteTypes.add(site.siteType);
+      if (site.siteName) siteCityStats[city].sites.add(site.siteName);
     });
     
-    console.log('City statistics calculated:', cityStats);
+    console.log('Site city statistics calculated:', siteCityStats);
   }
   
-  // Update city filter dropdown
-  function updateCityFilter() {
-    const filter = document.getElementById('cityFilter');
-    const cities = Object.keys(cityStats).sort();
+  // Update site dashboard
+  function updateSiteDashboard() {
+    const total = allSites.length;
+    const working = allSites.filter(s => s.siteStatus === 'WORKING').length;
+    const standby = allSites.filter(s => s.siteStatus === 'STANDBY').length;
+    const outOfService = allSites.filter(s => s.siteStatus === 'OUT_OF_SERVICE').length;
+    const cwip = allSites.filter(s => s.siteStatus === 'CWIP').length;
+    const transfer = allSites.filter(s => s.siteStatus === 'TRANSFER').length;
+    
+    document.getElementById('totalSites').textContent = total.toLocaleString();
+    document.getElementById('workingSites').textContent = working.toLocaleString();
+    document.getElementById('standbySites').textContent = standby.toLocaleString();
+    document.getElementById('outOfServiceSites').textContent = outOfService.toLocaleString();
+    document.getElementById('cwipSites').textContent = cwip.toLocaleString();
+    document.getElementById('transferSites').textContent = transfer.toLocaleString();
+    
+    document.getElementById('workingSitePercent').textContent = total > 0 ? Math.round((working / total) * 100) + '%' : '0%';
+    document.getElementById('standbySitePercent').textContent = total > 0 ? Math.round((standby / total) * 100) + '%' : '0%';
+    document.getElementById('outOfServiceSitePercent').textContent = total > 0 ? Math.round((outOfService / total) * 100) + '%' : '0%';
+    document.getElementById('cwipSitePercent').textContent = total > 0 ? Math.round((cwip / total) * 100) + '%' : '0%';
+    document.getElementById('transferSitePercent').textContent = total > 0 ? Math.round((transfer / total) * 100) + '%' : '0%';
+    document.getElementById('totalSitePercent').textContent = '100%';
+    
+    updateSiteHealthIndicator();
+  }
+  
+  // Update site city filter dropdown
+  function updateSiteCityFilter() {
+    const filter = document.getElementById('siteCityFilter');
+    const cities = Object.keys(siteCityStats).sort();
     
     while (filter.options.length > 1) {
       filter.remove(1);
     }
     
     cities.forEach(city => {
-      const count = cityStats[city].total;
+      const count = siteCityStats[city].total;
       const option = document.createElement('option');
       option.value = city;
-      option.textContent = `${city} (${count} assets)`;
+      option.textContent = `${city} (${count} sites)`;
       filter.appendChild(option);
     });
     
-    console.log('City filter updated with options:', cities.length, 'cities');
+    console.log('Site city filter updated with options:', cities.length, 'cities');
   }
   
-  // Create sample data for testing
-  function createSampleData() {
-    console.log('Creating sample data for testing...');
+  // Update site type filter dropdown
+  function updateSiteTypeFilter() {
+    const filter = document.getElementById('siteTypeFilter');
+    const selectedCity = document.getElementById('siteCityFilter').value;
+    
+    let siteTypes = [];
+    if (selectedCity !== 'all') {
+      siteTypes = [...new Set(allSites.filter(s => s.city === selectedCity).map(s => s.siteType))].sort();
+    } else {
+      siteTypes = [...new Set(allSites.map(s => s.siteType))].sort();
+    }
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    siteTypes.forEach(siteType => {
+      let count;
+      if (selectedCity !== 'all') {
+        count = allSites.filter(s => s.city === selectedCity && s.siteType === siteType).length;
+      } else {
+        count = allSites.filter(s => s.siteType === siteType).length;
+      }
+      
+      const option = document.createElement('option');
+      option.value = siteType;
+      option.textContent = `${siteType} (${count})`;
+      filter.appendChild(option);
+    });
+    
+    console.log('Site type filter updated with options:', siteTypes.length, 'site types');
+  }
+  
+  // Update site status filter dropdown
+  function updateSiteStatusFilter() {
+    const filter = document.getElementById('siteStatusFilter');
+    const selectedCity = document.getElementById('siteCityFilter').value;
+    const selectedSiteType = document.getElementById('siteTypeFilter').value;
+    
+    let statuses = [];
+    if (selectedSiteType !== 'all') {
+      statuses = [...new Set(allSites.filter(s => s.siteType === selectedSiteType).map(s => s.siteStatus))].sort();
+    } else if (selectedCity !== 'all') {
+      statuses = [...new Set(allSites.filter(s => s.city === selectedCity).map(s => s.siteStatus))].sort();
+    } else {
+      statuses = [...new Set(allSites.map(s => s.siteStatus))].sort();
+    }
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    statuses.forEach(status => {
+      let count;
+      if (selectedSiteType !== 'all') {
+        count = allSites.filter(s => s.siteType === selectedSiteType && s.siteStatus === status).length;
+      } else if (selectedCity !== 'all') {
+        count = allSites.filter(s => s.city === selectedCity && s.siteStatus === status).length;
+      } else {
+        count = allSites.filter(s => s.siteStatus === status).length;
+      }
+      
+      const option = document.createElement('option');
+      option.value = status;
+      option.textContent = `${status.replace('_', ' ')} (${count})`;
+      filter.appendChild(option);
+    });
+    
+    console.log('Site status filter updated');
+  }
+  
+  // Create sample site data for testing
+  function createSampleSiteData() {
+    console.log('Creating sample site data for testing...');
+    
+    allSites = [];
+    const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
+    const siteTypes = [
+      'POTABLE WATER STORAGE TANKS (WTNK)',
+      'WASTE WATER PUMPING STATION (WWPS)', 
+      'WASTE WATER TREATMENT PLANT (WWTP)',
+      'WATER FILLING STATION (WFLS)',
+      'WATER PUMPING STATION (WPUS)',
+      'WATER TREATMENT PLANT (WTRP)',
+      'WELL ABSTRACTION (WABS)'
+    ];
+    const siteNames = ['Main Water Plant', 'North Distribution Center', 'South Treatment Plant', 'East Storage Facility',
+                      'West Pumping Station', 'Central Reservoir', 'Northwest Water Tower'];
+    const siteStatuses = ['WORKING', 'STANDBY', 'OUT_OF_SERVICE', 'CWIP', 'TRANSFER'];
+    
+    let id = 1;
+    
+    // Generate 100 sample sites
+    for (let i = 0; i < 100; i++) {
+      const cityIndex = Math.floor(Math.random() * cities.length);
+      const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
+      const siteNameIndex = Math.floor(Math.random() * siteNames.length);
+      const statusIndex = Math.floor(Math.random() * siteStatuses.length);
+      
+      allSites.push({
+        id: id++,
+        siteId: `SITE-${String(i+1).padStart(3, '0')}`,
+        siteName: siteNames[siteNameIndex],
+        city: cities[cityIndex],
+        siteType: siteTypes[siteTypeIndex],
+        siteStatus: siteStatuses[statusIndex],
+        description: 'Water Facility Site',
+        capacity: `${Math.floor(Math.random() * 10000)} m³`,
+        latitude: 24.50 + (Math.random() - 0.5) * 0.5,
+        longitude: 39.65 + (Math.random() - 0.5) * 0.5
+      });
+    }
+    
+    filteredSites = [...allSites];
+    
+    calculateSiteInformationStats();
+    updateSiteDashboard();
+    updateSiteCityFilter();
+    updateSiteTypeFilter();
+    updateSiteStatusFilter();
+  }
+  
+  // Create sample asset data for testing
+  function createSampleAssetData() {
+    console.log('Creating sample asset data for testing...');
     
     allAssets = [];
     const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
@@ -2958,30 +3962,80 @@
       });
     }
     
-    calculateSiteStats();
-    calculateCityStats();
-    
     filteredAssets = [...allAssets];
     
+    calculateAssetStats();
     updateDashboard();
-    
     updateConditionFilter();
     updateSiteFilter();
     updateCityFilter();
     
-    displayAssets();
+    // Display initial markers
+    displaySiteMarkers();
     
+    // Update panels
     updateCityPanel();
-    
-    updateHealthIndicator();
-    
+    updateSiteHealthIndicator();
     updateSiteNameDisplay();
     
-    setTimeout(() => {
-      toggleEquipmentPanel();
-    }, 1000);
-    
     showNotification('Loaded sample water assets for demonstration', 'info');
+  }
+  
+  // Calculate asset statistics
+  function calculateAssetStats() {
+    siteStats = {};
+    cityStats = {};
+    
+    allAssets.forEach(asset => {
+      const site = asset.siteNameL3;
+      const city = asset.city;
+      
+      // Site stats
+      if (!siteStats[site]) {
+        siteStats[site] = {
+          total: 0,
+          working: 0,
+          notWorking: 0,
+          critical: 0,
+          inUse: 0,
+          conditions: {}
+        };
+      }
+      
+      siteStats[site].total++;
+      if (asset.working === 'YES') siteStats[site].working++;
+      if (asset.working === 'NO') siteStats[site].notWorking++;
+      if (asset.condition === 'CRITICAL') siteStats[site].critical++;
+      if (asset.inUse === 'YES') siteStats[site].inUse++;
+      
+      if (!siteStats[site].conditions[asset.condition]) {
+        siteStats[site].conditions[asset.condition] = 0;
+      }
+      siteStats[site].conditions[asset.condition]++;
+      
+      // City stats
+      if (!cityStats[city]) {
+        cityStats[city] = {
+          total: 0,
+          working: 0,
+          notWorking: 0,
+          critical: 0,
+          inUse: 0,
+          siteTypes: new Set(),
+          sites: new Set()
+        };
+      }
+      
+      cityStats[city].total++;
+      if (asset.working === 'YES') cityStats[city].working++;
+      if (asset.working === 'NO') cityStats[city].notWorking++;
+      if (asset.condition === 'CRITICAL') cityStats[city].critical++;
+      if (asset.inUse === 'YES') cityStats[city].inUse++;
+      if (asset.siteTypeL2) cityStats[city].siteTypes.add(asset.siteTypeL2);
+      if (asset.siteNameL3) cityStats[city].sites.add(asset.siteNameL3);
+    });
+    
+    console.log('Asset statistics calculated');
   }
   
   // Show notification
@@ -3014,17 +4068,17 @@
           font-size: 0.9em;
         }
         .notification.success {
-          background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+          background: #00b894;
           color: white;
           border-left: 4px solid #00d2a0;
         }
         .notification.error {
-          background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+          background: #e74c3c;
           color: white;
           border-left: 4px solid #ff6b6b;
         }
         .notification.info {
-          background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+          background: #3498db;
           color: white;
           border-left: 4px solid #5dade2;
         }
@@ -3064,39 +4118,7 @@
     }, 5000);
   }
   
-  // Calculate site statistics
-  function calculateSiteStats() {
-    siteStats = {};
-    
-    allAssets.forEach(asset => {
-      const site = asset.siteNameL3;
-      if (!siteStats[site]) {
-        siteStats[site] = {
-          total: 0,
-          working: 0,
-          notWorking: 0,
-          critical: 0,
-          inUse: 0,
-          conditions: {}
-        };
-      }
-      
-      siteStats[site].total++;
-      if (asset.working === 'YES') siteStats[site].working++;
-      if (asset.working === 'NO') siteStats[site].notWorking++;
-      if (asset.condition === 'CRITICAL') siteStats[site].critical++;
-      if (asset.inUse === 'YES') siteStats[site].inUse++;
-      
-      if (!siteStats[site].conditions[asset.condition]) {
-        siteStats[site].conditions[asset.condition] = 0;
-      }
-      siteStats[site].conditions[asset.condition]++;
-    });
-    
-    console.log('Site statistics calculated:', siteStats);
-  }
-  
-  // Update dashboard statistics
+  // Update dashboard statistics for assets
   function updateDashboard() {
     const total = allAssets.length;
     const working = allAssets.filter(a => a.working === 'YES').length;
@@ -3112,7 +4134,7 @@
     updateHealthIndicator();
   }
   
-  // Update condition filter dropdown
+  // Update condition filter dropdown for assets
   function updateConditionFilter() {
     const filter = document.getElementById('conditionFilter');
     const selectedSite = document.getElementById('siteFilter').value;
@@ -3150,7 +4172,7 @@
     console.log('Condition filter updated');
   }
   
-  // Update site filter dropdown
+  // Update site filter dropdown for assets
   function updateSiteFilter() {
     const filter = document.getElementById('siteFilter');
     const selectedCity = document.getElementById('cityFilter').value;
@@ -3181,6 +4203,181 @@
     });
     
     console.log('Site filter updated with options:', sites.length, 'sites');
+  }
+  
+  // Update city filter dropdown for assets
+  function updateCityFilter() {
+    const filter = document.getElementById('cityFilter');
+    const cities = Object.keys(cityStats).sort();
+    
+    while (filter.options.length > 1) {
+      filter.remove(1);
+    }
+    
+    cities.forEach(city => {
+      const count = cityStats[city].total;
+      const option = document.createElement('option');
+      option.value = city;
+      option.textContent = `${city} (${count} assets)`;
+      filter.appendChild(option);
+    });
+    
+    console.log('City filter updated with options:', cities.length, 'cities');
+  }
+  
+  // Display site markers based on current visualization mode
+  function displaySiteMarkers() {
+    markerCluster.clearLayers();
+    individualMarkers.forEach(marker => {
+      if (map.hasLayer(marker)) {
+        map.removeLayer(marker);
+      }
+    });
+    individualMarkers = [];
+    
+    if (heatLayer) {
+      map.removeLayer(heatLayer);
+      heatLayer = null;
+    }
+    
+    if (filteredSites.length === 0) {
+      console.log('No sites to display after filtering');
+      showNotification('No sites found with current filters', 'info');
+      return;
+    }
+    
+    const visualization = document.getElementById('siteLocationGrouping').value;
+    currentVisualization = visualization;
+    
+    switch(visualization) {
+      case 'cluster':
+        displayClusteredSiteMarkers();
+        break;
+      case 'individual':
+        displayIndividualSiteMarkers();
+        break;
+      case 'single':
+        displaySingleSiteMarkersPerLocation();
+        break;
+      case 'spider':
+        displaySpiderfiedSiteMarkers();
+        break;
+      case 'heatmap':
+        displaySiteHeatmap();
+        break;
+    }
+    
+    updateSiteHealthIndicator();
+  }
+  
+  // Display clustered site markers
+  function displayClusteredSiteMarkers() {
+    console.log(`Displaying ${filteredSites.length} sites in cluster mode`);
+    
+    filteredSites.forEach(site => {
+      const marker = L.marker([site.latitude, site.longitude], {
+        icon: getSiteIcon(site),
+        site: site
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      
+      markerCluster.addLayer(marker);
+    });
+    
+    map.addLayer(markerCluster);
+  }
+  
+  // Display individual site markers
+  function displayIndividualSiteMarkers() {
+    console.log(`Displaying ${filteredSites.length} sites in individual marker mode`);
+    
+    filteredSites.forEach(site => {
+      const marker = L.marker([site.latitude, site.longitude], {
+        icon: getSiteIcon(site)
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      
+      marker.addTo(map);
+      individualMarkers.push(marker);
+    });
+  }
+  
+  // Display single site marker per location
+  function displaySingleSiteMarkersPerLocation() {
+    console.log(`Displaying ${filteredSites.length} sites in single marker per location mode`);
+    
+    const locationGroups = {};
+    filteredSites.forEach(site => {
+      const locationKey = `${site.latitude.toFixed(4)},${site.longitude.toFixed(4)}`;
+      if (!locationGroups[locationKey]) {
+        locationGroups[locationKey] = [];
+      }
+      locationGroups[locationKey].push(site);
+    });
+    
+    Object.values(locationGroups).forEach(sites => {
+      if (sites.length > 0) {
+        const site = sites[0];
+        const marker = L.marker([site.latitude, site.longitude], {
+          icon: getSiteIcon(site)
+        });
+        
+        let popupContent = `<div class="popup-header"><h3>${sites.length} Sites at this Location</h3></div><div class="popup-content">`;
+        sites.forEach(s => {
+          const abbrev = getSiteTypeAbbreviation(s.siteType);
+          popupContent += `<p><strong>${s.siteName || s.siteId}</strong> - ${abbrev} (${s.siteStatus})</p>`;
+        });
+        popupContent += '</div>';
+        
+        marker.bindPopup(popupContent);
+        marker.addTo(map);
+        individualMarkers.push(marker);
+      }
+    });
+  }
+  
+  // Display spiderfied site markers
+  function displaySpiderfiedSiteMarkers() {
+    console.log(`Displaying ${filteredSites.length} sites in spiderfied mode`);
+    
+    filteredSites.forEach((site, index) => {
+      const offsetLat = site.latitude + (Math.random() * 0.0005 - 0.00025);
+      const offsetLng = site.longitude + (Math.random() * 0.0005 - 0.00025);
+      
+      const marker = L.marker([offsetLat, offsetLng], {
+        icon: getSiteIcon(site)
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      
+      marker.addTo(map);
+      individualMarkers.push(marker);
+    });
+  }
+  
+  // Display site heatmap
+  function displaySiteHeatmap() {
+    console.log(`Displaying ${filteredSites.length} sites in heatmap mode`);
+    
+    const heatData = filteredSites.map(site => {
+      let intensity = 0.5;
+      if (site.siteStatus === 'OUT_OF_SERVICE') intensity = 1.0;
+      else if (site.siteStatus === 'STANDBY') intensity = 0.7;
+      else if (site.siteStatus === 'WORKING') intensity = 0.3;
+      else if (site.siteStatus === 'CWIP') intensity = 0.6;
+      else if (site.siteStatus === 'TRANSFER') intensity = 0.4;
+      
+      return [site.latitude, site.longitude, intensity];
+    });
+    
+    heatLayer = L.heatLayer(heatData, {
+      radius: 20,
+      blur: 12,
+      maxZoom: 17,
+      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
+    }).addTo(map);
   }
   
   // Display assets based on current visualization mode
@@ -3228,7 +4425,7 @@
     updateHealthIndicator();
   }
   
-  // Display clustered markers
+  // Display clustered markers for assets
   function displayClusteredMarkers() {
     console.log(`Displaying ${filteredAssets.length} assets in cluster mode`);
     
@@ -3246,7 +4443,7 @@
     map.addLayer(markerCluster);
   }
   
-  // Display individual markers
+  // Display individual markers for assets
   function displayIndividualMarkers() {
     console.log(`Displaying ${filteredAssets.length} assets in individual marker mode`);
     
@@ -3262,7 +4459,7 @@
     });
   }
   
-  // Display single marker per location
+  // Display single marker per location for assets
   function displaySingleMarkersPerLocation() {
     console.log(`Displaying ${filteredAssets.length} assets in single marker per location mode`);
     
@@ -3296,7 +4493,7 @@
     });
   }
   
-  // Display spiderfied markers
+  // Display spiderfied markers for assets
   function displaySpiderfiedMarkers() {
     console.log(`Displaying ${filteredAssets.length} assets in spiderfied mode`);
     
@@ -3315,7 +4512,7 @@
     });
   }
   
-  // Display heatmap
+  // Display heatmap for assets
   function displayHeatmap() {
     console.log(`Displaying ${filteredAssets.length} assets in heatmap mode`);
     
@@ -3339,7 +4536,53 @@
     }).addTo(map);
   }
   
-  // Apply filters
+  // Apply site filters
+  function applySiteFilters() {
+    const siteCityFilter = document.getElementById('siteCityFilter').value;
+    const siteTypeFilter = document.getElementById('siteTypeFilter').value;
+    const siteStatusFilter = document.getElementById('siteStatusFilter').value;
+    
+    console.log('Applying site filters:', {
+      siteCityFilter,
+      siteTypeFilter,
+      siteStatusFilter
+    });
+    
+    filteredSites = allSites.filter(site => {
+      let cityMatch = true;
+      let typeMatch = true;
+      let statusMatch = true;
+      
+      if (siteCityFilter !== 'all') {
+        cityMatch = site.city === siteCityFilter;
+      }
+      
+      if (siteTypeFilter !== 'all') {
+        typeMatch = site.siteType === siteTypeFilter;
+      }
+      
+      if (siteStatusFilter !== 'all') {
+        statusMatch = site.siteStatus === siteStatusFilter;
+      }
+      
+      return cityMatch && typeMatch && statusMatch;
+    });
+    
+    console.log(`Filtered to ${filteredSites.length} sites`);
+    
+    if (currentTab === 'site') {
+      displaySiteMarkers();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateSiteHealthIndicator();
+    }
+    
+    if (siteCityFilter !== 'all' || siteTypeFilter !== 'all' || siteStatusFilter !== 'all') {
+      showNotification(`Filter applied: ${filteredSites.length} sites found`, 'info');
+    }
+  }
+  
+  // Apply asset filters
   function applyFilters() {
     const conditionFilter = document.getElementById('conditionFilter').value;
     const siteFilter = document.getElementById('siteFilter').value;
@@ -3372,20 +4615,146 @@
     });
     
     console.log(`Filtered to ${filteredAssets.length} assets`);
-    displayAssets();
     
-    updateCityPanel();
-    
-    updateSiteNameDisplay();
-    
-    updateHealthIndicator();
+    if (currentTab === 'asset') {
+      displayAssets();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateHealthIndicator();
+    }
     
     if (conditionFilter !== 'all' || siteFilter !== 'all' || cityFilter !== 'all') {
       showNotification(`Filter applied: ${filteredAssets.length} assets found`, 'info');
     }
   }
   
-  // Filter by city - MODIFIED TO USE FIXED COORDINATES AND SCALE
+  // Filter site by city - MODIFIED TO USE FIXED COORDINATES AND SCALE
+  function filterSiteByCity() {
+    const siteCityFilter = document.getElementById('siteCityFilter').value;
+    const siteTypeFilter = document.getElementById('siteTypeFilter');
+    
+    if (siteCityFilter === 'all') {
+      filteredSites = [...allSites];
+      currentCity = null;
+      map.flyTo([24.50, 39.65], 12, {
+        duration: 1.5,
+        easeLinearity: 0.25
+      });
+    } else {
+      filteredSites = allSites.filter(s => s.city === siteCityFilter);
+      currentCity = siteCityFilter;
+      
+      // Check if we have predefined coordinates for this city
+      const cityName = siteCityFilter.toUpperCase();
+      if (cityCoordinates[cityName]) {
+        // Use predefined city center coordinates
+        const coords = cityCoordinates[cityName];
+        
+        // Calculate zoom level for 1:35 scale
+        const targetScale = 35; // 1:35 scale
+        const zoomLevel = getZoomForScale(targetScale);
+        
+        console.log(`Centering on ${cityName} at coordinates: ${coords.lat}, ${coords.lng} with zoom: ${zoomLevel} for scale 1:${targetScale}`);
+        
+        map.flyTo([coords.lat, coords.lng], zoomLevel, {
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      } else if (filteredSites.length > 0) {
+        // Fallback: calculate average coordinates if no predefined coordinates
+        const totalLat = filteredSites.reduce((sum, site) => sum + site.latitude, 0);
+        const totalLng = filteredSites.reduce((sum, site) => sum + site.longitude, 0);
+        const avgLat = totalLat / filteredSites.length;
+        const avgLng = totalLng / filteredSites.length;
+        
+        // Calculate zoom level for 1:35 scale
+        const targetScale = 35; // 1:35 scale
+        const zoomLevel = getZoomForScale(targetScale);
+        
+        map.flyTo([avgLat, avgLng], zoomLevel, {
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      }
+    }
+    
+    updateSiteTypeFilter();
+    updateSiteStatusFilter();
+    
+    siteTypeFilter.value = 'all';
+    document.getElementById('siteStatusFilter').value = 'all';
+    
+    if (currentTab === 'site') {
+      displaySiteMarkers();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateSiteHealthIndicator();
+    }
+  }
+  
+  // Filter site by type
+  function filterSiteByType() {
+    const siteTypeFilter = document.getElementById('siteTypeFilter').value;
+    const siteCityFilter = document.getElementById('siteCityFilter');
+    
+    if (siteTypeFilter === 'all') {
+      filteredSites = [...allSites];
+    } else {
+      filteredSites = allSites.filter(s => s.siteType === siteTypeFilter);
+      
+      if (filteredSites.length > 0 && currentTab === 'site') {
+        const totalLat = filteredSites.reduce((sum, site) => sum + site.latitude, 0);
+        const totalLng = filteredSites.reduce((sum, site) => sum + site.longitude, 0);
+        const avgLat = totalLat / filteredSites.length;
+        const avgLng = totalLng / filteredSites.length;
+        
+        map.flyTo([avgLat, avgLng], currentZoom > 14 ? currentZoom : 16, {
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      }
+    }
+    
+    updateSiteStatusFilter();
+    
+    document.getElementById('siteStatusFilter').value = 'all';
+    
+    if (currentTab === 'site') {
+      displaySiteMarkers();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateSiteHealthIndicator();
+    }
+  }
+  
+  // Filter site by status
+  function filterSiteByStatus(status) {
+    if (status === 'all') {
+      filteredSites = [...allSites];
+    } else {
+      filteredSites = allSites.filter(s => s.siteStatus === status);
+    }
+    
+    document.getElementById('siteStatusFilter').value = status === 'all' ? 'all' : status;
+    document.getElementById('siteTypeFilter').value = 'all';
+    document.getElementById('siteCityFilter').value = 'all';
+    
+    updateSiteTypeFilter();
+    updateSiteCityFilter();
+    
+    if (currentTab === 'site') {
+      displaySiteMarkers();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateSiteHealthIndicator();
+    }
+    
+    if (status !== 'all') {
+      showNotification(`Filtered to ${status.replace('_', ' ').toLowerCase()} sites`, 'info');
+    }
+  }
+  
+  // Filter asset by city - MODIFIED TO USE FIXED COORDINATES AND SCALE
   function filterByCity() {
     const cityFilter = document.getElementById('cityFilter').value;
     const siteFilter = document.getElementById('siteFilter');
@@ -3440,16 +4809,15 @@
     siteFilter.value = 'all';
     document.getElementById('conditionFilter').value = 'all';
     
-    displayAssets();
-    
-    updateCityPanel();
-    
-    updateSiteNameDisplay();
-    
-    updateHealthIndicator();
+    if (currentTab === 'asset') {
+      displayAssets();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateHealthIndicator();
+    }
   }
   
-  // Filter by site
+  // Filter asset by site
   function filterBySite() {
     const siteFilter = document.getElementById('siteFilter').value;
     const cityFilter = document.getElementById('cityFilter');
@@ -3461,7 +4829,7 @@
       filteredAssets = allAssets.filter(a => a.siteNameL3 === siteFilter);
       currentSite = siteFilter;
       
-      if (filteredAssets.length > 0) {
+      if (filteredAssets.length > 0 && currentTab === 'asset') {
         const totalLat = filteredAssets.reduce((sum, asset) => sum + asset.latitude, 0);
         const totalLng = filteredAssets.reduce((sum, asset) => sum + asset.longitude, 0);
         const avgLat = totalLat / filteredAssets.length;
@@ -3478,16 +4846,15 @@
     
     document.getElementById('conditionFilter').value = 'all';
     
-    displayAssets();
-    
-    updateCityPanel();
-    
-    updateSiteNameDisplay();
-    
-    updateHealthIndicator();
+    if (currentTab === 'asset') {
+      displayAssets();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateHealthIndicator();
+    }
   }
   
-  // Filter by status
+  // Filter asset by status
   function filterByStatus(status) {
     if (status === 'all') {
       filteredAssets = [...allAssets];
@@ -3507,37 +4874,49 @@
     updateSiteFilter();
     updateCityFilter();
     
-    updateSiteNameDisplay();
-    
-    updateHealthIndicator();
-    
-    displayAssets();
-    
-    updateCityPanel();
+    if (currentTab === 'asset') {
+      displayAssets();
+      updateCityPanel();
+      updateSiteNameDisplay();
+      updateHealthIndicator();
+    }
     
     if (status !== 'all') {
       showNotification(`Filtered to ${status.replace('-', ' ')} assets`, 'info');
     }
   }
   
-  // Filter by type
+  // Filter asset by type
   function filterByType(type) {
     if (type === 'all') {
       filteredAssets = [...allAssets];
     }
     
-    displayAssets();
+    if (currentTab === 'asset') {
+      displayAssets();
+    }
   }
   
-  // Change visualization mode
+  // Change site visualization mode
+  function changeSiteVisualizationMode() {
+    const mode = document.getElementById('siteLocationGrouping').value;
+    if (currentTab === 'site') {
+      displaySiteMarkers();
+    }
+  }
+  
+  // Change asset visualization mode
   function changeVisualizationMode() {
     const mode = document.getElementById('locationGrouping').value;
-    displayAssets();
+    if (currentTab === 'asset') {
+      displayAssets();
+    }
   }
   
   // Initialize everything
   function init() {
     initMap();
+    loadThemePreference(); // Load theme preference before loading data
     loadCSVData();
     
     // Add keyboard shortcuts
@@ -3556,6 +4935,20 @@
       if (e.key === '-' || e.key === '_') {
         e.preventDefault();
         map.zoomOut();
+      }
+      // Theme toggle shortcut (Ctrl+Shift+T)
+      if (e.ctrlKey && e.shiftKey && e.key === 'T') {
+        e.preventDefault();
+        toggleTheme();
+      }
+      // Tab switching shortcuts
+      if (e.ctrlKey && e.key === '1') {
+        e.preventDefault();
+        switchTab('site');
+      }
+      if (e.ctrlKey && e.key === '2') {
+        e.preventDefault();
+        switchTab('asset');
       }
     });
   }
