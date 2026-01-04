@@ -306,7 +306,7 @@ EY_PV_Serial_Number,Parent Facility,Grouped / Standalone,Site Type,"Site Name
 349,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 307,Al Madinah,24 11 17,39 41 12,Transfer to other department,1988
 350,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 312,Al Madinah,24 11 00,39 40 7,Transfer to other department,1991
 351,Standalone,Standalone,WELL ABSTRACTION (WABS),Second Field Well No. 313,Al Madinah,24 11 9,39 40 37,Transfer to other department,1991
-391,Standalone,Standalone,WELL ABSTRACTION (WABS), Bouat Well,Al Madinah,24.732193,39.165345,Working,2010
+391,Standalone,Standalone,WELL ABSTRACTION (WABS),Â Bouat Well,Al Madinah,24.732193,39.165345,Working,2010
 392,Standalone,Standalone,WELL ABSTRACTION (WABS),Shajwa Well 2,Al Madinah,25.008256,38.951175,Working,2014
 411,Standalone,Standalone,WELL ABSTRACTION (WABS),"The fifth field , Well No. 475",Al Madinah, 24 07 37.4, 39 46 05.4,Working,2013
 412,Standalone,Standalone,WELL ABSTRACTION (WABS),Al-Naqmi Well,Al Madinah,24.706762,39.63503,Working,2010
@@ -366,10 +366,10 @@ EY_PV_Serial_Number,Parent Facility,Grouped / Standalone,Site Type,"Site Name
 878,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),"Aldakhil
 Tabuk road",Al Madinah,24.492645,39.571079,Working,2004
 879,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),Bir Uthman... Sherbiny scheme,Al Madinah,24.497219,39.577503,Working,2005
-880,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),Naseem …. (Al-Azhari),Al Madinah,24.501966,39.584785,Working,2002
+880,Standalone,Standalone,WASTE WATER PUMPING STATION (WWPS),Naseem Â…. (Al-Azhari),Al Madinah,24.501966,39.584785,Working,2002
 898,898,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alsuwaydriah Operational Tank 2,Al Madinah,24.703368,40.089807,Working,2013
 916,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Almulaylih Tank 1,Al Madinah,24.811611,39.164215,Standby,2000
-933,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Abyar Al-Mashi Reservoir No. 2,Al Madinah, 24.185813°, 39.682106°,Working,2010
+933,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Abyar Al-Mashi Reservoir No. 2,Al Madinah, 24.185813Â°, 39.682106Â°,Working,2010
 934,79,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhajaj Tank 1,Al Madinah,24.470431,39.542852,Standby,1982
 935,79,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alhajaj Tank 2,Al Madinah,24.470568,39.542314,Working,1992
 936,936,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Aljarf Tank,Al Madinah,24.519028,39.546853,Working,2003
@@ -391,8 +391,8 @@ Tabuk road",Al Madinah,24.492645,39.571079,Working,2004
 994,994,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Almousayjid Reservoir 2,Al Madinah,24.811585,39.164524,Working,2013
 1004,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Bouat Well Reservoir,Al Madinah,24.732054,39.165402,Out of Service,1995
 1023,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Abiar Almashi tank No.1,Al Madinah,24.284274,39.659808,Transfer to other department,1992
-1024,1024,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alashera Tanks 1,Al Madinah, 24.125886°, 39.717077°,Working,2010
-1025,1024,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alashera Tanks 2,Al Madinah, 24.125957°, 39.717380°,Working,2015
+1024,1024,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alashera Tanks 1,Al Madinah, 24.125886Â°, 39.717077Â°,Working,2010
+1025,1024,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Alashera Tanks 2,Al Madinah, 24.125957Â°, 39.717380Â°,Working,2015
 1026,Standalone,Standalone,POTABLE WATER STORAGE TANKS (WTNK),Alaqul Tank,Al Madinah,24.441024,39.777418,Working,2000
 1027,42,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Airport Tank 1,Al Madinah,24.506789,39.657496,Working,1978
 1028,41,Grouped,POTABLE WATER STORAGE TANKS (WTNK),Airport Tank 2,Al Madinah,24.505802,39.659557,Working,1993
