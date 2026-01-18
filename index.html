@@ -1348,9 +1348,6 @@
       text-align: right;
     }
 
-    /* REMOVED: City Tour Notification - This is the popup we want to remove */
-    /* The entire .city-tour-notification CSS has been removed */
-
     /* Health Status Indicator at Bottom of Filter Panel */
     .health-indicator {
       background: var(--theme-section-bg);
@@ -1811,7 +1808,6 @@
       .tour-speed-control label {
         font-size: 0.8em;
       }
-      /* Removed city tour notification responsive styles */
       .stats-grid {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -2256,8 +2252,6 @@
   </div>
 </div>
 
-<!-- REMOVED: City Tour Notification Display - This is the popup we want to remove -->
-
 <!-- Scale Indicator -->
 <div class="scale-indicator" id="scaleIndicator">
   Scale: 1:<span id="currentScale">100,000</span>
@@ -2300,6 +2294,35 @@
   let currentSiteChartType = 'siteType'; // 'siteType' or 'siteStatus'
   let isDarkTheme = false;
   let currentTab = 'site'; // 'site' or 'asset'
+  
+  // PERFORMANCE OPTIMIZATION: Cache for tab switching
+  let tabCache = {
+    site: {
+      markersInitialized: false,
+      chartInitialized: false,
+      filtersInitialized: false,
+      lastUpdateTime: 0
+    },
+    asset: {
+      markersInitialized: false,
+      chartInitialized: false,
+      filtersInitialized: false,
+      lastUpdateTime: 0
+    }
+  };
+  
+  // PERFORMANCE OPTIMIZATION: Layer management
+  let siteMarkerCluster = null;
+  let assetMarkerCluster = null;
+  let siteIndividualMarkers = [];
+  let assetIndividualMarkers = [];
+  let siteHeatLayer = null;
+  let assetHeatLayer = null;
+  let currentMarkerLayer = null;
+  
+  // PERFORMANCE OPTIMIZATION: Debounce timers
+  let switchTabTimer = null;
+  let updateChartTimer = null;
   
   // City Tour Animation Variables
   let cityTourInterval = null;
@@ -2494,6 +2517,177 @@
       }
     });
     
+    // PERFORMANCE OPTIMIZATION: Initialize separate clusters for sites and assets
+    siteMarkerCluster = L.markerClusterGroup({
+      maxClusterRadius: function(zoom) {
+        if (zoom >= 15) return 8;
+        if (zoom >= 12) return 15;
+        return 30;
+      },
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: true,
+      zoomToBoundsOnClick: true,
+      disableClusteringAtZoom: 17,
+      iconCreateFunction: function(cluster) {
+        const count = cluster.getChildCount();
+        
+        // Analyze cluster site types
+        const siteTypes = {};
+        let dominantSiteType = '';
+        let maxCount = 0;
+        let siteTypeClass = '';
+        
+        cluster.getAllChildMarkers().forEach(marker => {
+          if (marker.options.site) {
+            const siteType = marker.options.site.siteType || '';
+            const abbrev = getSiteTypeAbbreviation(siteType);
+            const typeClass = getSiteTypeClass(siteType);
+            
+            if (!siteTypes[abbrev]) {
+              siteTypes[abbrev] = { count: 0, class: typeClass };
+            }
+            siteTypes[abbrev].count++;
+            
+            if (siteTypes[abbrev].count > maxCount) {
+              maxCount = siteTypes[abbrev].count;
+              dominantSiteType = abbrev;
+              siteTypeClass = typeClass;
+            }
+          }
+        });
+        
+        // Determine cluster color based on dominant site type
+        let backgroundColor = '#FFD166';
+        let textColor = '#0d1117';
+        
+        switch(siteTypeClass) {
+          case 'wtnk': backgroundColor = '#36A2EB'; textColor = 'white'; break;
+          case 'wwps': backgroundColor = '#FF6384'; textColor = 'white'; break;
+          case 'wwtp': backgroundColor = '#FFCE56'; textColor = '#0d1117'; break;
+          case 'wfls': backgroundColor = '#4BC0C0'; textColor = 'white'; break;
+          case 'wpus': backgroundColor = '#9966FF'; textColor = 'white'; break;
+          case 'wtrp': backgroundColor = '#FF9F40'; textColor = 'white'; break;
+          case 'wabs': backgroundColor = '#00D4AA'; textColor = '#0d1117'; break;
+          default: backgroundColor = '#FFD166'; textColor = '#0d1117';
+        }
+        
+        // Calculate size based on count
+        let size = 20;
+        let fontSize = 8;
+        
+        if (count < 10) {
+          size = 24;
+          fontSize = 9;
+        } else if (count < 50) {
+          size = 28;
+          fontSize = 10;
+        } else if (count < 100) {
+          size = 32;
+          fontSize = 11;
+        } else {
+          size = 36;
+          fontSize = 12;
+        }
+        
+        return L.divIcon({
+          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};">
+                  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-building" style="font-size: ${fontSize * 0.9}px; margin-bottom: 2px;"></i>
+                    <div style="font-weight: bold; font-size: ${fontSize * 0.7}px; line-height: 1;">${dominantSiteType || 'MIX'}</div>
+                  </div>
+                </div>`,
+          className: 'custom-cluster-icon',
+          iconSize: L.point(size, size),
+          iconAnchor: L.point(size/2, size/2)
+        });
+      }
+    });
+    
+    assetMarkerCluster = L.markerClusterGroup({
+      maxClusterRadius: function(zoom) {
+        if (zoom >= 15) return 8;
+        if (zoom >= 12) return 15;
+        return 30;
+      },
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: true,
+      zoomToBoundsOnClick: true,
+      disableClusteringAtZoom: 17,
+      iconCreateFunction: function(cluster) {
+        const count = cluster.getChildCount();
+        
+        // Analyze cluster site types
+        const siteTypes = {};
+        let dominantSiteType = '';
+        let maxCount = 0;
+        let siteTypeClass = '';
+        
+        cluster.getAllChildMarkers().forEach(marker => {
+          if (marker.options.asset) {
+            const siteType = marker.options.asset.siteTypeL2 || '';
+            const abbrev = getSiteTypeAbbreviation(siteType);
+            const typeClass = getSiteTypeClass(siteType);
+            
+            if (!siteTypes[abbrev]) {
+              siteTypes[abbrev] = { count: 0, class: typeClass };
+            }
+            siteTypes[abbrev].count++;
+            
+            if (siteTypes[abbrev].count > maxCount) {
+              maxCount = siteTypes[abbrev].count;
+              dominantSiteType = abbrev;
+              siteTypeClass = typeClass;
+            }
+          }
+        });
+        
+        // Determine cluster color based on dominant site type
+        let backgroundColor = '#FFD166';
+        let textColor = '#0d1117';
+        
+        switch(siteTypeClass) {
+          case 'wtnk': backgroundColor = '#36A2EB'; textColor = 'white'; break;
+          case 'wwps': backgroundColor = '#FF6384'; textColor = 'white'; break;
+          case 'wwtp': backgroundColor = '#FFCE56'; textColor = '#0d1117'; break;
+          case 'wfls': backgroundColor = '#4BC0C0'; textColor = 'white'; break;
+          case 'wpus': backgroundColor = '#9966FF'; textColor = 'white'; break;
+          case 'wtrp': backgroundColor = '#FF9F40'; textColor = 'white'; break;
+          case 'wabs': backgroundColor = '#00D4AA'; textColor = '#0d1117'; break;
+          default: backgroundColor = '#FFD166'; textColor = '#0d1117';
+        }
+        
+        // Calculate size based on count
+        let size = 20;
+        let fontSize = 8;
+        
+        if (count < 10) {
+          size = 24;
+          fontSize = 9;
+        } else if (count < 50) {
+          size = 28;
+          fontSize = 10;
+        } else if (count < 100) {
+          size = 32;
+          fontSize = 11;
+        } else {
+          size = 36;
+          fontSize = 12;
+        }
+        
+        return L.divIcon({
+          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};">
+                  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-building" style="font-size: ${fontSize * 0.9}px; margin-bottom: 2px;"></i>
+                    <div style="font-weight: bold; font-size: ${fontSize * 0.7}px; line-height: 1;">${dominantSiteType || 'MIX'}</div>
+                  </div>
+                </div>`,
+          className: 'custom-cluster-icon',
+          iconSize: L.point(size, size),
+          iconAnchor: L.point(size/2, size/2)
+        });
+      }
+    });
+    
     // Track zoom level
     map.on('zoomend', function() {
       currentZoom = map.getZoom();
@@ -2505,6 +2699,446 @@
     
     document.getElementById('currentZoom').textContent = currentZoom;
     updateScaleIndicator();
+  }
+  
+  // ===========================================
+  // PERFORMANCE OPTIMIZED TAB SWITCHING
+  // ===========================================
+  
+  // PERFORMANCE OPTIMIZATION: Fast tab switching
+  function switchTab(tab) {
+    // Clear any pending tab switch
+    if (switchTabTimer) {
+      clearTimeout(switchTabTimer);
+      switchTabTimer = null;
+    }
+    
+    // Update tab state
+    currentTab = tab;
+    
+    // Update tab buttons - minimal DOM operation
+    document.getElementById('siteTab').classList.toggle('active', tab === 'site');
+    document.getElementById('assetTab').classList.toggle('active', tab === 'asset');
+    
+    // Switch panel content visibility - minimal DOM operation
+    const siteContent = document.getElementById('siteDashboardContent');
+    const assetContent = document.getElementById('assetDashboardContent');
+    
+    if (tab === 'site') {
+      siteContent.style.display = 'flex';
+      assetContent.style.display = 'none';
+      
+      // PERFORMANCE: Only update what's necessary
+      if (!tabCache.site.filtersInitialized) {
+        updateSiteCityFilter();
+        updateSiteTypeFilter();
+        updateSiteStatusFilter();
+        tabCache.site.filtersInitialized = true;
+      }
+      
+      // Update markers with optimization
+      displaySiteMarkersOptimized();
+      
+      // Update right panel with debounce
+      if (updateChartTimer) {
+        clearTimeout(updateChartTimer);
+      }
+      updateChartTimer = setTimeout(() => {
+        updateCityPanel();
+      }, 50);
+      
+      // Update site name display
+      updateSiteNameDisplay();
+      
+      // Update health indicator
+      updateSiteHealthIndicator();
+    } else {
+      siteContent.style.display = 'none';
+      assetContent.style.display = 'flex';
+      
+      // PERFORMANCE: Only update what's necessary
+      if (!tabCache.asset.filtersInitialized) {
+        updateConditionFilter();
+        updateSiteFilter();
+        updateCityFilter();
+        tabCache.asset.filtersInitialized = true;
+      }
+      
+      // Update markers with optimization
+      displayAssetsOptimized();
+      
+      // Update right panel with debounce
+      if (updateChartTimer) {
+        clearTimeout(updateChartTimer);
+      }
+      updateChartTimer = setTimeout(() => {
+        updateCityPanel();
+      }, 50);
+      
+      // Update site name display
+      updateSiteNameDisplay();
+      
+      // Update health indicator
+      updateHealthIndicator();
+    }
+    
+    // PERFORMANCE: Initialize city tour lazily
+    if (tourCities.length === 0) {
+      setTimeout(() => {
+        initCityTour();
+      }, 500);
+    }
+  }
+  
+  // ===========================================
+  // PERFORMANCE OPTIMIZED MARKER FUNCTIONS
+  // ===========================================
+  
+  // PERFORMANCE OPTIMIZATION: Optimized site markers display
+  function displaySiteMarkersOptimized() {
+    // Remove current layer if it exists
+    if (currentMarkerLayer) {
+      map.removeLayer(currentMarkerLayer);
+      currentMarkerLayer = null;
+    }
+    
+    if (heatLayer) {
+      map.removeLayer(heatLayer);
+      heatLayer = null;
+    }
+    
+    if (filteredSites.length === 0) {
+      console.log('No sites to display after filtering');
+      showNotification('No sites found with current filters', 'info');
+      return;
+    }
+    
+    const visualization = document.getElementById('siteLocationGrouping').value;
+    currentVisualization = visualization;
+    
+    // Check if we have cached markers for this visualization
+    if (!tabCache.site.markersInitialized || 
+        Date.now() - tabCache.site.lastUpdateTime > 30000) { // 30 second cache
+      
+      // Clear existing markers
+      siteMarkerCluster.clearLayers();
+      siteIndividualMarkers.forEach(marker => {
+        if (map.hasLayer(marker)) {
+          map.removeLayer(marker);
+        }
+      });
+      siteIndividualMarkers = [];
+      
+      // Create new markers based on visualization
+      switch(visualization) {
+        case 'cluster':
+          createSiteClusterMarkers();
+          break;
+        case 'individual':
+          createSiteIndividualMarkers();
+          break;
+        case 'single':
+          createSiteSingleMarkersPerLocation();
+          break;
+        case 'spider':
+          createSiteSpiderfiedMarkers();
+          break;
+        case 'heatmap':
+          createSiteHeatmap();
+          break;
+      }
+      
+      tabCache.site.markersInitialized = true;
+      tabCache.site.lastUpdateTime = Date.now();
+    }
+    
+    // Add the appropriate layer to the map
+    switch(visualization) {
+      case 'cluster':
+        currentMarkerLayer = siteMarkerCluster;
+        map.addLayer(siteMarkerCluster);
+        break;
+      case 'individual':
+      case 'single':
+      case 'spider':
+        // Add all individual markers
+        siteIndividualMarkers.forEach(marker => {
+          marker.addTo(map);
+        });
+        break;
+      case 'heatmap':
+        if (siteHeatLayer) {
+          currentMarkerLayer = siteHeatLayer;
+          map.addLayer(siteHeatLayer);
+        }
+        break;
+    }
+  }
+  
+  // Create site cluster markers (cached)
+  function createSiteClusterMarkers() {
+    filteredSites.forEach(site => {
+      const marker = L.marker([site.latitude, site.longitude], {
+        icon: getSiteIcon(site),
+        site: site
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      siteMarkerCluster.addLayer(marker);
+    });
+  }
+  
+  // Create site individual markers (cached)
+  function createSiteIndividualMarkers() {
+    filteredSites.forEach(site => {
+      const marker = L.marker([site.latitude, site.longitude], {
+        icon: getSiteIcon(site)
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      siteIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create site single markers per location (cached)
+  function createSiteSingleMarkersPerLocation() {
+    const locationGroups = {};
+    filteredSites.forEach(site => {
+      const locationKey = `${site.latitude.toFixed(4)},${site.longitude.toFixed(4)}`;
+      if (!locationGroups[locationKey]) {
+        locationGroups[locationKey] = [];
+      }
+      locationGroups[locationKey].push(site);
+    });
+    
+    Object.values(locationGroups).forEach(sites => {
+      if (sites.length > 0) {
+        const site = sites[0];
+        const marker = L.marker([site.latitude, site.longitude], {
+          icon: getSiteIcon(site)
+        });
+        
+        let popupContent = `<div class="popup-header"><h3>${sites.length} Sites at this Location</h3></div><div class="popup-content">`;
+        sites.forEach(s => {
+          const abbrev = getSiteTypeAbbreviation(s.siteType);
+          popupContent += `<p><strong>${s.siteName || s.siteId}</strong> - ${abbrev} (${s.siteStatus})</p>`;
+        });
+        popupContent += '</div>';
+        
+        marker.bindPopup(popupContent);
+        siteIndividualMarkers.push(marker);
+      }
+    });
+  }
+  
+  // Create site spiderfied markers (cached)
+  function createSiteSpiderfiedMarkers() {
+    filteredSites.forEach((site, index) => {
+      const offsetLat = site.latitude + (Math.random() * 0.0005 - 0.00025);
+      const offsetLng = site.longitude + (Math.random() * 0.0005 - 0.00025);
+      
+      const marker = L.marker([offsetLat, offsetLng], {
+        icon: getSiteIcon(site)
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      siteIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create site heatmap (cached)
+  function createSiteHeatmap() {
+    const heatData = filteredSites.map(site => {
+      let intensity = 0.5;
+      if (site.siteStatus === 'OUT_OF_SERVICE') intensity = 1.0;
+      else if (site.siteStatus === 'STANDBY') intensity = 0.7;
+      else if (site.siteStatus === 'WORKING') intensity = 0.3;
+      else if (site.siteStatus === 'CWIP') intensity = 0.6;
+      else if (site.siteStatus === 'TRANSFER') intensity = 0.4;
+      
+      return [site.latitude, site.longitude, intensity];
+    });
+    
+    siteHeatLayer = L.heatLayer(heatData, {
+      radius: 20,
+      blur: 12,
+      maxZoom: 17,
+      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
+    });
+  }
+  
+  // PERFORMANCE OPTIMIZATION: Optimized asset markers display
+  function displayAssetsOptimized() {
+    // Remove current layer if it exists
+    if (currentMarkerLayer) {
+      map.removeLayer(currentMarkerLayer);
+      currentMarkerLayer = null;
+    }
+    
+    if (heatLayer) {
+      map.removeLayer(heatLayer);
+      heatLayer = null;
+    }
+    
+    if (filteredAssets.length === 0) {
+      console.log('No assets to display after filtering');
+      showNotification('No assets found with current filters', 'info');
+      return;
+    }
+    
+    const visualization = document.getElementById('locationGrouping').value;
+    currentVisualization = visualization;
+    
+    // Check if we have cached markers for this visualization
+    if (!tabCache.asset.markersInitialized || 
+        Date.now() - tabCache.asset.lastUpdateTime > 30000) { // 30 second cache
+      
+      // Clear existing markers
+      assetMarkerCluster.clearLayers();
+      assetIndividualMarkers.forEach(marker => {
+        if (map.hasLayer(marker)) {
+          map.removeLayer(marker);
+        }
+      });
+      assetIndividualMarkers = [];
+      
+      // Create new markers based on visualization
+      switch(visualization) {
+        case 'cluster':
+          createAssetClusterMarkers();
+          break;
+        case 'individual':
+          createAssetIndividualMarkers();
+          break;
+        case 'single':
+          createAssetSingleMarkersPerLocation();
+          break;
+        case 'spider':
+          createAssetSpiderfiedMarkers();
+          break;
+        case 'heatmap':
+          createAssetHeatmap();
+          break;
+      }
+      
+      tabCache.asset.markersInitialized = true;
+      tabCache.asset.lastUpdateTime = Date.now();
+    }
+    
+    // Add the appropriate layer to the map
+    switch(visualization) {
+      case 'cluster':
+        currentMarkerLayer = assetMarkerCluster;
+        map.addLayer(assetMarkerCluster);
+        break;
+      case 'individual':
+      case 'single':
+      case 'spider':
+        // Add all individual markers
+        assetIndividualMarkers.forEach(marker => {
+          marker.addTo(map);
+        });
+        break;
+      case 'heatmap':
+        if (assetHeatLayer) {
+          currentMarkerLayer = assetHeatLayer;
+          map.addLayer(assetHeatLayer);
+        }
+        break;
+    }
+  }
+  
+  // Create asset cluster markers (cached)
+  function createAssetClusterMarkers() {
+    filteredAssets.forEach(asset => {
+      const marker = L.marker([asset.latitude, asset.longitude], {
+        icon: getAssetIcon(asset),
+        asset: asset
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      assetMarkerCluster.addLayer(marker);
+    });
+  }
+  
+  // Create asset individual markers (cached)
+  function createAssetIndividualMarkers() {
+    filteredAssets.forEach(asset => {
+      const marker = L.marker([asset.latitude, asset.longitude], {
+        icon: getAssetIcon(asset)
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      assetIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create asset single markers per location (cached)
+  function createAssetSingleMarkersPerLocation() {
+    const locationGroups = {};
+    filteredAssets.forEach(asset => {
+      const locationKey = `${asset.latitude.toFixed(4)},${asset.longitude.toFixed(4)}`;
+      if (!locationGroups[locationKey]) {
+        locationGroups[locationKey] = [];
+      }
+      locationGroups[locationKey].push(asset);
+    });
+    
+    Object.values(locationGroups).forEach(assets => {
+      if (assets.length > 0) {
+        const asset = assets[0];
+        const marker = L.marker([asset.latitude, asset.longitude], {
+          icon: getAssetIcon(asset)
+        });
+        
+        let popupContent = `<div class="popup-header"><h3>${assets.length} Assets at this Location</h3></div><div class="popup-content">`;
+        assets.forEach(a => {
+          const abbrev = getSiteTypeAbbreviation(a.siteTypeL2);
+          popupContent += `<p><strong>${a.assetId}</strong> - ${abbrev} (${a.condition})</p>`;
+        });
+        popupContent += '</div>';
+        
+        marker.bindPopup(popupContent);
+        assetIndividualMarkers.push(marker);
+      }
+    });
+  }
+  
+  // Create asset spiderfied markers (cached)
+  function createAssetSpiderfiedMarkers() {
+    filteredAssets.forEach((asset, index) => {
+      const offsetLat = asset.latitude + (Math.random() * 0.0005 - 0.00025);
+      const offsetLng = asset.longitude + (Math.random() * 0.0005 - 0.00025);
+      
+      const marker = L.marker([offsetLat, offsetLng], {
+        icon: getAssetIcon(asset)
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      assetIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create asset heatmap (cached)
+  function createAssetHeatmap() {
+    const heatData = filteredAssets.map(asset => {
+      let intensity = 0.5;
+      if (asset.condition === 'CRITICAL') intensity = 1.0;
+      else if (asset.condition === 'POOR') intensity = 0.8;
+      else if (asset.condition === 'FAIR') intensity = 0.6;
+      else if (asset.condition === 'GOOD') intensity = 0.4;
+      else if (asset.condition === 'VERY GOOD') intensity = 0.3;
+      else if (asset.condition === 'EXCELLENT') intensity = 0.2;
+      
+      return [asset.latitude, asset.longitude, intensity];
+    });
+    
+    assetHeatLayer = L.heatLayer(heatData, {
+      radius: 20,
+      blur: 12,
+      maxZoom: 17,
+      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
+    });
   }
   
   // ===========================================
@@ -2615,8 +3249,6 @@
     tourIsPlaying = true;
     updateTourButtons();
     
-    // REMOVED: Hide tour notification (popup is removed entirely)
-    
     // Start the interval
     cityTourInterval = setInterval(nextCity, tourSpeed);
     
@@ -2665,8 +3297,6 @@
       filterByCity();
     }
     
-    // REMOVED: Hide tour notification (popup is removed entirely)
-    
     showNotification('City tour stopped', 'info');
   }
   
@@ -2694,7 +3324,7 @@
     showCityInTour(currentTourCityIndex);
   }
   
-  // Show a specific city in the tour - REMOVED: popup notification
+  // Show a specific city in the tour
   function showCityInTour(cityIndex) {
     if (cityIndex < 0 || cityIndex >= tourCities.length) return;
     
@@ -2710,28 +3340,30 @@
       filterByCity();
     }
     
-    // Fly to city with smooth animation
+    // Fly to city with smooth animation at zoom level 12
     if (cityData && cityData.coordinates) {
-      const { center, bounds } = cityData.coordinates;
+      const { center } = cityData.coordinates;
       
-      if (bounds) {
-        // Fly to bounds with padding
-        map.flyToBounds(bounds, {
-          padding: [50, 50],
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
-      } else if (center) {
-        // Fallback to center point
-        map.flyTo(center, 14, {
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
+      if (center) {
+        // Use predefined city coordinates if available
+        const cityName = city.toUpperCase();
+        if (cityCoordinates[cityName]) {
+          const coords = cityCoordinates[cityName];
+          // FIXED: Always use zoom level 12 as required
+          map.flyTo([coords.lat, coords.lng], 12, {
+            duration: 1.5,
+            easeLinearity: 0.25
+          });
+        } else if (center) {
+          // Fallback to center point
+          // FIXED: Always use zoom level 12 as required
+          map.flyTo(center, 12, {
+            duration: 1.5,
+            easeLinearity: 0.25
+          });
+        }
       }
     }
-    
-    // REMOVED: Show city notification (popup constraint: no center popup)
-    // The popup has been completely removed from the application
   }
   
   // Update tour buttons state
@@ -2789,59 +3421,9 @@
     }
   }
   
-  // REMOVED: Show tour notification for current city
-  // REMOVED: Hide tour notification
-  
   // ===========================================
-  // EXISTING FUNCTIONS (keeping for reference)
+  // EXISTING FUNCTIONS (optimized where needed)
   // ===========================================
-  
-  // Tab Switching Function
-  function switchTab(tab) {
-    currentTab = tab;
-    
-    // Update tab buttons
-    document.querySelectorAll('.panel-tab').forEach(tabBtn => {
-      tabBtn.classList.remove('active');
-    });
-    
-    if (tab === 'site') {
-      document.getElementById('siteTab').classList.add('active');
-      document.getElementById('siteDashboardContent').style.display = 'flex';
-      document.getElementById('assetDashboardContent').style.display = 'none';
-      
-      // Update right panel for site data
-      updateCityPanel();
-      
-      // Display site markers
-      displaySiteMarkers();
-      
-      // Update site name display
-      updateSiteNameDisplay();
-      
-      // Update health indicator
-      updateSiteHealthIndicator();
-    } else {
-      document.getElementById('assetTab').classList.add('active');
-      document.getElementById('assetDashboardContent').style.display = 'flex';
-      document.getElementById('siteDashboardContent').style.display = 'none';
-      
-      // Update right panel for asset data
-      updateCityPanel();
-      
-      // Display asset markers
-      displayAssets();
-      
-      // Update site name display
-      updateSiteNameDisplay();
-      
-      // Update health indicator
-      updateHealthIndicator();
-    }
-    
-    // Reinitialize city tour for current tab
-    initCityTour();
-  }
   
   // Theme Toggle Function
   function toggleTheme() {
@@ -4137,7 +4719,7 @@
         updateCityFilter();
         
         // Display initial markers (sites by default)
-        displaySiteMarkers();
+        displaySiteMarkersOptimized();
         
         // Update panels
         updateCityPanel();
@@ -4594,7 +5176,7 @@
     updateCityFilter();
     
     // Display initial markers
-    displaySiteMarkers();
+    displaySiteMarkersOptimized();
     
     // Update panels
     updateCityPanel();
@@ -4848,315 +5430,18 @@
     console.log('City filter updated with options:', cities.length, 'cities');
   }
   
-  // Display site markers based on current visualization mode
+  // ===========================================
+  // PERFORMANCE OPTIMIZED DISPLAY FUNCTIONS
+  // ===========================================
+  
+  // PERFORMANCE: Keep for backward compatibility
   function displaySiteMarkers() {
-    markerCluster.clearLayers();
-    individualMarkers.forEach(marker => {
-      if (map.hasLayer(marker)) {
-        map.removeLayer(marker);
-      }
-    });
-    individualMarkers = [];
-    
-    if (heatLayer) {
-      map.removeLayer(heatLayer);
-      heatLayer = null;
-    }
-    
-    if (filteredSites.length === 0) {
-      console.log('No sites to display after filtering');
-      showNotification('No sites found with current filters', 'info');
-      return;
-    }
-    
-    const visualization = document.getElementById('siteLocationGrouping').value;
-    currentVisualization = visualization;
-    
-    switch(visualization) {
-      case 'cluster':
-        displayClusteredSiteMarkers();
-        break;
-      case 'individual':
-        displayIndividualSiteMarkers();
-        break;
-      case 'single':
-        displaySingleSiteMarkersPerLocation();
-        break;
-      case 'spider':
-        displaySpiderfiedSiteMarkers();
-        break;
-      case 'heatmap':
-        displaySiteHeatmap();
-        break;
-    }
-    
-    updateSiteHealthIndicator();
+    displaySiteMarkersOptimized();
   }
   
-  // Display clustered site markers
-  function displayClusteredSiteMarkers() {
-    console.log(`Displaying ${filteredSites.length} sites in cluster mode`);
-    
-    filteredSites.forEach(site => {
-      const marker = L.marker([site.latitude, site.longitude], {
-        icon: getSiteIcon(site),
-        site: site
-      });
-      
-      marker.bindPopup(buildSitePopup(site));
-      
-      markerCluster.addLayer(marker);
-    });
-    
-    map.addLayer(markerCluster);
-  }
-  
-  // Display individual site markers
-  function displayIndividualSiteMarkers() {
-    console.log(`Displaying ${filteredSites.length} sites in individual marker mode`);
-    
-    filteredSites.forEach(site => {
-      const marker = L.marker([site.latitude, site.longitude], {
-        icon: getSiteIcon(site)
-      });
-      
-      marker.bindPopup(buildSitePopup(site));
-      
-      marker.addTo(map);
-      individualMarkers.push(marker);
-    });
-  }
-  
-  // Display single site marker per location
-  function displaySingleSiteMarkersPerLocation() {
-    console.log(`Displaying ${filteredSites.length} sites in single marker per location mode`);
-    
-    const locationGroups = {};
-    filteredSites.forEach(site => {
-      const locationKey = `${site.latitude.toFixed(4)},${site.longitude.toFixed(4)}`;
-      if (!locationGroups[locationKey]) {
-        locationGroups[locationKey] = [];
-      }
-      locationGroups[locationKey].push(site);
-    });
-    
-    Object.values(locationGroups).forEach(sites => {
-      if (sites.length > 0) {
-        const site = sites[0];
-        const marker = L.marker([site.latitude, site.longitude], {
-          icon: getSiteIcon(site)
-        });
-        
-        let popupContent = `<div class="popup-header"><h3>${sites.length} Sites at this Location</h3></div><div class="popup-content">`;
-        sites.forEach(s => {
-          const abbrev = getSiteTypeAbbreviation(s.siteType);
-          popupContent += `<p><strong>${s.siteName || s.siteId}</strong> - ${abbrev} (${s.siteStatus})</p>`;
-        });
-        popupContent += '</div>';
-        
-        marker.bindPopup(popupContent);
-        marker.addTo(map);
-        individualMarkers.push(marker);
-      }
-    });
-  }
-  
-  // Display spiderfied site markers
-  function displaySpiderfiedSiteMarkers() {
-    console.log(`Displaying ${filteredSites.length} sites in spiderfied mode`);
-    
-    filteredSites.forEach((site, index) => {
-      const offsetLat = site.latitude + (Math.random() * 0.0005 - 0.00025);
-      const offsetLng = site.longitude + (Math.random() * 0.0005 - 0.00025);
-      
-      const marker = L.marker([offsetLat, offsetLng], {
-        icon: getSiteIcon(site)
-      });
-      
-      marker.bindPopup(buildSitePopup(site));
-      
-      marker.addTo(map);
-      individualMarkers.push(marker);
-    });
-  }
-  
-  // Display site heatmap
-  function displaySiteHeatmap() {
-    console.log(`Displaying ${filteredSites.length} sites in heatmap mode`);
-    
-    const heatData = filteredSites.map(site => {
-      let intensity = 0.5;
-      if (site.siteStatus === 'OUT_OF_SERVICE') intensity = 1.0;
-      else if (site.siteStatus === 'STANDBY') intensity = 0.7;
-      else if (site.siteStatus === 'WORKING') intensity = 0.3;
-      else if (site.siteStatus === 'CWIP') intensity = 0.6;
-      else if (site.siteStatus === 'TRANSFER') intensity = 0.4;
-      
-      return [site.latitude, site.longitude, intensity];
-    });
-    
-    heatLayer = L.heatLayer(heatData, {
-      radius: 20,
-      blur: 12,
-      maxZoom: 17,
-      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
-    }).addTo(map);
-  }
-  
-  // Display assets based on current visualization mode
+  // PERFORMANCE: Keep for backward compatibility
   function displayAssets() {
-    markerCluster.clearLayers();
-    individualMarkers.forEach(marker => {
-      if (map.hasLayer(marker)) {
-        map.removeLayer(marker);
-      }
-    });
-    individualMarkers = [];
-    
-    if (heatLayer) {
-      map.removeLayer(heatLayer);
-      heatLayer = null;
-    }
-    
-    if (filteredAssets.length === 0) {
-      console.log('No assets to display after filtering');
-      showNotification('No assets found with current filters', 'info');
-      return;
-    }
-    
-    const visualization = document.getElementById('locationGrouping').value;
-    currentVisualization = visualization;
-    
-    switch(visualization) {
-      case 'cluster':
-        displayClusteredMarkers();
-        break;
-      case 'individual':
-        displayIndividualMarkers();
-        break;
-      case 'single':
-        displaySingleMarkersPerLocation();
-        break;
-      case 'spider':
-        displaySpiderfiedMarkers();
-        break;
-      case 'heatmap':
-        displayHeatmap();
-        break;
-    }
-    
-    updateHealthIndicator();
-  }
-  
-  // Display clustered markers for assets
-  function displayClusteredMarkers() {
-    console.log(`Displaying ${filteredAssets.length} assets in cluster mode`);
-    
-    filteredAssets.forEach(asset => {
-      const marker = L.marker([asset.latitude, asset.longitude], {
-        icon: getAssetIcon(asset),
-        asset: asset
-      });
-      
-      marker.bindPopup(buildAssetPopup(asset));
-      
-      markerCluster.addLayer(marker);
-    });
-    
-    map.addLayer(markerCluster);
-  }
-  
-  // Display individual markers for assets
-  function displayIndividualMarkers() {
-    console.log(`Displaying ${filteredAssets.length} assets in individual marker mode`);
-    
-    filteredAssets.forEach(asset => {
-      const marker = L.marker([asset.latitude, asset.longitude], {
-        icon: getAssetIcon(asset)
-      });
-      
-      marker.bindPopup(buildAssetPopup(asset));
-      
-      marker.addTo(map);
-      individualMarkers.push(marker);
-    });
-  }
-  
-  // Display single marker per location for assets
-  function displaySingleMarkersPerLocation() {
-    console.log(`Displaying ${filteredAssets.length} assets in single marker per location mode`);
-    
-    const locationGroups = {};
-    filteredAssets.forEach(asset => {
-      const locationKey = `${asset.latitude.toFixed(4)},${asset.longitude.toFixed(4)}`;
-      if (!locationGroups[locationKey]) {
-        locationGroups[locationKey] = [];
-      }
-      locationGroups[locationKey].push(asset);
-    });
-    
-    Object.values(locationGroups).forEach(assets => {
-      if (assets.length > 0) {
-        const asset = assets[0];
-        const marker = L.marker([asset.latitude, asset.longitude], {
-          icon: getAssetIcon(asset)
-        });
-        
-        let popupContent = `<div class="popup-header"><h3>${assets.length} Assets at this Location</h3></div><div class="popup-content">`;
-        assets.forEach(a => {
-          const abbrev = getSiteTypeAbbreviation(a.siteTypeL2);
-          popupContent += `<p><strong>${a.assetId}</strong> - ${abbrev} (${a.condition})</p>`;
-        });
-        popupContent += '</div>';
-        
-        marker.bindPopup(popupContent);
-        marker.addTo(map);
-        individualMarkers.push(marker);
-      }
-    });
-  }
-  
-  // Display spiderfied markers for assets
-  function displaySpiderfiedMarkers() {
-    console.log(`Displaying ${filteredAssets.length} assets in spiderfied mode`);
-    
-    filteredAssets.forEach((asset, index) => {
-      const offsetLat = asset.latitude + (Math.random() * 0.0005 - 0.00025);
-      const offsetLng = asset.longitude + (Math.random() * 0.0005 - 0.00025);
-      
-      const marker = L.marker([offsetLat, offsetLng], {
-        icon: getAssetIcon(asset)
-      });
-      
-      marker.bindPopup(buildAssetPopup(asset));
-      
-      marker.addTo(map);
-      individualMarkers.push(marker);
-    });
-  }
-  
-  // Display heatmap for assets
-  function displayHeatmap() {
-    console.log(`Displaying ${filteredAssets.length} assets in heatmap mode`);
-    
-    const heatData = filteredAssets.map(asset => {
-      let intensity = 0.5;
-      if (asset.condition === 'CRITICAL') intensity = 1.0;
-      else if (asset.condition === 'POOR') intensity = 0.8;
-      else if (asset.condition === 'FAIR') intensity = 0.6;
-      else if (asset.condition === 'GOOD') intensity = 0.4;
-      else if (asset.condition === 'VERY GOOD') intensity = 0.3;
-      else if (asset.condition === 'EXCELLENT') intensity = 0.2;
-      
-      return [asset.latitude, asset.longitude, intensity];
-    });
-    
-    heatLayer = L.heatLayer(heatData, {
-      radius: 20,
-      blur: 12,
-      maxZoom: 17,
-      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
-    }).addTo(map);
+    displayAssetsOptimized();
   }
   
   // Apply site filters
@@ -5194,7 +5479,9 @@
     console.log(`Filtered to ${filteredSites.length} sites`);
     
     if (currentTab === 'site') {
-      displaySiteMarkers();
+      // Invalidate cache when filters change
+      tabCache.site.markersInitialized = false;
+      displaySiteMarkersOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateSiteHealthIndicator();
@@ -5240,7 +5527,9 @@
     console.log(`Filtered to ${filteredAssets.length} assets`);
     
     if (currentTab === 'asset') {
-      displayAssets();
+      // Invalidate cache when filters change
+      tabCache.asset.markersInitialized = false;
+      displayAssetsOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateHealthIndicator();
@@ -5251,7 +5540,7 @@
     }
   }
   
-  // Filter site by city
+  // Filter site by city - FIXED: Always use zoom level 12
   function filterSiteByCity() {
     const siteCityFilter = document.getElementById('siteCityFilter').value;
     const siteTypeFilter = document.getElementById('siteTypeFilter');
@@ -5259,6 +5548,7 @@
     if (siteCityFilter === 'all') {
       filteredSites = [...allSites];
       currentCity = null;
+      // FIXED: Always use zoom level 12 as required
       map.flyTo([24.50, 39.65], 12, {
         duration: 1.5,
         easeLinearity: 0.25
@@ -5273,7 +5563,8 @@
         // Use predefined city center coordinates
         const coords = cityCoordinates[cityName];
         
-        map.flyTo([coords.lat, coords.lng], 14, {
+        // FIXED: Always use zoom level 12 as required
+        map.flyTo([coords.lat, coords.lng], 12, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5284,7 +5575,8 @@
         const avgLat = totalLat / filteredSites.length;
         const avgLng = totalLng / filteredSites.length;
         
-        map.flyTo([avgLat, avgLng], 14, {
+        // FIXED: Always use zoom level 12 as required
+        map.flyTo([avgLat, avgLng], 12, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5298,7 +5590,9 @@
     document.getElementById('siteStatusFilter').value = 'all';
     
     if (currentTab === 'site') {
-      displaySiteMarkers();
+      // Invalidate cache when filters change
+      tabCache.site.markersInitialized = false;
+      displaySiteMarkersOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateSiteHealthIndicator();
@@ -5333,7 +5627,9 @@
     document.getElementById('siteStatusFilter').value = 'all';
     
     if (currentTab === 'site') {
-      displaySiteMarkers();
+      // Invalidate cache when filters change
+      tabCache.site.markersInitialized = false;
+      displaySiteMarkersOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateSiteHealthIndicator();
@@ -5356,7 +5652,9 @@
     updateSiteCityFilter();
     
     if (currentTab === 'site') {
-      displaySiteMarkers();
+      // Invalidate cache when filters change
+      tabCache.site.markersInitialized = false;
+      displaySiteMarkersOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateSiteHealthIndicator();
@@ -5367,7 +5665,7 @@
     }
   }
   
-  // Filter asset by city
+  // Filter asset by city - FIXED: Always use zoom level 12
   function filterByCity() {
     const cityFilter = document.getElementById('cityFilter').value;
     const siteFilter = document.getElementById('siteFilter');
@@ -5375,6 +5673,7 @@
     if (cityFilter === 'all') {
       filteredAssets = [...allAssets];
       currentCity = null;
+      // FIXED: Always use zoom level 12 as required
       map.flyTo([24.50, 39.65], 12, {
         duration: 1.5,
         easeLinearity: 0.25
@@ -5389,7 +5688,8 @@
         // Use predefined city center coordinates
         const coords = cityCoordinates[cityName];
         
-        map.flyTo([coords.lat, coords.lng], 14, {
+        // FIXED: Always use zoom level 12 as required
+        map.flyTo([coords.lat, coords.lng], 12, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5400,7 +5700,8 @@
         const avgLat = totalLat / filteredAssets.length;
         const avgLng = totalLng / filteredAssets.length;
         
-        map.flyTo([avgLat, avgLng], 14, {
+        // FIXED: Always use zoom level 12 as required
+        map.flyTo([avgLat, avgLng], 12, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5413,7 +5714,9 @@
     document.getElementById('conditionFilter').value = 'all';
     
     if (currentTab === 'asset') {
-      displayAssets();
+      // Invalidate cache when filters change
+      tabCache.asset.markersInitialized = false;
+      displayAssetsOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateHealthIndicator();
@@ -5450,7 +5753,9 @@
     document.getElementById('conditionFilter').value = 'all';
     
     if (currentTab === 'asset') {
-      displayAssets();
+      // Invalidate cache when filters change
+      tabCache.asset.markersInitialized = false;
+      displayAssetsOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateHealthIndicator();
@@ -5478,7 +5783,9 @@
     updateCityFilter();
     
     if (currentTab === 'asset') {
-      displayAssets();
+      // Invalidate cache when filters change
+      tabCache.asset.markersInitialized = false;
+      displayAssetsOptimized();
       updateCityPanel();
       updateSiteNameDisplay();
       updateHealthIndicator();
@@ -5496,7 +5803,9 @@
     }
     
     if (currentTab === 'asset') {
-      displayAssets();
+      // Invalidate cache when filters change
+      tabCache.asset.markersInitialized = false;
+      displayAssetsOptimized();
     }
   }
   
@@ -5504,7 +5813,9 @@
   function changeSiteVisualizationMode() {
     const mode = document.getElementById('siteLocationGrouping').value;
     if (currentTab === 'site') {
-      displaySiteMarkers();
+      // Invalidate cache when visualization changes
+      tabCache.site.markersInitialized = false;
+      displaySiteMarkersOptimized();
     }
   }
   
@@ -5512,7 +5823,9 @@
   function changeVisualizationMode() {
     const mode = document.getElementById('locationGrouping').value;
     if (currentTab === 'asset') {
-      displayAssets();
+      // Invalidate cache when visualization changes
+      tabCache.asset.markersInitialized = false;
+      displayAssetsOptimized();
     }
   }
   
