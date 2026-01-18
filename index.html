@@ -464,7 +464,7 @@
 
     /* Dark theme select arrow */
     body.dark-theme .filter-group select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org2000/svg' width='16' height='16' fill='%2300b4d8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2300b4d8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
     }
 
     /* Compact Legend */
@@ -1033,28 +1033,104 @@
       display: inline-block;
     }
 
-    /* Map Layer Controls */
-    .map-layer-controls {
+    /* NEW: Bottom Panel with Tabs */
+    .bottom-panel {
       position: fixed;
-      bottom: 20px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1000;
+      width: 800px;
+      max-width: 90%;
       background: var(--theme-map-controls-bg);
-      border-radius: var(--border-radius-lg);
-      padding: 10px 20px;
+      border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
       box-shadow: var(--theme-map-controls-shadow);
       border: 1px solid var(--theme-map-controls-border);
-      display: flex;
-      gap: 15px;
-      align-items: center;
+      border-bottom: none;
+      z-index: 1000;
+      overflow: hidden;
       pointer-events: auto;
     }
 
-    .map-layer-controls h4 {
+    .bottom-panel-tabs {
+      display: flex;
+      background: var(--theme-section-bg);
+      border-bottom: 1px solid var(--theme-section-border);
+      padding: 0;
+    }
+
+    .bottom-panel-tab {
+      flex: 1;
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      color: var(--theme-text);
+      font-weight: 600;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border-bottom: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .bottom-panel-tab:hover {
+      background: var(--theme-input-bg);
+    }
+
+    .bottom-panel-tab.active {
+      color: var(--primary-blue);
+      border-bottom-color: var(--primary-blue);
+      background: var(--theme-panel-bg);
+    }
+
+    .bottom-panel-content {
+      padding: 15px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Map View Tab Content */
+    .map-view-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .map-view-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .map-view-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .map-view-content h4 {
       font-size: 0.9em;
       color: var(--theme-text);
-      margin-right: 10px;
+      margin: 0;
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -1123,6 +1199,157 @@
     body.dark-theme .theme-toggle {
       background: var(--theme-input-bg);
     }
+
+    /* City Tour Tab Content */
+    .city-tour-content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .city-tour-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .city-tour-header h4 {
+      font-size: 0.95em;
+      color: var(--theme-text);
+      margin: 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .city-tour-header h4 i {
+      color: var(--accent-teal);
+    }
+
+    .city-tour-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .city-tour-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .tour-button {
+      padding: 10px 20px;
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius-md);
+      font-weight: 600;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 100px;
+    }
+
+    .tour-button:hover {
+      background: var(--primary-blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
+    }
+
+    .tour-button:disabled {
+      background: var(--neutral-gray);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      opacity: 0.6;
+    }
+
+    .tour-button.play {
+      background: var(--success-green);
+    }
+
+    .tour-button.play:hover {
+      background: #00a884;
+    }
+
+    .tour-button.pause {
+      background: var(--warning-orange);
+    }
+
+    .tour-button.pause:hover {
+      background: #e67e22;
+    }
+
+    .tour-button.stop {
+      background: var(--danger-red);
+    }
+
+    .tour-button.stop:hover {
+      background: #c0392b;
+    }
+
+    .tour-speed-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 200px;
+    }
+
+    .tour-speed-control label {
+      font-size: 0.85em;
+      color: var(--theme-text);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tour-speed-slider {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      background: var(--theme-input-bg);
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .tour-speed-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .tour-speed-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .tour-speed-value {
+      font-size: 0.85em;
+      color: var(--primary-blue);
+      font-weight: 700;
+      min-width: 40px;
+      text-align: right;
+    }
+
+    /* REMOVED: City Tour Notification - This is the popup we want to remove */
+    /* The entire .city-tour-notification CSS has been removed */
 
     /* Health Status Indicator at Bottom of Filter Panel */
     .health-indicator {
@@ -1246,7 +1473,7 @@
     /* Zoom level indicator */
     .zoom-level {
       position: fixed;
-      bottom: 20px;
+      bottom: 90px;
       right: 20px;
       z-index: 1000;
       background: var(--theme-zoom-bg);
@@ -1264,7 +1491,7 @@
     /* Scale indicator */
     .scale-indicator {
       position: fixed;
-      bottom: 20px;
+      bottom: 90px;
       left: 20px;
       z-index: 1000;
       background: var(--theme-zoom-bg);
@@ -1431,9 +1658,6 @@
       top: 80px;
     }
 
-    /* REMOVED: Dark theme specific adjustments for Leaflet map */
-    /* The map will remain exactly the same in both themes */
-
     /* Responsive adjustments */
     @media (max-width: 1200px) {
       .panels-container {
@@ -1458,29 +1682,34 @@
       .site-name-container h2 {
         font-size: 1.3em;
       }
-      .map-layer-controls {
-        padding: 8px 15px;
+      .bottom-panel {
+        width: 700px;
       }
-      .layer-option {
-        padding: 6px 12px;
-        font-size: 0.8em;
+      .city-tour-controls {
+        flex-wrap: wrap;
       }
-      .distribution-grid {
-        grid-template-columns: repeat(3, 1fr); /* Adjust columns */
-      }
-      .chart-container-wrapper {
-        width: 300px;
-        height: 300px;
-      }
-      #equipmentChart {
-        width: 276px !important;
-        height: 276px !important;
+      .tour-speed-control {
+        min-width: 180px;
       }
     }
 
     @media (max-width: 992px) {
       .distribution-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+      .bottom-panel {
+        width: 600px;
+      }
+      .city-tour-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .city-tour-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      .tour-speed-control {
+        width: 100%;
       }
     }
 
@@ -1517,28 +1746,16 @@
         font-size: 1.1em;
         gap: 8px;
       }
-      .map-layer-controls {
+      .bottom-panel {
         width: calc(100% - 40px);
-        left: 20px;
-        transform: none;
-        justify-content: center;
-        padding: 8px 12px;
-        flex-wrap: wrap;
-        gap: 8px;
       }
-      .map-layer-controls h4 {
+      .map-view-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .map-view-left, .map-view-right {
         width: 100%;
-        text-align: center;
         justify-content: center;
-        margin: 0 0 5px 0;
-      }
-      .layer-options {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .layer-option {
-        padding: 6px 10px;
-        font-size: 0.75em;
       }
       .stats-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1562,13 +1779,13 @@
         grid-template-columns: 1fr;
       }
       .scale-indicator {
-        bottom: 70px;
+        bottom: 140px;
         left: 10px;
         font-size: 0.8em;
         min-width: 140px;
       }
       .zoom-level {
-        bottom: 70px;
+        bottom: 140px;
         right: 10px;
         font-size: 0.8em;
       }
@@ -1581,6 +1798,22 @@
     @media (max-width: 576px) {
       .distribution-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .bottom-panel-tab {
+        padding: 10px 15px;
+        font-size: 0.8em;
+      }
+      .tour-button {
+        padding: 8px 15px;
+        min-width: 80px;
+        font-size: 0.8em;
+      }
+      .tour-speed-control label {
+        font-size: 0.8em;
+      }
+      /* Removed city tour notification responsive styles */
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -1626,6 +1859,26 @@
         padding: 8px;
         justify-content: center;
         width: 40px;
+      }
+      .bottom-panel-tabs {
+        flex-direction: column;
+      }
+      .bottom-panel-tab {
+        padding: 8px 12px;
+        justify-content: flex-start;
+      }
+      .tour-button span {
+        display: none;
+      }
+      .tour-button {
+        min-width: 60px;
+        justify-content: center;
+      }
+      .tour-button i {
+        margin: 0;
+      }
+      .tour-speed-control {
+        min-width: 150px;
       }
     }
 
@@ -1935,25 +2188,75 @@
   </div>
 </div>
 
-<!-- Map Layer Controls -->
-<div class="map-layer-controls">
-  <h4><i class="fas fa-layer-group"></i> Map View</h4>
-  <div class="layer-options">
-    <div class="layer-option active" onclick="changeMapLayer('street')">
-      <i class="fas fa-road"></i> Street
-    </div>
-    <div class="layer-option" onclick="changeMapLayer('imagery')">
-      <i class="fas fa-satellite"></i> Imagery
-    </div>
-    <div class="layer-option" onclick="changeMapLayer('hybrid')">
-      <i class="fas fa-map"></i> Hybrid
-    </div>
+<!-- NEW: Bottom Panel with Tabs -->
+<div class="bottom-panel" id="bottomPanel">
+  <div class="bottom-panel-tabs">
+    <button class="bottom-panel-tab active" id="mapViewTab" onclick="switchBottomTab('mapView')">
+      <i class="fas fa-layer-group"></i> Map View
+    </button>
+    <button class="bottom-panel-tab" id="cityTourTab" onclick="switchBottomTab('cityTour')">
+      <i class="fas fa-map-marked-alt"></i> City Tour Animation
+    </button>
   </div>
-  <!-- Theme Toggle Button -->
-  <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-    <i class="fas fa-moon"></i> <span>Dark Theme</span>
+  
+  <div class="bottom-panel-content">
+    <!-- Map View Tab Content -->
+    <div id="mapViewContent" class="tab-content active">
+      <div class="map-view-content">
+        <div class="map-view-left">
+          <h4><i class="fas fa-layer-group"></i> Map View</h4>
+          <div class="layer-options">
+            <div class="layer-option active" onclick="changeMapLayer('street')">
+              <i class="fas fa-road"></i> Street
+            </div>
+            <div class="layer-option" onclick="changeMapLayer('imagery')">
+              <i class="fas fa-satellite"></i> Imagery
+            </div>
+            <div class="layer-option" onclick="changeMapLayer('hybrid')">
+              <i class="fas fa-map"></i> Hybrid
+            </div>
+          </div>
+        </div>
+        <div class="map-view-right">
+          <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i> <span>Dark Theme</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- City Tour Animation Tab Content -->
+    <div id="cityTourContent" class="tab-content">
+      <div class="city-tour-content">
+        <div class="city-tour-header">
+          <h4><i class="fas fa-map-marked-alt"></i> City Tour Animation</h4>
+        </div>
+        
+        <div class="city-tour-controls">
+          <div class="city-tour-buttons">
+            <button class="tour-button play" id="playTourBtn" onclick="startCityTour()">
+              <i class="fas fa-play"></i> <span>Start Tour</span>
+            </button>
+            <button class="tour-button pause" id="pauseTourBtn" onclick="pauseCityTour()" disabled>
+              <i class="fas fa-pause"></i> <span>Pause</span>
+            </button>
+            <button class="tour-button stop" id="stopTourBtn" onclick="stopCityTour()" disabled>
+              <i class="fas fa-stop"></i> <span>Stop</span>
+            </button>
+          </div>
+          
+          <div class="tour-speed-control">
+            <label for="tourSpeed"><i class="fas fa-tachometer-alt"></i> Speed:</label>
+            <input type="range" min="1000" max="10000" value="4000" step="1000" class="tour-speed-slider" id="tourSpeed" oninput="updateTourSpeed()">
+            <span class="tour-speed-value" id="tourSpeedValue">4s</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- REMOVED: City Tour Notification Display - This is the popup we want to remove -->
 
 <!-- Scale Indicator -->
 <div class="scale-indicator" id="scaleIndicator">
@@ -1997,6 +2300,14 @@
   let currentSiteChartType = 'siteType'; // 'siteType' or 'siteStatus'
   let isDarkTheme = false;
   let currentTab = 'site'; // 'site' or 'asset'
+  
+  // City Tour Animation Variables
+  let cityTourInterval = null;
+  let currentTourCityIndex = -1;
+  let tourCities = [];
+  let tourIsPlaying = false;
+  let tourSpeed = 4000; // Default 4 seconds
+  let tourData = {}; // Store city-specific data for the tour
   
   // City coordinates mapping (from your requirements)
   const cityCoordinates = {
@@ -2196,6 +2507,295 @@
     updateScaleIndicator();
   }
   
+  // ===========================================
+  // BOTTOM PANEL TAB SWITCHING
+  // ===========================================
+  
+  // Switch bottom panel tabs
+  function switchBottomTab(tab) {
+    const mapViewTab = document.getElementById('mapViewTab');
+    const cityTourTab = document.getElementById('cityTourTab');
+    const mapViewContent = document.getElementById('mapViewContent');
+    const cityTourContent = document.getElementById('cityTourContent');
+    
+    // Update tab buttons
+    mapViewTab.classList.remove('active');
+    cityTourTab.classList.remove('active');
+    
+    // Hide all content
+    mapViewContent.classList.remove('active');
+    cityTourContent.classList.remove('active');
+    
+    // Show selected content
+    if (tab === 'mapView') {
+      mapViewTab.classList.add('active');
+      mapViewContent.classList.add('active');
+    } else if (tab === 'cityTour') {
+      cityTourTab.classList.add('active');
+      cityTourContent.classList.add('active');
+    }
+  }
+  
+  // ===========================================
+  // CITY TOUR ANIMATION FUNCTIONS
+  // ===========================================
+  
+  // Initialize city tour data
+  function initCityTour() {
+    // Extract unique cities from the current dataset
+    tourCities = [];
+    tourData = {};
+    
+    if (currentTab === 'site') {
+      // Get unique cities from sites
+      tourCities = [...new Set(allSites.map(s => s.city))].sort();
+      
+      // Prepare city data
+      tourCities.forEach(city => {
+        const citySites = allSites.filter(s => s.city === city);
+        tourData[city] = {
+          sites: citySites,
+          assets: [], // Sites tab doesn't have assets
+          coordinates: calculateCityBounds(citySites)
+        };
+      });
+    } else {
+      // Get unique cities from assets
+      tourCities = [...new Set(allAssets.map(a => a.city))].sort();
+      
+      // Prepare city data
+      tourCities.forEach(city => {
+        const cityAssets = allAssets.filter(a => a.city === city);
+        tourData[city] = {
+          sites: [],
+          assets: cityAssets,
+          coordinates: calculateCityBounds(cityAssets)
+        };
+      });
+    }
+    
+    // Update tour UI
+    updateTourUI();
+    
+    console.log(`City tour initialized with ${tourCities.length} cities`);
+    return tourCities.length > 0;
+  }
+  
+  // Calculate city bounds from points
+  function calculateCityBounds(items) {
+    if (!items || items.length === 0) {
+      return { center: [24.50, 39.65], bounds: null };
+    }
+    
+    // Calculate center point
+    const totalLat = items.reduce((sum, item) => sum + item.latitude, 0);
+    const totalLng = items.reduce((sum, item) => sum + item.longitude, 0);
+    const center = [totalLat / items.length, totalLng / items.length];
+    
+    // Calculate bounds
+    const bounds = L.latLngBounds(items.map(item => [item.latitude, item.longitude]));
+    
+    return { center, bounds };
+  }
+  
+  // Start city tour
+  function startCityTour() {
+    if (tourIsPlaying) return;
+    
+    if (tourCities.length === 0 && !initCityTour()) {
+      showNotification('No cities found for tour. Please load data first.', 'error');
+      return;
+    }
+    
+    // If we're at the end, restart from beginning
+    if (currentTourCityIndex >= tourCities.length - 1) {
+      currentTourCityIndex = -1;
+    }
+    
+    tourIsPlaying = true;
+    updateTourButtons();
+    
+    // REMOVED: Hide tour notification (popup is removed entirely)
+    
+    // Start the interval
+    cityTourInterval = setInterval(nextCity, tourSpeed);
+    
+    // Immediately go to first city if not already on one
+    if (currentTourCityIndex < 0) {
+      nextCity();
+    } else {
+      // Show current city
+      showCityInTour(currentTourCityIndex);
+    }
+    
+    showNotification('City tour started', 'success');
+  }
+  
+  // Pause city tour
+  function pauseCityTour() {
+    if (!tourIsPlaying) return;
+    
+    tourIsPlaying = false;
+    if (cityTourInterval) {
+      clearInterval(cityTourInterval);
+      cityTourInterval = null;
+    }
+    
+    updateTourButtons();
+    showNotification('City tour paused', 'info');
+  }
+  
+  // Stop city tour
+  function stopCityTour() {
+    tourIsPlaying = false;
+    if (cityTourInterval) {
+      clearInterval(cityTourInterval);
+      cityTourInterval = null;
+    }
+    
+    currentTourCityIndex = -1;
+    updateTourButtons();
+    
+    // Reset to show all data
+    if (currentTab === 'site') {
+      document.getElementById('siteCityFilter').value = 'all';
+      filterSiteByCity();
+    } else {
+      document.getElementById('cityFilter').value = 'all';
+      filterByCity();
+    }
+    
+    // REMOVED: Hide tour notification (popup is removed entirely)
+    
+    showNotification('City tour stopped', 'info');
+  }
+  
+  // Go to next city in tour
+  function nextCity() {
+    if (tourCities.length === 0) return;
+    
+    currentTourCityIndex++;
+    if (currentTourCityIndex >= tourCities.length) {
+      currentTourCityIndex = 0; // Loop back to start
+    }
+    
+    showCityInTour(currentTourCityIndex);
+  }
+  
+  // Go to previous city in tour
+  function previousCity() {
+    if (tourCities.length === 0) return;
+    
+    currentTourCityIndex--;
+    if (currentTourCityIndex < 0) {
+      currentTourCityIndex = tourCities.length - 1; // Loop to end
+    }
+    
+    showCityInTour(currentTourCityIndex);
+  }
+  
+  // Show a specific city in the tour - REMOVED: popup notification
+  function showCityInTour(cityIndex) {
+    if (cityIndex < 0 || cityIndex >= tourCities.length) return;
+    
+    const city = tourCities[cityIndex];
+    const cityData = tourData[city];
+    
+    // Update filters to show only this city
+    if (currentTab === 'site') {
+      document.getElementById('siteCityFilter').value = city;
+      filterSiteByCity();
+    } else {
+      document.getElementById('cityFilter').value = city;
+      filterByCity();
+    }
+    
+    // Fly to city with smooth animation
+    if (cityData && cityData.coordinates) {
+      const { center, bounds } = cityData.coordinates;
+      
+      if (bounds) {
+        // Fly to bounds with padding
+        map.flyToBounds(bounds, {
+          padding: [50, 50],
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      } else if (center) {
+        // Fallback to center point
+        map.flyTo(center, 14, {
+          duration: 1.5,
+          easeLinearity: 0.25
+        });
+      }
+    }
+    
+    // REMOVED: Show city notification (popup constraint: no center popup)
+    // The popup has been completely removed from the application
+  }
+  
+  // Update tour buttons state
+  function updateTourButtons() {
+    const playBtn = document.getElementById('playTourBtn');
+    const pauseBtn = document.getElementById('pauseTourBtn');
+    const stopBtn = document.getElementById('stopTourBtn');
+    
+    const hasCities = tourCities.length > 0;
+    const isOnTour = currentTourCityIndex >= 0;
+    
+    // Enable/disable based on state
+    playBtn.disabled = tourIsPlaying || !hasCities;
+    pauseBtn.disabled = !tourIsPlaying;
+    stopBtn.disabled = !isOnTour;
+    
+    // Update button text based on state
+    if (tourIsPlaying) {
+      playBtn.innerHTML = '<i class="fas fa-play"></i> <span>Playing...</span>';
+      pauseBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
+    } else {
+      playBtn.innerHTML = '<i class="fas fa-play"></i> <span>Start Tour</span>';
+      pauseBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
+    }
+  }
+  
+  // Update tour UI based on available cities
+  function updateTourUI() {
+    const hasCities = tourCities.length > 0;
+    
+    if (!hasCities) {
+      // Grey out controls if no cities
+      const cityTourTab = document.getElementById('cityTourTab');
+      cityTourTab.style.opacity = '0.7';
+      showNotification('No cities found in data. Load data to enable city tour.', 'info');
+    } else {
+      const cityTourTab = document.getElementById('cityTourTab');
+      cityTourTab.style.opacity = '1';
+      updateTourButtons();
+    }
+  }
+  
+  // Update tour speed
+  function updateTourSpeed() {
+    const speedSlider = document.getElementById('tourSpeed');
+    const speedValue = document.getElementById('tourSpeedValue');
+    
+    tourSpeed = parseInt(speedSlider.value);
+    speedValue.textContent = `${tourSpeed / 1000}s`;
+    
+    // Restart interval with new speed if tour is playing
+    if (tourIsPlaying && cityTourInterval) {
+      clearInterval(cityTourInterval);
+      cityTourInterval = setInterval(nextCity, tourSpeed);
+    }
+  }
+  
+  // REMOVED: Show tour notification for current city
+  // REMOVED: Hide tour notification
+  
+  // ===========================================
+  // EXISTING FUNCTIONS (keeping for reference)
+  // ===========================================
+  
   // Tab Switching Function
   function switchTab(tab) {
     currentTab = tab;
@@ -2238,9 +2838,12 @@
       // Update health indicator
       updateHealthIndicator();
     }
+    
+    // Reinitialize city tour for current tab
+    initCityTour();
   }
   
-  // Theme Toggle Function - UPDATED: No map layer changes
+  // Theme Toggle Function
   function toggleTheme() {
     const body = document.body;
     const themeToggle = document.getElementById('themeToggle');
@@ -2339,17 +2942,6 @@
     document.getElementById('currentScale').textContent = formattedScale;
   }
   
-  // Calculate zoom level for a specific scale (1:35)
-  function getZoomForScale(targetScale) {
-    // Calculate the zoom level needed to achieve 1:35 scale
-    const metersPerPixelAtZoom0 = 156543.03392;
-    const targetMetersPerPixel = targetScale;
-    
-    const zoom = Math.log2(metersPerPixelAtZoom0 / targetMetersPerPixel);
-    
-    return Math.max(0, Math.min(19, Math.round(zoom)));
-  }
-  
   // Change chart type for Asset Information
   function changeChartType() {
     currentChartType = document.getElementById('chartTypeFilter').value;
@@ -2366,14 +2958,13 @@
     }
   }
   
-  // Change map layer - UPDATED: No theme-based adjustments
+  // Change map layer
   function changeMapLayer(layerType) {
     if (mapLayers[currentMapLayer]) {
       map.removeLayer(mapLayers[currentMapLayer]);
     }
     
     if (mapLayers[layerType]) {
-      // Always use the same map layers regardless of theme
       mapLayers[layerType].addTo(map);
       currentMapLayer = layerType;
     }
@@ -2962,7 +3553,6 @@
         <div class="distribution-info">
           <div class="distribution-name">${abbreviation}</div>
           <div class="distribution-count">${count}</div>
-          <!-- REMOVED: Grey descriptive text -->
         </div>
       `;
       gridContainer.appendChild(itemDiv);
@@ -3264,25 +3854,6 @@
     });
   }
   
-  // Get asset type icon
-  function getAssetTypeIcon(type) {
-    const typeLower = type.toLowerCase();
-    if (typeLower.includes('pump')) return 'tint';
-    if (typeLower.includes('valve')) return 'faucet';
-    if (typeLower.includes('filter')) return 'filter';
-    if (typeLower.includes('tank')) return 'water';
-    if (typeLower.includes('pipe')) return 'stream';
-    if (typeLower.includes('motor')) return 'cog';
-    if (typeLower.includes('generator')) return 'bolt';
-    if (typeLower.includes('flow')) return 'tachometer-alt';
-    return 'cog';
-  }
-  
-  // Get condition color
-  function getConditionColor(condition) {
-    return conditionColors[condition] || '#636e72';
-  }
-  
   // Build popup content for asset
   function buildAssetPopup(asset) {
     const conditionColor = getConditionColor(asset.condition);
@@ -3373,6 +3944,11 @@
     `;
   }
   
+  // Get condition color
+  function getConditionColor(condition) {
+    return conditionColors[condition] || '#636e72';
+  }
+  
   // Load CSV data
   function loadCSVData() {
     // Load Site Type Data CSV
@@ -3401,6 +3977,9 @@
         updateSiteCityFilter();
         updateSiteTypeFilter();
         updateSiteStatusFilter();
+        
+        // Initialize city tour
+        initCityTour();
         
         // Load Asset Data CSV
         loadAssetCSVData();
@@ -3496,9 +4075,6 @@
         if (isNaN(longitude)) longitude = 0;
       }
       
-      // UPDATED: Only use data from Site Information CSV, no fallback merging
-      // Remove fallback to generic columns
-      
       return {
         id: index,
         siteId: row['Site_ID'] || row['Site ID'] || row['site_id'] || `SITE-${index}`,
@@ -3512,12 +4088,20 @@
         longitude: longitude
       };
     }).filter(site => {
-      return !isNaN(site.latitude) && 
+      // Filter out invalid coordinates with enhanced validation
+      const hasValidCoords = !isNaN(site.latitude) && 
              !isNaN(site.longitude) &&
              site.latitude !== 0 && 
              site.longitude !== 0 &&
              Math.abs(site.latitude) <= 90 &&
              Math.abs(site.longitude) <= 180;
+      
+      // Log invalid entries for debugging
+      if (!hasValidCoords) {
+        console.warn(`Filtered out site with invalid coordinates: ${site.siteName} (${site.latitude}, ${site.longitude})`);
+      }
+      
+      return hasValidCoords;
     });
     
     console.log(`Loaded ${sites.length} valid sites from Site Information CSV`);
@@ -3559,6 +4143,11 @@
         updateCityPanel();
         updateSiteHealthIndicator();
         updateSiteNameDisplay();
+        
+        // Initialize city tour for asset data
+        if (currentTab === 'asset') {
+          initCityTour();
+        }
         
         showNotification(`Successfully loaded ${allSites.length} sites and ${allAssets.length} assets`, 'success');
         
@@ -3699,12 +4288,20 @@
         nextMaintenance: row['Next_Maintenance'] || row['Next Maintenance'] || 'N/A'
       };
     }).filter(asset => {
-      return !isNaN(asset.latitude) && 
+      // Filter out invalid coordinates with enhanced validation
+      const hasValidCoords = !isNaN(asset.latitude) && 
              !isNaN(asset.longitude) &&
              asset.latitude !== 0 && 
              asset.longitude !== 0 &&
              Math.abs(asset.latitude) <= 90 &&
              Math.abs(asset.longitude) <= 180;
+      
+      // Log invalid entries for debugging
+      if (!hasValidCoords) {
+        console.warn(`Filtered out asset with invalid coordinates: ${asset.assetId} (${asset.latitude}, ${asset.longitude})`);
+      }
+      
+      return hasValidCoords;
     });
     
     console.log(`Loaded ${assets.length} valid assets`);
@@ -3869,7 +4466,7 @@
     console.log('Creating sample site data for testing...');
     
     allSites = [];
-    const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
+    const cities = ['AL AIS', 'AL HENAKIYAH', 'AL MADINAH', 'AL MAHD', 'AL ULA', 'BADR', 'KHAYBAR', 'WADI AL FARA', 'YANBU'];
     const siteTypes = [
       'POTABLE WATER STORAGE TANKS (WTNK)',
       'WASTE WATER PUMPING STATION (WWPS)', 
@@ -3885,26 +4482,37 @@
     
     let id = 1;
     
-    // Generate 100 sample sites
-    for (let i = 0; i < 100; i++) {
-      const cityIndex = Math.floor(Math.random() * cities.length);
-      const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
-      const siteNameIndex = Math.floor(Math.random() * siteNames.length);
-      const statusIndex = Math.floor(Math.random() * siteStatuses.length);
+    // Generate sample sites for each city
+    cities.forEach(city => {
+      // Generate 3-8 sites per city
+      const sitesPerCity = 3 + Math.floor(Math.random() * 6);
       
-      allSites.push({
-        id: id++,
-        siteId: `SITE-${String(i+1).padStart(3, '0')}`,
-        siteName: siteNames[siteNameIndex],
-        city: cities[cityIndex],
-        siteType: siteTypes[siteTypeIndex],
-        siteStatus: siteStatuses[statusIndex],
-        description: 'Water Facility Site',
-        capacity: `${Math.floor(Math.random() * 10000)} m³`,
-        latitude: 24.50 + (Math.random() - 0.5) * 0.5,
-        longitude: 39.65 + (Math.random() - 0.5) * 0.5
-      });
-    }
+      for (let i = 0; i < sitesPerCity; i++) {
+        const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
+        const siteNameIndex = Math.floor(Math.random() * siteNames.length);
+        const statusIndex = Math.floor(Math.random() * siteStatuses.length);
+        
+        // Get city coordinates
+        const cityCoords = cityCoordinates[city] || { lat: 24.50, lng: 39.65 };
+        
+        // Add some randomness to coordinates
+        const lat = cityCoords.lat + (Math.random() - 0.5) * 0.1;
+        const lng = cityCoords.lng + (Math.random() - 0.5) * 0.1;
+        
+        allSites.push({
+          id: id++,
+          siteId: `SITE-${city.substring(0, 3).toUpperCase()}-${String(i+1).padStart(3, '0')}`,
+          siteName: siteNames[siteNameIndex],
+          city: city,
+          siteType: siteTypes[siteTypeIndex],
+          siteStatus: siteStatuses[statusIndex],
+          description: 'Water Facility Site',
+          capacity: `${Math.floor(Math.random() * 10000)} m³`,
+          latitude: lat,
+          longitude: lng
+        });
+      }
+    });
     
     filteredSites = [...allSites];
     
@@ -3920,7 +4528,7 @@
     console.log('Creating sample asset data for testing...');
     
     allAssets = [];
-    const cities = ['Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk', 'Abha'];
+    const cities = ['AL AIS', 'AL HENAKIYAH', 'AL MADINAH', 'AL MAHD', 'AL ULA', 'BADR', 'KHAYBAR', 'WADI AL FARA', 'YANBU'];
     const siteTypes = [
       'POTABLE WATER STORAGE TANKS (WTNK)',
       'WASTE WATER PUMPING STATION (WWPS)', 
@@ -3935,36 +4543,47 @@
     
     let id = 1;
     
-    // Generate 200 sample assets
-    for (let i = 0; i < 200; i++) {
-      const cityIndex = Math.floor(Math.random() * cities.length);
-      const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
-      const siteIndex = Math.floor(Math.random() * sites.length);
+    // Generate sample assets for each city
+    cities.forEach(city => {
+      // Generate 5-15 assets per city
+      const assetsPerCity = 5 + Math.floor(Math.random() * 11);
       
-      allAssets.push({
-        id: id++,
-        assetId: `ASSET-${String(i+1).padStart(3, '0')}`,
-        facilityId: `FAC-${Math.floor(Math.random() * 5) + 1}`,
-        siteNameL3: sites[siteIndex],
-        city: cities[cityIndex],
-        siteTypeL2: siteTypes[siteTypeIndex],
-        building: `Building ${String.fromCharCode(65 + Math.floor(Math.random() * 5))}`,
-        description: 'Water Asset',
-        tagNumber: `TAG-${i+1}`,
-        inUse: Math.random() > 0.3 ? 'YES' : 'NO',
-        working: Math.random() > 0.2 ? 'YES' : 'NO',
-        condition: ['EXCELLENT', 'VERY GOOD', 'GOOD', 'FAIR', 'POOR', 'CRITICAL'][Math.floor(Math.random() * 6)],
-        age: Math.floor(Math.random() * 15) + 1,
-        remainingLife: `${Math.floor(Math.random() * 20)} years`,
-        maxLife: '20 years',
-        latitude: 24.50 + (Math.random() - 0.5) * 0.5,
-        longitude: 39.65 + (Math.random() - 0.5) * 0.5,
-        type: 'Pump',
-        equipmentType: 'Pump Type A',
-        lastMaintenance: '2023-01-15',
-        nextMaintenance: '2024-01-15'
-      });
-    }
+      for (let i = 0; i < assetsPerCity; i++) {
+        const siteTypeIndex = Math.floor(Math.random() * siteTypes.length);
+        const siteIndex = Math.floor(Math.random() * sites.length);
+        
+        // Get city coordinates
+        const cityCoords = cityCoordinates[city] || { lat: 24.50, lng: 39.65 };
+        
+        // Add some randomness to coordinates
+        const lat = cityCoords.lat + (Math.random() - 0.5) * 0.1;
+        const lng = cityCoords.lng + (Math.random() - 0.5) * 0.1;
+        
+        allAssets.push({
+          id: id++,
+          assetId: `ASSET-${city.substring(0, 3).toUpperCase()}-${String(i+1).padStart(3, '0')}`,
+          facilityId: `FAC-${Math.floor(Math.random() * 5) + 1}`,
+          siteNameL3: sites[siteIndex],
+          city: city,
+          siteTypeL2: siteTypes[siteTypeIndex],
+          building: `Building ${String.fromCharCode(65 + Math.floor(Math.random() * 5))}`,
+          description: 'Water Asset',
+          tagNumber: `TAG-${i+1}`,
+          inUse: Math.random() > 0.3 ? 'YES' : 'NO',
+          working: Math.random() > 0.2 ? 'YES' : 'NO',
+          condition: ['EXCELLENT', 'VERY GOOD', 'GOOD', 'FAIR', 'POOR', 'CRITICAL'][Math.floor(Math.random() * 6)],
+          age: Math.floor(Math.random() * 15) + 1,
+          remainingLife: `${Math.floor(Math.random() * 20)} years`,
+          maxLife: '20 years',
+          latitude: lat,
+          longitude: lng,
+          type: 'Pump',
+          equipmentType: 'Pump Type A',
+          lastMaintenance: '2023-01-15',
+          nextMaintenance: '2024-01-15'
+        });
+      }
+    });
     
     filteredAssets = [...allAssets];
     
@@ -4632,7 +5251,7 @@
     }
   }
   
-  // Filter site by city - MODIFIED TO USE FIXED COORDINATES AND SCALE
+  // Filter site by city
   function filterSiteByCity() {
     const siteCityFilter = document.getElementById('siteCityFilter').value;
     const siteTypeFilter = document.getElementById('siteTypeFilter');
@@ -4654,13 +5273,7 @@
         // Use predefined city center coordinates
         const coords = cityCoordinates[cityName];
         
-        // Calculate zoom level for 1:35 scale
-        const targetScale = 35; // 1:35 scale
-        const zoomLevel = getZoomForScale(targetScale);
-        
-        console.log(`Centering on ${cityName} at coordinates: ${coords.lat}, ${coords.lng} with zoom: ${zoomLevel} for scale 1:${targetScale}`);
-        
-        map.flyTo([coords.lat, coords.lng], zoomLevel, {
+        map.flyTo([coords.lat, coords.lng], 14, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -4671,11 +5284,7 @@
         const avgLat = totalLat / filteredSites.length;
         const avgLng = totalLng / filteredSites.length;
         
-        // Calculate zoom level for 1:35 scale
-        const targetScale = 35; // 1:35 scale
-        const zoomLevel = getZoomForScale(targetScale);
-        
-        map.flyTo([avgLat, avgLng], zoomLevel, {
+        map.flyTo([avgLat, avgLng], 14, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -4758,7 +5367,7 @@
     }
   }
   
-  // Filter asset by city - MODIFIED TO USE FIXED COORDINATES AND SCALE
+  // Filter asset by city
   function filterByCity() {
     const cityFilter = document.getElementById('cityFilter').value;
     const siteFilter = document.getElementById('siteFilter');
@@ -4780,13 +5389,7 @@
         // Use predefined city center coordinates
         const coords = cityCoordinates[cityName];
         
-        // Calculate zoom level for 1:35 scale
-        const targetScale = 35; // 1:35 scale
-        const zoomLevel = getZoomForScale(targetScale);
-        
-        console.log(`Centering on ${cityName} at coordinates: ${coords.lat}, ${coords.lng} with zoom: ${zoomLevel} for scale 1:${targetScale}`);
-        
-        map.flyTo([coords.lat, coords.lng], zoomLevel, {
+        map.flyTo([coords.lat, coords.lng], 14, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -4797,11 +5400,7 @@
         const avgLat = totalLat / filteredAssets.length;
         const avgLng = totalLng / filteredAssets.length;
         
-        // Calculate zoom level for 1:35 scale
-        const targetScale = 35; // 1:35 scale
-        const zoomLevel = getZoomForScale(targetScale);
-        
-        map.flyTo([avgLat, avgLng], zoomLevel, {
+        map.flyTo([avgLat, avgLng], 14, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -4954,6 +5553,27 @@
         e.preventDefault();
         switchTab('asset');
       }
+      // City tour shortcuts
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (tourIsPlaying) {
+          pauseCityTour();
+        } else {
+          startCityTour();
+        }
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextCity();
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        previousCity();
+      }
+      if (e.key === 's' || e.key === 'S') {
+        e.preventDefault();
+        stopCityTour();
+      }
     });
   }
   
@@ -4962,4 +5582,3 @@
 
 </body>
 </html>
-
