@@ -1033,13 +1033,13 @@
       display: inline-block;
     }
 
-    /* NEW: Bottom Panel with Tabs */
+    /* NEW: Bottom Panel with Tabs - UPDATED WITH SEARCH TAB */
     .bottom-panel {
       position: fixed;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 800px;
+      width: 900px; /* Increased from 800px for 3 tabs */
       max-width: 90%;
       background: var(--theme-map-controls-bg);
       border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
@@ -1348,6 +1348,182 @@
       text-align: right;
     }
 
+    /* NEW: Search Tab Content */
+    .search-content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .search-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-header h4 {
+      font-size: 0.95em;
+      color: var(--theme-text);
+      margin: 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-header h4 i {
+      color: var(--accent-teal);
+    }
+
+    .search-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .search-input-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 2px solid var(--theme-input-border);
+      border-radius: var(--border-radius-md);
+      background: var(--theme-input-bg);
+      color: var(--theme-input-text);
+      font-size: 0.9em;
+      transition: all var(--transition-fast);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .search-button {
+      padding: 10px 20px;
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius-md);
+      font-weight: 600;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 100px;
+    }
+
+    .search-button:hover {
+      background: var(--primary-blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
+    }
+
+    .search-results {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid var(--theme-input-border);
+      border-radius: var(--border-radius-md);
+      background: var(--theme-input-bg);
+      display: none;
+    }
+
+    .search-results.active {
+      display: block;
+    }
+
+    .search-result-item {
+      padding: 10px 15px;
+      border-bottom: 1px solid var(--theme-input-border);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-item:hover {
+      background: var(--theme-section-bg);
+    }
+
+    .search-result-item.active {
+      background: rgba(0, 102, 204, 0.1);
+      border-left: 3px solid var(--primary-blue);
+    }
+
+    .search-result-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .search-result-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .search-result-name {
+      font-weight: 600;
+      font-size: 0.9em;
+      color: var(--theme-text);
+    }
+
+    .search-result-details {
+      font-size: 0.8em;
+      color: var(--neutral-gray);
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-result-type {
+      background: rgba(0, 102, 204, 0.1);
+      color: var(--primary-blue);
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 0.75em;
+      font-weight: 600;
+    }
+
+    .search-clear-button {
+      padding: 8px 15px;
+      background: var(--theme-section-bg);
+      border: 1px solid var(--theme-input-border);
+      border-radius: var(--border-radius-md);
+      color: var(--theme-text);
+      font-size: 0.85em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .search-clear-button:hover {
+      background: var(--theme-input-bg);
+      border-color: var(--danger-red);
+      color: var(--danger-red);
+    }
+
     /* Health Status Indicator at Bottom of Filter Panel */
     .health-indicator {
       background: var(--theme-section-bg);
@@ -1504,7 +1680,7 @@
       border: 1px solid var(--theme-section-border);
     }
 
-    /* UPDATED: Custom Cluster Markers - Now match Site Types icons style */
+    /* UPDATED: Custom Cluster Markers - OPTIMIZED: Smaller and text-free */
     .custom-cluster {
       background: #FFD166;
       border: 2px solid white;
@@ -1520,9 +1696,9 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      font-size: 8px;
-      line-height: 1.1;
-      padding: 2px;
+      font-size: 0; /* Hide any text */
+      line-height: 0;
+      padding: 0;
       text-align: center;
       letter-spacing: -0.5px;
     }
@@ -1532,7 +1708,7 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
-    /* UPDATED: Cluster colors to match Site Types - WABS and WWPS updated */
+    /* UPDATED: Cluster colors to match Site Types - WABS and WWPS updated - SMALLER */
     .cluster-wtnk {
       background: #36A2EB;
     }
@@ -1568,13 +1744,13 @@
       animation: gradientShift 3s infinite alternate;
     }
 
-    /* Individual Marker Styles - UPDATED: ONLY SHOW SITE TYPE ABBREVIATION */
+    /* Individual Marker Styles - UPDATED: OPTIMIZED - 50% smaller, no text, color-only */
     .site-type-marker {
       background: #36A2EB;
-      border: 2px solid white;
+      border: 1.5px solid white; /* Reduced from 2px */
       border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      color: white;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Reduced shadow */
+      color: transparent; /* Hide text */
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -1583,15 +1759,15 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-      font-size: 9px;
-      line-height: 1;
-      letter-spacing: -0.3px;
+      text-shadow: none; /* Remove text shadow */
+      font-size: 0; /* Hide text */
+      line-height: 0;
+      letter-spacing: 0;
     }
 
     .site-type-marker:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      transform: scale(1.15); /* Slightly less scale on hover */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
       z-index: 1000;
     }
 
@@ -1604,7 +1780,6 @@
     }
     .site-type-marker.wwtp {
       background: #FFCE56;
-      color: #0d1117;
     }
     .site-type-marker.wfls {
       background: #4BC0C0;
@@ -1628,6 +1803,21 @@
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       100% { background-position: 100% 50%; }
+    }
+
+    /* Highlighted marker for search results */
+    .site-type-marker.highlighted {
+      border: 3px solid #FFD700;
+      box-shadow: 0 0 20px #FFD700, 0 0 30px rgba(255, 215, 0, 0.5);
+      animation: pulse 1.5s infinite;
+      z-index: 2000;
+    }
+
+    .custom-cluster.highlighted {
+      border: 3px solid #FFD700;
+      box-shadow: 0 0 20px #FFD700, 0 0 30px rgba(255, 215, 0, 0.5);
+      animation: pulse 1.5s infinite;
+      z-index: 2000;
     }
 
     /* Scrollbar styling */
@@ -1687,6 +1877,12 @@
       }
       .tour-speed-control {
         min-width: 180px;
+      }
+      .search-input-group {
+        flex-direction: column;
+      }
+      .search-button {
+        width: 100%;
       }
     }
 
@@ -1790,6 +1986,13 @@
         padding: 6px 10px;
         font-size: 0.75em;
       }
+      .bottom-panel-tabs {
+        flex-wrap: wrap;
+      }
+      .bottom-panel-tab {
+        flex: 1 0 calc(33.333% - 10px);
+        min-width: 120px;
+      }
     }
 
     @media (max-width: 576px) {
@@ -1810,6 +2013,15 @@
       }
       .stats-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+      .search-button {
+        padding: 8px 15px;
+        min-width: 80px;
+        font-size: 0.8em;
+      }
+      .search-input {
+        padding: 8px 12px;
+        font-size: 0.85em;
       }
     }
 
@@ -1876,6 +2088,21 @@
       .tour-speed-control {
         min-width: 150px;
       }
+      .search-button span {
+        display: none;
+      }
+      .search-button {
+        min-width: 60px;
+        justify-content: center;
+      }
+      .search-clear-button span {
+        display: none;
+      }
+      .search-clear-button {
+        padding: 8px;
+        justify-content: center;
+        width: 40px;
+      }
     }
 
     @media (max-width: 380px) {
@@ -1889,6 +2116,9 @@
       #equipmentChart {
         width: 216px !important;
         height: 216px !important;
+      }
+      .stats-grid.site-stats {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -2184,7 +2414,7 @@
   </div>
 </div>
 
-<!-- NEW: Bottom Panel with Tabs -->
+<!-- UPDATED: Bottom Panel with Search Tab -->
 <div class="bottom-panel" id="bottomPanel">
   <div class="bottom-panel-tabs">
     <button class="bottom-panel-tab active" id="mapViewTab" onclick="switchBottomTab('mapView')">
@@ -2192,6 +2422,9 @@
     </button>
     <button class="bottom-panel-tab" id="cityTourTab" onclick="switchBottomTab('cityTour')">
       <i class="fas fa-map-marked-alt"></i> City Tour Animation
+    </button>
+    <button class="bottom-panel-tab" id="searchTab" onclick="switchBottomTab('search')">
+      <i class="fas fa-search"></i> Search
     </button>
   </div>
   
@@ -2249,6 +2482,31 @@
         </div>
       </div>
     </div>
+    
+    <!-- NEW: Search Tab Content -->
+    <div id="searchContent" class="tab-content">
+      <div class="search-content">
+        <div class="search-header">
+          <h4><i class="fas fa-search"></i> Search Sites</h4>
+        </div>
+        
+        <div class="search-controls">
+          <div class="search-input-group">
+            <input type="text" class="search-input" id="siteSearchInput" placeholder="Search by site name..." onkeyup="handleSearchKeyup(event)">
+            <button class="search-button" id="siteSearchButton" onclick="performSiteSearch()">
+              <i class="fas fa-search"></i> <span>Search</span>
+            </button>
+            <button class="search-clear-button" id="clearSearchButton" onclick="clearSearchResults()">
+              <i class="fas fa-times"></i> <span>Clear</span>
+            </button>
+          </div>
+          
+          <div class="search-results" id="searchResults">
+            <!-- Search results will be populated here -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -2259,7 +2517,7 @@
 
 <!-- Zoom Level Indicator -->
 <div class="zoom-level" id="zoomLevel">
-  Zoom Level: <span id="currentZoom">12</span>
+  Zoom Level: <span id="currentZoom">13</span>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -2283,7 +2541,7 @@
   let siteStats = {};
   let cityStats = {};
   let siteCityStats = {};
-  let currentZoom = 12;
+  let currentZoom = 13;
   let equipmentChart = null;
   let currentMapLayer = 'street';
   let mapLayers = {};
@@ -2294,6 +2552,11 @@
   let currentSiteChartType = 'siteType'; // 'siteType' or 'siteStatus'
   let isDarkTheme = false;
   let currentTab = 'site'; // 'site' or 'asset'
+  
+  // Search variables
+  let searchResults = [];
+  let highlightedMarkers = [];
+  let isSearchActive = false;
   
   // PERFORMANCE OPTIMIZATION: Cache for tab switching
   let tabCache = {
@@ -2323,6 +2586,7 @@
   // PERFORMANCE OPTIMIZATION: Debounce timers
   let switchTabTimer = null;
   let updateChartTimer = null;
+  let searchTimer = null;
   
   // City Tour Animation Variables
   let cityTourInterval = null;
@@ -2398,7 +2662,7 @@
   
   // Initialize map
   function initMap() {
-    map = L.map('map').setView([24.50, 39.65], 12);
+    map = L.map('map').setView([24.50, 39.65], 13);
     
     // Define map layers - Using same layers for both themes
     mapLayers = {
@@ -2423,11 +2687,11 @@
     // Add default layer
     mapLayers.street.addTo(map);
     
-    // Initialize marker cluster with custom styling - UPDATED: Now matches Site Types icons style
+    // Initialize marker cluster with custom styling - UPDATED: Smaller and text-free
     markerCluster = L.markerClusterGroup({
       maxClusterRadius: function(zoom) {
         if (zoom >= 15) return 8;
-        if (zoom >= 12) return 15;
+        if (zoom >= 13) return 15;
         return 30;
       },
       spiderfyOnMaxZoom: true,
@@ -2484,32 +2748,27 @@
           default: backgroundColor = '#FFD166'; textColor = '#0d1117';
         }
         
-        // Calculate size based on count
-        let size = 20;
-        let fontSize = 8;
+        // Calculate size based on count - UPDATED: 50% smaller
+        let size = 16; // Reduced from 20
+        let fontSize = 0; // Hide text
         
         if (count < 10) {
-          size = 24;
-          fontSize = 9;
+          size = 18; // Reduced from 24
+          fontSize = 0;
         } else if (count < 50) {
-          size = 28;
-          fontSize = 10;
+          size = 20; // Reduced from 28
+          fontSize = 0;
         } else if (count < 100) {
-          size = 32;
-          fontSize = 11;
+          size = 22; // Reduced from 32
+          fontSize = 0;
         } else {
-          size = 36;
-          fontSize = 12;
+          size = 24; // Reduced from 36
+          fontSize = 0;
         }
         
-        // UPDATED: Cluster marker now matches Site Types icons style - circular with icon and abbreviation
+        // UPDATED: Cluster marker now text-free and 50% smaller
         return L.divIcon({
-          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};">
-                  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <i class="fas fa-building" style="font-size: ${fontSize * 0.9}px; margin-bottom: 2px;"></i>
-                    <div style="font-weight: bold; font-size: ${fontSize * 0.7}px; line-height: 1;">${dominantSiteType || 'MIX'}</div>
-                  </div>
-                </div>`,
+          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};"></div>`,
           className: 'custom-cluster-icon',
           iconSize: L.point(size, size),
           iconAnchor: L.point(size/2, size/2)
@@ -2521,7 +2780,7 @@
     siteMarkerCluster = L.markerClusterGroup({
       maxClusterRadius: function(zoom) {
         if (zoom >= 15) return 8;
-        if (zoom >= 12) return 15;
+        if (zoom >= 13) return 15;
         return 30;
       },
       spiderfyOnMaxZoom: true,
@@ -2571,31 +2830,26 @@
           default: backgroundColor = '#FFD166'; textColor = '#0d1117';
         }
         
-        // Calculate size based on count
-        let size = 20;
-        let fontSize = 8;
+        // Calculate size based on count - UPDATED: 50% smaller
+        let size = 16;
+        let fontSize = 0;
         
         if (count < 10) {
-          size = 24;
-          fontSize = 9;
+          size = 18;
+          fontSize = 0;
         } else if (count < 50) {
-          size = 28;
-          fontSize = 10;
+          size = 20;
+          fontSize = 0;
         } else if (count < 100) {
-          size = 32;
-          fontSize = 11;
+          size = 22;
+          fontSize = 0;
         } else {
-          size = 36;
-          fontSize = 12;
+          size = 24;
+          fontSize = 0;
         }
         
         return L.divIcon({
-          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};">
-                  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <i class="fas fa-building" style="font-size: ${fontSize * 0.9}px; margin-bottom: 2px;"></i>
-                    <div style="font-weight: bold; font-size: ${fontSize * 0.7}px; line-height: 1;">${dominantSiteType || 'MIX'}</div>
-                  </div>
-                </div>`,
+          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};"></div>`,
           className: 'custom-cluster-icon',
           iconSize: L.point(size, size),
           iconAnchor: L.point(size/2, size/2)
@@ -2606,7 +2860,7 @@
     assetMarkerCluster = L.markerClusterGroup({
       maxClusterRadius: function(zoom) {
         if (zoom >= 15) return 8;
-        if (zoom >= 12) return 15;
+        if (zoom >= 13) return 15;
         return 30;
       },
       spiderfyOnMaxZoom: true,
@@ -2656,31 +2910,26 @@
           default: backgroundColor = '#FFD166'; textColor = '#0d1117';
         }
         
-        // Calculate size based on count
-        let size = 20;
-        let fontSize = 8;
+        // Calculate size based on count - UPDATED: 50% smaller
+        let size = 16;
+        let fontSize = 0;
         
         if (count < 10) {
-          size = 24;
-          fontSize = 9;
+          size = 18;
+          fontSize = 0;
         } else if (count < 50) {
-          size = 28;
-          fontSize = 10;
+          size = 20;
+          fontSize = 0;
         } else if (count < 100) {
-          size = 32;
-          fontSize = 11;
+          size = 22;
+          fontSize = 0;
         } else {
-          size = 36;
-          fontSize = 12;
+          size = 24;
+          fontSize = 0;
         }
         
         return L.divIcon({
-          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};">
-                  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <i class="fas fa-building" style="font-size: ${fontSize * 0.9}px; margin-bottom: 2px;"></i>
-                    <div style="font-weight: bold; font-size: ${fontSize * 0.7}px; line-height: 1;">${dominantSiteType || 'MIX'}</div>
-                  </div>
-                </div>`,
+          html: `<div class="custom-cluster cluster-${siteTypeClass}" style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; background: ${backgroundColor}; color: ${textColor};"></div>`,
           className: 'custom-cluster-icon',
           iconSize: L.point(size, size),
           iconAnchor: L.point(size/2, size/2)
@@ -2699,6 +2948,291 @@
     
     document.getElementById('currentZoom').textContent = currentZoom;
     updateScaleIndicator();
+  }
+  
+  // ===========================================
+  // SEARCH FUNCTIONALITY
+  // ===========================================
+  
+  // Handle search keyup event
+  function handleSearchKeyup(event) {
+    if (event.key === 'Enter') {
+      performSiteSearch();
+    } else if (event.key === 'Escape') {
+      clearSearchResults();
+    } else {
+      // Debounce the search
+      if (searchTimer) {
+        clearTimeout(searchTimer);
+      }
+      searchTimer = setTimeout(() => {
+        const query = document.getElementById('siteSearchInput').value.trim();
+        if (query.length >= 2) {
+          performSiteSearch();
+        }
+      }, 300);
+    }
+  }
+  
+  // Perform site search
+  function performSiteSearch() {
+    const query = document.getElementById('siteSearchInput').value.trim();
+    if (!query) {
+      showNotification('Please enter a search term', 'info');
+      return;
+    }
+    
+    // Clear previous highlights
+    clearSearchHighlights();
+    
+    // Search in sites and assets
+    searchResults = [];
+    
+    // Search in sites
+    allSites.forEach(site => {
+      if (site.siteName && site.siteName.toLowerCase().includes(query.toLowerCase())) {
+        searchResults.push({
+          type: 'site',
+          data: site,
+          name: site.siteName,
+          city: site.city,
+          siteType: site.siteType,
+          coordinates: [site.latitude, site.longitude]
+        });
+      }
+    });
+    
+    // Search in assets
+    allAssets.forEach(asset => {
+      if (asset.siteNameL3 && asset.siteNameL3.toLowerCase().includes(query.toLowerCase())) {
+        searchResults.push({
+          type: 'asset',
+          data: asset,
+          name: asset.siteNameL3,
+          city: asset.city,
+          siteType: asset.siteTypeL2,
+          coordinates: [asset.latitude, asset.longitude]
+        });
+      }
+    });
+    
+    // Display results
+    displaySearchResults();
+    
+    // Highlight and zoom to results
+    if (searchResults.length > 0) {
+      highlightSearchResults();
+      zoomToSearchResults();
+      showNotification(`Found ${searchResults.length} result(s) for "${query}"`, 'success');
+      isSearchActive = true;
+    } else {
+      showNotification(`No results found for "${query}"`, 'info');
+    }
+  }
+  
+  // Display search results in the UI
+  function displaySearchResults() {
+    const resultsContainer = document.getElementById('searchResults');
+    resultsContainer.innerHTML = '';
+    
+    if (searchResults.length === 0) {
+      resultsContainer.classList.remove('active');
+      return;
+    }
+    
+    resultsContainer.classList.add('active');
+    
+    searchResults.forEach((result, index) => {
+      const item = document.createElement('div');
+      item.className = 'search-result-item';
+      item.onclick = () => selectSearchResult(index);
+      
+      // Get color for site type
+      const color = getColorForSiteType(result.siteType);
+      const abbrev = getSiteTypeAbbreviation(result.siteType);
+      
+      item.innerHTML = `
+        <div class="search-result-icon" style="background: ${color}; color: ${color === '#FFCE56' || color === '#FFD166' || color === '#00D4AA' ? '#0d1117' : 'white'}">
+          ${abbrev.substring(0, 1)}
+        </div>
+        <div class="search-result-info">
+          <div class="search-result-name">${result.name}</div>
+          <div class="search-result-details">
+            <span><i class="fas fa-city"></i> ${result.city}</span>
+            <span><i class="fas fa-building"></i> ${abbrev}</span>
+            <span class="search-result-type">${result.type === 'site' ? 'Site' : 'Asset'}</span>
+          </div>
+        </div>
+      `;
+      
+      resultsContainer.appendChild(item);
+    });
+  }
+  
+  // Highlight search results on the map
+  function highlightSearchResults() {
+    clearSearchHighlights();
+    
+    // Get all markers from the current layer
+    let markers = [];
+    if (currentMarkerLayer === siteMarkerCluster || currentMarkerLayer === assetMarkerCluster) {
+      // Get markers from cluster
+      const cluster = currentTab === 'site' ? siteMarkerCluster : assetMarkerCluster;
+      markers = cluster.getLayers();
+    } else if (siteIndividualMarkers.length > 0 || assetIndividualMarkers.length > 0) {
+      // Get individual markers
+      markers = currentTab === 'site' ? siteIndividualMarkers : assetIndividualMarkers;
+    }
+    
+    // Highlight matching markers
+    markers.forEach(marker => {
+      const markerData = marker.options.site || marker.options.asset;
+      if (markerData) {
+        const searchMatch = searchResults.find(result => {
+          if (result.type === 'site' && marker.options.site) {
+            return result.data.id === marker.options.site.id;
+          } else if (result.type === 'asset' && marker.options.asset) {
+            return result.data.id === marker.options.asset.id;
+          }
+          return false;
+        });
+        
+        if (searchMatch) {
+          // Add highlight class
+          const icon = marker.getIcon();
+          if (icon.options && icon.options.html) {
+            // Update the marker icon to add highlight class
+            const newHtml = icon.options.html.replace('site-type-marker', 'site-type-marker highlighted')
+                                            .replace('custom-cluster', 'custom-cluster highlighted');
+            marker.setIcon(L.divIcon({
+              html: newHtml,
+              className: icon.options.className,
+              iconSize: icon.options.iconSize,
+              iconAnchor: icon.options.iconAnchor
+            }));
+          }
+          
+          highlightedMarkers.push(marker);
+        }
+      }
+    });
+  }
+  
+  // Zoom to search results
+  function zoomToSearchResults() {
+    if (searchResults.length === 0) return;
+    
+    const bounds = L.latLngBounds(searchResults.map(r => r.coordinates));
+    
+    if (searchResults.length === 1) {
+      // If only one result, zoom to it at a closer level
+      map.flyTo(searchResults[0].coordinates, 16, {
+        duration: 1.5,
+        easeLinearity: 0.25
+      });
+    } else {
+      // If multiple results, fit bounds with padding
+      map.flyToBounds(bounds.pad(0.1), {
+        duration: 1.5,
+        easeLinearity: 0.25
+      });
+    }
+  }
+  
+  // Select a search result
+  function selectSearchResult(index) {
+    if (index < 0 || index >= searchResults.length) return;
+    
+    const result = searchResults[index];
+    
+    // Update all result items
+    const resultItems = document.querySelectorAll('.search-result-item');
+    resultItems.forEach((item, i) => {
+      if (i === index) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+    
+    // Zoom to the selected result
+    map.flyTo(result.coordinates, 17, {
+      duration: 1.5,
+      easeLinearity: 0.25
+    });
+    
+    // Open popup if available
+    const marker = findMarkerForResult(result);
+    if (marker && marker.getPopup()) {
+      marker.openPopup();
+    }
+  }
+  
+  // Find marker for search result
+  function findMarkerForResult(result) {
+    let markers = [];
+    if (currentMarkerLayer === siteMarkerCluster || currentMarkerLayer === assetMarkerCluster) {
+      // Get markers from cluster
+      const cluster = currentTab === 'site' ? siteMarkerCluster : assetMarkerCluster;
+      markers = cluster.getLayers();
+    } else if (siteIndividualMarkers.length > 0 || assetIndividualMarkers.length > 0) {
+      // Get individual markers
+      markers = currentTab === 'site' ? siteIndividualMarkers : assetIndividualMarkers;
+    }
+    
+    for (const marker of markers) {
+      const markerData = marker.options.site || marker.options.asset;
+      if (markerData) {
+        if (result.type === 'site' && marker.options.site && result.data.id === marker.options.site.id) {
+          return marker;
+        } else if (result.type === 'asset' && marker.options.asset && result.data.id === marker.options.asset.id) {
+          return marker;
+        }
+      }
+    }
+    
+    return null;
+  }
+  
+  // Clear search highlights
+  function clearSearchHighlights() {
+    highlightedMarkers.forEach(marker => {
+      const icon = marker.getIcon();
+      if (icon.options && icon.options.html) {
+        // Remove highlight class
+        const newHtml = icon.options.html.replace('site-type-marker highlighted', 'site-type-marker')
+                                        .replace('custom-cluster highlighted', 'custom-cluster');
+        marker.setIcon(L.divIcon({
+          html: newHtml,
+          className: icon.options.className,
+          iconSize: icon.options.iconSize,
+          iconAnchor: icon.options.iconAnchor
+        }));
+      }
+    });
+    
+    highlightedMarkers = [];
+  }
+  
+  // Clear search results
+  function clearSearchResults() {
+    document.getElementById('siteSearchInput').value = '';
+    document.getElementById('searchResults').innerHTML = '';
+    document.getElementById('searchResults').classList.remove('active');
+    
+    clearSearchHighlights();
+    
+    if (isSearchActive) {
+      // Restore original view if we were in search mode
+      if (currentTab === 'site') {
+        displaySiteMarkersOptimized();
+      } else {
+        displayAssetsOptimized();
+      }
+      
+      isSearchActive = false;
+      showNotification('Search cleared', 'info');
+    }
   }
   
   // ===========================================
@@ -2791,357 +3325,6 @@
   }
   
   // ===========================================
-  // PERFORMANCE OPTIMIZED MARKER FUNCTIONS
-  // ===========================================
-  
-  // PERFORMANCE OPTIMIZATION: Optimized site markers display
-  function displaySiteMarkersOptimized() {
-    // Remove current layer if it exists
-    if (currentMarkerLayer) {
-      map.removeLayer(currentMarkerLayer);
-      currentMarkerLayer = null;
-    }
-    
-    if (heatLayer) {
-      map.removeLayer(heatLayer);
-      heatLayer = null;
-    }
-    
-    if (filteredSites.length === 0) {
-      console.log('No sites to display after filtering');
-      showNotification('No sites found with current filters', 'info');
-      return;
-    }
-    
-    const visualization = document.getElementById('siteLocationGrouping').value;
-    currentVisualization = visualization;
-    
-    // Check if we have cached markers for this visualization
-    if (!tabCache.site.markersInitialized || 
-        Date.now() - tabCache.site.lastUpdateTime > 30000) { // 30 second cache
-      
-      // Clear existing markers
-      siteMarkerCluster.clearLayers();
-      siteIndividualMarkers.forEach(marker => {
-        if (map.hasLayer(marker)) {
-          map.removeLayer(marker);
-        }
-      });
-      siteIndividualMarkers = [];
-      
-      // Create new markers based on visualization
-      switch(visualization) {
-        case 'cluster':
-          createSiteClusterMarkers();
-          break;
-        case 'individual':
-          createSiteIndividualMarkers();
-          break;
-        case 'single':
-          createSiteSingleMarkersPerLocation();
-          break;
-        case 'spider':
-          createSiteSpiderfiedMarkers();
-          break;
-        case 'heatmap':
-          createSiteHeatmap();
-          break;
-      }
-      
-      tabCache.site.markersInitialized = true;
-      tabCache.site.lastUpdateTime = Date.now();
-    }
-    
-    // Add the appropriate layer to the map
-    switch(visualization) {
-      case 'cluster':
-        currentMarkerLayer = siteMarkerCluster;
-        map.addLayer(siteMarkerCluster);
-        break;
-      case 'individual':
-      case 'single':
-      case 'spider':
-        // Add all individual markers
-        siteIndividualMarkers.forEach(marker => {
-          marker.addTo(map);
-        });
-        break;
-      case 'heatmap':
-        if (siteHeatLayer) {
-          currentMarkerLayer = siteHeatLayer;
-          map.addLayer(siteHeatLayer);
-        }
-        break;
-    }
-  }
-  
-  // Create site cluster markers (cached)
-  function createSiteClusterMarkers() {
-    filteredSites.forEach(site => {
-      const marker = L.marker([site.latitude, site.longitude], {
-        icon: getSiteIcon(site),
-        site: site
-      });
-      
-      marker.bindPopup(buildSitePopup(site));
-      siteMarkerCluster.addLayer(marker);
-    });
-  }
-  
-  // Create site individual markers (cached)
-  function createSiteIndividualMarkers() {
-    filteredSites.forEach(site => {
-      const marker = L.marker([site.latitude, site.longitude], {
-        icon: getSiteIcon(site)
-      });
-      
-      marker.bindPopup(buildSitePopup(site));
-      siteIndividualMarkers.push(marker);
-    });
-  }
-  
-  // Create site single markers per location (cached)
-  function createSiteSingleMarkersPerLocation() {
-    const locationGroups = {};
-    filteredSites.forEach(site => {
-      const locationKey = `${site.latitude.toFixed(4)},${site.longitude.toFixed(4)}`;
-      if (!locationGroups[locationKey]) {
-        locationGroups[locationKey] = [];
-      }
-      locationGroups[locationKey].push(site);
-    });
-    
-    Object.values(locationGroups).forEach(sites => {
-      if (sites.length > 0) {
-        const site = sites[0];
-        const marker = L.marker([site.latitude, site.longitude], {
-          icon: getSiteIcon(site)
-        });
-        
-        let popupContent = `<div class="popup-header"><h3>${sites.length} Sites at this Location</h3></div><div class="popup-content">`;
-        sites.forEach(s => {
-          const abbrev = getSiteTypeAbbreviation(s.siteType);
-          popupContent += `<p><strong>${s.siteName || s.siteId}</strong> - ${abbrev} (${s.siteStatus})</p>`;
-        });
-        popupContent += '</div>';
-        
-        marker.bindPopup(popupContent);
-        siteIndividualMarkers.push(marker);
-      }
-    });
-  }
-  
-  // Create site spiderfied markers (cached)
-  function createSiteSpiderfiedMarkers() {
-    filteredSites.forEach((site, index) => {
-      const offsetLat = site.latitude + (Math.random() * 0.0005 - 0.00025);
-      const offsetLng = site.longitude + (Math.random() * 0.0005 - 0.00025);
-      
-      const marker = L.marker([offsetLat, offsetLng], {
-        icon: getSiteIcon(site)
-      });
-      
-      marker.bindPopup(buildSitePopup(site));
-      siteIndividualMarkers.push(marker);
-    });
-  }
-  
-  // Create site heatmap (cached)
-  function createSiteHeatmap() {
-    const heatData = filteredSites.map(site => {
-      let intensity = 0.5;
-      if (site.siteStatus === 'OUT_OF_SERVICE') intensity = 1.0;
-      else if (site.siteStatus === 'STANDBY') intensity = 0.7;
-      else if (site.siteStatus === 'WORKING') intensity = 0.3;
-      else if (site.siteStatus === 'CWIP') intensity = 0.6;
-      else if (site.siteStatus === 'TRANSFER') intensity = 0.4;
-      
-      return [site.latitude, site.longitude, intensity];
-    });
-    
-    siteHeatLayer = L.heatLayer(heatData, {
-      radius: 20,
-      blur: 12,
-      maxZoom: 17,
-      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
-    });
-  }
-  
-  // PERFORMANCE OPTIMIZATION: Optimized asset markers display
-  function displayAssetsOptimized() {
-    // Remove current layer if it exists
-    if (currentMarkerLayer) {
-      map.removeLayer(currentMarkerLayer);
-      currentMarkerLayer = null;
-    }
-    
-    if (heatLayer) {
-      map.removeLayer(heatLayer);
-      heatLayer = null;
-    }
-    
-    if (filteredAssets.length === 0) {
-      console.log('No assets to display after filtering');
-      showNotification('No assets found with current filters', 'info');
-      return;
-    }
-    
-    const visualization = document.getElementById('locationGrouping').value;
-    currentVisualization = visualization;
-    
-    // Check if we have cached markers for this visualization
-    if (!tabCache.asset.markersInitialized || 
-        Date.now() - tabCache.asset.lastUpdateTime > 30000) { // 30 second cache
-      
-      // Clear existing markers
-      assetMarkerCluster.clearLayers();
-      assetIndividualMarkers.forEach(marker => {
-        if (map.hasLayer(marker)) {
-          map.removeLayer(marker);
-        }
-      });
-      assetIndividualMarkers = [];
-      
-      // Create new markers based on visualization
-      switch(visualization) {
-        case 'cluster':
-          createAssetClusterMarkers();
-          break;
-        case 'individual':
-          createAssetIndividualMarkers();
-          break;
-        case 'single':
-          createAssetSingleMarkersPerLocation();
-          break;
-        case 'spider':
-          createAssetSpiderfiedMarkers();
-          break;
-        case 'heatmap':
-          createAssetHeatmap();
-          break;
-      }
-      
-      tabCache.asset.markersInitialized = true;
-      tabCache.asset.lastUpdateTime = Date.now();
-    }
-    
-    // Add the appropriate layer to the map
-    switch(visualization) {
-      case 'cluster':
-        currentMarkerLayer = assetMarkerCluster;
-        map.addLayer(assetMarkerCluster);
-        break;
-      case 'individual':
-      case 'single':
-      case 'spider':
-        // Add all individual markers
-        assetIndividualMarkers.forEach(marker => {
-          marker.addTo(map);
-        });
-        break;
-      case 'heatmap':
-        if (assetHeatLayer) {
-          currentMarkerLayer = assetHeatLayer;
-          map.addLayer(assetHeatLayer);
-        }
-        break;
-    }
-  }
-  
-  // Create asset cluster markers (cached)
-  function createAssetClusterMarkers() {
-    filteredAssets.forEach(asset => {
-      const marker = L.marker([asset.latitude, asset.longitude], {
-        icon: getAssetIcon(asset),
-        asset: asset
-      });
-      
-      marker.bindPopup(buildAssetPopup(asset));
-      assetMarkerCluster.addLayer(marker);
-    });
-  }
-  
-  // Create asset individual markers (cached)
-  function createAssetIndividualMarkers() {
-    filteredAssets.forEach(asset => {
-      const marker = L.marker([asset.latitude, asset.longitude], {
-        icon: getAssetIcon(asset)
-      });
-      
-      marker.bindPopup(buildAssetPopup(asset));
-      assetIndividualMarkers.push(marker);
-    });
-  }
-  
-  // Create asset single markers per location (cached)
-  function createAssetSingleMarkersPerLocation() {
-    const locationGroups = {};
-    filteredAssets.forEach(asset => {
-      const locationKey = `${asset.latitude.toFixed(4)},${asset.longitude.toFixed(4)}`;
-      if (!locationGroups[locationKey]) {
-        locationGroups[locationKey] = [];
-      }
-      locationGroups[locationKey].push(asset);
-    });
-    
-    Object.values(locationGroups).forEach(assets => {
-      if (assets.length > 0) {
-        const asset = assets[0];
-        const marker = L.marker([asset.latitude, asset.longitude], {
-          icon: getAssetIcon(asset)
-        });
-        
-        let popupContent = `<div class="popup-header"><h3>${assets.length} Assets at this Location</h3></div><div class="popup-content">`;
-        assets.forEach(a => {
-          const abbrev = getSiteTypeAbbreviation(a.siteTypeL2);
-          popupContent += `<p><strong>${a.assetId}</strong> - ${abbrev} (${a.condition})</p>`;
-        });
-        popupContent += '</div>';
-        
-        marker.bindPopup(popupContent);
-        assetIndividualMarkers.push(marker);
-      }
-    });
-  }
-  
-  // Create asset spiderfied markers (cached)
-  function createAssetSpiderfiedMarkers() {
-    filteredAssets.forEach((asset, index) => {
-      const offsetLat = asset.latitude + (Math.random() * 0.0005 - 0.00025);
-      const offsetLng = asset.longitude + (Math.random() * 0.0005 - 0.00025);
-      
-      const marker = L.marker([offsetLat, offsetLng], {
-        icon: getAssetIcon(asset)
-      });
-      
-      marker.bindPopup(buildAssetPopup(asset));
-      assetIndividualMarkers.push(marker);
-    });
-  }
-  
-  // Create asset heatmap (cached)
-  function createAssetHeatmap() {
-    const heatData = filteredAssets.map(asset => {
-      let intensity = 0.5;
-      if (asset.condition === 'CRITICAL') intensity = 1.0;
-      else if (asset.condition === 'POOR') intensity = 0.8;
-      else if (asset.condition === 'FAIR') intensity = 0.6;
-      else if (asset.condition === 'GOOD') intensity = 0.4;
-      else if (asset.condition === 'VERY GOOD') intensity = 0.3;
-      else if (asset.condition === 'EXCELLENT') intensity = 0.2;
-      
-      return [asset.latitude, asset.longitude, intensity];
-    });
-    
-    assetHeatLayer = L.heatLayer(heatData, {
-      radius: 20,
-      blur: 12,
-      maxZoom: 17,
-      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
-    });
-  }
-  
-  // ===========================================
   // BOTTOM PANEL TAB SWITCHING
   // ===========================================
   
@@ -3149,16 +3332,20 @@
   function switchBottomTab(tab) {
     const mapViewTab = document.getElementById('mapViewTab');
     const cityTourTab = document.getElementById('cityTourTab');
+    const searchTab = document.getElementById('searchTab');
     const mapViewContent = document.getElementById('mapViewContent');
     const cityTourContent = document.getElementById('cityTourContent');
+    const searchContent = document.getElementById('searchContent');
     
     // Update tab buttons
     mapViewTab.classList.remove('active');
     cityTourTab.classList.remove('active');
+    searchTab.classList.remove('active');
     
     // Hide all content
     mapViewContent.classList.remove('active');
     cityTourContent.classList.remove('active');
+    searchContent.classList.remove('active');
     
     // Show selected content
     if (tab === 'mapView') {
@@ -3167,6 +3354,14 @@
     } else if (tab === 'cityTour') {
       cityTourTab.classList.add('active');
       cityTourContent.classList.add('active');
+    } else if (tab === 'search') {
+      searchTab.classList.add('active');
+      searchContent.classList.add('active');
+      
+      // Focus search input when tab is activated
+      setTimeout(() => {
+        document.getElementById('siteSearchInput').focus();
+      }, 100);
     }
   }
   
@@ -3340,7 +3535,7 @@
       filterByCity();
     }
     
-    // Fly to city with smooth animation at zoom level 12
+    // Fly to city with smooth animation at zoom level 13
     if (cityData && cityData.coordinates) {
       const { center } = cityData.coordinates;
       
@@ -3349,15 +3544,15 @@
         const cityName = city.toUpperCase();
         if (cityCoordinates[cityName]) {
           const coords = cityCoordinates[cityName];
-          // FIXED: Always use zoom level 12 as required
-          map.flyTo([coords.lat, coords.lng], 11, {
+          // FIXED: Always use zoom level 13 as required
+          map.flyTo([coords.lat, coords.lng], 13, {
             duration: 1.5,
             easeLinearity: 0.25
           });
         } else if (center) {
           // Fallback to center point
-          // FIXED: Always use zoom level 12 as required
-          map.flyTo(center, 11, {
+          // FIXED: Always use zoom level 13 as required
+          map.flyTo(center, 13, {
             duration: 1.5,
             easeLinearity: 0.25
           });
@@ -4346,23 +4541,20 @@
     Chart.register(centerTextPlugin);
   }
   
-  // Get asset icon - UPDATED: SMALLER FONT SIZE TO FIT IN CIRCLE
+  // Get asset icon - UPDATED: 50% smaller, no text, color-only
   function getAssetIcon(asset) {
     const siteType = asset.siteTypeL2 || 'Other';
     const abbreviation = getSiteTypeAbbreviation(siteType);
     const siteTypeClass = getSiteTypeClass(siteType);
     const color = getColorForSiteType(siteType);
     
-    // Determine marker size based on zoom level
-    let size = 28;
-    let fontSize = 9;
+    // Determine marker size based on zoom level - UPDATED: 50% smaller
+    let size = 14; // Reduced from 28 (50% smaller)
     
     if (currentZoom >= 15) {
-      size = 32;
-      fontSize = 10;
+      size = 16; // Reduced from 32
     } else if (currentZoom <= 10) {
-      size = 24;
-      fontSize = 8;
+      size = 12; // Reduced from 24
     }
     
     return L.divIcon({
@@ -4370,15 +4562,14 @@
         <div class="site-type-marker ${siteTypeClass}" style="
           width: ${size}px;
           height: ${size}px;
-          font-size: ${fontSize}px;
+          font-size: 0;
           background: ${color};
           display: flex;
           align-items: center;
           justify-content: center;
         ">
-          ${abbreviation}
-          ${asset.working === 'NO' ? '<div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
-          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -2px; right: -2px; width: 6px; height: 6px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+          ${asset.working === 'NO' ? '<div style="position: absolute; top: -1px; right: -1px; width: 4px; height: 4px; background: #e74c3c; border: 1px solid white; border-radius: 50%;"></div>' : ''}
+          ${asset.inUse === 'YES' ? '<div style="position: absolute; bottom: -1px; right: -1px; width: 4px; height: 4px; background: #00b4d8; border: 1px solid white; border-radius: 50%;"></div>' : ''}
         </div>
       `,
       className: 'site-type-marker-icon',
@@ -4387,23 +4578,20 @@
     });
   }
   
-  // Get site icon
+  // Get site icon - UPDATED: 50% smaller, no text, color-only
   function getSiteIcon(site) {
     const siteType = site.siteType || 'Other';
     const abbreviation = getSiteTypeAbbreviation(siteType);
     const siteTypeClass = getSiteTypeClass(siteType);
     const color = getColorForSiteType(siteType);
     
-    // Determine marker size based on zoom level
-    let size = 28;
-    let fontSize = 9;
+    // Determine marker size based on zoom level - UPDATED: 50% smaller
+    let size = 14; // Reduced from 28
     
     if (currentZoom >= 15) {
-      size = 32;
-      fontSize = 10;
+      size = 16; // Reduced from 32
     } else if (currentZoom <= 10) {
-      size = 24;
-      fontSize = 8;
+      size = 12; // Reduced from 24
     }
     
     // Get status indicator color
@@ -4419,15 +4607,14 @@
         <div class="site-type-marker ${siteTypeClass}" style="
           width: ${size}px;
           height: ${size}px;
-          font-size: ${fontSize}px;
+          font-size: 0;
           background: ${color};
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
         ">
-          ${abbreviation}
-          <div style="position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; background: ${statusColor}; border: 1px solid white; border-radius: 50%;"></div>
+          <div style="position: absolute; top: -1px; right: -1px; width: 4px; height: 4px; background: ${statusColor}; border: 1px solid white; border-radius: 50%;"></div>
         </div>
       `,
       className: 'site-type-marker-icon',
@@ -5431,6 +5618,357 @@
   }
   
   // ===========================================
+  // PERFORMANCE OPTIMIZED MARKER FUNCTIONS
+  // ===========================================
+  
+  // PERFORMANCE OPTIMIZATION: Optimized site markers display
+  function displaySiteMarkersOptimized() {
+    // Remove current layer if it exists
+    if (currentMarkerLayer) {
+      map.removeLayer(currentMarkerLayer);
+      currentMarkerLayer = null;
+    }
+    
+    if (heatLayer) {
+      map.removeLayer(heatLayer);
+      heatLayer = null;
+    }
+    
+    if (filteredSites.length === 0) {
+      console.log('No sites to display after filtering');
+      showNotification('No sites found with current filters', 'info');
+      return;
+    }
+    
+    const visualization = document.getElementById('siteLocationGrouping').value;
+    currentVisualization = visualization;
+    
+    // Check if we have cached markers for this visualization
+    if (!tabCache.site.markersInitialized || 
+        Date.now() - tabCache.site.lastUpdateTime > 30000) { // 30 second cache
+      
+      // Clear existing markers
+      siteMarkerCluster.clearLayers();
+      siteIndividualMarkers.forEach(marker => {
+        if (map.hasLayer(marker)) {
+          map.removeLayer(marker);
+        }
+      });
+      siteIndividualMarkers = [];
+      
+      // Create new markers based on visualization
+      switch(visualization) {
+        case 'cluster':
+          createSiteClusterMarkers();
+          break;
+        case 'individual':
+          createSiteIndividualMarkers();
+          break;
+        case 'single':
+          createSiteSingleMarkersPerLocation();
+          break;
+        case 'spider':
+          createSiteSpiderfiedMarkers();
+          break;
+        case 'heatmap':
+          createSiteHeatmap();
+          break;
+      }
+      
+      tabCache.site.markersInitialized = true;
+      tabCache.site.lastUpdateTime = Date.now();
+    }
+    
+    // Add the appropriate layer to the map
+    switch(visualization) {
+      case 'cluster':
+        currentMarkerLayer = siteMarkerCluster;
+        map.addLayer(siteMarkerCluster);
+        break;
+      case 'individual':
+      case 'single':
+      case 'spider':
+        // Add all individual markers
+        siteIndividualMarkers.forEach(marker => {
+          marker.addTo(map);
+        });
+        break;
+      case 'heatmap':
+        if (siteHeatLayer) {
+          currentMarkerLayer = siteHeatLayer;
+          map.addLayer(siteHeatLayer);
+        }
+        break;
+    }
+  }
+  
+  // Create site cluster markers (cached)
+  function createSiteClusterMarkers() {
+    filteredSites.forEach(site => {
+      const marker = L.marker([site.latitude, site.longitude], {
+        icon: getSiteIcon(site),
+        site: site
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      siteMarkerCluster.addLayer(marker);
+    });
+  }
+  
+  // Create site individual markers (cached)
+  function createSiteIndividualMarkers() {
+    filteredSites.forEach(site => {
+      const marker = L.marker([site.latitude, site.longitude], {
+        icon: getSiteIcon(site)
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      siteIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create site single markers per location (cached)
+  function createSiteSingleMarkersPerLocation() {
+    const locationGroups = {};
+    filteredSites.forEach(site => {
+      const locationKey = `${site.latitude.toFixed(4)},${site.longitude.toFixed(4)}`;
+      if (!locationGroups[locationKey]) {
+        locationGroups[locationKey] = [];
+      }
+      locationGroups[locationKey].push(site);
+    });
+    
+    Object.values(locationGroups).forEach(sites => {
+      if (sites.length > 0) {
+        const site = sites[0];
+        const marker = L.marker([site.latitude, site.longitude], {
+          icon: getSiteIcon(site)
+        });
+        
+        let popupContent = `<div class="popup-header"><h3>${sites.length} Sites at this Location</h3></div><div class="popup-content">`;
+        sites.forEach(s => {
+          const abbrev = getSiteTypeAbbreviation(s.siteType);
+          popupContent += `<p><strong>${s.siteName || s.siteId}</strong> - ${abbrev} (${s.siteStatus})</p>`;
+        });
+        popupContent += '</div>';
+        
+        marker.bindPopup(popupContent);
+        siteIndividualMarkers.push(marker);
+      }
+    });
+  }
+  
+  // Create site spiderfied markers (cached)
+  function createSiteSpiderfiedMarkers() {
+    filteredSites.forEach((site, index) => {
+      const offsetLat = site.latitude + (Math.random() * 0.0005 - 0.00025);
+      const offsetLng = site.longitude + (Math.random() * 0.0005 - 0.00025);
+      
+      const marker = L.marker([offsetLat, offsetLng], {
+        icon: getSiteIcon(site)
+      });
+      
+      marker.bindPopup(buildSitePopup(site));
+      siteIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create site heatmap (cached)
+  function createSiteHeatmap() {
+    const heatData = filteredSites.map(site => {
+      let intensity = 0.5;
+      if (site.siteStatus === 'OUT_OF_SERVICE') intensity = 1.0;
+      else if (site.siteStatus === 'STANDBY') intensity = 0.7;
+      else if (site.siteStatus === 'WORKING') intensity = 0.3;
+      else if (site.siteStatus === 'CWIP') intensity = 0.6;
+      else if (site.siteStatus === 'TRANSFER') intensity = 0.4;
+      
+      return [site.latitude, site.longitude, intensity];
+    });
+    
+    siteHeatLayer = L.heatLayer(heatData, {
+      radius: 20,
+      blur: 12,
+      maxZoom: 17,
+      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
+    });
+  }
+  
+  // PERFORMANCE OPTIMIZATION: Optimized asset markers display
+  function displayAssetsOptimized() {
+    // Remove current layer if it exists
+    if (currentMarkerLayer) {
+      map.removeLayer(currentMarkerLayer);
+      currentMarkerLayer = null;
+    }
+    
+    if (heatLayer) {
+      map.removeLayer(heatLayer);
+      heatLayer = null;
+    }
+    
+    if (filteredAssets.length === 0) {
+      console.log('No assets to display after filtering');
+      showNotification('No assets found with current filters', 'info');
+      return;
+    }
+    
+    const visualization = document.getElementById('locationGrouping').value;
+    currentVisualization = visualization;
+    
+    // Check if we have cached markers for this visualization
+    if (!tabCache.asset.markersInitialized || 
+        Date.now() - tabCache.asset.lastUpdateTime > 30000) { // 30 second cache
+      
+      // Clear existing markers
+      assetMarkerCluster.clearLayers();
+      assetIndividualMarkers.forEach(marker => {
+        if (map.hasLayer(marker)) {
+          map.removeLayer(marker);
+        }
+      });
+      assetIndividualMarkers = [];
+      
+      // Create new markers based on visualization
+      switch(visualization) {
+        case 'cluster':
+          createAssetClusterMarkers();
+          break;
+        case 'individual':
+          createAssetIndividualMarkers();
+          break;
+        case 'single':
+          createAssetSingleMarkersPerLocation();
+          break;
+        case 'spider':
+          createAssetSpiderfiedMarkers();
+          break;
+        case 'heatmap':
+          createAssetHeatmap();
+          break;
+      }
+      
+      tabCache.asset.markersInitialized = true;
+      tabCache.asset.lastUpdateTime = Date.now();
+    }
+    
+    // Add the appropriate layer to the map
+    switch(visualization) {
+      case 'cluster':
+        currentMarkerLayer = assetMarkerCluster;
+        map.addLayer(assetMarkerCluster);
+        break;
+      case 'individual':
+      case 'single':
+      case 'spider':
+        // Add all individual markers
+        assetIndividualMarkers.forEach(marker => {
+          marker.addTo(map);
+        });
+        break;
+      case 'heatmap':
+        if (assetHeatLayer) {
+          currentMarkerLayer = assetHeatLayer;
+          map.addLayer(assetHeatLayer);
+        }
+        break;
+    }
+  }
+  
+  // Create asset cluster markers (cached)
+  function createAssetClusterMarkers() {
+    filteredAssets.forEach(asset => {
+      const marker = L.marker([asset.latitude, asset.longitude], {
+        icon: getAssetIcon(asset),
+        asset: asset
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      assetMarkerCluster.addLayer(marker);
+    });
+  }
+  
+  // Create asset individual markers (cached)
+  function createAssetIndividualMarkers() {
+    filteredAssets.forEach(asset => {
+      const marker = L.marker([asset.latitude, asset.longitude], {
+        icon: getAssetIcon(asset)
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      assetIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create asset single markers per location (cached)
+  function createAssetSingleMarkersPerLocation() {
+    const locationGroups = {};
+    filteredAssets.forEach(asset => {
+      const locationKey = `${asset.latitude.toFixed(4)},${asset.longitude.toFixed(4)}`;
+      if (!locationGroups[locationKey]) {
+        locationGroups[locationKey] = [];
+      }
+      locationGroups[locationKey].push(asset);
+    });
+    
+    Object.values(locationGroups).forEach(assets => {
+      if (assets.length > 0) {
+        const asset = assets[0];
+        const marker = L.marker([asset.latitude, asset.longitude], {
+          icon: getAssetIcon(asset)
+        });
+        
+        let popupContent = `<div class="popup-header"><h3>${assets.length} Assets at this Location</h3></div><div class="popup-content">`;
+        assets.forEach(a => {
+          const abbrev = getSiteTypeAbbreviation(a.siteTypeL2);
+          popupContent += `<p><strong>${a.assetId}</strong> - ${abbrev} (${a.condition})</p>`;
+        });
+        popupContent += '</div>';
+        
+        marker.bindPopup(popupContent);
+        assetIndividualMarkers.push(marker);
+      }
+    });
+  }
+  
+  // Create asset spiderfied markers (cached)
+  function createAssetSpiderfiedMarkers() {
+    filteredAssets.forEach((asset, index) => {
+      const offsetLat = asset.latitude + (Math.random() * 0.0005 - 0.00025);
+      const offsetLng = asset.longitude + (Math.random() * 0.0005 - 0.00025);
+      
+      const marker = L.marker([offsetLat, offsetLng], {
+        icon: getAssetIcon(asset)
+      });
+      
+      marker.bindPopup(buildAssetPopup(asset));
+      assetIndividualMarkers.push(marker);
+    });
+  }
+  
+  // Create asset heatmap (cached)
+  function createAssetHeatmap() {
+    const heatData = filteredAssets.map(asset => {
+      let intensity = 0.5;
+      if (asset.condition === 'CRITICAL') intensity = 1.0;
+      else if (asset.condition === 'POOR') intensity = 0.8;
+      else if (asset.condition === 'FAIR') intensity = 0.6;
+      else if (asset.condition === 'GOOD') intensity = 0.4;
+      else if (asset.condition === 'VERY GOOD') intensity = 0.3;
+      else if (asset.condition === 'EXCELLENT') intensity = 0.2;
+      
+      return [asset.latitude, asset.longitude, intensity];
+    });
+    
+    assetHeatLayer = L.heatLayer(heatData, {
+      radius: 20,
+      blur: 12,
+      maxZoom: 17,
+      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
+    });
+  }
+  
+  // ===========================================
   // PERFORMANCE OPTIMIZED DISPLAY FUNCTIONS
   // ===========================================
   
@@ -5540,7 +6078,7 @@
     }
   }
   
-  // Filter site by city - FIXED: Always use zoom level 12
+  // Filter site by city - FIXED: Always use zoom level 13
   function filterSiteByCity() {
     const siteCityFilter = document.getElementById('siteCityFilter').value;
     const siteTypeFilter = document.getElementById('siteTypeFilter');
@@ -5548,8 +6086,8 @@
     if (siteCityFilter === 'all') {
       filteredSites = [...allSites];
       currentCity = null;
-      // FIXED: Always use zoom level 12 as required
-      map.flyTo([24.50, 39.65], 12, {
+      // FIXED: Always use zoom level 13 as required
+      map.flyTo([24.50, 39.65], 13, {
         duration: 1.5,
         easeLinearity: 0.25
       });
@@ -5563,8 +6101,8 @@
         // Use predefined city center coordinates
         const coords = cityCoordinates[cityName];
         
-        // FIXED: Always use zoom level 12 as required
-        map.flyTo([coords.lat, coords.lng], 12, {
+        // FIXED: Always use zoom level 13 as required
+        map.flyTo([coords.lat, coords.lng], 13, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5575,8 +6113,8 @@
         const avgLat = totalLat / filteredSites.length;
         const avgLng = totalLng / filteredSites.length;
         
-        // FIXED: Always use zoom level 12 as required
-        map.flyTo([avgLat, avgLng], 12, {
+        // FIXED: Always use zoom level 13 as required
+        map.flyTo([avgLat, avgLng], 13, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5665,7 +6203,7 @@
     }
   }
   
-  // Filter asset by city - FIXED: Always use zoom level 12
+  // Filter asset by city - FIXED: Always use zoom level 13
   function filterByCity() {
     const cityFilter = document.getElementById('cityFilter').value;
     const siteFilter = document.getElementById('siteFilter');
@@ -5673,8 +6211,8 @@
     if (cityFilter === 'all') {
       filteredAssets = [...allAssets];
       currentCity = null;
-      // FIXED: Always use zoom level 12 as required
-      map.flyTo([24.50, 39.65], 12, {
+      // FIXED: Always use zoom level 13 as required
+      map.flyTo([24.50, 39.65], 13, {
         duration: 1.5,
         easeLinearity: 0.25
       });
@@ -5688,8 +6226,8 @@
         // Use predefined city center coordinates
         const coords = cityCoordinates[cityName];
         
-        // FIXED: Always use zoom level 12 as required
-        map.flyTo([coords.lat, coords.lng], 12, {
+        // FIXED: Always use zoom level 13 as required
+        map.flyTo([coords.lat, coords.lng], 13, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5700,8 +6238,8 @@
         const avgLat = totalLat / filteredAssets.length;
         const avgLng = totalLng / filteredAssets.length;
         
-        // FIXED: Always use zoom level 12 as required
-        map.flyTo([avgLat, avgLng], 12, {
+        // FIXED: Always use zoom level 13 as required
+        map.flyTo([avgLat, avgLng], 13, {
           duration: 1.5,
           easeLinearity: 0.25
         });
@@ -5866,32 +6404,22 @@
         e.preventDefault();
         switchTab('asset');
       }
-      // City tour shortcuts
-      if (e.key === ' ') {
+      // Search shortcut (Ctrl+F)
+      if (e.ctrlKey && e.key === 'f') {
         e.preventDefault();
-        if (tourIsPlaying) {
-          pauseCityTour();
-        } else {
-          startCityTour();
-        }
+        switchBottomTab('search');
+        document.getElementById('siteSearchInput').focus();
       }
-      if (e.key === 'ArrowRight') {
+      // Clear search shortcut (Ctrl+Shift+F)
+      if (e.ctrlKey && e.shiftKey && e.key === 'F') {
         e.preventDefault();
-        nextCity();
-      }
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        previousCity();
-      }
-      if (e.key === 's' || e.key === 'S') {
-        e.preventDefault();
-        stopCityTour();
+        clearSearchResults();
       }
     });
   }
   
-  window.onload = init;
+  // Initialize when page loads
+  window.addEventListener('DOMContentLoaded', init);
 </script>
-
 </body>
 </html>
