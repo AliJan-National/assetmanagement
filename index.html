@@ -412,6 +412,155 @@
       color: #00A8FF; 
     }
 
+    /* NEW: Enhanced Site Type Filter Section */
+    .site-type-filter-section {
+      background: var(--theme-section-bg);
+      padding: 15px;
+      border-radius: var(--border-radius-lg);
+      margin-bottom: 15px;
+      border: 1px solid var(--theme-section-border);
+      transition: background var(--transition-medium), border-color var(--transition-medium);
+    }
+
+    .site-type-filter-section h3 {
+      color: var(--theme-text);
+      margin-bottom: 12px;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .filter-mode-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 8px;
+      background: var(--theme-input-bg);
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--theme-input-border);
+    }
+
+    .filter-mode-option {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--border-radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0.8em;
+      font-weight: 600;
+    }
+
+    .filter-mode-option:hover {
+      background: var(--theme-section-bg);
+    }
+
+    .filter-mode-option.active {
+      background: var(--primary-blue);
+      color: white;
+      box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
+    }
+
+    .filter-mode-option input[type="radio"] {
+      display: none;
+    }
+
+    .filter-mode-option i {
+      font-size: 0.9em;
+    }
+
+    .site-type-checkboxes {
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 5px;
+      background: var(--theme-input-bg);
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--theme-input-border);
+    }
+
+    .site-type-checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: var(--border-radius-sm);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .site-type-checkbox-item:hover {
+      background: var(--theme-section-bg);
+    }
+
+    .site-type-checkbox-item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--primary-blue);
+    }
+
+    .site-type-checkbox-item label {
+      flex: 1;
+      font-size: 0.85em;
+      color: var(--theme-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-type-count {
+      font-size: 0.75em;
+      background: var(--theme-section-bg);
+      color: var(--neutral-gray);
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .filter-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .filter-action-btn {
+      flex: 1;
+      padding: 6px 12px;
+      background: var(--theme-card-bg);
+      border: 1px solid var(--theme-input-border);
+      border-radius: var(--border-radius-md);
+      color: var(--theme-text);
+      font-size: 0.8em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .filter-action-btn:hover {
+      background: var(--theme-section-bg);
+      transform: translateY(-1px);
+    }
+
+    .filter-action-btn.select-all:hover {
+      border-color: var(--success-green);
+      color: var(--success-green);
+    }
+
+    .filter-action-btn.clear-all:hover {
+      border-color: var(--danger-red);
+      color: var(--danger-red);
+    }
+
     /* Compact Filters */
     .filters-section {
       background: var(--theme-section-bg);
@@ -2185,23 +2334,51 @@
         </div>
       </div>
 
+      <!-- NEW: Enhanced Site Type Filter Section -->
+      <div class="site-type-filter-section">
+        <h3><i class="fas fa-filter"></i> Site Type Filter</h3>
+        
+        <!-- Filter Mode Selector -->
+        <div class="filter-mode-selector">
+          <div class="filter-mode-option active" onclick="setSiteTypeFilterMode('in')">
+            <input type="radio" id="filterIn" name="filterMode" value="in" checked>
+            <label for="filterIn">
+              <i class="fas fa-filter"></i> Filter In
+            </label>
+          </div>
+          <div class="filter-mode-option" onclick="setSiteTypeFilterMode('out')">
+            <input type="radio" id="filterOut" name="filterMode" value="out">
+            <label for="filterOut">
+              <i class="fas fa-ban"></i> Filter Out
+            </label>
+          </div>
+        </div>
+        
+        <!-- Site Type Checkboxes -->
+        <div class="site-type-checkboxes" id="siteTypeCheckboxes">
+          <!-- Checkboxes will be dynamically generated here -->
+        </div>
+        
+        <!-- Filter Actions -->
+        <div class="filter-actions">
+          <button class="filter-action-btn select-all" onclick="selectAllSiteTypes()">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button class="filter-action-btn clear-all" onclick="clearAllSiteTypes()">
+            <i class="fas fa-times"></i> Clear All
+          </button>
+        </div>
+      </div>
+
       <!-- Site Information Filters -->
       <div class="filters-section">
-        <h3><i class="fas fa-filter"></i> Filters</h3>
+        <h3><i class="fas fa-filter"></i> Additional Filters</h3>
         
         <!-- City Filter -->
         <div class="filter-group">
           <label for="siteCityFilter"><i class="fas fa-city"></i> City</label>
-          <select id="siteCityFilter" onchange="filterSiteByCity()">
+          <select id="siteCityFilter" onchange="applySiteFilters()">
             <option value="all">All Cities</option>
-          </select>
-        </div>
-
-        <!-- Site Type Filter (replaces Site Name L3) -->
-        <div class="filter-group">
-          <label for="siteTypeFilter"><i class="fas fa-building"></i> Site Type</label>
-          <select id="siteTypeFilter" onchange="filterSiteByType()">
-            <option value="all">All Site Types</option>
           </select>
         </div>
 
@@ -2552,6 +2729,11 @@
   let currentSiteChartType = 'siteType'; // 'siteType' or 'siteStatus'
   let isDarkTheme = false;
   let currentTab = 'site'; // 'site' or 'asset'
+  
+  // Site Type Filter Variables
+  let siteTypeFilterMode = 'in'; // 'in' or 'out'
+  let selectedSiteTypes = new Set(); // Store selected site types
+  let availableSiteTypes = []; // Store available site types for current city
   
   // Search variables
   let searchResults = [];
@@ -2951,6 +3133,579 @@
   }
   
   // ===========================================
+  // NEW: SITE TYPE FILTER FUNCTIONS
+  // ===========================================
+  
+  // Set site type filter mode (in/out)
+  function setSiteTypeFilterMode(mode) {
+    siteTypeFilterMode = mode;
+    
+    // Update UI
+    const filterInOption = document.querySelector('.filter-mode-option[onclick*="in"]');
+    const filterOutOption = document.querySelector('.filter-mode-option[onclick*="out"]');
+    
+    if (mode === 'in') {
+      filterInOption.classList.add('active');
+      filterOutOption.classList.remove('active');
+    } else {
+      filterInOption.classList.remove('active');
+      filterOutOption.classList.add('active');
+    }
+    
+    // Apply filters
+    applySiteFilters();
+  }
+  
+  // Toggle site type selection
+  function toggleSiteTypeSelection(siteType) {
+    if (selectedSiteTypes.has(siteType)) {
+      selectedSiteTypes.delete(siteType);
+    } else {
+      selectedSiteTypes.add(siteType);
+    }
+    
+    // Update checkbox state
+    const checkbox = document.getElementById(`siteTypeCheckbox_${siteType.replace(/\s+/g, '_')}`);
+    if (checkbox) {
+      checkbox.checked = selectedSiteTypes.has(siteType);
+    }
+    
+    // Apply filters
+    applySiteFilters();
+  }
+  
+  // Update site type checkboxes based on available site types
+  function updateSiteTypeCheckboxes() {
+    const selectedCity = document.getElementById('siteCityFilter').value;
+    
+    // Get site types based on current city filter
+    if (selectedCity === 'all') {
+      availableSiteTypes = [...new Set(allSites.map(s => s.siteType))].sort();
+    } else {
+      availableSiteTypes = [...new Set(allSites.filter(s => s.city === selectedCity).map(s => s.siteType))].sort();
+    }
+    
+    const checkboxesContainer = document.getElementById('siteTypeCheckboxes');
+    checkboxesContainer.innerHTML = '';
+    
+    // Count site types for display
+    const siteTypeCounts = {};
+    allSites.forEach(site => {
+      if (selectedCity === 'all' || site.city === selectedCity) {
+        if (!siteTypeCounts[site.siteType]) {
+          siteTypeCounts[site.siteType] = 0;
+        }
+        siteTypeCounts[site.siteType]++;
+      }
+    });
+    
+    // Create checkbox for each site type
+    availableSiteTypes.forEach(siteType => {
+      const count = siteTypeCounts[siteType] || 0;
+      const checkboxId = `siteTypeCheckbox_${siteType.replace(/\s+/g, '_')}`;
+      
+      const checkboxItem = document.createElement('div');
+      checkboxItem.className = 'site-type-checkbox-item';
+      checkboxItem.innerHTML = `
+        <input type="checkbox" id="${checkboxId}" 
+               ${selectedSiteTypes.has(siteType) ? 'checked' : ''}
+               onchange="toggleSiteTypeSelection('${siteType.replace(/'/g, "\\'")}')">
+        <label for="${checkboxId}">
+          <span>${siteType}</span>
+          <span class="site-type-count">${count}</span>
+        </label>
+      `;
+      
+      checkboxesContainer.appendChild(checkboxItem);
+    });
+    
+    // If no site types available, show message
+    if (availableSiteTypes.length === 0) {
+      checkboxesContainer.innerHTML = '<div style="text-align: center; padding: 10px; color: var(--neutral-gray); font-size: 0.85em;">No site types available</div>';
+    }
+  }
+  
+  // Select all site types
+  function selectAllSiteTypes() {
+    selectedSiteTypes = new Set(availableSiteTypes);
+    updateSiteTypeCheckboxes();
+    applySiteFilters();
+  }
+  
+  // Clear all site type selections
+  function clearAllSiteTypes() {
+    selectedSiteTypes.clear();
+    updateSiteTypeCheckboxes();
+    applySiteFilters();
+  }
+  
+  // Apply site filters with site type filtering
+  function applySiteFilters() {
+    const selectedCity = document.getElementById('siteCityFilter').value;
+    const selectedStatus = document.getElementById('siteStatusFilter').value;
+    
+    // Start with all sites
+    let filtered = [...allSites];
+    
+    // Apply city filter
+    if (selectedCity !== 'all') {
+      filtered = filtered.filter(s => s.city === selectedCity);
+    }
+    
+    // Apply status filter
+    if (selectedStatus !== 'all') {
+      filtered = filtered.filter(s => s.siteStatus === selectedStatus);
+    }
+    
+    // Apply site type filter if any site types are selected
+    if (selectedSiteTypes.size > 0) {
+      if (siteTypeFilterMode === 'in') {
+        // Filter In: Show only selected site types
+        filtered = filtered.filter(s => selectedSiteTypes.has(s.siteType));
+      } else {
+        // Filter Out: Hide selected site types
+        filtered = filtered.filter(s => !selectedSiteTypes.has(s.siteType));
+      }
+    }
+    
+    // Update filtered sites
+    filteredSites = filtered;
+    
+    // Update statistics
+    updateSiteDashboardStats();
+    
+    // Update map
+    displaySiteMarkersOptimized();
+    
+    // Update site name display
+    updateSiteNameDisplay();
+    
+    // Update health indicator
+    updateSiteHealthIndicator();
+    
+    // Update city panel
+    updateCityPanel();
+    
+    // Update site type checkboxes (counts may have changed)
+    updateSiteTypeCheckboxes();
+  }
+  
+  // Filter site by status (for quick actions)
+  function filterSiteByStatus(status) {
+    document.getElementById('siteStatusFilter').value = status;
+    applySiteFilters();
+  }
+  
+  // Update site dashboard statistics
+  function updateSiteDashboardStats() {
+    const total = filteredSites.length;
+    const working = filteredSites.filter(s => s.siteStatus === 'WORKING').length;
+    const standby = filteredSites.filter(s => s.siteStatus === 'STANDBY').length;
+    const outOfService = filteredSites.filter(s => s.siteStatus === 'OUT_OF_SERVICE').length;
+    const cwip = filteredSites.filter(s => s.siteStatus === 'CWIP').length;
+    const transfer = filteredSites.filter(s => s.siteStatus === 'TRANSFER').length;
+    
+    document.getElementById('totalSites').textContent = total.toLocaleString();
+    document.getElementById('workingSites').textContent = working.toLocaleString();
+    document.getElementById('standbySites').textContent = standby.toLocaleString();
+    document.getElementById('outOfServiceSites').textContent = outOfService.toLocaleString();
+    document.getElementById('cwipSites').textContent = cwip.toLocaleString();
+    document.getElementById('transferSites').textContent = transfer.toLocaleString();
+    
+    document.getElementById('workingSitePercent').textContent = total > 0 ? Math.round((working / total) * 100) + '%' : '0%';
+    document.getElementById('standbySitePercent').textContent = total > 0 ? Math.round((standby / total) * 100) + '%' : '0%';
+    document.getElementById('outOfServiceSitePercent').textContent = total > 0 ? Math.round((outOfService / total) * 100) + '%' : '0%';
+    document.getElementById('cwipSitePercent').textContent = total > 0 ? Math.round((cwip / total) * 100) + '%' : '0%';
+    document.getElementById('transferSitePercent').textContent = total > 0 ? Math.round((transfer / total) * 100) + '%' : '0%';
+    document.getElementById('totalSitePercent').textContent = '100%';
+  }
+  
+  // ===========================================
+  // EXISTING FUNCTIONS (modified for compatibility)
+  // ===========================================
+  
+  // PERFORMANCE OPTIMIZATION: Fast tab switching
+  function switchTab(tab) {
+    // Clear any pending tab switch
+    if (switchTabTimer) {
+      clearTimeout(switchTabTimer);
+      switchTabTimer = null;
+    }
+    
+    // Update tab state
+    currentTab = tab;
+    
+    // Update tab buttons - minimal DOM operation
+    document.getElementById('siteTab').classList.toggle('active', tab === 'site');
+    document.getElementById('assetTab').classList.toggle('active', tab === 'asset');
+    
+    // Switch panel content visibility - minimal DOM operation
+    const siteContent = document.getElementById('siteDashboardContent');
+    const assetContent = document.getElementById('assetDashboardContent');
+    
+    if (tab === 'site') {
+      siteContent.style.display = 'flex';
+      assetContent.style.display = 'none';
+      
+      // PERFORMANCE: Only update what's necessary
+      if (!tabCache.site.filtersInitialized) {
+        updateSiteCityFilter();
+        updateSiteStatusFilter();
+        updateSiteTypeCheckboxes();
+        tabCache.site.filtersInitialized = true;
+      }
+      
+      // Update markers with optimization
+      displaySiteMarkersOptimized();
+      
+      // Update right panel with debounce
+      if (updateChartTimer) {
+        clearTimeout(updateChartTimer);
+      }
+      updateChartTimer = setTimeout(() => {
+        updateCityPanel();
+      }, 50);
+      
+      // Update site name display
+      updateSiteNameDisplay();
+      
+      // Update health indicator
+      updateSiteHealthIndicator();
+    } else {
+      siteContent.style.display = 'none';
+      assetContent.style.display = 'flex';
+      
+      // PERFORMANCE: Only update what's necessary
+      if (!tabCache.asset.filtersInitialized) {
+        updateConditionFilter();
+        updateSiteFilter();
+        updateCityFilter();
+        tabCache.asset.filtersInitialized = true;
+      }
+      
+      // Update markers with optimization
+      displayAssetsOptimized();
+      
+      // Update right panel with debounce
+      if (updateChartTimer) {
+        clearTimeout(updateChartTimer);
+      }
+      updateChartTimer = setTimeout(() => {
+        updateCityPanel();
+      }, 50);
+      
+      // Update site name display
+      updateSiteNameDisplay();
+      
+      // Update health indicator
+      updateHealthIndicator();
+    }
+    
+    // PERFORMANCE: Initialize city tour lazily
+    if (tourCities.length === 0) {
+      setTimeout(() => {
+        initCityTour();
+      }, 500);
+    }
+  }
+  
+  // ===========================================
+  // BOTTOM PANEL TAB SWITCHING
+  // ===========================================
+  
+  // Switch bottom panel tabs
+  function switchBottomTab(tab) {
+    const mapViewTab = document.getElementById('mapViewTab');
+    const cityTourTab = document.getElementById('cityTourTab');
+    const searchTab = document.getElementById('searchTab');
+    const mapViewContent = document.getElementById('mapViewContent');
+    const cityTourContent = document.getElementById('cityTourContent');
+    const searchContent = document.getElementById('searchContent');
+    
+    // Update tab buttons
+    mapViewTab.classList.remove('active');
+    cityTourTab.classList.remove('active');
+    searchTab.classList.remove('active');
+    
+    // Hide all content
+    mapViewContent.classList.remove('active');
+    cityTourContent.classList.remove('active');
+    searchContent.classList.remove('active');
+    
+    // Show selected content
+    if (tab === 'mapView') {
+      mapViewTab.classList.add('active');
+      mapViewContent.classList.add('active');
+    } else if (tab === 'cityTour') {
+      cityTourTab.classList.add('active');
+      cityTourContent.classList.add('active');
+    } else if (tab === 'search') {
+      searchTab.classList.add('active');
+      searchContent.classList.add('active');
+      
+      // Focus search input when tab is activated
+      setTimeout(() => {
+        document.getElementById('siteSearchInput').focus();
+      }, 100);
+    }
+  }
+  
+  // ===========================================
+  // CITY TOUR ANIMATION FUNCTIONS
+  // ===========================================
+  
+  // Initialize city tour data
+  function initCityTour() {
+    // Extract unique cities from the current dataset
+    tourCities = [];
+    tourData = {};
+    
+    if (currentTab === 'site') {
+      // Get unique cities from sites
+      tourCities = [...new Set(allSites.map(s => s.city))].sort();
+      
+      // Prepare city data
+      tourCities.forEach(city => {
+        const citySites = allSites.filter(s => s.city === city);
+        tourData[city] = {
+          sites: citySites,
+          assets: [], // Sites tab doesn't have assets
+          coordinates: calculateCityBounds(citySites)
+        };
+      });
+    } else {
+      // Get unique cities from assets
+      tourCities = [...new Set(allAssets.map(a => a.city))].sort();
+      
+      // Prepare city data
+      tourCities.forEach(city => {
+        const cityAssets = allAssets.filter(a => a.city === city);
+        tourData[city] = {
+          sites: [],
+          assets: cityAssets,
+          coordinates: calculateCityBounds(cityAssets)
+        };
+      });
+    }
+    
+    // Update tour UI
+    updateTourUI();
+    
+    console.log(`City tour initialized with ${tourCities.length} cities`);
+    return tourCities.length > 0;
+  }
+  
+  // Calculate city bounds from points
+  function calculateCityBounds(items) {
+    if (!items || items.length === 0) {
+      return { center: [24.50, 39.65], bounds: null };
+    }
+    
+    // Calculate center point
+    const totalLat = items.reduce((sum, item) => sum + item.latitude, 0);
+    const totalLng = items.reduce((sum, item) => sum + item.longitude, 0);
+    const center = [totalLat / items.length, totalLng / items.length];
+    
+    // Calculate bounds
+    const bounds = L.latLngBounds(items.map(item => [item.latitude, item.longitude]));
+    
+    return { center, bounds };
+  }
+  
+  // Start city tour
+  function startCityTour() {
+    if (tourIsPlaying) return;
+    
+    if (tourCities.length === 0 && !initCityTour()) {
+      showNotification('No cities found for tour. Please load data first.', 'error');
+      return;
+    }
+    
+    // If we're at the end, restart from beginning
+    if (currentTourCityIndex >= tourCities.length - 1) {
+      currentTourCityIndex = -1;
+    }
+    
+    tourIsPlaying = true;
+    updateTourButtons();
+    
+    // Start the interval
+    cityTourInterval = setInterval(nextCity, tourSpeed);
+    
+    // Immediately go to first city if not already on one
+    if (currentTourCityIndex < 0) {
+      nextCity();
+    } else {
+      // Show current city
+      showCityInTour(currentTourCityIndex);
+    }
+    
+    showNotification('City tour started', 'success');
+  }
+  
+  // Pause city tour
+  function pauseCityTour() {
+    if (!tourIsPlaying) return;
+    
+    tourIsPlaying = false;
+    if (cityTourInterval) {
+      clearInterval(cityTourInterval);
+      cityTourInterval = null;
+    }
+    
+    updateTourButtons();
+    showNotification('City tour paused', 'info');
+  }
+  
+  // Stop city tour
+  function stopCityTour() {
+    tourIsPlaying = false;
+    if (cityTourInterval) {
+      clearInterval(cityTourInterval);
+      cityTourInterval = null;
+    }
+    
+    currentTourCityIndex = -1;
+    updateTourButtons();
+    
+    // Reset to show all data
+    if (currentTab === 'site') {
+      document.getElementById('siteCityFilter').value = 'all';
+      document.getElementById('siteStatusFilter').value = 'all';
+      selectedSiteTypes.clear();
+      updateSiteTypeCheckboxes();
+      applySiteFilters();
+    } else {
+      document.getElementById('cityFilter').value = 'all';
+      filterByCity();
+    }
+    
+    showNotification('City tour stopped', 'info');
+  }
+  
+  // Go to next city in tour
+  function nextCity() {
+    if (tourCities.length === 0) return;
+    
+    currentTourCityIndex++;
+    if (currentTourCityIndex >= tourCities.length) {
+      currentTourCityIndex = 0; // Loop back to start
+    }
+    
+    showCityInTour(currentTourCityIndex);
+  }
+  
+  // Go to previous city in tour
+  function previousCity() {
+    if (tourCities.length === 0) return;
+    
+    currentTourCityIndex--;
+    if (currentTourCityIndex < 0) {
+      currentTourCityIndex = tourCities.length - 1; // Loop to end
+    }
+    
+    showCityInTour(currentTourCityIndex);
+  }
+  
+  // Show a specific city in the tour
+  function showCityInTour(cityIndex) {
+    if (cityIndex < 0 || cityIndex >= tourCities.length) return;
+    
+    const city = tourCities[cityIndex];
+    const cityData = tourData[city];
+    
+    // Update filters to show only this city
+    if (currentTab === 'site') {
+      document.getElementById('siteCityFilter').value = city;
+      selectedSiteTypes.clear(); // Clear site type selections when city changes
+      applySiteFilters();
+    } else {
+      document.getElementById('cityFilter').value = city;
+      filterByCity();
+    }
+    
+    // Fly to city with smooth animation at zoom level 13
+    if (cityData && cityData.coordinates) {
+      const { center } = cityData.coordinates;
+      
+      if (center) {
+        // Use predefined city coordinates if available
+        const cityName = city.toUpperCase();
+        if (cityCoordinates[cityName]) {
+          const coords = cityCoordinates[cityName];
+          // FIXED: Always use zoom level 13 as required
+          map.flyTo([coords.lat, coords.lng], 13, {
+            duration: 1.5,
+            easeLinearity: 0.25
+          });
+        } else if (center) {
+          // Fallback to center point
+          // FIXED: Always use zoom level 13 as required
+          map.flyTo(center, 13, {
+            duration: 1.5,
+            easeLinearity: 0.25
+          });
+        }
+      }
+    }
+  }
+  
+  // Update tour buttons state
+  function updateTourButtons() {
+    const playBtn = document.getElementById('playTourBtn');
+    const pauseBtn = document.getElementById('pauseTourBtn');
+    const stopBtn = document.getElementById('stopTourBtn');
+    
+    const hasCities = tourCities.length > 0;
+    const isOnTour = currentTourCityIndex >= 0;
+    
+    // Enable/disable based on state
+    playBtn.disabled = tourIsPlaying || !hasCities;
+    pauseBtn.disabled = !tourIsPlaying;
+    stopBtn.disabled = !isOnTour;
+    
+    // Update button text based on state
+    if (tourIsPlaying) {
+      playBtn.innerHTML = '<i class="fas fa-play"></i> <span>Playing...</span>';
+      pauseBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
+    } else {
+      playBtn.innerHTML = '<i class="fas fa-play"></i> <span>Start Tour</span>';
+      pauseBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
+    }
+  }
+  
+  // Update tour UI based on available cities
+  function updateTourUI() {
+    const hasCities = tourCities.length > 0;
+    
+    if (!hasCities) {
+      // Grey out controls if no cities
+      const cityTourTab = document.getElementById('cityTourTab');
+      cityTourTab.style.opacity = '0.7';
+      showNotification('No cities found in data. Load data to enable city tour.', 'info');
+    } else {
+      const cityTourTab = document.getElementById('cityTourTab');
+      cityTourTab.style.opacity = '1';
+      updateTourButtons();
+    }
+  }
+  
+  // Update tour speed
+  function updateTourSpeed() {
+    const speedSlider = document.getElementById('tourSpeed');
+    const speedValue = document.getElementById('tourSpeedValue');
+    
+    tourSpeed = parseInt(speedSlider.value);
+    speedValue.textContent = `${tourSpeed / 1000}s`;
+    
+    // Restart interval with new speed if tour is playing
+    if (tourIsPlaying && cityTourInterval) {
+      clearInterval(cityTourInterval);
+      cityTourInterval = setInterval(nextCity, tourSpeed);
+    }
+  }
+  
+  // ===========================================
   // SEARCH FUNCTIONALITY
   // ===========================================
   
@@ -3236,387 +3991,6 @@
   }
   
   // ===========================================
-  // PERFORMANCE OPTIMIZED TAB SWITCHING
-  // ===========================================
-  
-  // PERFORMANCE OPTIMIZATION: Fast tab switching
-  function switchTab(tab) {
-    // Clear any pending tab switch
-    if (switchTabTimer) {
-      clearTimeout(switchTabTimer);
-      switchTabTimer = null;
-    }
-    
-    // Update tab state
-    currentTab = tab;
-    
-    // Update tab buttons - minimal DOM operation
-    document.getElementById('siteTab').classList.toggle('active', tab === 'site');
-    document.getElementById('assetTab').classList.toggle('active', tab === 'asset');
-    
-    // Switch panel content visibility - minimal DOM operation
-    const siteContent = document.getElementById('siteDashboardContent');
-    const assetContent = document.getElementById('assetDashboardContent');
-    
-    if (tab === 'site') {
-      siteContent.style.display = 'flex';
-      assetContent.style.display = 'none';
-      
-      // PERFORMANCE: Only update what's necessary
-      if (!tabCache.site.filtersInitialized) {
-        updateSiteCityFilter();
-        updateSiteTypeFilter();
-        updateSiteStatusFilter();
-        tabCache.site.filtersInitialized = true;
-      }
-      
-      // Update markers with optimization
-      displaySiteMarkersOptimized();
-      
-      // Update right panel with debounce
-      if (updateChartTimer) {
-        clearTimeout(updateChartTimer);
-      }
-      updateChartTimer = setTimeout(() => {
-        updateCityPanel();
-      }, 50);
-      
-      // Update site name display
-      updateSiteNameDisplay();
-      
-      // Update health indicator
-      updateSiteHealthIndicator();
-    } else {
-      siteContent.style.display = 'none';
-      assetContent.style.display = 'flex';
-      
-      // PERFORMANCE: Only update what's necessary
-      if (!tabCache.asset.filtersInitialized) {
-        updateConditionFilter();
-        updateSiteFilter();
-        updateCityFilter();
-        tabCache.asset.filtersInitialized = true;
-      }
-      
-      // Update markers with optimization
-      displayAssetsOptimized();
-      
-      // Update right panel with debounce
-      if (updateChartTimer) {
-        clearTimeout(updateChartTimer);
-      }
-      updateChartTimer = setTimeout(() => {
-        updateCityPanel();
-      }, 50);
-      
-      // Update site name display
-      updateSiteNameDisplay();
-      
-      // Update health indicator
-      updateHealthIndicator();
-    }
-    
-    // PERFORMANCE: Initialize city tour lazily
-    if (tourCities.length === 0) {
-      setTimeout(() => {
-        initCityTour();
-      }, 500);
-    }
-  }
-  
-  // ===========================================
-  // BOTTOM PANEL TAB SWITCHING
-  // ===========================================
-  
-  // Switch bottom panel tabs
-  function switchBottomTab(tab) {
-    const mapViewTab = document.getElementById('mapViewTab');
-    const cityTourTab = document.getElementById('cityTourTab');
-    const searchTab = document.getElementById('searchTab');
-    const mapViewContent = document.getElementById('mapViewContent');
-    const cityTourContent = document.getElementById('cityTourContent');
-    const searchContent = document.getElementById('searchContent');
-    
-    // Update tab buttons
-    mapViewTab.classList.remove('active');
-    cityTourTab.classList.remove('active');
-    searchTab.classList.remove('active');
-    
-    // Hide all content
-    mapViewContent.classList.remove('active');
-    cityTourContent.classList.remove('active');
-    searchContent.classList.remove('active');
-    
-    // Show selected content
-    if (tab === 'mapView') {
-      mapViewTab.classList.add('active');
-      mapViewContent.classList.add('active');
-    } else if (tab === 'cityTour') {
-      cityTourTab.classList.add('active');
-      cityTourContent.classList.add('active');
-    } else if (tab === 'search') {
-      searchTab.classList.add('active');
-      searchContent.classList.add('active');
-      
-      // Focus search input when tab is activated
-      setTimeout(() => {
-        document.getElementById('siteSearchInput').focus();
-      }, 100);
-    }
-  }
-  
-  // ===========================================
-  // CITY TOUR ANIMATION FUNCTIONS
-  // ===========================================
-  
-  // Initialize city tour data
-  function initCityTour() {
-    // Extract unique cities from the current dataset
-    tourCities = [];
-    tourData = {};
-    
-    if (currentTab === 'site') {
-      // Get unique cities from sites
-      tourCities = [...new Set(allSites.map(s => s.city))].sort();
-      
-      // Prepare city data
-      tourCities.forEach(city => {
-        const citySites = allSites.filter(s => s.city === city);
-        tourData[city] = {
-          sites: citySites,
-          assets: [], // Sites tab doesn't have assets
-          coordinates: calculateCityBounds(citySites)
-        };
-      });
-    } else {
-      // Get unique cities from assets
-      tourCities = [...new Set(allAssets.map(a => a.city))].sort();
-      
-      // Prepare city data
-      tourCities.forEach(city => {
-        const cityAssets = allAssets.filter(a => a.city === city);
-        tourData[city] = {
-          sites: [],
-          assets: cityAssets,
-          coordinates: calculateCityBounds(cityAssets)
-        };
-      });
-    }
-    
-    // Update tour UI
-    updateTourUI();
-    
-    console.log(`City tour initialized with ${tourCities.length} cities`);
-    return tourCities.length > 0;
-  }
-  
-  // Calculate city bounds from points
-  function calculateCityBounds(items) {
-    if (!items || items.length === 0) {
-      return { center: [24.50, 39.65], bounds: null };
-    }
-    
-    // Calculate center point
-    const totalLat = items.reduce((sum, item) => sum + item.latitude, 0);
-    const totalLng = items.reduce((sum, item) => sum + item.longitude, 0);
-    const center = [totalLat / items.length, totalLng / items.length];
-    
-    // Calculate bounds
-    const bounds = L.latLngBounds(items.map(item => [item.latitude, item.longitude]));
-    
-    return { center, bounds };
-  }
-  
-  // Start city tour
-  function startCityTour() {
-    if (tourIsPlaying) return;
-    
-    if (tourCities.length === 0 && !initCityTour()) {
-      showNotification('No cities found for tour. Please load data first.', 'error');
-      return;
-    }
-    
-    // If we're at the end, restart from beginning
-    if (currentTourCityIndex >= tourCities.length - 1) {
-      currentTourCityIndex = -1;
-    }
-    
-    tourIsPlaying = true;
-    updateTourButtons();
-    
-    // Start the interval
-    cityTourInterval = setInterval(nextCity, tourSpeed);
-    
-    // Immediately go to first city if not already on one
-    if (currentTourCityIndex < 0) {
-      nextCity();
-    } else {
-      // Show current city
-      showCityInTour(currentTourCityIndex);
-    }
-    
-    showNotification('City tour started', 'success');
-  }
-  
-  // Pause city tour
-  function pauseCityTour() {
-    if (!tourIsPlaying) return;
-    
-    tourIsPlaying = false;
-    if (cityTourInterval) {
-      clearInterval(cityTourInterval);
-      cityTourInterval = null;
-    }
-    
-    updateTourButtons();
-    showNotification('City tour paused', 'info');
-  }
-  
-  // Stop city tour
-  function stopCityTour() {
-    tourIsPlaying = false;
-    if (cityTourInterval) {
-      clearInterval(cityTourInterval);
-      cityTourInterval = null;
-    }
-    
-    currentTourCityIndex = -1;
-    updateTourButtons();
-    
-    // Reset to show all data
-    if (currentTab === 'site') {
-      document.getElementById('siteCityFilter').value = 'all';
-      filterSiteByCity();
-    } else {
-      document.getElementById('cityFilter').value = 'all';
-      filterByCity();
-    }
-    
-    showNotification('City tour stopped', 'info');
-  }
-  
-  // Go to next city in tour
-  function nextCity() {
-    if (tourCities.length === 0) return;
-    
-    currentTourCityIndex++;
-    if (currentTourCityIndex >= tourCities.length) {
-      currentTourCityIndex = 0; // Loop back to start
-    }
-    
-    showCityInTour(currentTourCityIndex);
-  }
-  
-  // Go to previous city in tour
-  function previousCity() {
-    if (tourCities.length === 0) return;
-    
-    currentTourCityIndex--;
-    if (currentTourCityIndex < 0) {
-      currentTourCityIndex = tourCities.length - 1; // Loop to end
-    }
-    
-    showCityInTour(currentTourCityIndex);
-  }
-  
-  // Show a specific city in the tour
-  function showCityInTour(cityIndex) {
-    if (cityIndex < 0 || cityIndex >= tourCities.length) return;
-    
-    const city = tourCities[cityIndex];
-    const cityData = tourData[city];
-    
-    // Update filters to show only this city
-    if (currentTab === 'site') {
-      document.getElementById('siteCityFilter').value = city;
-      filterSiteByCity();
-    } else {
-      document.getElementById('cityFilter').value = city;
-      filterByCity();
-    }
-    
-    // Fly to city with smooth animation at zoom level 13
-    if (cityData && cityData.coordinates) {
-      const { center } = cityData.coordinates;
-      
-      if (center) {
-        // Use predefined city coordinates if available
-        const cityName = city.toUpperCase();
-        if (cityCoordinates[cityName]) {
-          const coords = cityCoordinates[cityName];
-          // FIXED: Always use zoom level 13 as required
-          map.flyTo([coords.lat, coords.lng], 13, {
-            duration: 1.5,
-            easeLinearity: 0.25
-          });
-        } else if (center) {
-          // Fallback to center point
-          // FIXED: Always use zoom level 13 as required
-          map.flyTo(center, 13, {
-            duration: 1.5,
-            easeLinearity: 0.25
-          });
-        }
-      }
-    }
-  }
-  
-  // Update tour buttons state
-  function updateTourButtons() {
-    const playBtn = document.getElementById('playTourBtn');
-    const pauseBtn = document.getElementById('pauseTourBtn');
-    const stopBtn = document.getElementById('stopTourBtn');
-    
-    const hasCities = tourCities.length > 0;
-    const isOnTour = currentTourCityIndex >= 0;
-    
-    // Enable/disable based on state
-    playBtn.disabled = tourIsPlaying || !hasCities;
-    pauseBtn.disabled = !tourIsPlaying;
-    stopBtn.disabled = !isOnTour;
-    
-    // Update button text based on state
-    if (tourIsPlaying) {
-      playBtn.innerHTML = '<i class="fas fa-play"></i> <span>Playing...</span>';
-      pauseBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
-    } else {
-      playBtn.innerHTML = '<i class="fas fa-play"></i> <span>Start Tour</span>';
-      pauseBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
-    }
-  }
-  
-  // Update tour UI based on available cities
-  function updateTourUI() {
-    const hasCities = tourCities.length > 0;
-    
-    if (!hasCities) {
-      // Grey out controls if no cities
-      const cityTourTab = document.getElementById('cityTourTab');
-      cityTourTab.style.opacity = '0.7';
-      showNotification('No cities found in data. Load data to enable city tour.', 'info');
-    } else {
-      const cityTourTab = document.getElementById('cityTourTab');
-      cityTourTab.style.opacity = '1';
-      updateTourButtons();
-    }
-  }
-  
-  // Update tour speed
-  function updateTourSpeed() {
-    const speedSlider = document.getElementById('tourSpeed');
-    const speedValue = document.getElementById('tourSpeedValue');
-    
-    tourSpeed = parseInt(speedSlider.value);
-    speedValue.textContent = `${tourSpeed / 1000}s`;
-    
-    // Restart interval with new speed if tour is playing
-    if (tourIsPlaying && cityTourInterval) {
-      clearInterval(cityTourInterval);
-      cityTourInterval = setInterval(nextCity, tourSpeed);
-    }
-  }
-  
-  // ===========================================
   // EXISTING FUNCTIONS (optimized where needed)
   // ===========================================
   
@@ -3758,13 +4132,11 @@
   function updateSiteNameDisplay() {
     if (currentTab === 'site') {
       const siteCityFilter = document.getElementById('siteCityFilter');
-      const siteTypeFilter = document.getElementById('siteTypeFilter');
       const selectedCity = siteCityFilter.value;
-      const selectedSiteType = siteTypeFilter.value;
       const siteNameContainer = document.getElementById('siteNameContainer');
       const siteCountElement = document.getElementById('siteCount');
       
-      if (selectedCity === 'all' && selectedSiteType === 'all') {
+      if (selectedCity === 'all' && selectedSiteTypes.size === 0) {
         siteNameContainer.classList.remove('visible');
         setTimeout(() => {
           siteNameContainer.style.display = 'none';
@@ -3775,15 +4147,11 @@
           const cityName = siteCityFilter.options[siteCityFilter.selectedIndex].text;
           const cityNameParts = cityName.split(' (');
           displayName = cityNameParts[0];
-          if (selectedSiteType !== 'all') {
-            const siteTypeName = siteTypeFilter.options[siteTypeFilter.selectedIndex].text;
-            const siteTypeParts = siteTypeName.split(' (');
-            displayName += ' - ' + siteTypeParts[0];
+          if (selectedSiteTypes.size > 0) {
+            displayName += ' - Filtered Site Types';
           }
         } else {
-          const siteTypeName = siteTypeFilter.options[siteTypeFilter.selectedIndex].text;
-          const siteTypeParts = siteTypeName.split(' (');
-          displayName = siteTypeParts[0];
+          displayName = 'Filtered Site Types';
         }
         
         const siteCount = filteredSites.length;
@@ -3899,22 +4267,9 @@
   // Update health indicator for Site Information
   function updateSiteHealthIndicator() {
     const selectedCity = document.getElementById('siteCityFilter').value;
-    const selectedSiteType = document.getElementById('siteTypeFilter').value;
     const selectedStatus = document.getElementById('siteStatusFilter').value;
     
-    let sitesToCheck = allSites;
-    
-    if (selectedCity !== 'all') {
-      sitesToCheck = sitesToCheck.filter(s => s.city === selectedCity);
-    }
-    
-    if (selectedSiteType !== 'all') {
-      sitesToCheck = sitesToCheck.filter(s => s.siteType === selectedSiteType);
-    }
-    
-    if (selectedStatus !== 'all') {
-      sitesToCheck = sitesToCheck.filter(s => s.siteStatus === selectedStatus);
-    }
+    let sitesToCheck = filteredSites;
     
     if (sitesToCheck.length === 0) {
       document.getElementById('siteHealthFill').style.width = '0%';
@@ -4050,12 +4405,10 @@
       currentCityNameElement.textContent = cleanCityName;
     }
     
-    let citySites = selectedCity === 'all' ? allSites : allSites.filter(s => s.city === selectedCity);
-    
     if (currentSiteChartType === 'siteType') {
-      updateSiteTypeDistributionForSites(citySites);
+      updateSiteTypeDistributionForSites(filteredSites);
     } else {
-      updateSiteStatusDistribution(citySites);
+      updateSiteStatusDistribution(filteredSites);
     }
   }
   
@@ -4080,7 +4433,7 @@
       currentCityNameElement.textContent = cleanCityName;
     }
     
-    let cityAssets = selectedCity === 'all' ? allAssets : allAssets.filter(a => a.city === selectedCity);
+    let cityAssets = selectedCity === 'all' ? filteredAssets : filteredAssets.filter(a => a.city === selectedCity);
     
     if (currentChartType === 'siteType') {
       updateSiteTypeDistribution(cityAssets);
@@ -4742,10 +5095,10 @@
         
         // Calculate site statistics
         calculateSiteInformationStats();
-        updateSiteDashboard();
+        updateSiteDashboardStats();
         updateSiteCityFilter();
-        updateSiteTypeFilter();
         updateSiteStatusFilter();
+        updateSiteTypeCheckboxes();
         
         // Initialize city tour
         initCityTour();
@@ -5113,32 +5466,6 @@
     console.log('Site city statistics calculated:', siteCityStats);
   }
   
-  // Update site dashboard
-  function updateSiteDashboard() {
-    const total = allSites.length;
-    const working = allSites.filter(s => s.siteStatus === 'WORKING').length;
-    const standby = allSites.filter(s => s.siteStatus === 'STANDBY').length;
-    const outOfService = allSites.filter(s => s.siteStatus === 'OUT_OF_SERVICE').length;
-    const cwip = allSites.filter(s => s.siteStatus === 'CWIP').length;
-    const transfer = allSites.filter(s => s.siteStatus === 'TRANSFER').length;
-    
-    document.getElementById('totalSites').textContent = total.toLocaleString();
-    document.getElementById('workingSites').textContent = working.toLocaleString();
-    document.getElementById('standbySites').textContent = standby.toLocaleString();
-    document.getElementById('outOfServiceSites').textContent = outOfService.toLocaleString();
-    document.getElementById('cwipSites').textContent = cwip.toLocaleString();
-    document.getElementById('transferSites').textContent = transfer.toLocaleString();
-    
-    document.getElementById('workingSitePercent').textContent = total > 0 ? Math.round((working / total) * 100) + '%' : '0%';
-    document.getElementById('standbySitePercent').textContent = total > 0 ? Math.round((standby / total) * 100) + '%' : '0%';
-    document.getElementById('outOfServiceSitePercent').textContent = total > 0 ? Math.round((outOfService / total) * 100) + '%' : '0%';
-    document.getElementById('cwipSitePercent').textContent = total > 0 ? Math.round((cwip / total) * 100) + '%' : '0%';
-    document.getElementById('transferSitePercent').textContent = total > 0 ? Math.round((transfer / total) * 100) + '%' : '0%';
-    document.getElementById('totalSitePercent').textContent = '100%';
-    
-    updateSiteHealthIndicator();
-  }
-  
   // Update site city filter dropdown
   function updateSiteCityFilter() {
     const filter = document.getElementById('siteCityFilter');
@@ -5159,49 +5486,13 @@
     console.log('Site city filter updated with options:', cities.length, 'cities');
   }
   
-  // Update site type filter dropdown
-  function updateSiteTypeFilter() {
-    const filter = document.getElementById('siteTypeFilter');
-    const selectedCity = document.getElementById('siteCityFilter').value;
-    
-    let siteTypes = [];
-    if (selectedCity !== 'all') {
-      siteTypes = [...new Set(allSites.filter(s => s.city === selectedCity).map(s => s.siteType))].sort();
-    } else {
-      siteTypes = [...new Set(allSites.map(s => s.siteType))].sort();
-    }
-    
-    while (filter.options.length > 1) {
-      filter.remove(1);
-    }
-    
-    siteTypes.forEach(siteType => {
-      let count;
-      if (selectedCity !== 'all') {
-        count = allSites.filter(s => s.city === selectedCity && s.siteType === siteType).length;
-      } else {
-        count = allSites.filter(s => s.siteType === siteType).length;
-      }
-      
-      const option = document.createElement('option');
-      option.value = siteType;
-      option.textContent = `${siteType} (${count})`;
-      filter.appendChild(option);
-    });
-    
-    console.log('Site type filter updated with options:', siteTypes.length, 'site types');
-  }
-  
   // Update site status filter dropdown
   function updateSiteStatusFilter() {
     const filter = document.getElementById('siteStatusFilter');
     const selectedCity = document.getElementById('siteCityFilter').value;
-    const selectedSiteType = document.getElementById('siteTypeFilter').value;
     
     let statuses = [];
-    if (selectedSiteType !== 'all') {
-      statuses = [...new Set(allSites.filter(s => s.siteType === selectedSiteType).map(s => s.siteStatus))].sort();
-    } else if (selectedCity !== 'all') {
+    if (selectedCity !== 'all') {
       statuses = [...new Set(allSites.filter(s => s.city === selectedCity).map(s => s.siteStatus))].sort();
     } else {
       statuses = [...new Set(allSites.map(s => s.siteStatus))].sort();
@@ -5213,9 +5504,7 @@
     
     statuses.forEach(status => {
       let count;
-      if (selectedSiteType !== 'all') {
-        count = allSites.filter(s => s.siteType === selectedSiteType && s.siteStatus === status).length;
-      } else if (selectedCity !== 'all') {
+      if (selectedCity !== 'all') {
         count = allSites.filter(s => s.city === selectedCity && s.siteStatus === status).length;
       } else {
         count = allSites.filter(s => s.siteStatus === status).length;
@@ -5286,10 +5575,10 @@
     filteredSites = [...allSites];
     
     calculateSiteInformationStats();
-    updateSiteDashboard();
+    updateSiteDashboardStats();
     updateSiteCityFilter();
-    updateSiteTypeFilter();
     updateSiteStatusFilter();
+    updateSiteTypeCheckboxes();
   }
   
   // Create sample asset data for testing
@@ -5921,7 +6210,7 @@
         let popupContent = `<div class="popup-header"><h3>${assets.length} Assets at this Location</h3></div><div class="popup-content">`;
         assets.forEach(a => {
           const abbrev = getSiteTypeAbbreviation(a.siteTypeL2);
-          popupContent += `<p><strong>${a.assetId}</strong> - ${abbrev} (${a.condition})</p>`;
+          popupContent += `<p><strong>${a.siteNameL3}</strong> - ${abbrev} (${a.condition})</p>`;
         });
         popupContent += '</div>';
         
@@ -5964,462 +6253,129 @@
       radius: 20,
       blur: 12,
       maxZoom: 17,
-      gradient: {0.4: 'blue', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
+      gradient: {0.2: 'blue', 0.4: 'cyan', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'}
     });
   }
   
-  // ===========================================
-  // PERFORMANCE OPTIMIZED DISPLAY FUNCTIONS
-  // ===========================================
-  
-  // PERFORMANCE: Keep for backward compatibility
-  function displaySiteMarkers() {
+  // Change visualization mode for sites
+  function changeSiteVisualizationMode() {
     displaySiteMarkersOptimized();
   }
   
-  // PERFORMANCE: Keep for backward compatibility
-  function displayAssets() {
+  // Change visualization mode for assets
+  function changeVisualizationMode() {
     displayAssetsOptimized();
   }
   
-  // Apply site filters
-  function applySiteFilters() {
-    const siteCityFilter = document.getElementById('siteCityFilter').value;
-    const siteTypeFilter = document.getElementById('siteTypeFilter').value;
-    const siteStatusFilter = document.getElementById('siteStatusFilter').value;
-    
-    console.log('Applying site filters:', {
-      siteCityFilter,
-      siteTypeFilter,
-      siteStatusFilter
-    });
-    
-    filteredSites = allSites.filter(site => {
-      let cityMatch = true;
-      let typeMatch = true;
-      let statusMatch = true;
-      
-      if (siteCityFilter !== 'all') {
-        cityMatch = site.city === siteCityFilter;
-      }
-      
-      if (siteTypeFilter !== 'all') {
-        typeMatch = site.siteType === siteTypeFilter;
-      }
-      
-      if (siteStatusFilter !== 'all') {
-        statusMatch = site.siteStatus === siteStatusFilter;
-      }
-      
-      return cityMatch && typeMatch && statusMatch;
-    });
-    
-    console.log(`Filtered to ${filteredSites.length} sites`);
-    
-    if (currentTab === 'site') {
-      // Invalidate cache when filters change
-      tabCache.site.markersInitialized = false;
-      displaySiteMarkersOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateSiteHealthIndicator();
-    }
-    
-    if (siteCityFilter !== 'all' || siteTypeFilter !== 'all' || siteStatusFilter !== 'all') {
-      showNotification(`Filter applied: ${filteredSites.length} sites found`, 'info');
-    }
-  }
-  
-  // Apply asset filters
-  function applyFilters() {
-    const conditionFilter = document.getElementById('conditionFilter').value;
-    const siteFilter = document.getElementById('siteFilter').value;
-    const cityFilter = document.getElementById('cityFilter').value;
-    
-    console.log('Applying filters:', {
-      conditionFilter,
-      siteFilter,
-      cityFilter
-    });
-    
-    filteredAssets = allAssets.filter(asset => {
-      let conditionMatch = true;
-      let siteMatch = true;
-      let cityMatch = true;
-      
-      if (conditionFilter !== 'all') {
-        conditionMatch = asset.condition === conditionFilter;
-      }
-      
-      if (siteFilter !== 'all') {
-        siteMatch = asset.siteNameL3 === siteFilter;
-      }
-      
-      if (cityFilter !== 'all') {
-        cityMatch = asset.city === cityFilter;
-      }
-      
-      return conditionMatch && siteMatch && cityMatch;
-    });
-    
-    console.log(`Filtered to ${filteredAssets.length} assets`);
-    
-    if (currentTab === 'asset') {
-      // Invalidate cache when filters change
-      tabCache.asset.markersInitialized = false;
-      displayAssetsOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateHealthIndicator();
-    }
-    
-    if (conditionFilter !== 'all' || siteFilter !== 'all' || cityFilter !== 'all') {
-      showNotification(`Filter applied: ${filteredAssets.length} assets found`, 'info');
-    }
-  }
-  
-  // Filter site by city - FIXED: Always use zoom level 13
-  function filterSiteByCity() {
-    const siteCityFilter = document.getElementById('siteCityFilter').value;
-    const siteTypeFilter = document.getElementById('siteTypeFilter');
-    
-    if (siteCityFilter === 'all') {
-      filteredSites = [...allSites];
-      currentCity = null;
-      // FIXED: Always use zoom level 13 as required
-      map.flyTo([24.50, 39.65], 13, {
-        duration: 1.5,
-        easeLinearity: 0.25
-      });
-    } else {
-      filteredSites = allSites.filter(s => s.city === siteCityFilter);
-      currentCity = siteCityFilter;
-      
-      // Check if we have predefined coordinates for this city
-      const cityName = siteCityFilter.toUpperCase();
-      if (cityCoordinates[cityName]) {
-        // Use predefined city center coordinates
-        const coords = cityCoordinates[cityName];
-        
-        // FIXED: Always use zoom level 13 as required
-        map.flyTo([coords.lat, coords.lng], 13, {
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
-      } else if (filteredSites.length > 0) {
-        // Fallback: calculate average coordinates if no predefined coordinates
-        const totalLat = filteredSites.reduce((sum, site) => sum + site.latitude, 0);
-        const totalLng = filteredSites.reduce((sum, site) => sum + site.longitude, 0);
-        const avgLat = totalLat / filteredSites.length;
-        const avgLng = totalLng / filteredSites.length;
-        
-        // FIXED: Always use zoom level 13 as required
-        map.flyTo([avgLat, avgLng], 13, {
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
-      }
-    }
-    
-    updateSiteTypeFilter();
-    updateSiteStatusFilter();
-    
-    siteTypeFilter.value = 'all';
-    document.getElementById('siteStatusFilter').value = 'all';
-    
-    if (currentTab === 'site') {
-      // Invalidate cache when filters change
-      tabCache.site.markersInitialized = false;
-      displaySiteMarkersOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateSiteHealthIndicator();
-    }
-  }
-  
-  // Filter site by type
-  function filterSiteByType() {
-    const siteTypeFilter = document.getElementById('siteTypeFilter').value;
-    const siteCityFilter = document.getElementById('siteCityFilter');
-    
-    if (siteTypeFilter === 'all') {
-      filteredSites = [...allSites];
-    } else {
-      filteredSites = allSites.filter(s => s.siteType === siteTypeFilter);
-      
-      if (filteredSites.length > 0 && currentTab === 'site') {
-        const totalLat = filteredSites.reduce((sum, site) => sum + site.latitude, 0);
-        const totalLng = filteredSites.reduce((sum, site) => sum + site.longitude, 0);
-        const avgLat = totalLat / filteredSites.length;
-        const avgLng = totalLng / filteredSites.length;
-        
-        map.flyTo([avgLat, avgLng], currentZoom > 14 ? currentZoom : 16, {
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
-      }
-    }
-    
-    updateSiteStatusFilter();
-    
-    document.getElementById('siteStatusFilter').value = 'all';
-    
-    if (currentTab === 'site') {
-      // Invalidate cache when filters change
-      tabCache.site.markersInitialized = false;
-      displaySiteMarkersOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateSiteHealthIndicator();
-    }
-  }
-  
-  // Filter site by status
-  function filterSiteByStatus(status) {
-    if (status === 'all') {
-      filteredSites = [...allSites];
-    } else {
-      filteredSites = allSites.filter(s => s.siteStatus === status);
-    }
-    
-    document.getElementById('siteStatusFilter').value = status === 'all' ? 'all' : status;
-    document.getElementById('siteTypeFilter').value = 'all';
-    document.getElementById('siteCityFilter').value = 'all';
-    
-    updateSiteTypeFilter();
-    updateSiteCityFilter();
-    
-    if (currentTab === 'site') {
-      // Invalidate cache when filters change
-      tabCache.site.markersInitialized = false;
-      displaySiteMarkersOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateSiteHealthIndicator();
-    }
-    
-    if (status !== 'all') {
-      showNotification(`Filtered to ${status.replace('_', ' ').toLowerCase()} sites`, 'info');
-    }
-  }
-  
-  // Filter asset by city - FIXED: Always use zoom level 13
+  // Filter assets by city
   function filterByCity() {
-    const cityFilter = document.getElementById('cityFilter').value;
-    const siteFilter = document.getElementById('siteFilter');
+    const selectedCity = document.getElementById('cityFilter').value;
     
-    if (cityFilter === 'all') {
+    if (selectedCity === 'all') {
       filteredAssets = [...allAssets];
-      currentCity = null;
-      // FIXED: Always use zoom level 13 as required
-      map.flyTo([24.50, 39.65], 13, {
-        duration: 1.5,
-        easeLinearity: 0.25
-      });
     } else {
-      filteredAssets = allAssets.filter(a => a.city === cityFilter);
-      currentCity = cityFilter;
-      
-      // Check if we have predefined coordinates for this city
-      const cityName = cityFilter.toUpperCase();
-      if (cityCoordinates[cityName]) {
-        // Use predefined city center coordinates
-        const coords = cityCoordinates[cityName];
-        
-        // FIXED: Always use zoom level 13 as required
-        map.flyTo([coords.lat, coords.lng], 13, {
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
-      } else if (filteredAssets.length > 0) {
-        // Fallback: calculate average coordinates if no predefined coordinates
-        const totalLat = filteredAssets.reduce((sum, asset) => sum + asset.latitude, 0);
-        const totalLng = filteredAssets.reduce((sum, asset) => sum + asset.longitude, 0);
-        const avgLat = totalLat / filteredAssets.length;
-        const avgLng = totalLng / filteredAssets.length;
-        
-        // FIXED: Always use zoom level 13 as required
-        map.flyTo([avgLat, avgLng], 13, {
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
-      }
+      filteredAssets = allAssets.filter(asset => asset.city === selectedCity);
     }
     
     updateSiteFilter();
-    
-    siteFilter.value = 'all';
-    document.getElementById('conditionFilter').value = 'all';
-    
-    if (currentTab === 'asset') {
-      // Invalidate cache when filters change
-      tabCache.asset.markersInitialized = false;
-      displayAssetsOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateHealthIndicator();
-    }
+    updateConditionFilter();
+    displayAssetsOptimized();
+    updateDashboard();
+    updateHealthIndicator();
+    updateSiteNameDisplay();
+    updateCityPanel();
   }
   
-  // Filter asset by site
+  // Filter assets by site
   function filterBySite() {
-    const siteFilter = document.getElementById('siteFilter').value;
-    const cityFilter = document.getElementById('cityFilter');
+    const selectedSite = document.getElementById('siteFilter').value;
     
-    if (siteFilter === 'all') {
+    if (selectedSite === 'all') {
       filteredAssets = [...allAssets];
-      currentSite = null;
     } else {
-      filteredAssets = allAssets.filter(a => a.siteNameL3 === siteFilter);
-      currentSite = siteFilter;
-      
-      if (filteredAssets.length > 0 && currentTab === 'asset') {
-        const totalLat = filteredAssets.reduce((sum, asset) => sum + asset.latitude, 0);
-        const totalLng = filteredAssets.reduce((sum, asset) => sum + asset.longitude, 0);
-        const avgLat = totalLat / filteredAssets.length;
-        const avgLng = totalLng / filteredAssets.length;
-        
-        map.flyTo([avgLat, avgLng], currentZoom > 14 ? currentZoom : 16, {
-          duration: 1.5,
-          easeLinearity: 0.25
-        });
-      }
+      filteredAssets = allAssets.filter(asset => asset.siteNameL3 === selectedSite);
     }
     
     updateConditionFilter();
-    
-    document.getElementById('conditionFilter').value = 'all';
-    
-    if (currentTab === 'asset') {
-      // Invalidate cache when filters change
-      tabCache.asset.markersInitialized = false;
-      displayAssetsOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateHealthIndicator();
-    }
+    displayAssetsOptimized();
+    updateDashboard();
+    updateHealthIndicator();
+    updateSiteNameDisplay();
+    updateCityPanel();
   }
   
-  // Filter asset by status
-  function filterByStatus(status) {
-    if (status === 'all') {
-      filteredAssets = [...allAssets];
-    } else if (status === 'working') {
-      filteredAssets = allAssets.filter(a => a.working === 'YES');
-    } else if (status === 'not-working') {
-      filteredAssets = allAssets.filter(a => a.working === 'NO');
+  // Filter assets by condition
+  function applyFilters() {
+    const selectedSite = document.getElementById('siteFilter').value;
+    const selectedCity = document.getElementById('cityFilter').value;
+    const selectedCondition = document.getElementById('conditionFilter').value;
+    
+    let filtered = [...allAssets];
+    
+    if (selectedCity !== 'all') {
+      filtered = filtered.filter(asset => asset.city === selectedCity);
     }
     
-    document.getElementById('conditionFilter').value = 'all';
-    document.getElementById('siteFilter').value = 'all';
-    document.getElementById('cityFilter').value = 'all';
-    currentSite = null;
-    currentCity = null;
-    
-    updateConditionFilter();
-    updateSiteFilter();
-    updateCityFilter();
-    
-    if (currentTab === 'asset') {
-      // Invalidate cache when filters change
-      tabCache.asset.markersInitialized = false;
-      displayAssetsOptimized();
-      updateCityPanel();
-      updateSiteNameDisplay();
-      updateHealthIndicator();
+    if (selectedSite !== 'all') {
+      filtered = filtered.filter(asset => asset.siteNameL3 === selectedSite);
     }
     
-    if (status !== 'all') {
-      showNotification(`Filtered to ${status.replace('-', ' ')} assets`, 'info');
+    if (selectedCondition !== 'all') {
+      filtered = filtered.filter(asset => asset.condition === selectedCondition);
     }
+    
+    filteredAssets = filtered;
+    displayAssetsOptimized();
+    updateDashboard();
+    updateHealthIndicator();
+    updateSiteNameDisplay();
+    updateCityPanel();
   }
   
-  // Filter asset by type
+  // Filter by type (for asset tab)
   function filterByType(type) {
-    if (type === 'all') {
+    // Reset filters
+    document.getElementById('cityFilter').value = 'all';
+    document.getElementById('siteFilter').value = 'all';
+    document.getElementById('conditionFilter').value = 'all';
+    
+    filteredAssets = [...allAssets];
+    displayAssetsOptimized();
+    updateDashboard();
+    updateHealthIndicator();
+    updateSiteNameDisplay();
+    updateCityPanel();
+    updateSiteFilter();
+    updateConditionFilter();
+    updateCityFilter();
+  }
+  
+  // Filter by status (for asset tab)
+  function filterByStatus(status) {
+    if (status === 'working') {
+      filteredAssets = allAssets.filter(asset => asset.working === 'YES');
+    } else if (status === 'not-working') {
+      filteredAssets = allAssets.filter(asset => asset.working === 'NO');
+    } else {
       filteredAssets = [...allAssets];
     }
     
-    if (currentTab === 'asset') {
-      // Invalidate cache when filters change
-      tabCache.asset.markersInitialized = false;
-      displayAssetsOptimized();
-    }
+    displayAssetsOptimized();
+    updateDashboard();
+    updateHealthIndicator();
+    updateSiteNameDisplay();
+    updateCityPanel();
   }
   
-  // Change site visualization mode
-  function changeSiteVisualizationMode() {
-    const mode = document.getElementById('siteLocationGrouping').value;
-    if (currentTab === 'site') {
-      // Invalidate cache when visualization changes
-      tabCache.site.markersInitialized = false;
-      displaySiteMarkersOptimized();
-    }
-  }
-  
-  // Change asset visualization mode
-  function changeVisualizationMode() {
-    const mode = document.getElementById('locationGrouping').value;
-    if (currentTab === 'asset') {
-      // Invalidate cache when visualization changes
-      tabCache.asset.markersInitialized = false;
-      displayAssetsOptimized();
-    }
-  }
-  
-  // Initialize everything
+  // Initialize the application
   function init() {
     initMap();
-    loadThemePreference(); // Load theme preference before loading data
+    loadThemePreference();
     loadCSVData();
-    
-    // Add keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        toggleEquipmentPanel();
-      }
-      if (e.key === 'F1') {
-        e.preventDefault();
-        toggleDashboard();
-      }
-      if (e.key === '+' || e.key === '=') {
-        e.preventDefault();
-        map.zoomIn();
-      }
-      if (e.key === '-' || e.key === '_') {
-        e.preventDefault();
-        map.zoomOut();
-      }
-      // Theme toggle shortcut (Ctrl+Shift+T)
-      if (e.ctrlKey && e.shiftKey && e.key === 'T') {
-        e.preventDefault();
-        toggleTheme();
-      }
-      // Tab switching shortcuts
-      if (e.ctrlKey && e.key === '1') {
-        e.preventDefault();
-        switchTab('site');
-      }
-      if (e.ctrlKey && e.key === '2') {
-        e.preventDefault();
-        switchTab('asset');
-      }
-      // Search shortcut (Ctrl+F)
-      if (e.ctrlKey && e.key === 'f') {
-        e.preventDefault();
-        switchBottomTab('search');
-        document.getElementById('siteSearchInput').focus();
-      }
-      // Clear search shortcut (Ctrl+Shift+F)
-      if (e.ctrlKey && e.shiftKey && e.key === 'F') {
-        e.preventDefault();
-        clearSearchResults();
-      }
-    });
   }
   
-  // Initialize when page loads
-  window.addEventListener('DOMContentLoaded', init);
+  // Start the application when the page loads
+  window.onload = init;
 </script>
 </body>
 </html>
