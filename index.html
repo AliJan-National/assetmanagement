@@ -2341,8 +2341,8 @@
     'AL ULA': { lat: 26.58120, lng: 37.95454 },
     'BADR': { lat: 23.79030, lng: 38.78112 },
     'KHAYBAR': { lat: 25.68919, lng: 39.29349 },
-    'WADI AL FARA': { lat: 23.80260, lng: 39.65130 },
-    'YANBU': { lat: 24.09544, lng: 38.20134 }
+    'WADI AL FARA': { lat: 23.628511, lng: 39.812051 },
+    'YANBU': { lat:   24.125244, lng:   38.089516 }
   };
   
   // Enhanced color scheme for professional appearance
@@ -3350,14 +3350,14 @@
         if (cityCoordinates[cityName]) {
           const coords = cityCoordinates[cityName];
           // FIXED: Always use zoom level 12 as required
-          map.flyTo([coords.lat, coords.lng], 12, {
+          map.flyTo([coords.lat, coords.lng], 11, {
             duration: 1.5,
             easeLinearity: 0.25
           });
         } else if (center) {
           // Fallback to center point
           // FIXED: Always use zoom level 12 as required
-          map.flyTo(center, 12, {
+          map.flyTo(center, 11, {
             duration: 1.5,
             easeLinearity: 0.25
           });
